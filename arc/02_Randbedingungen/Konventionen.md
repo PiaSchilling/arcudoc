@@ -1,7 +1,5 @@
 # Konventionen 
 
-------
-
 [TOC]
 
 ------
@@ -10,21 +8,18 @@
 
 ### Commit message naming convention
 
-Format: `<type>(<scope>): <subject>`
+Format: 
+```
+`<type>(<scope>): <subject>`
+<BLANK LINE>
+<body>
+<BLANK LINE>
+<footer>
+```
 
 `<scope>` is optional
 
-```
-feat: Add hat wobble
-^--^  ^------------^
-|     |
-|     +-> Summary in present tense. Add "closes #<issueIid>" if the commit closes an issue. 
-|
-+-------> Type: chore, docs, feat, fix, refactor, style, or test.
-
-```
-
-More Examples:
+Types:
 
 - `feat`: (new feature for the user, not a new feature for build script)
 - `fix`: (bug fix for the user, not a fix to a build script)
@@ -34,4 +29,32 @@ More Examples:
 - `test`: (adding missing tests, refactoring tests; no production code change)
 - `chore`: (updating grunt tasks etc; no production code change)
 
-source: https://gist.github.com/joshbuchea/6f47e86d2510bce28f8e7f42ae84c716
+Subject:
+
+`The subject contains succinct description of the change:`
+`- use the imperative, present tense: “change” not “changed” nor “changes”`
+`- don’t capitalize first letter`
+`- no dot (.) at the end`
+
+Body: 
+
+`Just as in the subject, use the imperative, present tense: “change” not “changed” nor “changes”. The body should include the motivation for the change and contrast this with previous behavior.`
+
+Footer: 
+
+`Place to reference GitHub issues that this commit Closes`
+
+Example : 
+
+```
+feat(ui): add register button 
+
+Implement button in the login screen to provide registration action to the user
+
+closes #34
+```
+
+
+source: https://gist.github.com/joshbuchea/6f47e86d2510bce28f8e7f42ae84c716, https://ec.europa.eu/component-library/v1.15.0/eu/docs/conventions/git/ 
+
+------
