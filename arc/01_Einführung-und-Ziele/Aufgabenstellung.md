@@ -10,12 +10,23 @@
 - verschiedene Ablageorte für verschiedene Dokumente (Design, Architektur, Kontaktdaten, ...)
 - keine Einheitliche Vorgehensweise 
 
-### Wesentliche Features:
+### MVP
+
+- Möglichkeit im Team zusammenzuarbeiten
+- Möglichkeit UML Diagramme einzubetten 
+- Markdown
+- Rollen definieren (Teamlead, Designer, Entwickler, Kunden, Dozent, ...) -> wer sieht was
+- Hinweise/Hilfestellungen zu Architekturdoku/ Ausfüllen des Templates
+
+
+### Weitere Features:
 
 - Strukturierte Verwaltung von (Architektur) Dokumentationen/ Projektdokumentationen 
 - Es ist möglich im Team an der Dokumentation zusammenzuarbeiten 
 - Einzelne Dateien/ Abschnitte der Dokumentation werden versioniert um Änderungen nachvollziehbar zu machen -> hebt uns von anderen Tools/Vorgehensweisen ab, sollte auch für Leute, die nicht im git vertraut sind, zugänglich sein 
-- ? Das Tool bietet Markdown support 
+- Vordefinierte Richtlinien, die der user auswählen kann
+- Zugriff auf Datenschutzrichtlinien von Google etc. 
+- Projektbibliothek mit Richtlinien (Materialdesign, Apple guidelines)
 - ? Es ist möglich UML Diagramme einzubetten (entweder als Grafik oder UML Tool support)
 - ? Die Gliederung orientiert sich am arc42 template wird jedoch durch weitere Abschnitte wie Designguidelines erweitert
 - ? Darstellung aller Teammitgliedern und deren Kontaktdaten + Aufgaben innerhalb des Projektes
