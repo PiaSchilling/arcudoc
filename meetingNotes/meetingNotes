@@ -1,0 +1,22 @@
+#### Mittwoch 30-03-2022
+
+## MVP
+
+- deutliche Struktur (Überschriften aber ggf. an Unternehmensterminologie anpassbar)
+- Inhalte der Abschnitte werden durch Markdown dargestellt um Flexibilität zu gewährleisten 
+
+## Vorgehen 
+
+- Prototype erstellen um wesentliche Funktionen herauszuarbeiten 
+- Aus Protoype Userflows erstellen 
+- Aus wesentlichen Funktionen Bausteine und Klassen ableiten und im UML Diagramm festhalten 
+
+## Qualitätsmerkmale
+
+- Erweiterbarkeit um weitere Features einfach implementieren zu können 
+- Modularität -> lose Kopplung des GUIs um GUI Technologie ggf. in der Zukunft auszutauschen 
+
+## Ausblick 
+
+- evtl. Redesign in späteren Projekten (Anwendungsprojekt, Softwareporjekt) -> Zugänglicheres UI, Personalisierbar 
+- Englische Übersetzung 
