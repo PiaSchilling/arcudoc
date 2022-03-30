@@ -14,7 +14,16 @@ Es muss entschieden werden, welche Features unterstützt werden sollen und wie d
 
 Die Versionierung/ Version control der im Tool erstellten Dateien ist ein wünschenswertes/ wichtiges Feature. 
 
-#### 1. [JGit](https://git-scm.com/book/de/v2/Anhang-B%3A-Git-in-Ihre-Anwendungen-einbetten-JGit)
+Zwei mögliche Ziele der Versionierung
+
+- Versionierung um versehentliche Änderungen rückgängig machen zu können
+  - es sind nur die letzten 5 Stände abrufbar um Speicher zu sparen (alte Änderungen werden dann überschrieben)
+- Versionierung um den Verlauf/die Entwicklung von Dateien verfolgen zu können 
+  - nimmt viel/mehr Speicher in Angriff
+
+###### Arten der Implementierung:
+
+#### 1. [JGit](https://git-scm.com/book/de/v2/Anhang-B%3A-Git-in-Ihre-Anwendungen-einbetten-JGit) (Wurde verworfen, macht keinen Sinn im Zusammenhang mit dem Backend/Supabase)
 
 > Wenn Sie Git aus einem Java-Programm heraus verwenden möchten, gibt es  eine voll funktionsfähige Git-Bibliothek mit der Bezeichnung JGit.
 
