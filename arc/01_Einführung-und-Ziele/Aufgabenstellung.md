@@ -2,7 +2,7 @@
 
 ### Was ist [insert tool name]?
 
-[tool name] soll es erleichtern eine strukturierte Architektur-/Software-/Projektdokumentation zu erstellen. Vor allem neuen Teammitgliedern soll es dadurch leichter fallen, sich ein ein neues Projekt einzuarbeiten. 
+[tool name] soll es erleichtern eine strukturierte Architektur-/Software-/Projektdokumentation zu erstellen. Vor allem neuen Teammitgliedern soll es dadurch leichter fallen, sich ein ein neues Projekt einzuarbeiten. Auch die Zusammenarbeit zwischen Designern, Entwicklern und Architekten soll damit vereinfacht werden. Richtlinien, Konzepte und allgemein im Team geltende Vorgehensweisen werden dort festgehalten und leicht zugänglich für alle Teammitglieder. 
 
 ###### "Pains" und "Needs" :
 
