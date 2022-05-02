@@ -38,6 +38,13 @@
     -fx-alignment: center;
 }
 
+#h31{
+    -fx-font-family: "Poppins Light";
+    -fx-font-size: 14px;
+    -fx-text-fill: #969597;
+    -fx-pref-width: 63px;
+}
+
 .button1{
     -fx-background-color: #2B2934;
     -fx-pref-width: 63px;
@@ -71,3 +78,14 @@
     -fx-underline: true;
 
 }
+
+.project-invitation-cell{
+    -fx-background-color: #2B2934;
+    -fx-stroke: #969597;
+    -fx-background-radius: 15px;
+}
+
+
+
+
+
