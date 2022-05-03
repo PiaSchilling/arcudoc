@@ -9,11 +9,13 @@ public class Login implements ILogin {
 
     @Override
     public String onLoginWithGitLabButtonClicked() {
+        loginController.startAuthFlow();
         return loginController.getAuthUrl(AuthProvider.GITLAB);
     }
 
     @Override
     public String onLoginWithGoogleButtonClicked() {
+        loginController.startAuthFlow();
         return loginController.getAuthUrl(AuthProvider.GOOGLE);
     }
 }
