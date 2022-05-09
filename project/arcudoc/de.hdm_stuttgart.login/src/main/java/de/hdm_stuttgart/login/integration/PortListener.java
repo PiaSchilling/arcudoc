@@ -12,6 +12,7 @@ import java.net.InetSocketAddress;
 import java.nio.charset.StandardCharsets;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 import java.util.concurrent.Executors;
 import java.util.stream.Collectors;
 
@@ -113,14 +114,18 @@ public class PortListener {
      * @return the string containing the whole html site
      */
     private String loadResponse() {
-        ClassLoader classLoader = getClass().getClassLoader();
-        InputStream inputStream = classLoader.getResourceAsStream("index.html");
+        try{
+            ClassLoader classLoader = getClass().getClassLoader();
+            InputStream inputStream = classLoader.getResourceAsStream("arcudoc.html");
 
-        InputStreamReader streamReader = new InputStreamReader(inputStream, StandardCharsets.UTF_8);
-        BufferedReader reader = new BufferedReader(streamReader);
+            InputStreamReader streamReader = new InputStreamReader(Objects.requireNonNull(inputStream), StandardCharsets.UTF_8);
+            BufferedReader reader = new BufferedReader(streamReader);
 
-        return reader.lines().collect(Collectors.joining());
-
+            return reader.lines().collect(Collectors.joining());
+        }catch (NullPointerException exception){
+            log.error(exception.getMessage());
+        }
+        return "<h6>Login successful, you can close the browser tab and return to arcudoc</h6>";
     }
 
     /**
