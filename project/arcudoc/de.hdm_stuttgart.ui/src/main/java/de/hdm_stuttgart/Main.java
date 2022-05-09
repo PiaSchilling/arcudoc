@@ -1,6 +1,10 @@
 package de.hdm_stuttgart;
 
+import com.google.inject.Guice;
+import com.google.inject.Injector;
 import de.hdm_stuttgart.login.LoginSceneController;
+import de.hdm_stuttgart.login.guice.LoginGuiceModule;
+import de.hdm_stuttgart.login.service.ILogin;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -25,16 +29,21 @@ public class Main extends Application {
 
     public void start(Stage stage) throws Exception {
 
+        Injector injector = Guice.createInjector(
+                new LoginGuiceModule(),
+                new UiGuiceModule());
+
+        ControllerFactory controllerFactory = injector.getInstance(ControllerFactory.class);
         log.info("Starting arcudoc");
 
-        final String fxmlFile = "/fxml/login-scene.fxml";
+        final String fxmlFile = "/fxml/login-test.fxml";
         final FXMLLoader loader = new FXMLLoader();
-        //LoginSceneController sceneController = new LoginSceneController();
-        //loader.setController(sceneController);
+        loader.setControllerFactory(controllerFactory);
         final Parent rootNode = (Parent) loader.load(getClass().getResourceAsStream(fxmlFile));
         final Scene scene = new Scene(rootNode, 561, 584);
-        stage.setTitle("Hello JavaFX and Maven");
+        stage.setTitle("arcudoc");
         stage.setScene(scene);
         stage.show();
+
     }
 }

@@ -5,7 +5,7 @@ import de.hdm_stuttgart.data.api.SupabaseAuthClient;
 
 public final class ApiConstants {
 
-    private final static SupabaseAuthClient authClient = ServiceProvider.getSupabaseAuthClient(); //todo inject once guice is introduced
+    //private final static SupabaseAuthClient authClient = ServiceProvider.getSupabaseAuthClient(); //todo inject once guice is introduced
 
     public final static String supabaseAuthUrlBase = "https://tkulvivaltoyyguivrsh.supabase.co/auth/v1/";
     public final static String supabaseAuthUrl = "https://tkulvivaltoyyguivrsh.supabase.co/auth/v1/authorize?provider="; //todo refactor
@@ -23,7 +23,7 @@ public final class ApiConstants {
 
     public static String getAccessToken() {
         if(isExpired()){
-            authClient.getAccesstokenWithRefreshToken(apiKey,refreshToken);
+            //authClient.getAccesstokenWithRefreshToken(apiKey,refreshToken);
             return null; //todo implement action when token is expired (fetch new token)
         }else{
             return accessToken;

@@ -28,6 +28,7 @@ public class PortListener {
     private String refreshToken;
     private long tokenTimestamp;
 
+    //todo block server start when already started
 
     public PortListener() {
         try {
@@ -41,6 +42,7 @@ public class PortListener {
 
     public void startListener() {
         server.start();
+        System.out.println("Server started");
     }
 
     /**

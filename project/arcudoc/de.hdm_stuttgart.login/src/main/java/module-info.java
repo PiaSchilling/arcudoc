@@ -10,4 +10,5 @@ module de.hdm.stuttgart.login {
     provides com.google.inject.AbstractModule with de.hdm_stuttgart.login.guice.LoginGuiceModule;
     opens de.hdm_stuttgart.login.integration;
     exports de.hdm_stuttgart.login.integration;
+    exports de.hdm_stuttgart.login.guice;
 }
