@@ -6,7 +6,11 @@ import de.hdm_stuttgart.login.service.ILogin;
 import javafx.application.Application;
 import javafx.util.Callback;
 
-public class ControllerFactory implements Callback {
+/**
+/**
+ * class defines how controller classes should be instanced by the fxml loader
+ */
+public class ControllerFactory implements Callback<Class<?>, Object> {
 
 
     private final ILogin login;
@@ -19,7 +23,7 @@ public class ControllerFactory implements Callback {
     }
 
     @Override
-    public Object call(Object param) {
+    public Object call(Class<?> param) {
         if(param == LoginSceneController.class){
             return new LoginSceneController(login,application);
         }

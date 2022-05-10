@@ -8,7 +8,7 @@ import org.apache.logging.log4j.Logger;
 
 public class LoginController {
 
-    private static final Logger log = LogManager.getLogger();
+    private static final Logger log = LogManager.getLogger(LoginController.class);
     private final String authBaseUrl = ApiConstants.supabaseAuthUrl;
 
     private final PortListener portListener = new PortListener();
