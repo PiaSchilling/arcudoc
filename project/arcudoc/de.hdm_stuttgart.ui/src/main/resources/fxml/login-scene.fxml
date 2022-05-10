@@ -12,7 +12,7 @@
         <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="52.0" layoutY="52.0" pickOnBounds="true"
                    preserveRatio="true">
             <image>
-                <Image url="@/images/logo.png"/>
+                <Image url="/images/logo.png"/>
             </image>
         </ImageView>
         <Label id="logo" layoutX="137.0" layoutY="58.0" styleClass="root" stylesheets="/styles/style-Vivi.css"
@@ -27,7 +27,7 @@
                text="Gitlab"/>
         <Label id="h3" layoutX="369.0" layoutY="376.0" styleClass="root" stylesheets="/styles/style-Vivi.css"
                text="other"/>
-        <Button id="google" layoutX="137.0" layoutY="298.0" mnemonicParsing="false" styleClass="button1"
+        <Button id="google" fx:id="googleButton" layoutX="137.0" layoutY="298.0" mnemonicParsing="false" styleClass="button1"
                 stylesheets="/styles/style-Vivi.css"/>
         <Button id="button2" layoutX="169.0" layoutY="495.0" mnemonicParsing="false" styleClass="root"
                 stylesheets="/styles/style-Vivi.css" text="Hilfe"/>
@@ -41,7 +41,7 @@
                 <Image url="/images/hilfe.png"/>
             </image>
         </ImageView>
-        <Button id="gitlab" layoutX="253.0" layoutY="298.0" mnemonicParsing="false" styleClass="button1"
+        <Button id="gitlab" fx:id="gitlabButton" layoutX="253.0" layoutY="298.0" mnemonicParsing="false" styleClass="button1"
                 stylesheets="/styles/style-Vivi.css"/>
         <Button id="weiteres" layoutX="369.0" layoutY="298.0" mnemonicParsing="false" styleClass="button1"
                 stylesheets="/styles/style-Vivi.css"/>
