@@ -1,10 +1,13 @@
 package de.hdm_stuttgart.data.model;
 
+/**
+ * required for sending json body with retrofit
+ */
 public class TokenRequest {
 
-    private String refresh_token;
+    private final String refreshToken;
 
-    public TokenRequest(String refresh_token) {
-        this.refresh_token = refresh_token;
+    public TokenRequest(String refreshToken) {
+        this.refreshToken = refreshToken;
     }
 }

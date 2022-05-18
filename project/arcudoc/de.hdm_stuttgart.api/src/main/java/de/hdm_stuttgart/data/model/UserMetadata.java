@@ -9,4 +9,12 @@ public class UserMetadata {
 
     @SerializedName("full_name")
     private String fullName;
+
+    @Override
+    public String toString() {
+        return "UserMetadata{" +
+                "avatarUrl='" + avatarUrl + '\'' +
+                ", fullName='" + fullName + '\'' +
+                '}';
+    }
 }

@@ -1,10 +1,6 @@
 package de.hdm_stuttgart.data.model;
 
 import com.google.gson.annotations.SerializedName;
-import de.hdm_stuttgart.data.api.ServiceProvider;
-import de.hdm_stuttgart.data.api.SupabaseAuthClient;
-
-import static de.hdm_stuttgart.data.service.ApiConstants.apiKey;
 
 public class Profile {
 
@@ -19,16 +15,8 @@ public class Profile {
 
     private  User user;
 
-    private  long tokenTimestamp;
-    private boolean expired;
-
     public Profile(){
 
-    }
-
-    public boolean isExpired() {
-        expired = tokenTimestamp + expiresIn < System.currentTimeMillis();
-        return expired;
     }
 
     public String getAccessToken() {
@@ -47,7 +35,13 @@ public class Profile {
         return user;
     }
 
-    public long getTokenTimestamp() {
-        return tokenTimestamp;
+    @Override
+    public String toString() {
+        return "Profile{" +
+                "accessToken='" + accessToken + '\'' +
+                ", refreshToken='" + refreshToken + '\'' +
+                ", expiresIn=" + expiresIn +
+                ", user=" + user +
+                '}';
     }
 }

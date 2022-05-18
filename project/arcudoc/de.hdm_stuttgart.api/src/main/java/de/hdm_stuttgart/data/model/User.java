@@ -11,4 +11,13 @@ public class User {
 
     @SerializedName("user_metadata")
     private UserMetadata metadata;
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "userId='" + userId + '\'' +
+                ", email='" + email + '\'' +
+                ", metadata=" + metadata +
+                '}';
+    }
 }
