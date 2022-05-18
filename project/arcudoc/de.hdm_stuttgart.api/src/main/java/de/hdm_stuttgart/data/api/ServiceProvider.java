@@ -19,7 +19,7 @@ public class ServiceProvider {
 
         Retrofit.Builder retrofitBuilder = new Retrofit.Builder()
                 .client(client)
-                .baseUrl(ApiConstants.supabaseAuthUrlBase)
+                .baseUrl(ApiConstants.SUPABASE_AUTH_URL)
                 .addConverterFactory(GsonConverterFactory.create());
 
         Retrofit retrofit = retrofitBuilder.build();
