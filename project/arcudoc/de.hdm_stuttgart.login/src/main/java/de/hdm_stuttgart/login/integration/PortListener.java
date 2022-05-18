@@ -3,6 +3,7 @@ package de.hdm_stuttgart.login.integration;
 import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpHandler;
 import com.sun.net.httpserver.HttpServer;
+import de.hdm_stuttgart.data.service.AccountInformation;
 import de.hdm_stuttgart.data.service.ApiConstants;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -81,7 +82,7 @@ public class PortListener {
      * @param tokens the array containing the tokens to check
      * @return true if all tokens are there and in the correct order, false if not
      */
-    private boolean checkTokens(String[] tokens) throws MalformedTokensException {
+    public boolean checkTokens(String[] tokens) throws MalformedTokensException {
         if (tokens.length == 5) {
             if (tokens[0].startsWith("access_token=")
                     && tokens[1].startsWith("expires_in=")
@@ -101,12 +102,10 @@ public class PortListener {
      * sets the tokens and timestamps to the ApiConstant class
      */
     private void setTokensToApiConstants(){
-        ApiConstants.setAccessToken(accessToken);
-        ApiConstants.setRefreshToken(refreshToken);
-        ApiConstants.setExpiresIn(Long.parseLong(String.valueOf(expiresIn)));
-        ApiConstants.setTokenTimestamp(tokenTimestamp);
-        System.out.println(ApiConstants.getAccessToken());
-        log.debug("Tokens set to ApiConstants");
+        AccountInformation.getInstance().setAccessToken(accessToken);
+        AccountInformation.getInstance().setRefreshToken(refreshToken);
+        AccountInformation.getInstance().setExpiresIn(Long.parseLong(String.valueOf(expiresIn)));
+        log.debug("Tokens set to AccountInformation");
     }
 
     /**
