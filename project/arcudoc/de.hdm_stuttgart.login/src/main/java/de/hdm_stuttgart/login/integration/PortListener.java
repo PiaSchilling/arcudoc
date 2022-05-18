@@ -3,6 +3,7 @@ package de.hdm_stuttgart.login.integration;
 import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpHandler;
 import com.sun.net.httpserver.HttpServer;
+import de.hdm_stuttgart.data.service.AccountInformation;
 import de.hdm_stuttgart.data.service.ApiConstants;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -12,6 +13,7 @@ import java.net.InetSocketAddress;
 import java.nio.charset.StandardCharsets;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 import java.util.concurrent.Executors;
 import java.util.stream.Collectors;
 
@@ -28,6 +30,7 @@ public class PortListener {
     private String refreshToken;
     private long tokenTimestamp;
 
+    //todo block server start when already started
 
     public PortListener() {
         try {
@@ -41,6 +44,7 @@ public class PortListener {
 
     public void startListener() {
         server.start();
+        System.out.println("Server started");
     }
 
     /**
@@ -78,7 +82,7 @@ public class PortListener {
      * @param tokens the array containing the tokens to check
      * @return true if all tokens are there and in the correct order, false if not
      */
-    private boolean checkTokens(String[] tokens) throws MalformedTokensException {
+    public boolean checkTokens(String[] tokens) throws MalformedTokensException {
         if (tokens.length == 5) {
             if (tokens[0].startsWith("access_token=")
                     && tokens[1].startsWith("expires_in=")
@@ -98,12 +102,10 @@ public class PortListener {
      * sets the tokens and timestamps to the ApiConstant class
      */
     private void setTokensToApiConstants(){
-        ApiConstants.setAccessToken(accessToken);
-        ApiConstants.setRefreshToken(refreshToken);
-        ApiConstants.setExpiresIn(Long.parseLong(String.valueOf(expiresIn)));
-        ApiConstants.setTokenTimestamp(tokenTimestamp);
-        System.out.println(ApiConstants.getAccessToken());
-        log.debug("Tokens set to ApiConstants");
+        AccountInformation.getInstance().setAccessToken(accessToken);
+        AccountInformation.getInstance().setRefreshToken(refreshToken);
+        AccountInformation.getInstance().setExpiresIn(Long.parseLong(String.valueOf(expiresIn)));
+        log.debug("Tokens set to AccountInformation");
     }
 
     /**
@@ -111,14 +113,18 @@ public class PortListener {
      * @return the string containing the whole html site
      */
     private String loadResponse() {
-        ClassLoader classLoader = getClass().getClassLoader();
-        InputStream inputStream = classLoader.getResourceAsStream("index.html");
+        try{
+            ClassLoader classLoader = getClass().getClassLoader();
+            InputStream inputStream = classLoader.getResourceAsStream("arcudoc.html");
 
-        InputStreamReader streamReader = new InputStreamReader(inputStream, StandardCharsets.UTF_8);
-        BufferedReader reader = new BufferedReader(streamReader);
+            InputStreamReader streamReader = new InputStreamReader(Objects.requireNonNull(inputStream), StandardCharsets.UTF_8);
+            BufferedReader reader = new BufferedReader(streamReader);
 
-        return reader.lines().collect(Collectors.joining());
-
+            return reader.lines().collect(Collectors.joining());
+        }catch (NullPointerException exception){
+            log.error(exception.getMessage());
+        }
+        return "<h6>Login successful, you can close the browser tab and return to arcudoc</h6>";
     }
 
     /**
