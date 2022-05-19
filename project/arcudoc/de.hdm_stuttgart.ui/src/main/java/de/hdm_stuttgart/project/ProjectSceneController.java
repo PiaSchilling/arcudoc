@@ -3,6 +3,8 @@ package de.hdm_stuttgart.project;
 import com.google.inject.Inject;
 import de.hdm_stuttgart.editor.integration.EditorState;
 import de.hdm_stuttgart.editor.service.IEditor;
+import javafx.application.Platform;
+import javafx.beans.property.StringProperty;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
@@ -12,10 +14,12 @@ import javafx.scene.web.WebView;
 public class ProjectSceneController {
 
     private IEditor editor;
+    private StringProperty markdownStringProperty;
 
     @Inject
     public ProjectSceneController(IEditor editor){
         this.editor = editor;
+        this.markdownStringProperty = editor.getHtmlStringProperty();
     }
 
     @FXML
@@ -29,6 +33,9 @@ public class ProjectSceneController {
 
     public void initialize() {
         editButton.setOnAction(event -> onEditButtonClicked());
+        markdownStringProperty.addListener((observable, oldValue, newValue) -> {
+            setHtmlToWebView(newValue);
+        });
 
         anchorPane.setStyle("-fx-background-color: green");
 
@@ -48,7 +55,7 @@ public class ProjectSceneController {
     }
 
     private void onEditButtonClicked(){
-        editor.onEditButtonClicked();
+        editor.onEditButtonClicked(textArea.getText());
         setButtonState(editor.getEditorState());
         setEditorArea(editor.getEditorState());
     }
@@ -74,11 +81,14 @@ public class ProjectSceneController {
             anchorPane.getChildren().clear();
             anchorPane.getChildren().add(textArea);
         }else{
-            webView.getEngine().loadContent("<h1 data-sourcepos=\"1:1-1:27\">this should be a headline</h1>", "text/html");
             anchorPane.getChildren().clear();
             anchorPane.getChildren().add(webView);
 
         }
+    }
+
+    private void setHtmlToWebView(String html){
+        Platform.runLater(() -> webView.getEngine().loadContent(html, "text/html"));
     }
 
 
