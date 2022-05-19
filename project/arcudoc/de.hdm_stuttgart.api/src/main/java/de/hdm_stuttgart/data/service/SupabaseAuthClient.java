@@ -1,4 +1,4 @@
-package de.hdm_stuttgart.data.api;
+package de.hdm_stuttgart.data.service;
 
 import retrofit2.Call;
 import retrofit2.http.Body;
