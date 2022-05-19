@@ -1,4 +1,4 @@
-package de.hdm_stuttgart.data.service;
+package de.hdm_stuttgart.data.api;
 
 import de.hdm_stuttgart.data.model.Profile;
 import de.hdm_stuttgart.data.model.TokenRequest;

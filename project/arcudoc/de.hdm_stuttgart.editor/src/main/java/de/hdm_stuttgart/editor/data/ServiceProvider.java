@@ -1,4 +1,4 @@
-package de.hdm_stuttgart.data.api;
+package de.hdm_stuttgart.editor.data;
 
 import de.hdm_stuttgart.data.service.ApiConstants;
 import okhttp3.OkHttpClient;
@@ -6,11 +6,10 @@ import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-public class ServiceProvider {
+public class ServiceProvider{
 
 
-
-    public static SupabaseAuthClient getSupabaseAuthClient(){
+    public static GitLabClient getGitLabClient(){
 
         HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
         interceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
@@ -19,11 +18,10 @@ public class ServiceProvider {
 
         Retrofit.Builder retrofitBuilder = new Retrofit.Builder()
                 .client(client)
-                .baseUrl(ApiConstants.SUPABASE_AUTH_URL)
+                .baseUrl(ApiConstants.GITLAB_MARKDOWN_URL)
                 .addConverterFactory(GsonConverterFactory.create());
 
         Retrofit retrofit = retrofitBuilder.build();
-        return retrofit.create(SupabaseAuthClient.class);
+        return retrofit.create(GitLabClient.class);
     }
-
 }

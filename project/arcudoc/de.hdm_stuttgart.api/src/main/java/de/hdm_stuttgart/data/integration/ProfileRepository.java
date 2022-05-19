@@ -1,7 +1,7 @@
 package de.hdm_stuttgart.data.integration;
 
 import de.hdm_stuttgart.data.api.ServiceProvider;
-import de.hdm_stuttgart.data.service.SupabaseAuthClient;
+import de.hdm_stuttgart.data.api.SupabaseAuthClient;
 import de.hdm_stuttgart.data.model.Profile;
 import de.hdm_stuttgart.data.model.TokenRequest;
 import de.hdm_stuttgart.data.service.AccountInformation;

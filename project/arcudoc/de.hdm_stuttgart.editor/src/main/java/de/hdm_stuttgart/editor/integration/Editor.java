@@ -30,5 +30,6 @@ public class Editor implements IEditor {
 
     public EditorState getEditorState() {
         return editorState;
+
     }
 }
