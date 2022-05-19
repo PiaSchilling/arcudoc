@@ -3,6 +3,7 @@ package de.hdm_stuttgart;
 import com.google.inject.Guice;
 import com.google.inject.Injector;
 import de.hdm_stuttgart.login.guice.LoginGuiceModule;
+import de.hdm_stuttgart.workspace.guice.WorkspaceGuiceModule;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -32,11 +33,13 @@ public class Main extends Application {
 
         Injector injector = Guice.createInjector(
                 new LoginGuiceModule(),
-                new UiGuiceModule());
+                new UiGuiceModule(),
+                new WorkspaceGuiceModule());
         ControllerFactory controllerFactory = injector.getInstance(ControllerFactory.class);
 
         //todo if user != logged in
-        showLoginScene(stage,controllerFactory);
+       // showLoginScene(stage,controllerFactory);
+        showWorkspaceScene(stage,controllerFactory);
         //todo else show start screen
 
     }
@@ -44,6 +47,21 @@ public class Main extends Application {
     private void showLoginScene(Stage stage, ControllerFactory controllerFactory){
         try {
             final String fxmlFile = Scenes.LOGIN.getPath();
+            final FXMLLoader loader = new FXMLLoader();
+            loader.setControllerFactory(controllerFactory);
+            final Parent rootNode = loader.load(getClass().getResourceAsStream(fxmlFile));
+            final Scene scene = new Scene(rootNode, 561, 584);
+            stage.setTitle("arcudoc");
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void showWorkspaceScene(Stage stage, ControllerFactory controllerFactory){
+        try {
+            final String fxmlFile = Scenes.WORKSPACE.getPath();
             final FXMLLoader loader = new FXMLLoader();
             loader.setControllerFactory(controllerFactory);
             final Parent rootNode = loader.load(getClass().getResourceAsStream(fxmlFile));
