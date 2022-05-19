@@ -86,7 +86,7 @@
                 <version>0.0.4</version>
                 <configuration>
                     <launcher>uidriver</launcher>
-                    <mainClass>de.hdm_stuttgart.GuiDriver</mainClass>
+                    <mainClass>de.hdm_stuttgart.Main</mainClass>
                 </configuration>
             </plugin>
 
