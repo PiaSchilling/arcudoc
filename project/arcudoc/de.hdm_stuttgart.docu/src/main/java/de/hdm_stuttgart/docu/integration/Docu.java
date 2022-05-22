@@ -49,7 +49,7 @@ public class Docu implements IDocu {
 
     @Override
     public void onKonventionenClicked() {
-
+        System.out.println("Konventionen clicked");
     }
 
     @Override
