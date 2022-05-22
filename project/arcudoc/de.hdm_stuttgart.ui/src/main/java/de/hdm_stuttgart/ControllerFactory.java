@@ -1,0 +1,38 @@
+package de.hdm_stuttgart;
+
+import com.google.inject.Inject;
+import de.hdm_stuttgart.login.LoginSceneController;
+import de.hdm_stuttgart.login.service.ILogin;
+import de.hdm_stuttgart.workspace.WorkspaceController;
+import de.hdm_stuttgart.workspace.service.IWorkspace;
+import javafx.application.Application;
+import javafx.util.Callback;
+
+/**
+/**
+ * class defines how controller classes should be instanced by the fxml loader
+ */
+public class ControllerFactory implements Callback<Class<?>, Object> {
+
+
+    private final ILogin login;
+    private final IWorkspace workspace;
+    private final Application application;
+
+    @Inject
+    public ControllerFactory(ILogin login, Application application, IWorkspace workspace){
+        this.login = login;
+        this.application =  application;
+        this.workspace = workspace;
+    }
+
+    @Override
+    public Object call(Class<?> param) {
+        if(param == LoginSceneController.class){
+            return new LoginSceneController(login,application);
+        }else if(param == WorkspaceController.class){
+            return new WorkspaceController(workspace);
+        }
+        return null;
+    }
+}
