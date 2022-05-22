@@ -1,6 +1,7 @@
 package de.hdm_stuttgart;
 
 import com.google.inject.Inject;
+import de.hdm_stuttgart.docu.service.IDocu;
 import de.hdm_stuttgart.editor.service.IEditor;
 import de.hdm_stuttgart.login.LoginSceneController;
 import de.hdm_stuttgart.login.service.ILogin;
@@ -20,15 +21,17 @@ public class ControllerFactory implements Callback<Class<?>, Object> {
     private final ILogin login;
     private final IEditor editor;
     private final IWorkspace workspace;
+    private final IDocu docu;
+
     private final Application application;
 
     @Inject
-
-    public ControllerFactory(ILogin login, Application application, IEditor editor, IWorkspace workspace){
+    public ControllerFactory(ILogin login, Application application, IEditor editor, IWorkspace workspace, IDocu docu){
         this.login = login;
         this.editor = editor;
         this.application =  application;
         this.workspace = workspace;
+        this.docu = docu;
     }
 
     @Override
@@ -36,7 +39,7 @@ public class ControllerFactory implements Callback<Class<?>, Object> {
         if(param == LoginSceneController.class){
             return new LoginSceneController(login,application);
         }else if(param == ProjectSceneController.class){
-            return new ProjectSceneController(editor);
+            return new ProjectSceneController(editor,docu);
         }else if(param == WorkspaceController.class){
             return new WorkspaceController(workspace);
         }

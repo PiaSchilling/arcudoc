@@ -1,12 +1,14 @@
 package de.hdm_stuttgart.project;
 
 import com.google.inject.Inject;
+import de.hdm_stuttgart.docu.service.IDocu;
 import de.hdm_stuttgart.editor.integration.EditorState;
 import de.hdm_stuttgart.editor.service.IEditor;
 import javafx.application.Platform;
 import javafx.beans.property.StringProperty;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -16,14 +18,17 @@ import javafx.scene.web.WebView;
 public class ProjectSceneController {
 
     private IEditor editor;
+    private IDocu docu;
     private StringProperty markdownStringProperty;
 
     @Inject
-    public ProjectSceneController(IEditor editor){
+    public ProjectSceneController(IEditor editor, IDocu docu){
         this.editor = editor;
+        this.docu = docu;
         this.markdownStringProperty = editor.getHtmlStringProperty();
     }
 
+    // - - - - editor - - - -
     @FXML
     private Button editButton;
 
@@ -33,11 +38,22 @@ public class ProjectSceneController {
     private TextArea textArea;
     private WebView webView;
 
+    // - - - - docu - - - - -
+
+    @FXML
+    private ImageView logo;
+
+    @FXML
+    private Label chapterAufgabenstellung;
+
+
+
     public void initialize() {
         editButton.setOnAction(event -> onEditButtonClicked());
         markdownStringProperty.addListener((observable, oldValue, newValue) -> {
             setHtmlToWebView(newValue);
         });
+        chapterAufgabenstellung.setOnMouseClicked(event -> docu.onAufgabenstellungClicked());
 
         anchorPane.setStyle("-fx-background-color: transparent");
 

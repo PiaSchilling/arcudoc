@@ -2,6 +2,7 @@ package de.hdm_stuttgart;
 
 import com.google.inject.Guice;
 import com.google.inject.Injector;
+import de.hdm_stuttgart.docu.guice.DocuGuiceModule;
 import de.hdm_stuttgart.editor.guice.EditorGuiceModule;
 import de.hdm_stuttgart.login.guice.LoginGuiceModule;
 import de.hdm_stuttgart.workspace.guice.WorkspaceGuiceModule;
@@ -37,7 +38,8 @@ public class Main extends Application {
                 new UiGuiceModule(),
                 new WorkspaceGuiceModule(),
                 new UiGuiceModule(),
-                new EditorGuiceModule());
+                new EditorGuiceModule(),
+                new DocuGuiceModule());
         ControllerFactory controllerFactory = injector.getInstance(ControllerFactory.class);
 
         //todo if user != logged in
