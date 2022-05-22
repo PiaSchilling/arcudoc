@@ -6,13 +6,15 @@ module gui {
 
     requires de.hdm.stuttgart.login;
     requires workspace;
-    uses com.google.inject.AbstractModule;
     requires de.hdm.stuttgart.docu;
 
+    uses com.google.inject.AbstractModule;
+
     opens de.hdm_stuttgart to javafx.fxml, javafx.graphics, javafx.controls;
-    exports de.hdm_stuttgart.login to javafx.fxml, javafx.graphics, javafx.controls;
     opens de.hdm_stuttgart.login to javafx.fxml, javafx.graphics, javafx.controls;
     opens de.hdm_stuttgart.workspace to javafx.fxml, javafx.graphics, javafx.controls;
+
+    exports de.hdm_stuttgart.login to javafx.fxml, javafx.graphics, javafx.controls;
     exports de.hdm_stuttgart;
 
     opens images;

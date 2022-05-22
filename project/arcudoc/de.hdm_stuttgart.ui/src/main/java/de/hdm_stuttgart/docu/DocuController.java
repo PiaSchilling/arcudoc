@@ -1,5 +1,6 @@
 package de.hdm_stuttgart.docu;
 
+import com.google.inject.Inject;
 import de.hdm_stuttgart.docu.service.IDocu;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
