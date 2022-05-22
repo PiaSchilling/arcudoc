@@ -124,11 +124,37 @@
     -fx-arc-height: 30px;
 }
 
-.button-label{
+.button-label {
     -fx-font-family: 'Poppins';
     -fx-font-weight: 700;
     -fx-font-size: 14px;
     -fx-line-height: 24px;
     -fx-text-fill: #FFFFFF;
 }
+
+    /* text - view */
+
+    .text-area {
+        -fx-font-family: Poppins;
+        -fx-font-size: 12pt;
+        -fx-text-fill: #ffffff;
+
+    }
+
+    .text-area:focused{
+        -fx-focus-color: white;
+    }
+
+.text-area .content {
+    -fx-background-color: #2B2934;
+
+}
+
+.text-area:focused .content {
+    -fx-background-color: #3f3b46;
+
+}
+
+
+
 

@@ -37,9 +37,11 @@ public class ProjectSceneController {
             setHtmlToWebView(newValue);
         });
 
-        anchorPane.setStyle("-fx-background-color: green");
+        anchorPane.setStyle("-fx-background-color: transparent");
 
         textArea = new TextArea();
+        textArea.setStyle(getClass().getResource("/styles/project-screen.css").toString());
+        textArea.setWrapText(true);
         textArea.setMaxWidth(anchorPane.getMaxWidth());
         AnchorPane.setTopAnchor(textArea,0.0);
         AnchorPane.setBottomAnchor(textArea,0.0);
