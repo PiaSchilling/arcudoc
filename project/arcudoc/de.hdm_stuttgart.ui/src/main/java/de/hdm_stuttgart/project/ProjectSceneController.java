@@ -8,6 +8,8 @@ import javafx.beans.property.StringProperty;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.web.WebView;
 
@@ -70,9 +72,18 @@ public class ProjectSceneController {
      */
     private void setButtonState(EditorState state){
         if(state == EditorState.EDIT){
-            editButton.setText("View");
+            Image img = new Image("/images/save.png");
+            ImageView view = new ImageView(img);
+            view.setFitHeight(24);
+            view.setPreserveRatio(true);
+            editButton.setGraphic(view);
+
         }else{
-            editButton.setText("Edit");
+            Image img = new Image("/images/edit.png");
+            ImageView view = new ImageView(img);
+            view.setFitHeight(24);
+            view.setPreserveRatio(true);
+            editButton.setGraphic(view);
         }
     }
 

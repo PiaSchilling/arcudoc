@@ -131,6 +131,10 @@
     -fx-line-height: 24px;
     -fx-text-fill: #FFFFFF;
 }
+.button-textArea {
+    -fx-background-color: transparent;
+
+}
 
     /* text - view */
 
