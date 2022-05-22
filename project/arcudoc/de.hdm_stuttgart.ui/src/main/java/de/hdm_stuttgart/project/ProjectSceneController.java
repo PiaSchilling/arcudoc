@@ -52,6 +52,8 @@ public class ProjectSceneController {
         AnchorPane.setLeftAnchor(webView,0.0);
         AnchorPane.setRightAnchor(webView,0.0);
 
+        webView.getEngine().setUserStyleSheetLocation(getClass().getResource("/styles/webview.css").toString());
+
     }
 
     private void onEditButtonClicked(){
