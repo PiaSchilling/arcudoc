@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.image.Image?>
@@ -10,16 +11,16 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Circle?>
+<?import javafx.scene.shape.Line?>
 <?import javafx.scene.shape.Polyline?>
 <?import javafx.scene.shape.Rectangle?>
-<?import javafx.scene.web.WebView?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="982.0" prefWidth="1512.0" styleClass="background" stylesheets="@../styles/project-screen.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="982.0" prefWidth="1512.0" styleClass="background" stylesheets="@styles/project-screen.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.hdm_stuttgart.project.ProjectSceneController">
     <children>
         <Polyline fill="CHARTREUSE" layoutX="1438.0" layoutY="351.0" points="74.0, -351.0, 74.0, -264.9272155761719, -255.7071533203125, -264.9272155761719, -353.9251708984375, -351.0" strokeLineCap="BUTT" strokeType="INSIDE" strokeWidth="0.0" styleClass="user-card" />
         <ImageView fitHeight="60.0" fitWidth="227.0" layoutX="44.0" layoutY="29.0" pickOnBounds="true" preserveRatio="true" styleClass="logo">
             <image>
-                <Image url="@../images/logoArcUdoc.png" />
+                <Image url="@/images/logoArcUdoc.png" />
             </image>
         </ImageView>
         <StackPane layoutX="1201.0" />
@@ -35,7 +36,7 @@
             </children>
         </HBox>
         <Label layoutX="1192.0" layoutY="130.0" styleClass="h3" text="Versionsverlauf" />
-        <ScrollPane layoutX="1185.0" layoutY="182.0" prefHeight="771.0" prefWidth="300.0" styleClass="scrollpane" stylesheets="@../styles/workspace-screen.css">
+        <ScrollPane layoutX="1185.0" layoutY="182.0" prefHeight="771.0" prefWidth="300.0" styleClass="scrollpane" stylesheets="@/styles/workspace-screen.css">
             <content>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="769.0" prefWidth="295.0" />
             </content>
@@ -47,7 +48,7 @@
                <children>
                   <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../images/menuIcon_Doku.png" />
+                        <Image url="@/images/menuIcon_Doku.png" />
                      </image>
                   </ImageView>
                   <Label styleClass="menu-title" text="Doku" />
@@ -57,7 +58,7 @@
                <children>
                   <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../images/menuIcon_Design.png" />
+                        <Image url="@/images/menuIcon_Design.png" />
                      </image>
                   </ImageView>
                   <Label styleClass="menu-title" text="Design" />
@@ -67,7 +68,7 @@
                <children>
                   <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../images/menuIcon_Teams.png" />
+                        <Image url="@/images/menuIcon_Teams.png" />
                      </image>
                   </ImageView>
                   <Label styleClass="menu-title" text="Team" />
@@ -369,7 +370,16 @@
             </AnchorPane>
          </content>
       </ScrollPane>
-      <WebView layoutX="490.0" layoutY="324.0" prefHeight="638.0" prefWidth="589.0" />
       <Label layoutX="414.0" layoutY="27.0" prefHeight="71.0" prefWidth="467.0" styleClass="subchapter-title" text="Name of project" />
+      <AnchorPane fx:id="anchorPane" layoutX="456.0" layoutY="341.0" prefHeight="609.0" prefWidth="636.0" />
+      <Button fx:id="editButton" layoutX="1038.0" layoutY="276.0" mnemonicParsing="false" styleClass="button-textArea" stylesheets="@../styles/project-screen.css">
+         <graphic>
+            <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@images/edit.png" />
+               </image>
+            </ImageView>
+         </graphic></Button>
+      <Line endX="534.5" layoutX="557.0" layoutY="320.0" startX="-100.0" stroke="WHITE" strokeWidth="0.5" />
     </children>
 </AnchorPane>

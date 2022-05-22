@@ -3,7 +3,8 @@ package de.hdm_stuttgart;
 public enum Scenes {
 
     LOGIN("/fxml/test.fxml"),
-    WORKSPACE("/fxml/workspace-screen.fxml");
+    WORKSPACE("/fxml/workspace-screen.fxml"),
+    PROJECT("/fxml/project-screen.fxml");
 
     private final String path;
 

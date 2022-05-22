@@ -13,5 +13,7 @@ module de.hdm.stuttgart.api {
     exports de.hdm_stuttgart.data.service;
 
     opens de.hdm_stuttgart.data.model to com.google.gson;
+    exports de.hdm_stuttgart.data.api;
+    exports de.hdm_stuttgart.data.model;
 
 }

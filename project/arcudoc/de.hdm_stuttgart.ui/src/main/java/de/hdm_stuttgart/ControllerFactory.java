@@ -1,8 +1,10 @@
 package de.hdm_stuttgart;
 
 import com.google.inject.Inject;
+import de.hdm_stuttgart.editor.service.IEditor;
 import de.hdm_stuttgart.login.LoginSceneController;
 import de.hdm_stuttgart.login.service.ILogin;
+import de.hdm_stuttgart.project.ProjectSceneController;
 import de.hdm_stuttgart.workspace.WorkspaceController;
 import de.hdm_stuttgart.workspace.service.IWorkspace;
 import javafx.application.Application;
@@ -16,12 +18,15 @@ public class ControllerFactory implements Callback<Class<?>, Object> {
 
 
     private final ILogin login;
+    private final IEditor editor;
     private final IWorkspace workspace;
     private final Application application;
 
     @Inject
+    public ControllerFactory(ILogin login, Application application, IEditor editor){
     public ControllerFactory(ILogin login, Application application, IWorkspace workspace){
         this.login = login;
+        this.editor = editor;
         this.application =  application;
         this.workspace = workspace;
     }
@@ -30,6 +35,8 @@ public class ControllerFactory implements Callback<Class<?>, Object> {
     public Object call(Class<?> param) {
         if(param == LoginSceneController.class){
             return new LoginSceneController(login,application);
+        }else if(param == ProjectSceneController.class){
+            return new ProjectSceneController(editor);
         }else if(param == WorkspaceController.class){
             return new WorkspaceController(workspace);
         }

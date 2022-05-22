@@ -13,6 +13,7 @@
         <module>de.hdm_stuttgart.api</module>
         <module>de.hdm_stuttgart.login</module>
         <module>de.hdm_stuttgart.workspace</module>
+        <module>de.hdm_stuttgart.editor</module>
     </modules>
 
     <properties>
@@ -43,6 +44,19 @@
             <scope>test</scope>
         </dependency>
 
+        <!-- https://mvnrepository.com/artifact/com.squareup.okhttp3/logging-interceptor -->
+        <dependency>
+            <groupId>com.squareup.okhttp3</groupId>
+            <artifactId>logging-interceptor</artifactId>
+            <version>4.9.0</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/com.squareup.okhttp3/okhttp -->
+        <dependency>
+            <groupId>com.squareup.okhttp3</groupId>
+            <artifactId>okhttp</artifactId>
+            <version>4.9.0</version>
+        </dependency>
 
 
 
