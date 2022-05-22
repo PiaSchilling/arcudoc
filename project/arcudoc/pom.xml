@@ -12,6 +12,7 @@
         <module>de.hdm_stuttgart.ui</module>
         <module>de.hdm_stuttgart.api</module>
         <module>de.hdm_stuttgart.login</module>
+        <module>de.hdm_stuttgart.docu</module>
         <module>de.hdm_stuttgart.workspace</module>
         <module>de.hdm_stuttgart.editor</module>
     </modules>

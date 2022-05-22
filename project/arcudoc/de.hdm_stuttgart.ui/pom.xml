@@ -66,6 +66,12 @@
         </dependency>
         <dependency>
             <groupId>de.hdm_stuttgart</groupId>
+            <artifactId>de.hdm_stuttgart.docu</artifactId>
+            <version>1.0-SNAPSHOT</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>de.hdm_stuttgart</groupId>
             <artifactId>de.hdm_stuttgart.editor</artifactId>
             <version>1.0-SNAPSHOT</version>
             <scope>compile</scope>
