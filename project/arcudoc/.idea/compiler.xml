@@ -6,9 +6,11 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="de.hdm_stuttgart.ui" />
+        <module name="de.hdm_stuttgart.editor" />
         <module name="data" />
         <module name="ui" />
+        <module name="de.hdm_stuttgart.ui" />
+        <module name="de.hdm_stuttgart.workspace" />
         <module name="de.hdm_stuttgart.login" />
         <module name="de.hdm_stuttgart.api" />
       </profile>

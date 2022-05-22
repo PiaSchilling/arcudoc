@@ -35,7 +35,7 @@ public class Main extends Application {
         Injector injector = Guice.createInjector(
                 new LoginGuiceModule(),
                 new UiGuiceModule(),
-                new WorkspaceGuiceModule());
+                new WorkspaceGuiceModule(),
                 new UiGuiceModule(),
                 new EditorGuiceModule());
         ControllerFactory controllerFactory = injector.getInstance(ControllerFactory.class);

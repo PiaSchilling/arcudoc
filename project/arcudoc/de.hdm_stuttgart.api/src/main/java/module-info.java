@@ -4,7 +4,7 @@ module de.hdm.stuttgart.api {
     requires retrofit2.converter.gson;
     requires com.google.guice;
     requires org.apache.logging.log4j;
-    requires org.apache.logging.log4j.core;
+   // requires org.apache.logging.log4j.core;
     requires com.google.gson;
     requires okhttp3;
     requires okhttp3.logging;

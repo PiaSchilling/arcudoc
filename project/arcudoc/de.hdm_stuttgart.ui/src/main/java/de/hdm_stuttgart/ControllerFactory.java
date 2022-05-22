@@ -23,8 +23,8 @@ public class ControllerFactory implements Callback<Class<?>, Object> {
     private final Application application;
 
     @Inject
-    public ControllerFactory(ILogin login, Application application, IEditor editor){
-    public ControllerFactory(ILogin login, Application application, IWorkspace workspace){
+
+    public ControllerFactory(ILogin login, Application application, IEditor editor, IWorkspace workspace){
         this.login = login;
         this.editor = editor;
         this.application =  application;
