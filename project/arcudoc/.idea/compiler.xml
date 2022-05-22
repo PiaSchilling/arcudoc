@@ -9,6 +9,7 @@
         <module name="de.hdm_stuttgart.editor" />
         <module name="data" />
         <module name="ui" />
+        <module name="de.hdm_stuttgart.docu" />
         <module name="de.hdm_stuttgart.ui" />
         <module name="de.hdm_stuttgart.workspace" />
         <module name="de.hdm_stuttgart.login" />

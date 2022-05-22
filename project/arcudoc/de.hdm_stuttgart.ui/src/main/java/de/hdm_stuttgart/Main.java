@@ -85,7 +85,7 @@ public class Main extends Application {
             final FXMLLoader loader = new FXMLLoader();
             loader.setControllerFactory(controllerFactory);
             final Parent rootNode = loader.load(getClass().getResourceAsStream(fxmlFile));
-            final Scene scene = new Scene(rootNode, 1512, 982);
+            final Scene scene = new Scene(rootNode, 1400, 800);
             stage.setTitle("arcudoc");
             stage.setScene(scene);
             stage.show();
