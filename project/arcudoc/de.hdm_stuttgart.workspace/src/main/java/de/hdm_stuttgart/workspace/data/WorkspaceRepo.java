@@ -1,10 +1,8 @@
 package de.hdm_stuttgart.workspace.data;
 
+import de.hdm_stuttgart.data.service.AccountInformation;
 import de.hdm_stuttgart.data.service.ApiConstants;
-import de.hdm_stuttgart.workspace.model.InvitationRequest;
-import de.hdm_stuttgart.workspace.model.InvitationResponse;
-import de.hdm_stuttgart.workspace.model.ProjectRequest;
-import de.hdm_stuttgart.workspace.model.ProjectResponse;
+import de.hdm_stuttgart.workspace.model.*;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import retrofit2.Call;
@@ -66,7 +64,8 @@ public class WorkspaceRepo {
 
     /**
      * calls corresponding api endpoints for adding member mails on invitations list
-     //* @param invitationMails array of invitation mails wrapped in InvitationsRequest objects for json parsing
+     * @param invitationMailsStrings list of strings representing a member mail each
+     * @param projectId the id of the project the members should be invited for
      */
     public void inviteMembers(List<String> invitationMailsStrings, int projectId){
 
@@ -97,8 +96,35 @@ public class WorkspaceRepo {
         });
     }
 
-    public void addProjectMember(){
+    /**
+     * calls corresponding api endpoints for adding member to a project
+     * @param projectId the id of the project where the member should be added
+     */
+    public void addProjectMember(int projectId){
 
+        Call<Void> call = supabaseRestClient.addProjectMember(
+                ApiConstants.API_KEY,
+                ApiConstants.BEARER_KEY,
+                "application/json",
+                "return=representation",
+                new MemberRequest(projectId)
+        );
+
+        call.enqueue(new Callback<Void>() {
+            @Override
+            public void onResponse(Call<Void> call, Response<Void> response) {
+                if(response.isSuccessful()){
+                    log.debug("Project member added successfully");
+                }else{
+                    log.error(response.code() + " - Project member adding not successful");
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Void> call, Throwable throwable) {
+                log.error(throwable.getMessage() + " - Add project member failed");
+            }
+        });
     }
 
     /**
@@ -109,7 +135,7 @@ public class WorkspaceRepo {
         Call<List<InvitationResponse>> call = supabaseRestClient.getProjectInvitations(
                 ApiConstants.API_KEY,
                 ApiConstants.BEARER_KEY,
-                "eq.pia@gmail.com",
+                AccountInformation.getInstance().getUserMail(),
                 "*,projects(title)"
         );
 
@@ -159,7 +185,9 @@ public class WorkspaceRepo {
 
         //w.inviteMembers(temp);
 
-        w.getInvitations();
+        //w.getInvitations();
+
+        w.addProjectMember(21);
 
     }
 }
