@@ -11,7 +11,6 @@ import retrofit2.Response;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 //todo present error messages to the user
 public class WorkspaceRepo {
@@ -143,6 +142,7 @@ public class WorkspaceRepo {
             @Override
             public void onResponse(Call<List<InvitationResponse>> call, Response<List<InvitationResponse>> response) {
                 if(response.isSuccessful()){
+                    log.debug("Invitations fetches successfully");
                     List<InvitationResponse> invitations = response.body();
                     InvitationResponse temp = invitations.get(0);
                     System.out.println(temp);
@@ -159,14 +159,39 @@ public class WorkspaceRepo {
     }
 
     public void acceptInvitation(int projectId){
-
+        //maybe work with db trigger else
+        //1. add project member
+        //2. delete from project invitation
     }
 
     /**
-     * shows the projects the user is already member of
+     * gets the projects the user is already member of
      */
     public void getMemberProjects(){
 
+        Call<List<Project>> call = supabaseRestClient.getMemberProjects(
+                ApiConstants.API_KEY,
+                ApiConstants.BEARER_KEY,
+                "projects(title,id)" //indicates to select title and id of project table although project_members table is queried in request (linked in supabase)
+        );
+
+        call.enqueue(new Callback<List<Project>>() {
+            @Override
+            public void onResponse(Call<List<Project>> call, Response<List<Project>> response) {
+                if(response.isSuccessful()){
+                    log.debug("Member projects fetched successfully");
+                    List<Project> projects = response.body(); //todo check why project objects not parsed correctly
+                    System.out.println(projects.get(2));
+                }else{
+                    log.error(response.code() + " - Fetching member projects not successful");
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<Project>> call, Throwable throwable) {
+                log.error(throwable.getMessage() + " - Fetching member projects failed");
+            }
+        });
     }
 
     public static void main(String[] args) {
@@ -187,7 +212,9 @@ public class WorkspaceRepo {
 
         //w.getInvitations();
 
-        w.addProjectMember(21);
+        //w.addProjectMember(21);
+
+        w.getMemberProjects();
 
     }
 }

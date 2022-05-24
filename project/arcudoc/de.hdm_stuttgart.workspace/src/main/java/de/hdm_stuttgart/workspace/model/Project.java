@@ -1,5 +1,7 @@
 package de.hdm_stuttgart.workspace.model;
 
+import com.google.gson.annotations.SerializedName;
+
 public class Project {
 
     private String title;

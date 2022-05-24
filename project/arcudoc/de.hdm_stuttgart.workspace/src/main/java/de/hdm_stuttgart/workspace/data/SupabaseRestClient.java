@@ -30,6 +30,13 @@ public interface SupabaseRestClient {
             @Body MemberRequest memberRequest
             );
 
+    @GET("project_members") //filtering handled by RLS of supabase
+    Call<List<Project>> getMemberProjects(
+            @Header("apikey") String apikey,
+            @Header("Authorization") String bearerToken,
+            @Query("select") String selectFilter
+    );
+
     // - - - - - project invitations - - - - -
 
     @POST("project-invitations")
