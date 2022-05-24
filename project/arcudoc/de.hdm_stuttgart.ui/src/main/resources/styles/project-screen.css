@@ -71,6 +71,11 @@
     -fx-text-fill: #FFFFFF;
 }
 
+.menu-chapter-title:hover{
+    -fx-text-fill: #5553E1;
+    -fx-font-scale: 10;
+}
+
 .menu-subchapter-title{
     -fx-font-family: 'Poppins';
     -fx-font-weight: 500;
@@ -78,8 +83,11 @@
     -fx-line-height: 24px;
 
     -fx-text-fill: #FFFFFF;
+}
 
-
+.menu-subchapter-title:hover{
+    -fx-text-fill: #5553E1;
+    -fx-font-weight: 700;
 }
 
 .chapter-number{
