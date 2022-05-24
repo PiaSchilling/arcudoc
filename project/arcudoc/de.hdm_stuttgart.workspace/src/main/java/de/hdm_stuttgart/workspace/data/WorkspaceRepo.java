@@ -1,43 +1,57 @@
 package de.hdm_stuttgart.workspace.data;
 
 import de.hdm_stuttgart.data.service.ApiConstants;
-import de.hdm_stuttgart.workspace.model.ProjectRequestModel;
+import de.hdm_stuttgart.workspace.model.InvitationRequest;
+import de.hdm_stuttgart.workspace.model.ProjectRequest;
+import de.hdm_stuttgart.workspace.model.ProjectResponse;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
+//todo present error messages to the user
 public class WorkspaceRepo {
 
-    SupabaseRestClient supabaseRestClient = ServiceProvider.getSupabaseRestClient();
+    private static final Logger log = LogManager.getLogger(WorkspaceRepo.class);
+    private final SupabaseRestClient supabaseRestClient = ServiceProvider.getSupabaseRestClient(); //todo inject
+
     /**
      * calls corresponding api endpoints for creating a new project
      * @param projectTitle the title the project should have
      //* @param emailInvitations list of email-addresses which will be used to invite members to this project
      */
-    public void createProject(String projectTitle){
+    public void createProject(String projectTitle, List<String> invitationMails ){
 
-        Call<Void> call = supabaseRestClient.createNewProject(
+        Call<List<ProjectResponse>> call = supabaseRestClient.createNewProject(
                 ApiConstants.API_KEY,
-                "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOiJhdXRoZW50aWNhdGVkIiwiZXhwIjoxNjUzNDAzNzAzLCJzdWIiOiJmNjIwNmY0Ni0wYzc4LTQ3NjQtYjhmNC1lZjIwNWQyZTNlOTIiLCJlbWFpbCI6Im5hY2h2b3JuMTNAZ21haWwuY29tIiwicGhvbmUiOiIiLCJhcHBfbWV0YWRhdGEiOnsicHJvdmlkZXIiOiJnaXRsYWIiLCJwcm92aWRlcnMiOlsiZ2l0bGFiIl19LCJ1c2VyX21ldGFkYXRhIjp7ImF2YXRhcl91cmwiOiJodHRwczovL3NlY3VyZS5ncmF2YXRhci5jb20vYXZhdGFyLzM5YTc1YmM1OTBlZjk0Y2U3MzIwNjFhNzkxMDcxZWZhP3M9ODBcdTAwMjZkPWlkZW50aWNvbiIsImVtYWlsIjoibmFjaHZvcm4xM0BnbWFpbC5jb20iLCJlbWFpbF92ZXJpZmllZCI6dHJ1ZSwiZnVsbF9uYW1lIjoiTWFyaWUgU2NoaWxsaW5nIiwiaXNzIjoiaHR0cHM6Ly9naXRsYWIuY29tIiwibmFtZSI6Ik1hcmllIFNjaGlsbGluZyIsInBpY3R1cmUiOiJodHRwczovL3NlY3VyZS5ncmF2YXRhci5jb20vYXZhdGFyLzM5YTc1YmM1OTBlZjk0Y2U3MzIwNjFhNzkxMDcxZWZhP3M9ODBcdTAwMjZkPWlkZW50aWNvbiIsInByb3ZpZGVyX2lkIjoiMTE2NTE1MjAiLCJzdWIiOiIxMTY1MTUyMCJ9LCJyb2xlIjoiYXV0aGVudGljYXRlZCJ9.maAT_npFAtRDtoh9YFL3F-NVZetMYxfyiwL0J4OO-4w",
+                ApiConstants.BEARER_KEY,
                 "application/json",
                 "return=representation",
-                new ProjectRequestModel(projectTitle));
+                new ProjectRequest(projectTitle));
 
-        call.enqueue(new Callback<Void>() {
+        call.enqueue(new Callback<List<ProjectResponse>>() {
             @Override
-            public void onResponse(Call<Void> call, Response<Void> response) {
+            public void onResponse(Call<List<ProjectResponse>> call, Response<List<ProjectResponse>> response) {
                 if(response.isSuccessful()){
-                    System.out.println("SUCCESS");
+                    log.debug(response.code() + " - Project created successfully");
+                    List<ProjectResponse> createdProject = response.body();
+                    if (createdProject != null) {
+                        int projectId = createdProject.get(0).getId();
+                        inviteMembers(invitationMails,projectId);
+                    }
                 }else{
-                    System.out.println("ERROR");
+                    log.error(response.code() + " - Project creation not successful");
                 }
             }
 
             @Override
-            public void onFailure(Call<Void> call, Throwable throwable) {
-                System.out.println("FAIL");
+            public void onFailure(Call<List<ProjectResponse>> call, Throwable throwable) {
+                log.error(throwable.getMessage() + " - Project creation not successful");
             }
         });
 
@@ -47,8 +61,58 @@ public class WorkspaceRepo {
         //insert emails into invitations
     }
 
+    /**
+     * calls corresponding api endpoints for adding member mails on invitations list
+     //* @param invitationMails array of invitation mails wrapped in InvitationsRequest objects for json parsing
+     */
+    public void inviteMembers(List<String> invitationMailsStrings, int projectId){
+
+        List<InvitationRequest> invitationRequestsList = invitationMailsStrings.stream()
+                .map(s -> new InvitationRequest(s, projectId)).toList();
+
+        Call<Void> call = supabaseRestClient.createNewProjectInvitation(
+                ApiConstants.API_KEY,
+                ApiConstants.BEARER_KEY,
+                "application/json",
+                invitationRequestsList
+        );
+
+        call.enqueue(new Callback<Void>() {
+            @Override
+            public void onResponse(Call<Void> call, Response<Void> response) {
+                if(response.isSuccessful()){
+                    log.debug(response.code() + " - Invitations added successfully");
+                }else{
+                    log.error(response.code() + " - Invitation not successful");
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Void> call, Throwable throwable) {
+                log.error(throwable.getMessage() + " - Invitation failed");
+            }
+        });
+    }
+
+    public void addProjectOwner(){
+
+    }
+
     public static void main(String[] args) {
         WorkspaceRepo w = new WorkspaceRepo();
-        w.createProject("java");
+        //w.createProject("java 2");
+
+        InvitationRequest i = new InvitationRequest("pia@gmail.com",2);
+        InvitationRequest i2 = new InvitationRequest("sara@gmail.com",2);
+        InvitationRequest[] temp = {i,i2};
+
+        List<String> list = new ArrayList<>();
+        list.add("pida@gmail.com");
+        list.add("madrie@gmail.com");
+
+        w.inviteMembers(list,10);
+
+        //w.inviteMembers(temp);
+
     }
 }
