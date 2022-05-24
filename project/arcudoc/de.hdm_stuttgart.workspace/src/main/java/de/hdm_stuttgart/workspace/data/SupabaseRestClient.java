@@ -1,12 +1,11 @@
 package de.hdm_stuttgart.workspace.data;
 
 import de.hdm_stuttgart.workspace.model.InvitationRequest;
+import de.hdm_stuttgart.workspace.model.InvitationResponse;
 import de.hdm_stuttgart.workspace.model.ProjectRequest;
 import de.hdm_stuttgart.workspace.model.ProjectResponse;
 import retrofit2.Call;
-import retrofit2.http.Body;
-import retrofit2.http.Header;
-import retrofit2.http.POST;
+import retrofit2.http.*;
 
 import java.util.List;
 
@@ -28,4 +27,12 @@ public interface SupabaseRestClient {
             @Header("Content-Type") String contentType,
             @Body List<InvitationRequest> invitationRequests
             );
+
+    @GET("project-invitations")
+    Call<List<InvitationResponse>> getProjectInvitations(
+            @Header("apikey") String apikey,
+            @Header("Authorization") String bearerToken,
+            @Query("invitationMail") String invitationMailFilter,
+            @Query("select") String selectFilter
+    );
 }

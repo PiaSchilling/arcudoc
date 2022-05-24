@@ -2,6 +2,7 @@ package de.hdm_stuttgart.workspace.data;
 
 import de.hdm_stuttgart.data.service.ApiConstants;
 import de.hdm_stuttgart.workspace.model.InvitationRequest;
+import de.hdm_stuttgart.workspace.model.InvitationResponse;
 import de.hdm_stuttgart.workspace.model.ProjectRequest;
 import de.hdm_stuttgart.workspace.model.ProjectResponse;
 import org.apache.logging.log4j.LogManager;
@@ -21,9 +22,10 @@ public class WorkspaceRepo {
     private final SupabaseRestClient supabaseRestClient = ServiceProvider.getSupabaseRestClient(); //todo inject
 
     /**
-     * calls corresponding api endpoints for creating a new project
-     * @param projectTitle the title the project should have
-     //* @param emailInvitations list of email-addresses which will be used to invite members to this project
+     * calls related api endpoints and methods which are required when creating a new project
+     * this includes: create the project, invite project members,
+     * @param projectTitle title the project should have
+     * @param invitationMails list of mails for inviting project members
      */
     public void createProject(String projectTitle, List<String> invitationMails ){
 
@@ -46,6 +48,7 @@ public class WorkspaceRepo {
                     }
                 }else{
                     log.error(response.code() + " - Project creation not successful");
+                    //todo check codes and inform user about what kind of error occurred
                 }
             }
 
@@ -94,7 +97,49 @@ public class WorkspaceRepo {
         });
     }
 
-    public void addProjectOwner(){
+    public void addProjectMember(){
+
+    }
+
+    /**
+     * shows the open project invitations for the user (based on the email)
+     */
+    public void getInvitations(){
+
+        Call<List<InvitationResponse>> call = supabaseRestClient.getProjectInvitations(
+                ApiConstants.API_KEY,
+                ApiConstants.BEARER_KEY,
+                "eq.pia@gmail.com",
+                "*,projects(title)"
+        );
+
+        call.enqueue(new Callback<List<InvitationResponse>>() {
+            @Override
+            public void onResponse(Call<List<InvitationResponse>> call, Response<List<InvitationResponse>> response) {
+                if(response.isSuccessful()){
+                    List<InvitationResponse> invitations = response.body();
+                    InvitationResponse temp = invitations.get(0);
+                    System.out.println(temp);
+                }else{
+                    log.error(response.code() + " - Fetching invitations not successful");
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<InvitationResponse>> call, Throwable throwable) {
+                log.error(throwable.getMessage() + " - Fetching invitations failed");
+            }
+        });
+    }
+
+    public void acceptInvitation(int projectId){
+
+    }
+
+    /**
+     * shows the projects the user is already member of
+     */
+    public void getMemberProjects(){
 
     }
 
@@ -110,9 +155,11 @@ public class WorkspaceRepo {
         list.add("pida@gmail.com");
         list.add("madrie@gmail.com");
 
-        w.inviteMembers(list,10);
+        //w.inviteMembers(list,10);
 
         //w.inviteMembers(temp);
+
+        w.getInvitations();
 
     }
 }

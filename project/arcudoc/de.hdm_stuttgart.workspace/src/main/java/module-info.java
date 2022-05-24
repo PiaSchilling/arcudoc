@@ -11,6 +11,7 @@ module workspace {
     requires okhttp3.logging;
     requires retrofit2;
     requires retrofit2.converter.gson;
+    requires com.google.gson;
 
     opens de.hdm_stuttgart.workspace.model to com.google.gson;
 
