@@ -4,15 +4,24 @@ import com.google.gson.annotations.SerializedName;
 
 public class InvitationResponse {
 
-    private int project_id;
-    private String member_mail;
+    @SerializedName("project_id")
+    private int projectId;
+
+    @SerializedName("member_mail")
+    private String memberMail;
 
     @SerializedName("projects")
     private Project project;
 
-    public InvitationResponse(int project_id, String member_mail, Project project) {
-        this.project_id = project_id;
-        this.member_mail = member_mail;
+    @SerializedName("job_label")
+    private String jobLabel;
+
+    @SerializedName("project_role")
+    private String projectRole;
+
+    public InvitationResponse(int projectId, String memberMail, Project project) {
+        this.projectId = projectId;
+        this.memberMail = memberMail;
         this.project = project;
     }
 
@@ -23,9 +32,10 @@ public class InvitationResponse {
     @Override
     public String toString() {
         return "InvitationResponse{" +
-                "project_id=" + project_id +
-                ", member_mail='" + member_mail + '\'' +
+                "projectId=" + projectId +
+                ", memberMail='" + memberMail + '\'' +
                 ", project=" + project +
                 '}';
     }
+
 }

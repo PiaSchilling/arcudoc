@@ -13,10 +13,14 @@ public class ProjectMember {
     @SerializedName("project_role")
     private String projectRole;
 
-    public ProjectMember(String mail, String jobLabel, String projectRole) {
+    @SerializedName("project_id")
+    private int projectId;
+
+    public ProjectMember(String mail, String jobLabel, String projectRole, int projectId) {
         this.mail = mail;
         this.jobLabel = jobLabel;
         this.projectRole = projectRole;
+        this.projectId = projectId;
     }
 
     public ProjectMember() {

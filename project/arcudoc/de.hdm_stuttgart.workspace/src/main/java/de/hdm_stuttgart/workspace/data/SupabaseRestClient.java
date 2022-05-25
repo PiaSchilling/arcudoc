@@ -55,6 +55,15 @@ public interface SupabaseRestClient {
             @Query("select") String selectFilter
     );
 
+    @GET("project_invitations")
+    Call<List<ProjectMember>> getSingleProjectInvitationByProjectId(
+            @Header("apikey") String apikey,
+            @Header("Authorization") String bearerToken,
+            @Query("project_id") String invitationMailFilter,
+            @Query("select") String selectFilter
+    );
+
+
     /**
      * RLS: only the invitations belonging to the authenticated user can be deleted (JWT)
      */
@@ -62,7 +71,6 @@ public interface SupabaseRestClient {
     Call<Void> deleteProjectInvitation(
             @Header("apikey") String apikey,
             @Header("Authorization") String bearerToken,
-            @Query("member_mail") String memberMailFilter,
             @Query("project_id") String projectIdFilter
     );
 
