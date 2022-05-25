@@ -17,6 +17,8 @@ import javafx.scene.web.WebView;
 
 public class ProjectSceneController {
 
+
+
     private IEditor editor;
     private IDocu docu;
     private StringProperty markdownStringProperty;
@@ -39,13 +41,50 @@ public class ProjectSceneController {
     private WebView webView;
 
     // - - - - docu - - - - -
+    @FXML
+    private Label chapterNumber;
+
+    @FXML
+    private Label chapterTitle;
+
+    @FXML
+    private Label subchapterNumber;
+
+    @FXML
+    private Label subchapterTitle;
+
+    @FXML
+    private Label titleRandbedingungen;
+
+    @FXML
+    private Label titleKontextabgrenzung;
+
+    @FXML
+    private Label titleBausteineinsicht;
+
+    @FXML
+    private Label titleVerteilungssicht;
+
+    @FXML
+    private Label titleQuerschnitt;
+
+    @FXML
+    private Label titleEntwurfsentscheidung;
+
+    @FXML
+    private Label titleQualität;
+
+    @FXML
+    private Label titleEinfuehrungUndZiele;
+
+    @FXML
+    private Label titleLaufzeisicht;
 
     @FXML
     private ImageView logo;
 
     @FXML
     private Label chapterAufgabenstellung;
-
 
     @FXML
     private Label chapterArchitektur;
@@ -119,29 +158,40 @@ public class ProjectSceneController {
         markdownStringProperty.addListener((observable, oldValue, newValue) -> {
             setHtmlToWebView(newValue);
         });
-        logo.setOnMouseClicked(event -> docu.onLogoCLicked());
-        chapterAufgabenstellung.setOnMouseClicked(event -> docu.onAufgabenstellungClicked());
-        chapterArchitektur.setOnMouseClicked(event -> docu.onArchitekturUndEntwurfsmusterClicked());
-        chapterBausteinsichtEbeneEins.setOnMouseClicked(event -> docu.onBausteinsichtEbeneEinsClicked());
-        chapterBausteinsichtEbeneZwei.setOnMouseClicked(event -> docu.onBausteinsichtEbeneZweiClicked());
-        chapterEntwurfsentscheidungEins.setOnMouseClicked(event -> docu.onEntwurfsentscheidungEinsClicked());
-        chapterEntwurfsentscheidungZwei.setOnMouseClicked(event -> docu.onEntwurfsentscheidnungZweiClicked());
-        chapterFachlStruktur.setOnMouseClicked(event -> docu.onFachlicheStrukturClicked());
-        chapterFachlicherKontext.setOnMouseClicked(event -> docu.onFachlicherKontextClicked());
-        chapterGlossar.setOnMouseClicked(event -> docu.onGlossarClicked());
-        chapterInfrastrukturEbeneEins.setOnMouseClicked(event -> docu.onInfrastrukturEbeneEinsClicked());
-        chapterInfrastrukturEbeneZwei.setOnMouseClicked(event -> docu.onInfrastrukturEbeneZweiClicked());
-        chapterKonventionen.setOnMouseClicked(event -> docu.onKonventionenClicked());
-        chapterLaufzeitszenarioEins.setOnMouseClicked(event -> docu.onLaufzeitszenarioEinsCLicked());
-        chapterLaufzeitszenarioZwei.setOnMouseClicked(event -> docu.onLaufzeitszenarioZweiClicked());
-        chapterOrganRandbedinungen.setOnMouseClicked(event -> docu.onOrganisatorischeRandbedigungenClicked());
-        chapterQualibaum.setOnMouseClicked(event -> docu.onQualitaetsbaumClicked());
-        chapterQualitaetsszenarien.setOnMouseClicked(event -> docu.onQualitaetsszenarienClicked());
-        chapterQualitaetsziele.setOnMouseClicked(event -> docu.onQualitaetszieleClicked());
-        chapterRisikenUndTechnSchulden.setOnMouseClicked(event -> docu.onRisikenClicked());
-        chapterStakeholder.setOnMouseClicked(event -> docu.onStakeholderClicked());
-        chapterTechnRandbedinungen.setOnMouseClicked(event -> docu.onTechnischeRandbedigungenClicked());
-        chapterVerteilungskontext.setOnMouseClicked(event -> docu.onVerteilungskontextClicked());
+
+        logo.setOnMouseClicked(event -> onLogoCLicked());
+        titleEinfuehrungUndZiele.setOnMouseClicked(event -> onEinfuehrungUndZieleClicked());
+        titleRandbedingungen.setOnMouseClicked(event -> onRandbedingungenClicked());
+        titleKontextabgrenzung.setOnMouseClicked(event -> onKontextabgrenzungClicked());
+        titleBausteineinsicht.setOnMouseClicked(event -> onBausteinsichtClicked());
+        titleLaufzeisicht.setOnMouseClicked(event -> onLaufzeitsichtClicked());
+        titleVerteilungssicht.setOnMouseClicked(event -> onVerteilungssichtClicked());
+        titleQuerschnitt.setOnMouseClicked(event -> onQuerschnittClicked());
+        titleEntwurfsentscheidung.setOnMouseClicked(event -> onEntwurfentscheidungenClicked());
+        titleQualität.setOnMouseClicked(event -> onQualitaetsanforderungenClicked());
+        chapterAufgabenstellung.setOnMouseClicked(event -> onAufgabenstellungClicked());
+        chapterArchitektur.setOnMouseClicked(event -> onArchitekturUndEntwurfsmusterClicked());
+        chapterBausteinsichtEbeneEins.setOnMouseClicked(event -> onBausteinsichtEbeneEinsClicked());
+        chapterBausteinsichtEbeneZwei.setOnMouseClicked(event -> onBausteinsichtEbeneZweiClicked());
+        chapterEntwurfsentscheidungEins.setOnMouseClicked(event -> onEntwurfsentscheidungEinsClicked());
+        chapterEntwurfsentscheidungZwei.setOnMouseClicked(event -> onEntwurfsentscheidnungZweiClicked());
+        chapterFachlStruktur.setOnMouseClicked(event -> onFachlicheStrukturClicked());
+        chapterFachlicherKontext.setOnMouseClicked(event -> onFachlicherKontextClicked());
+        chapterGlossar.setOnMouseClicked(event -> onGlossarClicked());
+        chapterInfrastrukturEbeneEins.setOnMouseClicked(event -> onInfrastrukturEbeneEinsClicked());
+        chapterInfrastrukturEbeneZwei.setOnMouseClicked(event -> onInfrastrukturEbeneZweiClicked());
+        chapterKonventionen.setOnMouseClicked(event -> onKonventionenClicked());
+        chapterLaufzeitszenarioEins.setOnMouseClicked(event -> onLaufzeitszenarioEinsCLicked());
+        chapterLaufzeitszenarioZwei.setOnMouseClicked(event -> onLaufzeitszenarioZweiClicked());
+        chapterLoesungskontext.setOnMouseClicked(event -> onLoesungsstrategieClicked());
+        chapterOrganRandbedinungen.setOnMouseClicked(event -> onOrganisatorischeRandbedigungenClicked());
+        chapterQualibaum.setOnMouseClicked(event -> onQualitaetsbaumClicked());
+        chapterQualitaetsszenarien.setOnMouseClicked(event -> onQualitaetsszenarienClicked());
+        chapterQualitaetsziele.setOnMouseClicked(event -> onQualitaetszieleClicked());
+        chapterRisikenUndTechnSchulden.setOnMouseClicked(event -> onRisikenClicked());
+        chapterStakeholder.setOnMouseClicked(event -> onStakeholderClicked());
+        chapterTechnRandbedinungen.setOnMouseClicked(event -> onTechnischeRandbedigungenClicked());
+        chapterVerteilungskontext.setOnMouseClicked(event -> onVerteilungskontextClicked());
 
         anchorPane.setStyle("-fx-background-color: transparent");
 
@@ -212,5 +262,302 @@ public class ProjectSceneController {
         Platform.runLater(() -> webView.getEngine().loadContent(html, "text/html"));
     }
 
+    // - - - - docu logic - - - - -
+
+
+
+    public void onLogoCLicked() {
+
+        //TODO open project Overview
+
+    }
+
+    public void onEinfuehrungUndZieleClicked() {
+
+        chapterTitle.setText("Einführung und Ziele");
+        chapterNumber.setText("01");
+        subchapterTitle.setText(null);
+        subchapterNumber.setText(null);
+    }
+
+
+    public void onAufgabenstellungClicked() {
+
+        chapterTitle.setText("Einführung und Ziele");
+        chapterNumber.setText("01");
+        subchapterTitle.setText("Aufgabenstellung");
+        subchapterNumber.setText("01.1");
+
+    }
+
+
+
+
+    public void onQualitaetszieleClicked() {
+
+        chapterTitle.setText("Einführung und Ziele");
+        chapterNumber.setText("01");
+        subchapterTitle.setText("Qualitätsziele");
+        subchapterNumber.setText("01.2");
+
+    }
+
+
+    public void onStakeholderClicked() {
+
+        chapterTitle.setText("Einführung und Ziele");
+        chapterNumber.setText("01");
+        subchapterTitle.setText("Stakeholder");
+        subchapterNumber.setText("01.3");
+    }
+
+    public void onRandbedingungenClicked() {
+
+        chapterTitle.setText("Randbedingungen");
+        chapterNumber.setText("02");
+        subchapterTitle.setText(null);
+        subchapterNumber.setText(null);
+    }
+
+
+    public void onTechnischeRandbedigungenClicked() {
+
+        chapterTitle.setText("Randbedingungen");
+        chapterNumber.setText("02");
+        subchapterTitle.setText("Technische Randbedingungen");
+        subchapterNumber.setText("02.1");
+    }
+
+
+    public void onOrganisatorischeRandbedigungenClicked() {
+
+        chapterTitle.setText("Randbedingungen");
+        chapterNumber.setText("02");
+        subchapterTitle.setText("Organisatorische Randbedingungen");
+        subchapterNumber.setText("02.2");
+    }
+
+
+    public void onKonventionenClicked() {
+
+        chapterTitle.setText("Randbedingungen");
+        chapterNumber.setText("02");
+        subchapterTitle.setText("Konventionen");
+        subchapterNumber.setText("02.3");
+    }
+
+
+    public void onKontextabgrenzungClicked() {
+
+        chapterTitle.setText("Kontextabgrenzung");
+        chapterNumber.setText("03");
+        subchapterTitle.setText(null);
+        subchapterNumber.setText(null);
+    }
+    public void onFachlicherKontextClicked() {
+
+        chapterTitle.setText("Kontextabgrenzung");
+        chapterNumber.setText("03");
+        subchapterTitle.setText("Fachlicher Kontext");
+        subchapterNumber.setText("03.1");
+    }
+
+
+    public void onVerteilungskontextClicked() {
+
+        chapterTitle.setText("Kontextabgrenzung");
+        chapterNumber.setText("03");
+        subchapterTitle.setText("Verteilungskontext");
+        subchapterNumber.setText("03.2");
+    }
+
+
+    public void onLoesungsstrategieClicked() {
+
+        chapterTitle.setText("Lösungsstrategie");
+        chapterNumber.setText("04");
+        subchapterTitle.setText(null);
+        subchapterNumber.setText(null);
+    }
+
+
+    public void onBausteinsichtClicked() {
+
+        chapterTitle.setText("Bausteinsicht");
+        chapterNumber.setText("05");
+        subchapterTitle.setText(null);
+        subchapterNumber.setText(null);
+    }
+
+
+    public void onBausteinsichtEbeneEinsClicked() {
+
+        chapterTitle.setText("Bausteinsicht");
+        chapterNumber.setText("05");
+        subchapterTitle.setText("Ebene 1");
+        subchapterNumber.setText("05.1");
+    }
+
+
+    public void onBausteinsichtEbeneZweiClicked() {
+
+        chapterTitle.setText("Bausteinsicht");
+        chapterNumber.setText("05");
+        subchapterTitle.setText("Ebene 2");
+        subchapterNumber.setText("05.2");
+    }
+
+
+    public void onLaufzeitsichtClicked() {
+
+        chapterTitle.setText("Laufzeitsicht");
+        chapterNumber.setText("06");
+        subchapterTitle.setText(null);
+        subchapterNumber.setText(null);
+    }
+
+
+    public void onLaufzeitszenarioEinsCLicked() {
+
+        chapterTitle.setText("Laufzeitsicht");
+        chapterNumber.setText("06");
+        subchapterTitle.setText("Laufzeitszenario 1");
+        subchapterNumber.setText("06.1");
+    }
+
+
+    public void onLaufzeitszenarioZweiClicked() {
+
+        chapterTitle.setText("Laufzeitsicht");
+        chapterNumber.setText("06");
+        subchapterTitle.setText("Laufzeitszenario 2");
+        subchapterNumber.setText("06.2");
+    }
+
+
+    public void onVerteilungssichtClicked() {
+
+        chapterTitle.setText("Verteilungssicht");
+        chapterNumber.setText("07");
+        subchapterTitle.setText(null);
+        subchapterNumber.setText(null);
+    }
+
+
+    public void onInfrastrukturEbeneEinsClicked() {
+
+        chapterTitle.setText("Verteilungssicht");
+        chapterNumber.setText("07");
+        subchapterTitle.setText("Infrastruktur Ebene 1");
+        subchapterNumber.setText("07.1");
+    }
+
+
+    public void onInfrastrukturEbeneZweiClicked() {
+
+        chapterTitle.setText("Verteilungssicht");
+        chapterNumber.setText("07");
+        subchapterTitle.setText("Infrastruktur Ebene 2");
+        subchapterNumber.setText("07.2");
+    }
+
+
+    public void onQuerschnittClicked() {
+
+        chapterTitle.setText("Querschnittliche Konzepte");
+        chapterNumber.setText("08");
+        subchapterTitle.setText(null);
+        subchapterNumber.setText(null);
+    }
+
+
+    public void onFachlicheStrukturClicked() {
+
+        chapterTitle.setText("Querschnittliche Konzepte");
+        chapterNumber.setText("08");
+        subchapterTitle.setText("Fachliche Struktur und Modelle");
+        subchapterNumber.setText("08.1");
+    }
+
+
+    public void onArchitekturUndEntwurfsmusterClicked() {
+
+        chapterTitle.setText("Querschnittliche Konzepte");
+        chapterNumber.setText("08");
+        subchapterTitle.setText("Architektur- und Entwurfsmuster");
+        subchapterNumber.setText("08.2");
+    }
+
+
+    public void onEntwurfentscheidungenClicked() {
+
+        chapterTitle.setText("Entwurfsentscheidungen");
+        chapterNumber.setText("09");
+        subchapterTitle.setText(null);
+        subchapterNumber.setText(null);
+    }
+
+
+    public void onEntwurfsentscheidungEinsClicked() {
+
+        chapterTitle.setText("Entwurfsentscheidungen");
+        chapterNumber.setText("09");
+        subchapterTitle.setText("Entwurfsentscheidung 1");
+        subchapterNumber.setText("09.1");
+    }
+
+
+    public void onEntwurfsentscheidnungZweiClicked() {
+
+        chapterTitle.setText("Entwurfsentscheidungen");
+        chapterNumber.setText("09");
+        subchapterTitle.setText("Entwurfsentscheidung 2");
+        subchapterNumber.setText("09.2");
+    }
+
+
+    public void onQualitaetsanforderungenClicked() {
+
+        chapterTitle.setText("Qualitätsanforderungen");
+        chapterNumber.setText("10");
+        subchapterTitle.setText(null);
+        subchapterNumber.setText(null);
+    }
+
+
+    public void onQualitaetsbaumClicked() {
+
+        chapterTitle.setText("Qualitätsanforderungen");
+        chapterNumber.setText("10");
+        subchapterTitle.setText("Qualitätsbaum");
+        subchapterNumber.setText("10.1");
+    }
+
+
+    public void onQualitaetsszenarienClicked() {
+
+        chapterTitle.setText("Qualitätsanforderungen");
+        chapterNumber.setText("10");
+        subchapterTitle.setText("Qualitätsszenarien");
+        subchapterNumber.setText("10.2");
+    }
+
+
+    public void onRisikenClicked() {
+
+        chapterTitle.setText("Risiken und technische Strukturen");
+        chapterNumber.setText("11");
+        subchapterTitle.setText(null);
+        subchapterNumber.setText(null);
+    }
+
+
+    public void onGlossarClicked() {
+
+        chapterTitle.setText("Glossar");
+        chapterNumber.setText("12");
+        subchapterTitle.setText(null);
+        subchapterNumber.setText(null);
+    }
 
 }
