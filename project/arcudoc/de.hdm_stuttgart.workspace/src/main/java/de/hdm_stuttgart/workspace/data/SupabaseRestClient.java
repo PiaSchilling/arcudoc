@@ -31,7 +31,7 @@ public interface SupabaseRestClient {
             );
 
     @GET("project_members") //filtering handled by RLS of supabase
-    Call<List<Project>> getMemberProjects(
+    Call<List<MemberProjectResponse>> getMemberProjects(
             @Header("apikey") String apikey,
             @Header("Authorization") String bearerToken,
             @Query("select") String selectFilter

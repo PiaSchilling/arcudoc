@@ -148,6 +148,7 @@ public class WorkspaceRepo {
                     System.out.println(temp);
                 }else{
                     log.error(response.code() + " - Fetching invitations not successful");
+                    //todo if 401 jwt expired -> fetch new token with refresh token
                 }
             }
 
@@ -169,26 +170,25 @@ public class WorkspaceRepo {
      */
     public void getMemberProjects(){
 
-        Call<List<Project>> call = supabaseRestClient.getMemberProjects(
+        Call<List<MemberProjectResponse>> call = supabaseRestClient.getMemberProjects(
                 ApiConstants.API_KEY,
                 ApiConstants.BEARER_KEY,
                 "projects(title,id)" //indicates to select title and id of project table although project_members table is queried in request (linked in supabase)
         );
 
-        call.enqueue(new Callback<List<Project>>() {
+        call.enqueue(new Callback<List<MemberProjectResponse>>() {
             @Override
-            public void onResponse(Call<List<Project>> call, Response<List<Project>> response) {
+            public void onResponse(Call<List<MemberProjectResponse>> call, Response<List<MemberProjectResponse>> response) {
                 if(response.isSuccessful()){
                     log.debug("Member projects fetched successfully");
-                    List<Project> projects = response.body(); //todo check why project objects not parsed correctly
-                    System.out.println(projects.get(2));
+                    List<MemberProjectResponse> projects = response.body();
                 }else{
                     log.error(response.code() + " - Fetching member projects not successful");
                 }
             }
 
             @Override
-            public void onFailure(Call<List<Project>> call, Throwable throwable) {
+            public void onFailure(Call<List<MemberProjectResponse>> call, Throwable throwable) {
                 log.error(throwable.getMessage() + " - Fetching member projects failed");
             }
         });
