@@ -41,7 +41,7 @@ public class Editor implements IEditor {
             editorController.renderMarkdownToHtml(markdownInput);
         }else{
             editorState = EditorState.EDIT;
-            editorController.renderMarkdownToHtml("# heading1");
+            editorController.renderMarkdownToHtml("*loading...*");
         }
     }
 
