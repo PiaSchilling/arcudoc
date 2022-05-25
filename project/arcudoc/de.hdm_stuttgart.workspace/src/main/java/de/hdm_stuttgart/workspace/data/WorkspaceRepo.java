@@ -9,7 +9,9 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 //todo present error messages to the user
 public class WorkspaceRepo {
@@ -43,7 +45,7 @@ public class WorkspaceRepo {
                     List<ProjectResponse> createdProject = response.body();
                     if (createdProject != null) {
                         int projectId = createdProject.get(0).getId();
-                        inviteMembers(memberMails, projectId);
+                        //inviteMembers(memberMails, projectId);
                     }
                 } else {
                     log.error(response.code() + " - Project creation not successful");
@@ -63,19 +65,22 @@ public class WorkspaceRepo {
     /**
      * calls corresponding api endpoints for adding member mails on invitations list
      *
-     * @param invitationMailsStrings list of strings representing a member mail each
+     //* @param invitationMailsStrings list of strings representing a member mail each
      * @param projectId              the id of the project the members should be invited for
      */
-    public void inviteMembers(List<String> invitationMailsStrings, int projectId) {
+    public void inviteMembers(List<ProjectMember> members, int projectId) {
 
-        List<InvitationRequest> invitationRequestsList = invitationMailsStrings.stream()
-                .map(s -> new InvitationRequest(s, projectId)).toList();
+       /* List<InvitationRequest> invitationRequestsList = invitationMailsStrings.stream()
+                .map(s -> new InvitationRequest(s, projectId)).toList();*/
+
+        List<InvitationRequest> invitationRequests = members.stream()
+                .map(m -> new InvitationRequest(projectId,m)).toList();
 
         Call<Void> call = supabaseRestClient.createNewProjectInvitation(
                 ApiConstants.API_KEY,
                 ApiConstants.BEARER_KEY,
                 "application/json",
-                invitationRequestsList
+                invitationRequests
         );
 
         call.enqueue(new Callback<Void>() {
@@ -230,6 +235,17 @@ public class WorkspaceRepo {
                 log.error(throwable.getMessage() + " - Fetching member projects failed");
             }
         });
+    }
+
+    public static void main(String[] args) {
+        WorkspaceRepo w = new WorkspaceRepo();
+
+        ProjectMember p = new ProjectMember("piaa@mail.com","developer",ProjectRole.EDITOR.getSupabaseName());
+        ProjectMember p1 = new ProjectMember("saraa@mail.com","designer",ProjectRole.EDITOR.getSupabaseName());
+        List<ProjectMember> list = new ArrayList<>();
+        list.add(p);
+        list.add(p1);
+        w.inviteMembers(list,10);
     }
 
 }
