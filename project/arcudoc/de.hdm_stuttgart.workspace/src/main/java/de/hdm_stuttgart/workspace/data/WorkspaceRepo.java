@@ -22,9 +22,9 @@ public class WorkspaceRepo {
      * calls related api endpoints and methods which are required when creating a new project
      * this includes: create the project, invite project members,
      * @param projectTitle title the project should have
-     * @param invitationMails list of mails for inviting project members
+     * @param memberMails list of mails for inviting project members
      */
-    public void createProject(String projectTitle, List<String> invitationMails ){
+    public void createProject(String projectTitle, List<String> memberMails ){
 
         Call<List<ProjectResponse>> call = supabaseRestClient.createNewProject(
                 ApiConstants.API_KEY,
@@ -41,7 +41,7 @@ public class WorkspaceRepo {
                     List<ProjectResponse> createdProject = response.body();
                     if (createdProject != null) {
                         int projectId = createdProject.get(0).getId();
-                        inviteMembers(invitationMails,projectId);
+                        inviteMembers(memberMails,projectId);
                     }
                 }else{
                     log.error(response.code() + " - Project creation not successful");
@@ -127,14 +127,14 @@ public class WorkspaceRepo {
     }
 
     /**
-     * shows the open project invitations for the user (based on the email)
+     * gets the open project invitations for the user (based on the email)
      */
     public void getInvitations(){
 
         Call<List<InvitationResponse>> call = supabaseRestClient.getProjectInvitations(
                 ApiConstants.API_KEY,
                 ApiConstants.BEARER_KEY,
-                AccountInformation.getInstance().getUserMail(),
+                "eq." + AccountInformation.getInstance().getUserMail(),
                 "*,projects(title)"
         );
 
@@ -163,6 +163,32 @@ public class WorkspaceRepo {
         //maybe work with db trigger else
         //1. add project member
         //2. delete from project invitation
+    }
+
+    public void deleteProjectInvitation(int projectId){
+
+        Call<Void> call = supabaseRestClient.deleteProjectInvitation(
+                ApiConstants.API_KEY,
+                ApiConstants.BEARER_KEY,
+                "eq." + AccountInformation.getInstance().getUserMail(),
+                "eq." + projectId
+        );
+
+        call.enqueue(new Callback<Void>() {
+            @Override
+            public void onResponse(Call<Void> call, Response<Void> response) {
+                if(response.isSuccessful()){
+                    log.debug("Delete project invitation successful");
+                }else{
+                    log.error(response.code() + " - Delete project invitation not successful");
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Void> call, Throwable throwable) {
+                log.error(throwable.getMessage() + " - Delete project invitation failed");
+            }
+        });
     }
 
     /**
@@ -214,7 +240,9 @@ public class WorkspaceRepo {
 
         //w.addProjectMember(21);
 
-        w.getMemberProjects();
+        //w.getMemberProjects();
+
+        w.deleteProjectInvitation(16);
 
     }
 }
