@@ -1,10 +1,12 @@
 package de.hdm_stuttgart.workspace.integration;
 
 import com.google.inject.Inject;
+import de.hdm_stuttgart.workspace.data.NetworkStatus;
 import de.hdm_stuttgart.workspace.data.WorkspaceRepo;
 import de.hdm_stuttgart.workspace.model.InvitationResponse;
 import de.hdm_stuttgart.workspace.service.IInvitationResponse;
 import javafx.beans.property.ListProperty;
+import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleListProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -29,13 +31,22 @@ public class WorkspaceController {
         invitationResponsesForUi.setValue(observableList);
     }
 
+    public void acceptProjectInvitation(int projectId){
+        workspaceRepo.respondProjectInvitation(projectId,true);
+    }
+
+    public void declineProjectInvitation(int projectId){
+        workspaceRepo.respondProjectInvitation(projectId,false);
+    }
+
+    // - - - -  observable properties - - - -
 
     public ListProperty<IInvitationResponse> getProjectInvitationsProperty() {
         workspaceRepo.fetchProjectInvitations();
         return invitationResponsesForUi;
     }
 
-    public void acceptProjectInvitation(int projectId){
-        workspaceRepo.acceptProjectInvitation(projectId);
+    public ObjectProperty<NetworkStatus> getNetworkStatusProperty(){
+        return workspaceRepo.getNetworkStatusObjectProperty();
     }
 }

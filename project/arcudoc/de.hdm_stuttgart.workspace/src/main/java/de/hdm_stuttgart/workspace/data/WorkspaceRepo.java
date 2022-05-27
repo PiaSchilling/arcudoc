@@ -3,7 +3,9 @@ package de.hdm_stuttgart.workspace.data;
 import de.hdm_stuttgart.data.service.ApiConstants;
 import de.hdm_stuttgart.workspace.model.*;
 import javafx.beans.property.ListProperty;
+import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleListProperty;
+import javafx.beans.property.SimpleObjectProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import org.apache.logging.log4j.LogManager;
@@ -19,7 +21,9 @@ public class WorkspaceRepo {
 
     private static final Logger log = LogManager.getLogger(WorkspaceRepo.class);
     private final SupabaseRestClient supabaseRestClient = ServiceProvider.getSupabaseRestClient(); //todo inject
+
     private final ListProperty<InvitationResponse> projectInvitationsProperty = new SimpleListProperty<>();
+    private final ObjectProperty<NetworkStatus> networkStatusObjectProperty = new SimpleObjectProperty<>();
 
 
     // - - - - projects - - - -
@@ -142,7 +146,7 @@ public class WorkspaceRepo {
      * get the invitation, add the currently authenticated user to project-members and finally delete the open project invitation
      * @param projectId the id of the project the invitation should be accepted for
      */
-    public void acceptProjectInvitation(int projectId){ //todo this should be moved to supabase (can be handled with trigger)
+    public void respondProjectInvitation(int projectId, boolean isAccepted){ //todo this should be moved to supabase (can be handled with trigger)
 
         Call<List<ProjectMember>> call = supabaseRestClient.getSingleProjectInvitationByProjectId(
                 ApiConstants.API_KEY,
@@ -157,8 +161,20 @@ public class WorkspaceRepo {
                 if(response.isSuccessful()){
                     List<ProjectMember> projectMembers = response.body();
                     if(projectMembers != null && projectMembers.size() > 0){
-                        addProjectMember(projectId,projectMembers.get(0));
-                        deleteProjectInvitation(projectId);
+
+                        if(isAccepted){
+                            addProjectMember(projectId,projectMembers.get(0)); //only add project member if invitation is accepted
+                            deleteProjectInvitation(projectId);
+
+                            NetworkStatus.SUCCESS.setNetworkMessage("Invitation accepted");
+                            networkStatusObjectProperty.setValue(NetworkStatus.SUCCESS);
+                        }else{
+                            deleteProjectInvitation(projectId); //if not accepted only delete invitation
+
+                            NetworkStatus.SUCCESS.setNetworkMessage("Invitation declined");
+                            networkStatusObjectProperty.setValue(NetworkStatus.SUCCESS);
+                        }
+
                     }else{
                         log.error("Empty or null response for fetching project invitation for project with id " + projectId);
                     }
@@ -267,14 +283,15 @@ public class WorkspaceRepo {
         });
     }
 
-    // - - - - - property getter - - - - -
+    // - - - - - property getters - - - - -
 
     public ListProperty<InvitationResponse> getProjectInvitationsProperty() {
         return projectInvitationsProperty;
     }
 
-    public static void main(String[] args) {
-        WorkspaceRepo r = new WorkspaceRepo();
-        r.fetchProjectInvitations();
+    public ObjectProperty<NetworkStatus> getNetworkStatusObjectProperty() {
+        return networkStatusObjectProperty;
     }
+
+
 }

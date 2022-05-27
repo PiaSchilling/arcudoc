@@ -35,5 +35,8 @@ public class InvitationCellController {
         projectRoleLabel.setText(invitationResponse.getProjectRole());
 
         acceptButton.setOnMouseClicked(event -> workspace.acceptProjectInvitation(invitationResponse.getProjectId()));
+
+        //todo delete node when accepted/declined
+
     }
 }

@@ -69,12 +69,9 @@ public class WorkspaceSceneController {
         projectsSearchbar.setOnAction(event -> onProjectSearchBarClicked());
         createProjectButton.setOnMouseClicked(event -> onCreateProjectClicked());
 
-        //todo add buttons
 
         userNameLabel.setText(workspace.getUserName());
         userMailLabel.setText(workspace.getUserMail());
-        //todo add avatar
-
 
     }
 

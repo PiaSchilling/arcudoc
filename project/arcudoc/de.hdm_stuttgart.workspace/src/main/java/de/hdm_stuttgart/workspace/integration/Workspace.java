@@ -1,9 +1,11 @@
 package de.hdm_stuttgart.workspace.integration;
 
 import com.google.inject.Inject;
+import de.hdm_stuttgart.workspace.data.NetworkStatus;
 import de.hdm_stuttgart.workspace.service.IInvitationResponse;
 import de.hdm_stuttgart.workspace.service.IWorkspace;
 import javafx.beans.property.ListProperty;
+import javafx.beans.property.ObjectProperty;
 
 public class Workspace implements IWorkspace {
 
@@ -45,7 +47,17 @@ public class Workspace implements IWorkspace {
     }
 
     @Override
+    public ObjectProperty<NetworkStatus> getNetworkStatusProperty() {
+        return workspaceController.getNetworkStatusProperty();
+    }
+
+    @Override
     public void acceptProjectInvitation(int projectId) {
         workspaceController.acceptProjectInvitation(projectId);
+    }
+
+    @Override
+    public void declineProjectInvitation(int projectId) {
+        workspaceController.declineProjectInvitation(projectId);
     }
 }
