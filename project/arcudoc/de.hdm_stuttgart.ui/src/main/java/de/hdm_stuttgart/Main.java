@@ -40,6 +40,7 @@ public class Main extends Application {
                 new UiGuiceModule(),
                 new EditorGuiceModule(),
                 new DocuGuiceModule());
+
         ControllerFactory controllerFactory = injector.getInstance(ControllerFactory.class);
 
         //todo if user != logged in

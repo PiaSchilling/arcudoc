@@ -5,8 +5,10 @@ import de.hdm_stuttgart.workspace.service.IInvitationResponse;
 import de.hdm_stuttgart.workspace.service.IWorkspace;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
 
@@ -41,6 +43,12 @@ public class WorkspaceSceneController {
     @FXML
     private Rectangle rect;
 
+    @FXML
+    private ScrollPane projectInvitationsScrollPane;
+
+    @FXML
+    private VBox invitationCellVBox;
+
 
     public void initialize() {
         //fetch all projects
@@ -48,9 +56,9 @@ public class WorkspaceSceneController {
         //add navigation for create project
 
         workspace.getProjectInvitationsProperty().addListener((observable, oldValue, newValue) -> {
-            for(IInvitationResponse r : newValue){
-                System.out.println(r.getMemberMail());
-                System.out.println(r.getProjectTitle());
+            for(IInvitationResponse invitation : newValue){
+                InvitationCellComponent invitationCell = new InvitationCellComponent(invitation);
+                invitationCellVBox.getChildren().add(invitationCell);
             }
         });
 
