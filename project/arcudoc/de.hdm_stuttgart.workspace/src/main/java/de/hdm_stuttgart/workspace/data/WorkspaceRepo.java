@@ -1,15 +1,17 @@
 package de.hdm_stuttgart.workspace.data;
 
-import de.hdm_stuttgart.data.service.AccountInformation;
 import de.hdm_stuttgart.data.service.ApiConstants;
 import de.hdm_stuttgart.workspace.model.*;
+import javafx.beans.property.ListProperty;
+import javafx.beans.property.SimpleListProperty;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-import java.util.ArrayList;
 import java.util.List;
 
 //todo present error messages to the user
@@ -17,6 +19,8 @@ public class WorkspaceRepo {
 
     private static final Logger log = LogManager.getLogger(WorkspaceRepo.class);
     private final SupabaseRestClient supabaseRestClient = ServiceProvider.getSupabaseRestClient(); //todo inject
+    private final ListProperty<InvitationResponse> projectInvitationsProperty = new SimpleListProperty<>();
+
 
     // - - - - projects - - - -
 
@@ -69,9 +73,6 @@ public class WorkspaceRepo {
      */
     public void inviteMembers(List<ProjectMember> members, int projectId) {
 
-       /* List<InvitationRequest> invitationRequestsList = invitationMailsStrings.stream()
-                .map(s -> new InvitationRequest(s, projectId)).toList();*/
-
         List<InvitationRequest> invitationRequests = members.stream()
                 .map(m -> new InvitationRequest(projectId,m)).toList();
 
@@ -102,12 +103,11 @@ public class WorkspaceRepo {
     /**
      * calls corresponding api endpoints for getting open project invitations for the user (based on the email)
      */
-    public void getInvitations() {
+    public void fetchProjectInvitations() {
 
         Call<List<InvitationResponse>> call = supabaseRestClient.getProjectInvitations(
                 ApiConstants.API_KEY,
                 ApiConstants.BEARER_KEY,
-                "eq." + AccountInformation.getInstance().getUserMail(),
                 "*,projects(title)"
         );
 
@@ -117,8 +117,13 @@ public class WorkspaceRepo {
                 if (response.isSuccessful()) {
                     log.debug("Invitations fetches successfully");
                     List<InvitationResponse> invitations = response.body();
-                    InvitationResponse temp = invitations.get(0);
-                    System.out.println(temp);
+                    if(invitations != null){
+                        ObservableList<InvitationResponse> observableList = FXCollections.observableArrayList();
+                        observableList.addAll(invitations);
+                        projectInvitationsProperty.setValue(observableList);
+                    }else{
+                        log.error("InvitationList is null");
+                    }
                 } else {
                     log.error(response.code() + " - Fetching invitations not successful");
                     //todo if 401 jwt expired -> fetch new token with refresh token
@@ -262,18 +267,14 @@ public class WorkspaceRepo {
         });
     }
 
-    public static void main(String[] args) {
-        WorkspaceRepo w = new WorkspaceRepo();
+    // - - - - - property getter - - - - -
 
-       // ProjectMember p = new ProjectMember("piaa@mail.com","developer",ProjectRole.EDITOR.getSupabaseName());
-       // ProjectMember p1 = new ProjectMember("saraa@mail.com","designer",ProjectRole.EDITOR.getSupabaseName());
-        List<ProjectMember> list = new ArrayList<>();
-       // list.add(p);
-        //list.add(p1);
-        //w.inviteMembers(list,10);
-        //w.addProjectMember(10, p);
-
-        w.acceptProjectInvitation(10);
+    public ListProperty<InvitationResponse> getProjectInvitationsProperty() {
+        return projectInvitationsProperty;
     }
 
+    public static void main(String[] args) {
+        WorkspaceRepo r = new WorkspaceRepo();
+        r.fetchProjectInvitations();
+    }
 }

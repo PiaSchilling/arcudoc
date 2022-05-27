@@ -12,6 +12,8 @@ module workspace {
     requires retrofit2;
     requires retrofit2.converter.gson;
     requires com.google.gson;
+    requires javafx.fxml;
+    requires javafx.base;
 
     opens de.hdm_stuttgart.workspace.model to com.google.gson;
     exports de.hdm_stuttgart.workspace.data to com.google.guice;

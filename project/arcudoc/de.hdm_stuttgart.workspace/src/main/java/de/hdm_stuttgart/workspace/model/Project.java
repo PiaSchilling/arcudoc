@@ -20,4 +20,8 @@ public class Project {
                 "title='" + title + '\'' +
                 '}';
     }
+
+    public String getTitle() {
+        return title;
+    }
 }

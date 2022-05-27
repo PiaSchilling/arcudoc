@@ -1,6 +1,7 @@
 package de.hdm_stuttgart.workspace.data;
 
 import de.hdm_stuttgart.workspace.model.*;
+import de.hdm_stuttgart.workspace.service.IInvitationResponse;
 import retrofit2.Call;
 import retrofit2.http.*;
 
@@ -51,7 +52,6 @@ public interface SupabaseRestClient {
     Call<List<InvitationResponse>> getProjectInvitations(
             @Header("apikey") String apikey,
             @Header("Authorization") String bearerToken,
-            @Query("member_mail") String invitationMailFilter,
             @Query("select") String selectFilter
     );
 

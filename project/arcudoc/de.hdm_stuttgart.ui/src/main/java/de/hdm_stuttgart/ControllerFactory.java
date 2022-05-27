@@ -7,7 +7,7 @@ import de.hdm_stuttgart.login.LoginSceneController;
 import de.hdm_stuttgart.login.service.ILogin;
 import de.hdm_stuttgart.project.ProjectSceneController;
 import de.hdm_stuttgart.workspace.CreateProjectSceneController;
-import de.hdm_stuttgart.workspace.WorkspaceController;
+import de.hdm_stuttgart.workspace.WorkspaceSceneController;
 import de.hdm_stuttgart.workspace.service.ICreateProject;
 import de.hdm_stuttgart.workspace.service.IWorkspace;
 import javafx.application.Application;
@@ -44,8 +44,8 @@ public class ControllerFactory implements Callback<Class<?>, Object> {
             return new LoginSceneController(login,application);
         }else if(param == ProjectSceneController.class){
             return new ProjectSceneController(editor,docu);
-        }else if(param == WorkspaceController.class){
-            return new WorkspaceController(workspace);
+        }else if(param == WorkspaceSceneController.class){
+            return new WorkspaceSceneController(workspace);
         }else if(param == CreateProjectSceneController.class){
             return new CreateProjectSceneController(createProject);
         }

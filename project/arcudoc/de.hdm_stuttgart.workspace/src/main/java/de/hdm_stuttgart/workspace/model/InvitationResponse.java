@@ -1,8 +1,9 @@
 package de.hdm_stuttgart.workspace.model;
 
 import com.google.gson.annotations.SerializedName;
+import de.hdm_stuttgart.workspace.service.IInvitationResponse;
 
-public class InvitationResponse {
+public class InvitationResponse implements IInvitationResponse {
 
     @SerializedName("project_id")
     private int projectId;
@@ -38,4 +39,28 @@ public class InvitationResponse {
                 '}';
     }
 
+    public int getProjectId() {
+        return projectId;
+    }
+
+    public String getMemberMail() {
+        return memberMail;
+    }
+
+    public Project getProject() {
+        return project;
+    }
+
+    public String getJobLabel() {
+        return jobLabel;
+    }
+
+    public String getProjectRole() {
+        return projectRole;
+    }
+
+    @Override
+    public String getProjectTitle() {
+        return project.getTitle();
+    }
 }

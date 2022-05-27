@@ -1,6 +1,7 @@
 package de.hdm_stuttgart.workspace;
 
 import com.google.inject.Inject;
+import de.hdm_stuttgart.workspace.service.IInvitationResponse;
 import de.hdm_stuttgart.workspace.service.IWorkspace;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
@@ -9,13 +10,14 @@ import javafx.scene.layout.HBox;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
 
-public class WorkspaceController {
+public class WorkspaceSceneController {
 
-    private final IWorkspace workspaceLogic;
+    private final IWorkspace workspace;
+
 
     @Inject
-    public WorkspaceController(IWorkspace workspaceLogic) {
-        this.workspaceLogic = workspaceLogic;
+    public WorkspaceSceneController(IWorkspace workspace) {
+        this.workspace = workspace;
     }
 
     @FXML
@@ -41,33 +43,39 @@ public class WorkspaceController {
 
 
     public void initialize() {
-        System.out.println("Init called");
+        //fetch all projects
+        //fetch all invitations
+        //add navigation for create project
+
+        workspace.getProjectInvitationsProperty().addListener((observable, oldValue, newValue) -> {
+            for(IInvitationResponse r : newValue){
+                System.out.println(r.getMemberMail());
+                System.out.println(r.getProjectTitle());
+            }
+        });
+
+
 
         projectsSearchbar.setOnAction(event -> onProjectSearchBarClicked());
-        joinProjectButton.setOnMouseClicked(event -> onJoinProjectClicked());
         createProjectButton.setOnMouseClicked(event -> onCreateProjectClicked());
 
         //todo add buttons
 
-        userNameLabel.setText(workspaceLogic.getUserName());
-        userMailLabel.setText(workspaceLogic.getUserMail());
+        userNameLabel.setText(workspace.getUserName());
+        userMailLabel.setText(workspace.getUserMail());
         //todo add avatar
 
 
     }
 
     private void onProjectSearchBarClicked(){
-        workspaceLogic.onProjectSearchbarClicked();
+        workspace.onProjectSearchbarClicked();
         System.out.println("Searchbar clicked");
     }
 
-    private void onJoinProjectClicked(){
-        workspaceLogic.onJoinProjectClicked();
-        System.out.println("Join project clicked");
-    }
 
     private void onCreateProjectClicked(){
-        workspaceLogic.onCreateProjectClicked();
+        workspace.onCreateProjectClicked();
     }
 
 

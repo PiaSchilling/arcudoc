@@ -1,8 +1,18 @@
 package de.hdm_stuttgart.workspace.integration;
 
+import com.google.inject.Inject;
+import de.hdm_stuttgart.workspace.service.IInvitationResponse;
 import de.hdm_stuttgart.workspace.service.IWorkspace;
+import javafx.beans.property.ListProperty;
 
 public class Workspace implements IWorkspace {
+
+    private final WorkspaceController workspaceController;
+
+    @Inject
+    public Workspace(WorkspaceController workspaceController) {
+        this.workspaceController = workspaceController;
+    }
 
     @Override
     public void onProjectSearchbarClicked() {
@@ -30,8 +40,7 @@ public class Workspace implements IWorkspace {
 
     }
 
-    @Override
-    public void onJoinProjectClicked() {
-
+    public ListProperty<IInvitationResponse> getProjectInvitationsProperty() {
+        return workspaceController.getProjectInvitationsProperty();
     }
 }
