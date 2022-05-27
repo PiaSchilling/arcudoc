@@ -15,12 +15,12 @@ import java.io.IOException;
 
 public class InvitationCellComponent extends AnchorPane {
 
-    public InvitationCellComponent(IInvitationResponse invitationResponse) {
+    public InvitationCellComponent(IInvitationResponse invitationResponse, IWorkspace workspace) {
         super();
 
         try{
             FXMLLoader loader = new FXMLLoader(getClass().getResource(Scenes.INVITATION_CELL.getPath()));
-            InvitationCellController invitationCellController = new InvitationCellController(invitationResponse);
+            InvitationCellController invitationCellController = new InvitationCellController(invitationResponse, workspace);
             loader.setController(invitationCellController);
             Node node = loader.load();
             this.getChildren().add(node);

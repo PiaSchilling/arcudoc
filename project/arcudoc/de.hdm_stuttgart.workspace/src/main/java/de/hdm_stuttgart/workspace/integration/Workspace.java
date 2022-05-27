@@ -43,4 +43,9 @@ public class Workspace implements IWorkspace {
     public ListProperty<IInvitationResponse> getProjectInvitationsProperty() {
         return workspaceController.getProjectInvitationsProperty();
     }
+
+    @Override
+    public void acceptProjectInvitation(int projectId) {
+        workspaceController.acceptProjectInvitation(projectId);
+    }
 }

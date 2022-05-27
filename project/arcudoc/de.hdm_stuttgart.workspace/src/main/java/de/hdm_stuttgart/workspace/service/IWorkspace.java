@@ -17,6 +17,8 @@ public interface IWorkspace {
 
     ListProperty<IInvitationResponse> getProjectInvitationsProperty();
 
+    void acceptProjectInvitation(int projectId);
+
 
 
 }

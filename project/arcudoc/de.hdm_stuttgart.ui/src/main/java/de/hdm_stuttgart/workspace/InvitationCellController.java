@@ -10,10 +10,12 @@ import javafx.scene.image.ImageView;
 public class InvitationCellController {
 
     private final IInvitationResponse invitationResponse;
+    private final IWorkspace workspace;
 
     @Inject
-    public InvitationCellController(IInvitationResponse invitationResponse) {
+    public InvitationCellController(IInvitationResponse invitationResponse, IWorkspace workspace) {
         this.invitationResponse = invitationResponse;
+        this.workspace = workspace;
     }
 
     @FXML
@@ -29,8 +31,9 @@ public class InvitationCellController {
     private Label projectRoleLabel;
 
     public void initialize(){
-
         projectNameLabel.setText(invitationResponse.getProjectTitle());
         projectRoleLabel.setText(invitationResponse.getProjectRole());
+
+        acceptButton.setOnMouseClicked(event -> workspace.acceptProjectInvitation(invitationResponse.getProjectId()));
     }
 }

@@ -34,4 +34,8 @@ public class WorkspaceController {
         workspaceRepo.fetchProjectInvitations();
         return invitationResponsesForUi;
     }
+
+    public void acceptProjectInvitation(int projectId){
+        workspaceRepo.acceptProjectInvitation(projectId);
+    }
 }

@@ -3,6 +3,7 @@ package de.hdm_stuttgart.workspace;
 import com.google.inject.Inject;
 import de.hdm_stuttgart.workspace.service.IInvitationResponse;
 import de.hdm_stuttgart.workspace.service.IWorkspace;
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
@@ -57,8 +58,9 @@ public class WorkspaceSceneController {
 
         workspace.getProjectInvitationsProperty().addListener((observable, oldValue, newValue) -> {
             for(IInvitationResponse invitation : newValue){
-                InvitationCellComponent invitationCell = new InvitationCellComponent(invitation);
-                invitationCellVBox.getChildren().add(invitationCell);
+                InvitationCellComponent invitationCell = new InvitationCellComponent(invitation,workspace);
+
+                Platform.runLater(() -> invitationCellVBox.getChildren().add(invitationCell));
             }
         });
 
