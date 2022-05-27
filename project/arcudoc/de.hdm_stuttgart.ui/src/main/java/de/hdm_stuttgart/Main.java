@@ -44,9 +44,10 @@ public class Main extends Application {
 
         //todo if user != logged in
        // showLoginScene(stage,controllerFactory);
-        showWorkspaceScene(stage,controllerFactory);
+        //showWorkspaceScene(stage,controllerFactory);
         //showLoginScene(stage,controllerFactory);
-        showProjectScene(stage,controllerFactory);
+        //showProjectScene(stage,controllerFactory);
+        showCreateProjectScene(stage,controllerFactory);
         //todo else show start screen
 
     }
@@ -92,6 +93,21 @@ public class Main extends Application {
             stage.setScene(scene);
             stage.show();
         } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void showCreateProjectScene(Stage stage, ControllerFactory controllerFactory){
+        try{
+            final String fxmlFile = Scenes.CREATE_PROJECT.getPath();
+            final FXMLLoader loader = new FXMLLoader();
+            loader.setControllerFactory(controllerFactory);
+            final Parent rootNode = loader.load(getClass().getResourceAsStream(fxmlFile));
+            final Scene scene = new Scene(rootNode, 1512, 800);
+            stage.setTitle("arcudoc");
+            stage.setScene(scene);
+            stage.show();
+        }catch (IOException e){
             e.printStackTrace();
         }
     }

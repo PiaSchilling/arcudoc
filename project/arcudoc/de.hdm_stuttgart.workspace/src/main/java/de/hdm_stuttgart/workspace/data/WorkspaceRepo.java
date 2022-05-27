@@ -27,7 +27,7 @@ public class WorkspaceRepo {
      * @param projectTitle title the project should have
      * @param memberMails  list of mails for inviting project members
      */
-    public void createProject(String projectTitle, List<String> memberMails) {
+    public void createProject(String projectTitle, List<ProjectMember> memberMails) {
 
         Call<List<ProjectResponse>> call = supabaseRestClient.createNewProject(
                 ApiConstants.API_KEY,
@@ -44,7 +44,7 @@ public class WorkspaceRepo {
                     List<ProjectResponse> createdProject = response.body();
                     if (createdProject != null) {
                         int projectId = createdProject.get(0).getId();
-                        //inviteMembers(memberMails, projectId);
+                        inviteMembers(memberMails, projectId);
                     }
                 } else {
                     log.error(response.code() + " - Project creation not successful");
@@ -137,7 +137,7 @@ public class WorkspaceRepo {
      * get the invitation, add the currently authenticated user to project-members and finally delete the open project invitation
      * @param projectId the id of the project the invitation should be accepted for
      */
-    public void acceptProjectInvitation(int projectId){
+    public void acceptProjectInvitation(int projectId){ //todo this should be moved to supabase (can be handled with trigger)
 
         Call<List<ProjectMember>> call = supabaseRestClient.getSingleProjectInvitationByProjectId(
                 ApiConstants.API_KEY,

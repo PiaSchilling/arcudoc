@@ -16,11 +16,10 @@ public class ProjectMember {
     @SerializedName("project_id")
     private int projectId;
 
-    public ProjectMember(String mail, String jobLabel, String projectRole, int projectId) {
+    public ProjectMember(String mail, String jobLabel, String projectRole) {
         this.mail = mail;
         this.jobLabel = jobLabel;
         this.projectRole = projectRole;
-        this.projectId = projectId;
     }
 
     public ProjectMember() {
@@ -36,5 +35,14 @@ public class ProjectMember {
 
     public String getProjectRole() {
         return projectRole;
+    }
+
+    @Override
+    public String toString() {
+        return "ProjectMember{" +
+                "mail='" + mail + '\'' +
+                ", jobLabel='" + jobLabel + '\'' +
+                ", projectRole='" + projectRole + '\'' +
+                '}';
     }
 }
