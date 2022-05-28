@@ -1,7 +1,6 @@
 package de.hdm_stuttgart.workspace.service;
 
-import de.hdm_stuttgart.workspace.data.NetworkStatus;
-import de.hdm_stuttgart.workspace.model.InvitationResponse;
+import de.hdm_stuttgart.data.service.NetworkStatus;
 import javafx.beans.property.ListProperty;
 import javafx.beans.property.ObjectProperty;
 
@@ -18,6 +17,8 @@ public interface IWorkspace {
     void onCreateProjectClicked();
 
     ListProperty<IInvitationResponse> getProjectInvitationsProperty();
+
+    ListProperty<IMemberProjectResponse> getMemberProjectsProperty();
 
     ObjectProperty<NetworkStatus> getNetworkStatusProperty();
 

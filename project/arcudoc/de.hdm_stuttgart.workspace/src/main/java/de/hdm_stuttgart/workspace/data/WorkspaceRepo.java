@@ -1,6 +1,7 @@
 package de.hdm_stuttgart.workspace.data;
 
 import de.hdm_stuttgart.data.service.ApiConstants;
+import de.hdm_stuttgart.data.service.NetworkStatus;
 import de.hdm_stuttgart.workspace.model.*;
 import javafx.beans.property.ListProperty;
 import javafx.beans.property.ObjectProperty;
@@ -23,6 +24,7 @@ public class WorkspaceRepo {
     private final SupabaseRestClient supabaseRestClient = ServiceProvider.getSupabaseRestClient(); //todo inject
 
     private final ListProperty<InvitationResponse> projectInvitationsProperty = new SimpleListProperty<>();
+    private final ListProperty<MemberProjectResponse> memberProjectsProperty = new SimpleListProperty<>();
     private final ObjectProperty<NetworkStatus> networkStatusObjectProperty = new SimpleObjectProperty<>();
 
 
@@ -257,12 +259,12 @@ public class WorkspaceRepo {
     /**
      * calls corresponding api endpoints for getting the projects the user is already a member of
      */
-    public void getMemberProjects() {
+    public void fetchMemberProjects() {
 
         Call<List<MemberProjectResponse>> call = supabaseRestClient.getMemberProjects(
                 ApiConstants.API_KEY,
                 ApiConstants.BEARER_KEY,
-                "projects(title,id)" //indicates to select title and id of project table although project_members table is queried in request (linked in supabase)
+                "projects(title,last_updated,profiles!projects_owner_fkey(mail)),project_role" //indicates to select title and id of project table although project_members table is queried in request (linked in supabase)
         );
 
         call.enqueue(new Callback<List<MemberProjectResponse>>() {
@@ -270,7 +272,14 @@ public class WorkspaceRepo {
             public void onResponse(Call<List<MemberProjectResponse>> call, Response<List<MemberProjectResponse>> response) {
                 if (response.isSuccessful()) {
                     log.debug("Member projects fetched successfully");
-                    List<MemberProjectResponse> projects = response.body();
+                    List<MemberProjectResponse> memberProjects = response.body();
+
+                    if(memberProjects != null){
+                        ObservableList<MemberProjectResponse> observableList = FXCollections.observableArrayList();
+                        observableList.addAll(memberProjects);
+                        memberProjectsProperty.setValue(observableList);
+                    }
+
                 } else {
                     log.error(response.code() + " - Fetching member projects not successful");
                 }
@@ -289,8 +298,17 @@ public class WorkspaceRepo {
         return projectInvitationsProperty;
     }
 
+    public ListProperty<MemberProjectResponse> getMemberProjectsProperty() {
+        return memberProjectsProperty;
+    }
+
     public ObjectProperty<NetworkStatus> getNetworkStatusObjectProperty() {
         return networkStatusObjectProperty;
+    }
+
+    public static void main(String[] args) {
+        WorkspaceRepo w = new WorkspaceRepo();
+        w.fetchMemberProjects();
     }
 
 

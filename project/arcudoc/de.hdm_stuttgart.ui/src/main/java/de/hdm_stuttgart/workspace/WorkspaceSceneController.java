@@ -2,6 +2,7 @@ package de.hdm_stuttgart.workspace;
 
 import com.google.inject.Inject;
 import de.hdm_stuttgart.workspace.service.IInvitationResponse;
+import de.hdm_stuttgart.workspace.service.IMemberProjectResponse;
 import de.hdm_stuttgart.workspace.service.IWorkspace;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
@@ -48,7 +49,10 @@ public class WorkspaceSceneController {
     private ScrollPane projectInvitationsScrollPane;
 
     @FXML
-    private VBox invitationCellVBox;
+    private VBox invitationCellVBox; //todo auto compute height of box
+
+    @FXML
+    private VBox projectCellVBox; //todo auto compute height of box
 
 
     public void initialize() {
@@ -64,7 +68,14 @@ public class WorkspaceSceneController {
             }
         });
 
+        workspace.getMemberProjectsProperty().addListener((observable, oldValue, newValue) -> {
+            for(IMemberProjectResponse memberProject : newValue){
+                ProjectCellComponent projectCell = new ProjectCellComponent(memberProject);
 
+                Platform.runLater(() -> projectCellVBox.getChildren().add(projectCell));
+
+            }
+        });
 
         projectsSearchbar.setOnAction(event -> onProjectSearchBarClicked());
         createProjectButton.setOnMouseClicked(event -> onCreateProjectClicked());

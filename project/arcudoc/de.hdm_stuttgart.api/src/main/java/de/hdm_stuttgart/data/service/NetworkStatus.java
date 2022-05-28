@@ -1,4 +1,4 @@
-package de.hdm_stuttgart.workspace.data;
+package de.hdm_stuttgart.data.service;
 
 /**
  * Indicates the status of a network coll

@@ -1,8 +1,9 @@
 package de.hdm_stuttgart.workspace.integration;
 
 import com.google.inject.Inject;
-import de.hdm_stuttgart.workspace.data.NetworkStatus;
+import de.hdm_stuttgart.data.service.NetworkStatus;
 import de.hdm_stuttgart.workspace.service.IInvitationResponse;
+import de.hdm_stuttgart.workspace.service.IMemberProjectResponse;
 import de.hdm_stuttgart.workspace.service.IWorkspace;
 import javafx.beans.property.ListProperty;
 import javafx.beans.property.ObjectProperty;
@@ -44,6 +45,10 @@ public class Workspace implements IWorkspace {
 
     public ListProperty<IInvitationResponse> getProjectInvitationsProperty() {
         return workspaceController.getProjectInvitationsProperty();
+    }
+
+    public ListProperty<IMemberProjectResponse> getMemberProjectsProperty(){
+        return workspaceController.getMemberProjectProperty();
     }
 
     @Override
