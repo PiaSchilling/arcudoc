@@ -11,11 +11,13 @@ public class InvitationCellController {
 
     private final IInvitationResponse invitationResponse;
     private final IWorkspace workspace;
+    private final CellClickHandler cellClickHandler;
 
     @Inject
-    public InvitationCellController(IInvitationResponse invitationResponse, IWorkspace workspace) {
+    public InvitationCellController(IInvitationResponse invitationResponse, IWorkspace workspace, CellClickHandler cellClickHandler) {
         this.invitationResponse = invitationResponse;
         this.workspace = workspace;
+        this.cellClickHandler = cellClickHandler;
     }
 
     @FXML
@@ -34,7 +36,7 @@ public class InvitationCellController {
         projectNameLabel.setText(invitationResponse.getProjectTitle());
         projectRoleLabel.setText(invitationResponse.getProjectRole());
 
-        acceptButton.setOnMouseClicked(event -> workspace.acceptProjectInvitation(invitationResponse.getProjectId()));
+        acceptButton.setOnMouseClicked(event -> cellClickHandler.onAcceptInvitationClicked(invitationResponse.getProjectId()));
 
         //todo delete node when accepted/declined
 

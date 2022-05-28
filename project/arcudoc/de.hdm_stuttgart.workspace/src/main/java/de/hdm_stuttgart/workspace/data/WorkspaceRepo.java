@@ -167,6 +167,7 @@ public class WorkspaceRepo {
                         if(isAccepted){
                             addProjectMember(projectId,projectMembers.get(0)); //only add project member if invitation is accepted
                             deleteProjectInvitation(projectId);
+                            //todo fetch new project once memberAdded
 
                             NetworkStatus.SUCCESS.setNetworkMessage("Invitation accepted");
                             networkStatusObjectProperty.setValue(NetworkStatus.SUCCESS);
@@ -244,6 +245,7 @@ public class WorkspaceRepo {
             public void onResponse(Call<Void> call, Response<Void> response) {
                 if (response.isSuccessful()) {
                     log.debug("Project member added successfully");
+                    fetchMemberProjects(); //update memberProjects
                 } else {
                     log.error(response.code() + " - Project member adding not successful");
                 }

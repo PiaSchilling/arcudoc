@@ -14,7 +14,12 @@ import javafx.scene.layout.VBox;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
 
-public class WorkspaceSceneController {
+import java.util.Arrays;
+import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
+
+public class WorkspaceSceneController implements CellClickHandler {
 
     private final IWorkspace workspace;
 
@@ -61,16 +66,23 @@ public class WorkspaceSceneController {
         //add navigation for create project
 
         workspace.getProjectInvitationsProperty().addListener((observable, oldValue, newValue) -> {
+
             for(IInvitationResponse invitation : newValue){
-                InvitationCellComponent invitationCell = new InvitationCellComponent(invitation,workspace);
+                InvitationCellComponent invitationCell = new InvitationCellComponent(invitation,workspace,this);
 
                 Platform.runLater(() -> invitationCellVBox.getChildren().add(invitationCell));
+                System.out.println("Add invitation cell triggered");
             }
         });
 
         workspace.getMemberProjectsProperty().addListener((observable, oldValue, newValue) -> {
+
+            if(oldValue != null){
+                newValue.removeAll(oldValue);
+            }
+
             for(IMemberProjectResponse memberProject : newValue){
-                ProjectCellComponent projectCell = new ProjectCellComponent(memberProject);
+                ProjectCellComponent projectCell = new ProjectCellComponent(memberProject); //todo prevent duplicate adding of nodes
 
                 Platform.runLater(() -> projectCellVBox.getChildren().add(projectCell));
 
@@ -97,5 +109,14 @@ public class WorkspaceSceneController {
     }
 
 
-
+    @Override
+    public void onAcceptInvitationClicked(int projectId) {
+        workspace.acceptProjectInvitation(projectId);
+        Optional<InvitationCellComponent> componentOptional = this.invitationCellVBox.getChildren()
+                .stream()
+                .map(node -> (InvitationCellComponent) node)
+                .filter(invitationCellComponent -> invitationCellComponent.getCellId() == projectId)
+                .findAny();
+        componentOptional.ifPresent(invitationCellComponent -> invitationCellVBox.getChildren().removeAll(invitationCellComponent));
+    }
 }
