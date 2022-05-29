@@ -22,13 +22,13 @@ public class CreateProjectSceneController {
     }
 
     @FXML
-    private Button addFileButton;
+    private Button addFileButton; //todo implement avatar choosing
 
     @FXML
     private Button addMemberButton;
 
     @FXML
-    private ImageView backButton;
+    private ImageView backButton; //todo implement navigation
 
     @FXML
     private Button createProjectButton;
@@ -46,7 +46,7 @@ public class CreateProjectSceneController {
     private TextField enterMailTextField;
 
     @FXML
-    private ImageView logo;
+    private ImageView logo; //todo can be removed?
 
     @FXML
     private ListView<String> memberList;
@@ -54,18 +54,21 @@ public class CreateProjectSceneController {
     @FXML
     private ComboBox<String> roleComboBox;
 
+
     public void initialize(){
 
         // fill project role comboBox
         ObservableList<String> projectRoles = FXCollections.observableArrayList();
-        projectRoles.addAll(createProject.getProjectRoles()); //todo remove hardcoded strings
+        projectRoles.addAll(createProject.getProjectRoles());
         roleComboBox.setItems(projectRoles);
 
         addMemberButton.setOnAction(event -> onAddMemberClicked());
         createProjectButton.setOnAction(event -> onCreateProjectClicked());
-
     }
 
+    /**
+     *  defines action for "create Project" click
+     */
     private void onCreateProjectClicked(){
         String projectTitle = enterTitleTextField.getText();
         String projectDescription = enterDescriptionTextField.getText();
@@ -79,6 +82,9 @@ public class CreateProjectSceneController {
         }
     }
 
+    /**
+     * defines action for "add Member" click
+     */
     private void onAddMemberClicked(){
 
         String memberMail = enterMailTextField.getText();
@@ -94,11 +100,11 @@ public class CreateProjectSceneController {
             String projectRole = roleComboBox.getValue();
             memberList.getItems().add(memberMail);
             String actionResponse = createProject.onAddMemberClicked(memberMail,jobLabel,projectRole);
-            //todo show snackbar with actionResponse
+            //todo show actionResponse to user
         }
-
-
     }
+
+
 
 
 }

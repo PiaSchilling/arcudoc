@@ -61,20 +61,16 @@ public class WorkspaceSceneController implements CellClickHandler {
 
 
     public void initialize() {
-        //fetch all projects
-        //fetch all invitations
-        //add navigation for create project
 
+        //show the users project invitations
         workspace.getProjectInvitationsProperty().addListener((observable, oldValue, newValue) -> {
-
             for(IInvitationResponse invitation : newValue){
-                InvitationCellComponent invitationCell = new InvitationCellComponent(invitation,workspace,this);
-
+                InvitationCellComponent invitationCell = new InvitationCellComponent(invitation,this);
                 Platform.runLater(() -> invitationCellVBox.getChildren().add(invitationCell));
-                System.out.println("Add invitation cell triggered");
             }
         });
 
+        //show the users projects he is already a part of
         workspace.getMemberProjectsProperty().addListener((observable, oldValue, newValue) -> {
 
             if(oldValue != null){
@@ -92,7 +88,6 @@ public class WorkspaceSceneController implements CellClickHandler {
         projectsSearchbar.setOnAction(event -> onProjectSearchBarClicked());
         createProjectButton.setOnMouseClicked(event -> onCreateProjectClicked());
 
-
         userNameLabel.setText(workspace.getUserName());
         userMailLabel.setText(workspace.getUserMail());
 
@@ -104,11 +99,19 @@ public class WorkspaceSceneController implements CellClickHandler {
     }
 
 
+    /**
+     * defines action for click on "createProject"
+     */
     private void onCreateProjectClicked(){
         workspace.onCreateProjectClicked();
     }
 
 
+    /**
+     * defines action for click on "accept invitation" on an invitation cell
+     * (trigger accept invitation action and delete corresponding ui component (cell))
+     * @param projectId the id of the project for which the invitation should be accepted
+     */
     @Override
     public void onAcceptInvitationClicked(int projectId) {
         workspace.acceptProjectInvitation(projectId);

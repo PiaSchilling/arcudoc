@@ -24,11 +24,23 @@ public class CreateProjectController {
         this.projectMembers = new ArrayList<>();
     }
 
+    /**
+     * call workspace repo to create a project
+     * @param projectTitle the title of the project provided by the user
+     * @param projectDescription the description of the project provided by the user
+     */
     public void createProject(String projectTitle, String projectDescription){
         workspaceRepo.createProject(projectTitle,projectMembers);
         log.debug("Create project with title: " + projectTitle + " and members: " + Arrays.toString(projectMembers.toArray()));
     }
 
+    /**
+     * add a projectMember to the projectMembers list
+     * @param memberMail the mail of the member which should be added
+     * @param jobLabel the jobLabel the member should have
+     * @param projectRole the projectRole the member should have
+     * @return a String indicating if the adding was successful (duplicate adding fails)
+     */
     public String addProjectMember(String memberMail, String jobLabel, String projectRole) {
         ProjectMember projectMember = new ProjectMember(memberMail,jobLabel,projectRole);
 
@@ -41,9 +53,7 @@ public class CreateProjectController {
     }
 
     public List<String> getProjectRoles(){
-        List<String> roleStrings = Arrays.stream(ProjectRole.values()).map(ProjectRole::getSupabaseName).toList();
-        System.out.println(roleStrings);
-        return roleStrings;
+        return Arrays.stream(ProjectRole.values()).map(ProjectRole::getSupabaseName).toList();
     }
 
 

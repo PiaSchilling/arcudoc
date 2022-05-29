@@ -23,7 +23,7 @@ public class WorkspaceController {
     public WorkspaceController(WorkspaceRepo workspaceRepo) {
         this.workspaceRepo = workspaceRepo;
 
-        ListProperty<InvitationResponse> invitationResponsesFromRepo = workspaceRepo.getProjectInvitationsProperty(); //map repo response in ui reponse
+        ListProperty<InvitationResponse> invitationResponsesFromRepo = workspaceRepo.getProjectInvitationsProperty(); //map repo response in ui response
         invitationResponsesForUi = new SimpleListProperty<>();
         invitationResponsesFromRepo.addListener((observable, oldValue, newValue) -> updateInvitationsPropertyForUi());
 
@@ -32,22 +32,38 @@ public class WorkspaceController {
         memberProjectResponsesFromRepo.addListener((observable, oldValue, newValue) -> updateMemberProjectsPropertyForUi());
     }
 
+    /**
+     * wrap the InvitationsResponseProperty received by the workspaceRepo in IInvitationResponseProperty
+     * reason for this: retrofit can't instance interface type objects (in repo) and model class InvitationResponse should not be exposed
+     */
     private void updateInvitationsPropertyForUi(){
         ObservableList<IInvitationResponse> observableList = FXCollections.observableArrayList();
         observableList.addAll(workspaceRepo.getProjectInvitationsProperty());
         invitationResponsesForUi.setValue(observableList);
     }
 
+    /**
+     * wrap the MemberProjectResponseProperty received by the workspaceRepo in IMemberProjectResponseProperty
+     * reason for this: retrofit can't instance interface type objects (in repo) and model class MemberProjectResponse should not be exposed
+     */
     private void updateMemberProjectsPropertyForUi(){
         ObservableList<IMemberProjectResponse> observableList = FXCollections.observableArrayList();
         observableList.addAll(workspaceRepo.getMemberProjectsProperty());
         memberProjectResponsesForUi.setValue(observableList);
     }
 
+    /**
+     * call repo to accept a project invitation
+     * @param projectId the id of the project for which the invitation should be accepted
+     */
     public void acceptProjectInvitation(int projectId){
         workspaceRepo.respondProjectInvitation(projectId,true);
     }
 
+    /**
+     * call repo to decline a project invitation
+     * @param projectId the id of the project for which the invitation should be declined
+     */
     public void declineProjectInvitation(int projectId){
         workspaceRepo.respondProjectInvitation(projectId,false);
     }
@@ -63,8 +79,6 @@ public class WorkspaceController {
         workspaceRepo.fetchMemberProjects();
         return memberProjectResponsesForUi;
     }
-
-
 
     public ObjectProperty<NetworkStatus> getNetworkStatusProperty(){
         return workspaceRepo.getNetworkStatusObjectProperty();

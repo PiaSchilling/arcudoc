@@ -1,8 +1,5 @@
 package de.hdm_stuttgart.workspace.service;
 
-import de.hdm_stuttgart.workspace.model.ProjectMember;
-import de.hdm_stuttgart.workspace.model.ProjectRequest;
-
 import java.util.List;
 
 public interface ICreateProject {

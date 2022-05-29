@@ -15,7 +15,6 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-import java.util.ArrayList;
 import java.util.List;
 
 //todo present error messages to the user
@@ -33,12 +32,12 @@ public class WorkspaceRepo {
 
     /**
      * calls related api endpoints and methods which are required when creating a new project
-     * this includes: create the project, invite project members,
+     * this includes: create the project and invite project members
      *
      * @param projectTitle title the project should have
-     * @param memberMails  list of mails for inviting project members
+     * @param invitationMembers  list of projectMembers which should be invited to the project
      */
-    public void createProject(String projectTitle, List<ProjectMember> memberMails) {
+    public void createProject(String projectTitle, List<ProjectMember> invitationMembers) {
 
         Call<List<ProjectResponse>> call = supabaseRestClient.createNewProject(
                 ApiConstants.API_KEY,
@@ -55,7 +54,7 @@ public class WorkspaceRepo {
                     List<ProjectResponse> createdProject = response.body();
                     if (createdProject != null) {
                         int projectId = createdProject.get(0).getId();
-                        inviteMembers(memberMails, projectId);
+                        inviteMembers(invitationMembers, projectId);
                     }
                 } else {
                     log.error(response.code() + response.message() + " - Project creation not successful");
@@ -110,7 +109,8 @@ public class WorkspaceRepo {
     }
 
     /**
-     * calls corresponding api endpoints for getting open project invitations for the user (based on the email)
+     * calls corresponding api endpoints for getting open project invitations for the user
+     * filtering is done by row-level-policies in supabase (only invitations for user-mail provided by jwt are returned)
      */
     public void fetchProjectInvitations() {
 
@@ -199,6 +199,7 @@ public class WorkspaceRepo {
 
     /**
      * calls corresponding api endpoints for deleting an open project invitation
+     * filtering is done by row-level-policies in supabase (only invitation for user-mail provided by jwt are deleted)
      *
      * @param projectId the id of the project the invitation should be deleted for
      */
@@ -230,9 +231,9 @@ public class WorkspaceRepo {
     // - - - - project members - - - -
 
     /**
-     * calls corresponding api endpoints for adding current user as member to a project
-     *
+     * call corresponding api endpoints to add a specific member to a specific project
      * @param projectId the id of the project where the member should be added
+     * @param projectMember the project member which should be added
      */
     public void addProjectMember(int projectId, ProjectMember projectMember) {
 
@@ -268,6 +269,7 @@ public class WorkspaceRepo {
 
     /**
      * calls corresponding api endpoints for getting the projects the user is already a member of
+     * filtering is done by row-level-policies in supabase (only projects for user id provided by jwt are returned)
      */
     public void fetchMemberProjects() {
 
@@ -315,23 +317,5 @@ public class WorkspaceRepo {
     public ObjectProperty<NetworkStatus> getNetworkStatusObjectProperty() {
         return networkStatusObjectProperty;
     }
-
-    public static void main(String[] args) {
-        WorkspaceRepo w = new WorkspaceRepo();
-
-        ProjectMember p1 = new ProjectMember("piamail@gmail.com","designer","editor");
-        ProjectMember p2 = new ProjectMember("mariemail@gmail.com","designer","editor");
-        ProjectMember p3 = new ProjectMember("piamail@gmail.com","newRole","viewer");
-
-        List<ProjectMember> members = new ArrayList<>();
-        members.add(p1);
-        members.add(p2);
-        members.add(p3);
-
-        w.inviteMembers(members,10);
-
-        //w.fetchMemberProjects();
-    }
-
 
 }

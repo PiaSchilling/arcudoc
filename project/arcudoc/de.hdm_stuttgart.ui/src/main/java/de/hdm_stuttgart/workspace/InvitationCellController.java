@@ -10,13 +10,11 @@ import javafx.scene.image.ImageView;
 public class InvitationCellController {
 
     private final IInvitationResponse invitationResponse;
-    private final IWorkspace workspace;
-    private final CellClickHandler cellClickHandler;
+    private final CellClickHandler cellClickHandler; // "parent" scene which is responsible for handling actions
 
     @Inject
-    public InvitationCellController(IInvitationResponse invitationResponse, IWorkspace workspace, CellClickHandler cellClickHandler) {
+    public InvitationCellController(IInvitationResponse invitationResponse, CellClickHandler cellClickHandler) {
         this.invitationResponse = invitationResponse;
-        this.workspace = workspace;
         this.cellClickHandler = cellClickHandler;
     }
 
@@ -37,6 +35,8 @@ public class InvitationCellController {
         projectRoleLabel.setText(invitationResponse.getProjectRole());
 
         acceptButton.setOnMouseClicked(event -> cellClickHandler.onAcceptInvitationClicked(invitationResponse.getProjectId()));
+
+        //todo decline invitation
 
         //todo delete node when accepted/declined
 
