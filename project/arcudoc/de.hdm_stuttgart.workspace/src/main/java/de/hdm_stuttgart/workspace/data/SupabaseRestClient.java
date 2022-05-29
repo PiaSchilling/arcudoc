@@ -1,6 +1,7 @@
 package de.hdm_stuttgart.workspace.data;
 
 import de.hdm_stuttgart.workspace.model.*;
+import de.hdm_stuttgart.workspace.service.IInvitationResponse;
 import retrofit2.Call;
 import retrofit2.http.*;
 
@@ -44,16 +45,26 @@ public interface SupabaseRestClient {
             @Header("apikey") String apikey,
             @Header("Authorization") String bearerToken,
             @Header("Content-Type") String contentType,
-            @Body List<InvitationRequest> invitationRequests
+            @Header("Prefer") String prefer,
+            @Body List<InvitationRequest> invitationRequests,
+            @Query("on_conflict") String conflictStrategy
             );
 
     @GET("project_invitations")
     Call<List<InvitationResponse>> getProjectInvitations(
             @Header("apikey") String apikey,
             @Header("Authorization") String bearerToken,
-            @Query("member_mail") String invitationMailFilter,
             @Query("select") String selectFilter
     );
+
+    @GET("project_invitations")
+    Call<List<ProjectMember>> getSingleProjectInvitationByProjectId(
+            @Header("apikey") String apikey,
+            @Header("Authorization") String bearerToken,
+            @Query("project_id") String invitationMailFilter,
+            @Query("select") String selectFilter
+    );
+
 
     /**
      * RLS: only the invitations belonging to the authenticated user can be deleted (JWT)
@@ -62,7 +73,6 @@ public interface SupabaseRestClient {
     Call<Void> deleteProjectInvitation(
             @Header("apikey") String apikey,
             @Header("Authorization") String bearerToken,
-            @Query("member_mail") String memberMailFilter,
             @Query("project_id") String projectIdFilter
     );
 

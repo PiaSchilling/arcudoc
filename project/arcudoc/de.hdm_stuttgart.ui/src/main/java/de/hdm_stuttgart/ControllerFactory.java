@@ -6,7 +6,9 @@ import de.hdm_stuttgart.editor.service.IEditor;
 import de.hdm_stuttgart.login.LoginSceneController;
 import de.hdm_stuttgart.login.service.ILogin;
 import de.hdm_stuttgart.project.ProjectSceneController;
-import de.hdm_stuttgart.workspace.WorkspaceController;
+import de.hdm_stuttgart.workspace.CreateProjectSceneController;
+import de.hdm_stuttgart.workspace.WorkspaceSceneController;
+import de.hdm_stuttgart.workspace.service.ICreateProject;
 import de.hdm_stuttgart.workspace.service.IWorkspace;
 import javafx.application.Application;
 import javafx.util.Callback;
@@ -22,16 +24,18 @@ public class ControllerFactory implements Callback<Class<?>, Object> {
     private final IEditor editor;
     private final IWorkspace workspace;
     private final IDocu docu;
+    private final ICreateProject createProject;
 
     private final Application application;
 
     @Inject
-    public ControllerFactory(ILogin login, Application application, IEditor editor, IWorkspace workspace, IDocu docu){
+    public ControllerFactory(ILogin login, Application application, IEditor editor, IWorkspace workspace, IDocu docu, ICreateProject createProject){
         this.login = login;
         this.editor = editor;
         this.application =  application;
         this.workspace = workspace;
         this.docu = docu;
+        this.createProject = createProject;
     }
 
     @Override
@@ -40,8 +44,10 @@ public class ControllerFactory implements Callback<Class<?>, Object> {
             return new LoginSceneController(login,application);
         }else if(param == ProjectSceneController.class){
             return new ProjectSceneController(editor,docu);
-        }else if(param == WorkspaceController.class){
-            return new WorkspaceController(workspace);
+        }else if(param == WorkspaceSceneController.class){
+            return new WorkspaceSceneController(workspace);
+        }else if(param == CreateProjectSceneController.class){
+            return new CreateProjectSceneController(createProject);
         }
         return null;
     }

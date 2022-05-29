@@ -4,7 +4,10 @@ public enum Scenes {
 
     LOGIN("/fxml/test.fxml"),
     WORKSPACE("/fxml/workspace-screen.fxml"),
-    PROJECT("/fxml/project-screen.fxml");
+    PROJECT("/fxml/project-screen.fxml"),
+    CREATE_PROJECT("/fxml/project-optionScreen.fxml"),
+    INVITATION_CELL("/fxml/project-invitation-cell.fxml"),
+    PROJECT_CELL("/fxml/project-cell.fxml");
 
     private final String path;
 
