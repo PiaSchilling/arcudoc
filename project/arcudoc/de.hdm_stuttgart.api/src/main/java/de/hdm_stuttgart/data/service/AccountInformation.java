@@ -1,6 +1,6 @@
 package de.hdm_stuttgart.data.service;
 
-import de.hdm_stuttgart.data.integration.ProfileRepository;
+import de.hdm_stuttgart.data.api.ProfileRepository;
 
 public class AccountInformation {
 
@@ -12,7 +12,6 @@ public class AccountInformation {
     private String refreshToken;
     private long expiresIn;
     private long tokenTimestamp;
-    private String userMail;
 
     private AccountInformation(){
         //Singleton access
@@ -49,7 +48,7 @@ public class AccountInformation {
      */
     public String getAccessToken() {
         if(isExpired()){
-            profileRepository.fetchProfile(refreshToken);
+            profileRepository.fetchProfile();
         }
         return accessToken;
     }
@@ -62,7 +61,4 @@ public class AccountInformation {
         return tokenTimestamp + expiresIn < System.currentTimeMillis();
     }
 
-    public String getUserMail() {
-        return userMail;
-    }
 }
