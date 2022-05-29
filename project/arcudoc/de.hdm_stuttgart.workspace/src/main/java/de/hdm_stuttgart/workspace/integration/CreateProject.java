@@ -20,8 +20,8 @@ public class CreateProject implements ICreateProject {
         createProjectController.createProject(projectTitle,projectDescription);
     }
 
-    public void onAddMemberClicked(String memberMail, String jobLabel, String projectRole){
-         createProjectController.addProjectMember(memberMail,jobLabel,projectRole);
+    public String onAddMemberClicked(String memberMail, String jobLabel, String projectRole){
+         return createProjectController.addProjectMember(memberMail,jobLabel,projectRole);
     }
 
     @Override

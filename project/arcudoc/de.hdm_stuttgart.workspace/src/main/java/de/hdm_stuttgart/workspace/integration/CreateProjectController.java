@@ -29,11 +29,15 @@ public class CreateProjectController {
         log.debug("Create project with title: " + projectTitle + " and members: " + Arrays.toString(projectMembers.toArray()));
     }
 
-    public void addProjectMember(String memberMail, String jobLabel, String projectRole) {
+    public String addProjectMember(String memberMail, String jobLabel, String projectRole) {
         ProjectMember projectMember = new ProjectMember(memberMail,jobLabel,projectRole);
-        projectMembers.add(projectMember);
-        log.debug("Adding member: " + projectMember);
 
+        if(projectMembers.stream().noneMatch(member -> member.getMail().equals(memberMail))){
+            projectMembers.add(projectMember); //only add member if not already added
+            log.debug("Added member: " + projectMember);
+            return "Member added";
+        }
+        return "Member "+ memberMail + " already added";
     }
 
     public List<String> getProjectRoles(){

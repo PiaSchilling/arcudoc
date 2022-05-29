@@ -10,7 +10,7 @@ public interface ICreateProject {
      void onCreateProjectClicked(String projectTitle,
                                  String projectDescription);
 
-     void onAddMemberClicked(String memberMail, String jobLabel, String projectRole);
+     String onAddMemberClicked(String memberMail, String jobLabel, String projectRole);
 
      List<String> getProjectRoles();
 }

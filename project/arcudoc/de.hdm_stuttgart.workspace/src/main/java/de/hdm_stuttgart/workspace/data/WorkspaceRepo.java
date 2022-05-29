@@ -15,6 +15,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+import java.util.ArrayList;
 import java.util.List;
 
 //todo present error messages to the user
@@ -57,7 +58,7 @@ public class WorkspaceRepo {
                         inviteMembers(memberMails, projectId);
                     }
                 } else {
-                    log.error(response.code() + " - Project creation not successful");
+                    log.error(response.code() + response.message() + " - Project creation not successful");
                     //todo check codes and inform user about what kind of error occurred
                 }
             }
@@ -72,10 +73,10 @@ public class WorkspaceRepo {
     // - - - - project invitations - - - -
 
     /**
-     * calls corresponding api endpoints for adding member mails on invitations list
-     *
-     //* @param invitationMailsStrings list of strings representing a member mail each
-     * @param projectId              the id of the project the members should be invited for
+     * calls corresponding api endpoints to invite a member to a project
+     * if member is alreay invited to the project, invitation will be replaced by a new one
+     * @param members list of members which should be invited
+     * @param projectId id of the project the members should be invited to
      */
     public void inviteMembers(List<ProjectMember> members, int projectId) {
 
@@ -86,7 +87,9 @@ public class WorkspaceRepo {
                 ApiConstants.API_KEY,
                 ApiConstants.BEARER_KEY,
                 "application/json",
-                invitationRequests
+                "resolution=merge-duplicates",
+                invitationRequests,
+                "member_mail,project_id"
         );
 
         call.enqueue(new Callback<Void>() {
@@ -95,7 +98,7 @@ public class WorkspaceRepo {
                 if (response.isSuccessful()) {
                     log.debug(response.code() + " - Invitations added successfully");
                 } else {
-                    log.error(response.code() + " - Invitation not successful");
+                    log.error(response.code() +  response.message() + " - Invitation not successful");
                 }
             }
 
@@ -131,7 +134,7 @@ public class WorkspaceRepo {
                         log.error("InvitationList is null");
                     }
                 } else {
-                    log.error(response.code() + " - Fetching invitations not successful");
+                    log.error(response.code() + response.message() + " - Fetching invitations not successful");
                     //todo if 401 jwt expired -> fetch new token with refresh token
                 }
             }
@@ -167,7 +170,6 @@ public class WorkspaceRepo {
                         if(isAccepted){
                             addProjectMember(projectId,projectMembers.get(0)); //only add project member if invitation is accepted
                             deleteProjectInvitation(projectId);
-                            //todo fetch new project once memberAdded
 
                             NetworkStatus.SUCCESS.setNetworkMessage("Invitation accepted");
                             networkStatusObjectProperty.setValue(NetworkStatus.SUCCESS);
@@ -180,9 +182,11 @@ public class WorkspaceRepo {
 
                     }else{
                         log.error("Empty or null response for fetching project invitation for project with id " + projectId);
+
                     }
                 }else{
-                    log.error(response.code() + "Getting single invitation for project " + projectId + " not successful");
+                    log.error(response.code() + response.message() + "Getting single invitation for project " + projectId + " not successful");
+                    NetworkStatus.FAIL.setNetworkMessage(response.message());
                 }
             }
 
@@ -212,7 +216,7 @@ public class WorkspaceRepo {
                 if (response.isSuccessful()) {
                     log.debug("Delete project invitation successful");
                 } else {
-                    log.error(response.code() + " - Delete project invitation not successful");
+                    log.error(response.code() + response.message() + " - Delete project invitation not successful");
                 }
             }
 
@@ -247,7 +251,11 @@ public class WorkspaceRepo {
                     log.debug("Project member added successfully");
                     fetchMemberProjects(); //update memberProjects
                 } else {
-                    log.error(response.code() + " - Project member adding not successful");
+                    log.error(response.code() + response.message() + " - Project member adding not successful");
+                    if(response.code() == 409){
+                        NetworkStatus.FAIL.setNetworkMessage(projectMember.getMail() + "is already member of the project");
+                        networkStatusObjectProperty.setValue(NetworkStatus.FAIL);
+                    }
                 }
             }
 
@@ -283,7 +291,7 @@ public class WorkspaceRepo {
                     }
 
                 } else {
-                    log.error(response.code() + " - Fetching member projects not successful");
+                    log.error(response.code() + response.message() + " - Fetching member projects not successful");
                 }
             }
 
@@ -310,7 +318,19 @@ public class WorkspaceRepo {
 
     public static void main(String[] args) {
         WorkspaceRepo w = new WorkspaceRepo();
-        w.fetchMemberProjects();
+
+        ProjectMember p1 = new ProjectMember("piamail@gmail.com","designer","editor");
+        ProjectMember p2 = new ProjectMember("mariemail@gmail.com","designer","editor");
+        ProjectMember p3 = new ProjectMember("piamail@gmail.com","newRole","viewer");
+
+        List<ProjectMember> members = new ArrayList<>();
+        members.add(p1);
+        members.add(p2);
+        members.add(p3);
+
+        w.inviteMembers(members,10);
+
+        //w.fetchMemberProjects();
     }
 
 

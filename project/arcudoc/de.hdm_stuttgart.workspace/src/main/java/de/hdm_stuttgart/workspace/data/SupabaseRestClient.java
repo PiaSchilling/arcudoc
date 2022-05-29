@@ -45,7 +45,9 @@ public interface SupabaseRestClient {
             @Header("apikey") String apikey,
             @Header("Authorization") String bearerToken,
             @Header("Content-Type") String contentType,
-            @Body List<InvitationRequest> invitationRequests
+            @Header("Prefer") String prefer,
+            @Body List<InvitationRequest> invitationRequests,
+            @Query("on_conflict") String conflictStrategy
             );
 
     @GET("project_invitations")

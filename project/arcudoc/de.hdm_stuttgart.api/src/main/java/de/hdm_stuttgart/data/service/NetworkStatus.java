@@ -8,7 +8,8 @@ public enum NetworkStatus {
 
     SUCCESS("-"),
     FAIL("-"),
-    LOADING("-");
+    LOADING("-"),
+    DEFAULT("-");
 
     private String networkMessage;
 

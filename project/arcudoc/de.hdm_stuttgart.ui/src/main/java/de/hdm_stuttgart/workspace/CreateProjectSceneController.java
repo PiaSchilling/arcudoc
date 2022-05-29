@@ -93,7 +93,8 @@ public class CreateProjectSceneController {
         }else{
             String projectRole = roleComboBox.getValue();
             memberList.getItems().add(memberMail);
-            createProject.onAddMemberClicked(memberMail,jobLabel,projectRole);
+            String actionResponse = createProject.onAddMemberClicked(memberMail,jobLabel,projectRole);
+            //todo show snackbar with actionResponse
         }
 
 
