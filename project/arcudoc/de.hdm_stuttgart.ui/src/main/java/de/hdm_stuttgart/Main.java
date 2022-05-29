@@ -44,8 +44,8 @@ public class Main extends Application {
         ControllerFactory controllerFactory = injector.getInstance(ControllerFactory.class);
 
         //todo if user != logged in
-        showLoginScene(stage,controllerFactory);
-       // showWorkspaceScene(stage,controllerFactory);
+        //showLoginScene(stage,controllerFactory);
+        showWorkspaceScene(stage,controllerFactory);
         //showLoginScene(stage,controllerFactory);
         //showProjectScene(stage,controllerFactory);
         //showCreateProjectScene(stage,controllerFactory);
