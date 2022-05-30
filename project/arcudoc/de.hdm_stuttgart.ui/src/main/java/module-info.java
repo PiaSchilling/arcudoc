@@ -10,6 +10,7 @@ module gui {
     requires de.hdm.stuttgart.editor;
     uses de.hdm_stuttgart.login.service.ILogin;
     requires de.hdm.stuttgart.docu;
+    requires java.prefs;
 
     uses com.google.inject.AbstractModule;
 

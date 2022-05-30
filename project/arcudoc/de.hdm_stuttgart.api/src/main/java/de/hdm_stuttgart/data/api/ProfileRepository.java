@@ -60,19 +60,25 @@ public class ProfileRepository implements IProfileRepository {
      */
     @Override
     public void fetchProfileSync() {
+
         String refreshToken = getRefreshTokenFromPreferences();
-        Call<Profile> call = authClient.getAccessTokenWithRefreshToken(ApiConstants.API_KEY, ApiConstants.BEARER_KEY, new TokenRequest(refreshToken));
-        try {
-            Response<Profile> profileResponse = call.execute();
-            Profile profile = profileResponse.body();
-            if (profile != null) {
-                AccountInformation.getInstance().setAccessToken(profile.getAccessToken());
-                AccountInformation.getInstance().setRefreshToken(profile.getRefreshToken());
-                AccountInformation.getInstance().setExpiresIn(profile.getExpiresIn());
-                setRefreshTokenToPreferences(profile.getRefreshToken());
+
+        if(refreshToken.equals("default")){
+            //todo trigger show login scene
+        }else{
+            Call<Profile> call = authClient.getAccessTokenWithRefreshToken(ApiConstants.API_KEY, ApiConstants.BEARER_KEY, new TokenRequest(refreshToken));
+            try {
+                Response<Profile> profileResponse = call.execute();
+                Profile profile = profileResponse.body();
+                if (profile != null) {
+                    AccountInformation.getInstance().setAccessToken(profile.getAccessToken());
+                    AccountInformation.getInstance().setRefreshToken(profile.getRefreshToken());
+                    AccountInformation.getInstance().setExpiresIn(profile.getExpiresIn());
+                    setRefreshTokenToPreferences(profile.getRefreshToken());
+                }
+            } catch (IOException e) {
+                log.error("Failed fetching token " + e.getMessage());
             }
-        } catch (IOException e) {
-            log.error("Failed fetching token " + e.getMessage());
         }
     }
 
@@ -83,7 +89,7 @@ public class ProfileRepository implements IProfileRepository {
      * @param refreshToken the token to store
      */
     public void setRefreshTokenToPreferences(String refreshToken) {
-        Preferences userPreferences = Preferences.userRoot().node(this.getClass().getName());
+        Preferences userPreferences = Preferences.userRoot().node("/arcudoc/profile");
         userPreferences.put("REFRESH_TOKEN", refreshToken);
         log.debug("Set refresh token to user preferences");
     }
@@ -94,7 +100,7 @@ public class ProfileRepository implements IProfileRepository {
      * @return the refreshToken as a String
      */
     public String getRefreshTokenFromPreferences() {
-        Preferences userPreferences = Preferences.userRoot().node(this.getClass().getName());
+        Preferences userPreferences = Preferences.userRoot().node("/arcudoc/profile");
         return userPreferences.get("REFRESH_TOKEN", "default");
     }
 

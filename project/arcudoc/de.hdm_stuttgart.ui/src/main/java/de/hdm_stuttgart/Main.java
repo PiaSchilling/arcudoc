@@ -16,6 +16,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.io.IOException;
+import java.util.prefs.Preferences;
 
 /**
  * Programm entry point
@@ -43,14 +44,22 @@ public class Main extends Application {
 
         ControllerFactory controllerFactory = injector.getInstance(ControllerFactory.class);
 
-        //todo if user != logged in
+        Preferences userPreferences = Preferences.userRoot().node("/arcudoc/profile");
+        String auth = userPreferences.get("REFRESH_TOKEN","default");
+
+        if(auth.equals("default")){
+            showLoginScene(stage,controllerFactory);
+            log.debug("Refresh token not found - Login required - show login scene");
+        }else{
+            showWorkspaceScene(stage,controllerFactory);
+            log.debug("Refresh token found - No login required - show workspace scene");
+        }
+
         //showLoginScene(stage,controllerFactory);
-        showWorkspaceScene(stage,controllerFactory);
+        //showWorkspaceScene(stage,controllerFactory);
         //showLoginScene(stage,controllerFactory);
         //showProjectScene(stage,controllerFactory);
         //showCreateProjectScene(stage,controllerFactory);
-        //todo else show start screen
-
     }
 
     private void showLoginScene(Stage stage, ControllerFactory controllerFactory){
