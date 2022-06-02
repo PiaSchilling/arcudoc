@@ -1,8 +1,17 @@
 package de.hdm_stuttgart.docu.integration;
 
+import com.google.inject.Inject;
 import de.hdm_stuttgart.docu.service.IDocu;
 
 public class Docu implements IDocu {
+
+    private final DocuController controller;
+
+    @Inject
+    public Docu(DocuController controller) {
+        this.controller = controller;
+    }
+
     @Override
     public String getProjectName() {
         return null;
@@ -15,7 +24,7 @@ public class Docu implements IDocu {
 
     @Override
     public void onAufgabenstellungClicked() {
-
+        controller.printTest();
     }
 
     @Override
@@ -40,7 +49,7 @@ public class Docu implements IDocu {
 
     @Override
     public void onKonventionenClicked() {
-
+        System.out.println("Konventionen clicked");
     }
 
     @Override

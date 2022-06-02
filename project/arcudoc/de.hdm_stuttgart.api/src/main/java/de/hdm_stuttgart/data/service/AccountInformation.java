@@ -12,6 +12,7 @@ public class AccountInformation {
     private String refreshToken;
     private long expiresIn;
     private long tokenTimestamp;
+    private String userMail;
 
     private AccountInformation(){
         //Singleton access
@@ -59,5 +60,9 @@ public class AccountInformation {
      */
     private boolean isExpired(){
         return tokenTimestamp + expiresIn < System.currentTimeMillis();
+    }
+
+    public String getUserMail() {
+        return userMail;
     }
 }
