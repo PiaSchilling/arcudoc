@@ -26,8 +26,11 @@
 }
 
 #h2{
-    -fx-font-family: "Poppins Medium";
+    -fx-font-family: "Poppins";
     -fx-font-size: 16px;
+    -fx-font-weight: 300;
+    -fx-line-height: 24px;
+    -fx-text-fill: #FFFFFF;
 }
 
 #h3{
@@ -39,7 +42,8 @@
 }
 
 #h31{
-    -fx-font-family: "Poppins Light";
+    -fx-font-family: "Poppins";
+    -fx-font-weight: 300;
     -fx-font-size: 14px;
     -fx-text-fill: #969597;
     -fx-pref-width: 63px;
@@ -85,6 +89,13 @@
     -fx-background-radius: 15px;
 }
 
+
+.project-cell-container{
+    -fx-fill: #2B2934;
+    -fx-stroke-width: 0px;
+    -fx-arc-width: 30px;
+    -fx-arc-height: 30px;
+}
 
 
 
