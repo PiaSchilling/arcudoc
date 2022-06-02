@@ -25,7 +25,9 @@ public class DocuRepo {
         Call<List<TemplateResponse>> call = supabaseRestClient.getTemplate(
                 ApiConstants.API_KEY,
                 ApiConstants.BEARER_KEY,
+                "*",
                 "eq." + projectId
+
 
         );
 

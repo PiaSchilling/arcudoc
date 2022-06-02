@@ -14,6 +14,7 @@ public interface SupabaseRestClient {
     Call<List<TemplateResponse>> getTemplate(
             @Header("apikey") String apikey,
             @Header("Authorization") String bearerToken,
-            @Query("select") String selectFilter
+            @Query("select") String selectFilter,
+            @Query("project_id") String projectId
     );
 }
