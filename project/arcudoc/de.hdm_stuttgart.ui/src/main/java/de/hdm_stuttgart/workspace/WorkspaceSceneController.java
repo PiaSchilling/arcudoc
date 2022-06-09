@@ -1,6 +1,7 @@
 package de.hdm_stuttgart.workspace;
 
 import com.google.inject.Inject;
+import de.hdm_stuttgart.navigation.NavigationController;
 import de.hdm_stuttgart.workspace.service.IInvitationResponse;
 import de.hdm_stuttgart.workspace.service.IMemberProjectResponse;
 import de.hdm_stuttgart.workspace.service.IWorkspace;
@@ -85,25 +86,12 @@ public class WorkspaceSceneController implements CellClickHandler {
             }
         });
 
-        projectsSearchbar.setOnAction(event -> onProjectSearchBarClicked());
-        createProjectButton.setOnMouseClicked(event -> onCreateProjectClicked());
+        projectsSearchbar.setOnAction(event -> {});//todo implement searchbar
+        createProjectButton.setOnMouseClicked(event -> NavigationController.getINSTANCE().showCreateProjectScene());
 
         userNameLabel.setText(workspace.getUserName());
         userMailLabel.setText(workspace.getUserMail());
 
-    }
-
-    private void onProjectSearchBarClicked(){
-        workspace.onProjectSearchbarClicked();
-        System.out.println("Searchbar clicked");
-    }
-
-
-    /**
-     * defines action for click on "createProject"
-     */
-    private void onCreateProjectClicked(){
-        workspace.onCreateProjectClicked();
     }
 
 

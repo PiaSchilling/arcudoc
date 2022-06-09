@@ -80,7 +80,7 @@ public class NavigationController implements INavigationController{
     @Override
     public void showCreateProjectScene() {
         try {
-            final String fxmlFile = Scenes.PROJECT.getPath();
+            final String fxmlFile = Scenes.CREATE_PROJECT.getPath();
             FXMLLoader loader = new FXMLLoader();
             loader.setControllerFactory(controller);
             final Parent rootNode = loader.load(getClass().getResourceAsStream(fxmlFile));
@@ -97,7 +97,7 @@ public class NavigationController implements INavigationController{
     @Override
     public void showProjectScene() {
         try{
-            final String fxmlFile = Scenes.CREATE_PROJECT.getPath();
+            final String fxmlFile = Scenes.PROJECT.getPath();
             FXMLLoader loader = new FXMLLoader();
             loader.setControllerFactory(controller);
             final Parent rootNode = loader.load(getClass().getResourceAsStream(fxmlFile));
