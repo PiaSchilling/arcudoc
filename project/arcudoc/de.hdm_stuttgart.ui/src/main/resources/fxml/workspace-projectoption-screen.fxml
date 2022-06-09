@@ -17,7 +17,7 @@
 <?import javafx.scene.shape.Polyline?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="982.0" prefWidth="1512.0" styleClass="background" stylesheets="/styles/workspace-projectoption-screen.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="982.0" prefWidth="1512.0" styleClass="background" stylesheets="/styles/workspace-projectoption-screen.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.hdm_stuttgart.workspace.CreateProjectSceneController">
    <children>
       <Polyline fill="CHARTREUSE" layoutX="1438.0" layoutY="351.0" points="74.0, -351.0, 74.0, -264.9272155761719, -255.7071533203125, -264.9272155761719, -353.9251708984375, -351.0" strokeLineCap="BUTT" strokeType="INSIDE" strokeWidth="0.0" styleClass="user-card" />
       <HBox layoutX="1180.0" layoutY="13.0" nodeOrientation="LEFT_TO_RIGHT" spacing="30.0">
