@@ -39,7 +39,6 @@ public class LoginSceneController {
         googleButton.setOnAction(event -> onLoginWithGoogleClicked());
 
         login.getAuthStatusProperty().addListener((observable, oldValue, newValue) -> {
-            System.out.println(newValue);
             if(newValue == NetworkStatus.AUTH_SUCCESS){
                 NavigationController.getINSTANCE().showWorkspaceScene();
                 log.debug("Login finishes, showing workspace screen");
@@ -60,7 +59,5 @@ public class LoginSceneController {
         String loginUrl = login.onLoginWithGoogleButtonClicked();
         application.getHostServices().showDocument(loginUrl);
     }
-
-
 
 }

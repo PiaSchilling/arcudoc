@@ -10,9 +10,14 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
+/**
+ * Manages the Navigation of the whole application
+ * Each screen has a corresponding showScreen method
+ */
 public class NavigationController implements INavigationController{
 
     private static NavigationController INSTANCE;
+
     private static Stage stage;
     private static ControllerFactory controller;
 
@@ -28,6 +33,11 @@ public class NavigationController implements INavigationController{
         return INSTANCE;
     }
 
+    /**
+     * initialize the navigation-controller
+     * @param mainStage the stage object in which the scenes should be presented
+     * @param controllerFactory the controller factory to set to the fxml controllers
+     */
     public static void initNavigationController(Stage mainStage, ControllerFactory controllerFactory){
         stage = mainStage;
         controller = controllerFactory;
@@ -96,7 +106,6 @@ public class NavigationController implements INavigationController{
                 stage.setScene(scene);
                 stage.show();
             });
-
         }catch (IOException e){
             e.printStackTrace();
         }

@@ -49,17 +49,10 @@ public class Main extends Application{
 
         ControllerFactory controllerFactory = injector.getInstance(ControllerFactory.class);
         stage.setTitle("arcudoc");
-        FXMLLoader loader = new FXMLLoader();
-        loader.setControllerFactory(controllerFactory);
-
         NavigationController.initNavigationController(stage,controllerFactory);
-        //INavigationController navigationController = new NavigationController(controllerFactory,stage);//todo inject
 
         Preferences userPreferences = Preferences.userRoot().node("/arcudoc/profile");
-        userPreferences.put("REFRESH_TOKEN","default");
         String auth = userPreferences.get("REFRESH_TOKEN","default");
-
-
 
         if(auth.equals("default")){
             NavigationController.getINSTANCE().showLoginScene();
@@ -69,65 +62,7 @@ public class Main extends Application{
             log.debug("Refresh token found - No login required - show workspace scene");
         }
 
-        //showLoginScene(stage,controllerFactory);
-        //showWorkspaceScene(stage,controllerFactory);
-        //showLoginScene(stage,controllerFactory);
-        //showProjectScene(stage,controllerFactory);
-        //showCreateProjectScene(stage,controllerFactory);
     }
 
-   /* @Override
-    public void showLoginScene(){
-        try {
-            final String fxmlFile = Scenes.LOGIN.getPath();
-            FXMLLoader loader = new FXMLLoader();
-            loader.setControllerFactory(controllerFactory);
-            final Parent rootNode = loader.load(getClass().getResourceAsStream(fxmlFile));
-            final Scene scene = new Scene(rootNode, 561, 584);
-            stage.setScene(scene);
-            stage.show();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    @Override
-    public void showWorkspaceScene(){
-        try {
-            final String fxmlFile = Scenes.WORKSPACE.getPath();
-            final Parent rootNode = loader.load(getClass().getResourceAsStream(fxmlFile));
-            final Scene scene = new Scene(rootNode, 1512, 800);
-            stage.setScene(scene);
-            stage.show();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    @Override
-    public void showProjectScene(){
-        try {
-            final String fxmlFile = Scenes.PROJECT.getPath();
-            final Parent rootNode = loader.load(getClass().getResourceAsStream(fxmlFile));
-            final Scene scene = new Scene(rootNode, 1512, 800);
-            stage.setScene(scene);
-            stage.show();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    @Override
-    public void showCreateProjectScene(){
-        try{
-            final String fxmlFile = Scenes.CREATE_PROJECT.getPath();
-            final Parent rootNode = loader.load(getClass().getResourceAsStream(fxmlFile));
-            final Scene scene = new Scene(rootNode, 1512, 800);
-            stage.setScene(scene);
-            stage.show();
-        }catch (IOException e){
-            e.printStackTrace();
-        }
-    }*/
 
 }

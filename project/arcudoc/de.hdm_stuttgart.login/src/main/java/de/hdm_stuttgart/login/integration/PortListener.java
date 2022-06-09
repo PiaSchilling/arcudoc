@@ -119,7 +119,7 @@ public class PortListener {
         AccountInformation.getInstance().setAccessToken(accessToken);
         AccountInformation.getInstance().setRefreshToken(refreshToken);
         AccountInformation.getInstance().setExpiresIn(Long.parseLong(String.valueOf(expiresIn)));
-        authStatus.setValue(NetworkStatus.AUTH_SUCCESS);
+        authStatus.setValue(NetworkStatus.AUTH_SUCCESS); //todo should better be set after checking if token is valid
         log.debug("Tokens set to AccountInformation");
     }
 
