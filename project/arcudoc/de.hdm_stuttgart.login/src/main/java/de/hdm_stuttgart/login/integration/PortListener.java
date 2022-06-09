@@ -4,6 +4,11 @@ import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpHandler;
 import com.sun.net.httpserver.HttpServer;
 import de.hdm_stuttgart.data.service.AccountInformation;
+import de.hdm_stuttgart.data.service.NetworkStatus;
+import javafx.beans.property.ObjectProperty;
+import javafx.beans.property.SimpleObjectProperty;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -19,6 +24,8 @@ import java.util.stream.Collectors;
 public class PortListener {
 
     private static final Logger log = LogManager.getLogger();
+
+    private final ObjectProperty<NetworkStatus> authStatus = new SimpleObjectProperty<>(NetworkStatus.DEFAULT);
 
     private HttpServer server;
     private boolean serverIsStarted = false;
@@ -112,6 +119,7 @@ public class PortListener {
         AccountInformation.getInstance().setAccessToken(accessToken);
         AccountInformation.getInstance().setRefreshToken(refreshToken);
         AccountInformation.getInstance().setExpiresIn(Long.parseLong(String.valueOf(expiresIn)));
+        authStatus.setValue(NetworkStatus.AUTH_SUCCESS);
         log.debug("Tokens set to AccountInformation");
     }
 
@@ -183,5 +191,9 @@ public class PortListener {
                 log.debug("Server stopped");
             }
         }
+    }
+
+    public ObjectProperty<NetworkStatus> getAuthStatusProperty() {
+        return authStatus;
     }
 }
