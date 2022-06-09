@@ -8,6 +8,7 @@ module de.hdm.stuttgart.api {
     requires com.google.gson;
     requires okhttp3;
     requires okhttp3.logging;
+    requires java.prefs;
 
 
     exports de.hdm_stuttgart.data.service;

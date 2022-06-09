@@ -4,7 +4,11 @@ import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpHandler;
 import com.sun.net.httpserver.HttpServer;
 import de.hdm_stuttgart.data.service.AccountInformation;
-import de.hdm_stuttgart.data.service.ApiConstants;
+import de.hdm_stuttgart.data.service.NetworkStatus;
+import javafx.beans.property.ObjectProperty;
+import javafx.beans.property.SimpleObjectProperty;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -21,7 +25,10 @@ public class PortListener {
 
     private static final Logger log = LogManager.getLogger();
 
+    private final ObjectProperty<NetworkStatus> authStatus = new SimpleObjectProperty<>(NetworkStatus.DEFAULT);
+
     private HttpServer server;
+    private boolean serverIsStarted = false;
 
     private String requestQuery;
     private String accessToken;
@@ -30,7 +37,6 @@ public class PortListener {
     private String refreshToken;
     private long tokenTimestamp;
 
-    //todo block server start when already started
 
     public PortListener() {
         try {
@@ -42,9 +48,17 @@ public class PortListener {
         }
     }
 
+    /**
+     * start the portListener
+     */
     public void startListener() {
-        server.start();
-        System.out.println("Server started");
+        if(!serverIsStarted){
+            server.start();
+            serverIsStarted = true;
+            log.debug("PortListener started");
+        }else{
+            log.info("PortListener already started");
+        }
     }
 
     /**
@@ -67,7 +81,7 @@ public class PortListener {
                 refreshToken = parsedTokens.get(3);
                 tokenTimestamp = System.currentTimeMillis();
 
-                setTokensToApiConstants();
+                setTokensToAccountInfos();
             }
 
         } else {
@@ -99,12 +113,13 @@ public class PortListener {
     }
 
     /**
-     * sets the tokens and timestamps to the ApiConstant class
+     * sets the tokens and timestamps to the AccountInformation class
      */
-    private void setTokensToApiConstants(){
+    private void setTokensToAccountInfos(){
         AccountInformation.getInstance().setAccessToken(accessToken);
         AccountInformation.getInstance().setRefreshToken(refreshToken);
         AccountInformation.getInstance().setExpiresIn(Long.parseLong(String.valueOf(expiresIn)));
+        authStatus.setValue(NetworkStatus.AUTH_SUCCESS); //todo should better be set after checking if token is valid
         log.debug("Tokens set to AccountInformation");
     }
 
@@ -137,7 +152,7 @@ public class PortListener {
 
         @Override
         public void handle(HttpExchange exchange) throws IOException {
-            System.out.println(reloads);
+            log.debug("Received " + reloads + " connections");
 
             if(reloads == 0){ //on first load -> modify the request url to be able to get the access-tokens
                 reloads++;
@@ -176,5 +191,9 @@ public class PortListener {
                 log.debug("Server stopped");
             }
         }
+    }
+
+    public ObjectProperty<NetworkStatus> getAuthStatusProperty() {
+        return authStatus;
     }
 }

@@ -10,6 +10,8 @@ module gui {
     requires de.hdm.stuttgart.editor;
     uses de.hdm_stuttgart.login.service.ILogin;
     requires de.hdm.stuttgart.docu;
+    requires java.prefs;
+    requires de.hdm.stuttgart.api;
 
     uses com.google.inject.AbstractModule;
 
@@ -23,4 +25,6 @@ module gui {
 
     opens images;
     opens styles;
+    exports de.hdm_stuttgart.navigation;
+    opens de.hdm_stuttgart.navigation to javafx.controls, javafx.fxml, javafx.graphics;
 }
