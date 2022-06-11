@@ -1,6 +1,7 @@
 package de.hdm_stuttgart.workspace;
 
 import com.google.inject.Inject;
+import de.hdm_stuttgart.navigation.NavigationController;
 import de.hdm_stuttgart.workspace.service.ICreateProject;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -70,6 +71,7 @@ public class CreateProjectSceneController {
      *  defines action for "create Project" click
      */
     private void onCreateProjectClicked(){
+        System.out.println("create project clicked");
         String projectTitle = enterTitleTextField.getText();
         String projectDescription = enterDescriptionTextField.getText();
 
@@ -79,6 +81,7 @@ public class CreateProjectSceneController {
             //todo show error
         }else{
             createProject.onCreateProjectClicked(projectTitle,projectDescription);
+            NavigationController.getINSTANCE().showWorkspaceScene();
         }
     }
 
@@ -86,7 +89,7 @@ public class CreateProjectSceneController {
      * defines action for "add Member" click
      */
     private void onAddMemberClicked(){
-
+        System.out.println("Add member clicked");
         String memberMail = enterMailTextField.getText();
         String jobLabel = enterLabelTextField.getText();
 
@@ -101,6 +104,7 @@ public class CreateProjectSceneController {
             memberList.getItems().add(memberMail);
             String actionResponse = createProject.onAddMemberClicked(memberMail,jobLabel,projectRole);
             //todo show actionResponse to user
+            //todo add member item
         }
     }
 
