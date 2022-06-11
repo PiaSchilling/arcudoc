@@ -72,10 +72,7 @@ public class WorkspaceSceneController implements CellClickHandler {
 
         //show the users projects he is already a part of
         workspace.getMemberProjectsProperty().addListener((observable, oldValue, newValue) -> {
-
-            if(oldValue != null){
-                newValue.removeAll(oldValue);
-            }
+            Platform.runLater(() -> projectCellVBox.getChildren().clear()); //todo can be solved better by filtering the list
 
             for(IMemberProjectResponse memberProject : newValue){
                 ProjectCellComponent projectCell = new ProjectCellComponent(memberProject); //todo prevent duplicate adding of nodes
