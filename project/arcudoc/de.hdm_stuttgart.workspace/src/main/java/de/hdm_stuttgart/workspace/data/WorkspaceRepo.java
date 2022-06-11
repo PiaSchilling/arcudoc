@@ -82,13 +82,21 @@ public class WorkspaceRepo {
         List<InvitationRequest> invitationRequests = members.stream()
                 .map(m -> new InvitationRequest(projectId,m)).toList();
 
-        Call<Void> call = supabaseRestClient.createNewProjectInvitation(
+       /* Call<Void> call = supabaseRestClient.createNewProjectInvitationMergeDuplicates(
                 ApiConstants.API_KEY,
                 ApiConstants.BEARER_KEY,
                 "application/json",
-                "resolution=merge-duplicates",
+                "resolution=merge-duplicates,",
                 invitationRequests,
                 "member_mail,project_id"
+        );*/
+
+        Call<Void> call = supabaseRestClient.createNewProjectInvitationReturnMinimal(
+                ApiConstants.API_KEY,
+                ApiConstants.BEARER_KEY,
+                "application/json",
+                "return=minimal,",
+                invitationRequests
         );
 
         call.enqueue(new Callback<Void>() {
