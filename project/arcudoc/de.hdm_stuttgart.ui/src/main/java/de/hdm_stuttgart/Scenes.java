@@ -7,7 +7,8 @@ public enum Scenes {
     PROJECT("/fxml/project-screen.fxml"),
     CREATE_PROJECT("/fxml/workspace-projectoption-screen.fxml"),
     INVITATION_CELL("/fxml/project-invitation-cell.fxml"),
-    PROJECT_CELL("/fxml/project-cell.fxml");
+    PROJECT_CELL("/fxml/project-cell.fxml"),
+    USER_CELL("/fxml/addedUser-cell.fxml");
 
     private final String path;
 

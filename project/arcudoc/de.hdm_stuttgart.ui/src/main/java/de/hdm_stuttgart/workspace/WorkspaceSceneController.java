@@ -17,7 +17,7 @@ import javafx.scene.shape.Rectangle;
 
 import java.util.Optional;
 
-public class WorkspaceSceneController implements CellClickHandler {
+public class WorkspaceSceneController implements WorkspaceCellClickHandler {
 
     private final IWorkspace workspace;
 
