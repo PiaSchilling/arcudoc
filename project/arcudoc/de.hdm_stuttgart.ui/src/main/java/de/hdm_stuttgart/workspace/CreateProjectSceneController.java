@@ -11,9 +11,10 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.VBox;
 
 
-public class CreateProjectSceneController {
+public class CreateProjectSceneController implements CreateProjectCellClickHandler{
 
     private final ICreateProject createProject;
 
@@ -49,8 +50,8 @@ public class CreateProjectSceneController {
     @FXML
     private ImageView logo; //todo can be removed?
 
-    @FXML
-    private ListView<String> memberList;
+   @FXML
+    private  VBox membersVBox;
 
     @FXML
     private ComboBox<String> roleComboBox;
@@ -101,14 +102,21 @@ public class CreateProjectSceneController {
             //todo show error
         }else{
             String projectRole = roleComboBox.getValue();
-            memberList.getItems().add(memberMail);
             String actionResponse = createProject.onAddMemberClicked(memberMail,jobLabel,projectRole);
-            //todo show actionResponse to user
-            //todo add member item
+
+            if(actionResponse.equals("Member added")){
+                System.out.println(memberMail);
+                UserCellComponent userCellComponent = new UserCellComponent(memberMail,this);
+                membersVBox.getChildren().add(userCellComponent);
+            }else{
+                //todo show error
+            }
+
         }
     }
 
-
-
-
+    @Override
+    public void onRemoveUserClicked() {
+        //todo implement me
+    }
 }

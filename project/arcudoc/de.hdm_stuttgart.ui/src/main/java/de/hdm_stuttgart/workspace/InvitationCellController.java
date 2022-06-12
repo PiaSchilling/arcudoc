@@ -2,7 +2,6 @@ package de.hdm_stuttgart.workspace;
 
 import com.google.inject.Inject;
 import de.hdm_stuttgart.workspace.service.IInvitationResponse;
-import de.hdm_stuttgart.workspace.service.IWorkspace;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
@@ -10,10 +9,10 @@ import javafx.scene.image.ImageView;
 public class InvitationCellController {
 
     private final IInvitationResponse invitationResponse;
-    private final CellClickHandler cellClickHandler; // "parent" scene which is responsible for handling actions
+    private final WorkspaceCellClickHandler cellClickHandler; // "parent" scene which is responsible for handling actions
 
     @Inject
-    public InvitationCellController(IInvitationResponse invitationResponse, CellClickHandler cellClickHandler) {
+    public InvitationCellController(IInvitationResponse invitationResponse, WorkspaceCellClickHandler cellClickHandler) {
         this.invitationResponse = invitationResponse;
         this.cellClickHandler = cellClickHandler;
     }

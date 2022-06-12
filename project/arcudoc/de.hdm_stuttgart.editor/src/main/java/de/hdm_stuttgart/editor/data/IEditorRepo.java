@@ -1,8 +1,8 @@
 package de.hdm_stuttgart.editor.data;
 
-import de.hdm_stuttgart.editor.model.HtmlResponse;
+import javafx.beans.property.StringProperty;
 
 public interface IEditorRepo {
     void fetchMarkDown(String textToRender);
-    HtmlResponse getMarkdownString();
+    StringProperty getHtmlStringProperty();
 }

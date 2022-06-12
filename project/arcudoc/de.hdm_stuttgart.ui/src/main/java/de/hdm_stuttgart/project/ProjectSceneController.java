@@ -2,7 +2,7 @@ package de.hdm_stuttgart.project;
 
 import com.google.inject.Inject;
 import de.hdm_stuttgart.docu.service.IDocu;
-import de.hdm_stuttgart.editor.integration.EditorState;
+import de.hdm_stuttgart.editor.service.EditorState;
 import de.hdm_stuttgart.editor.service.IEditor;
 import javafx.application.Platform;
 import javafx.beans.property.StringProperty;

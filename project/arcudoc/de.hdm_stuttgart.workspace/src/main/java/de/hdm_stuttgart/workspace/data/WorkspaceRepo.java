@@ -23,6 +23,7 @@ public class WorkspaceRepo {
     private static final Logger log = LogManager.getLogger(WorkspaceRepo.class);
     private final SupabaseRestClient supabaseRestClient = ServiceProvider.getSupabaseRestClient(); //todo inject
 
+    // observable properties
     private final ListProperty<InvitationResponse> projectInvitationsProperty = new SimpleListProperty<>();
     private final ListProperty<MemberProjectResponse> memberProjectsProperty = new SimpleListProperty<>();
     private final ObjectProperty<NetworkStatus> networkStatusObjectProperty = new SimpleObjectProperty<>();
@@ -74,6 +75,7 @@ public class WorkspaceRepo {
     /**
      * calls corresponding api endpoints to invite a member to a project
      * if member is alreay invited to the project, invitation will be replaced by a new one
+     *
      * @param members list of members which should be invited
      * @param projectId id of the project the members should be invited to
      */
@@ -82,13 +84,12 @@ public class WorkspaceRepo {
         List<InvitationRequest> invitationRequests = members.stream()
                 .map(m -> new InvitationRequest(projectId,m)).toList();
 
-        Call<Void> call = supabaseRestClient.createNewProjectInvitation(
+        Call<Void> call = supabaseRestClient.createNewProjectInvitationReturnMinimal(
                 ApiConstants.API_KEY,
                 ApiConstants.BEARER_KEY,
                 "application/json",
-                "resolution=merge-duplicates",
-                invitationRequests,
-                "member_mail,project_id"
+                "return=minimal,",
+                invitationRequests
         );
 
         call.enqueue(new Callback<Void>() {
@@ -149,6 +150,7 @@ public class WorkspaceRepo {
     /**
      * calls related methods for accepting a project invitation:
      * get the invitation, add the currently authenticated user to project-members and finally delete the open project invitation
+     *
      * @param projectId the id of the project the invitation should be accepted for
      */
     public void respondProjectInvitation(int projectId, boolean isAccepted){ //todo this should be moved to supabase (can be handled with trigger)
@@ -232,6 +234,7 @@ public class WorkspaceRepo {
 
     /**
      * call corresponding api endpoints to add a specific member to a specific project
+     *
      * @param projectId the id of the project where the member should be added
      * @param projectMember the project member which should be added
      */
