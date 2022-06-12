@@ -102,8 +102,6 @@ public class CreateProjectSceneController implements CreateProjectCellClickHandl
             //todo show error
         }else{
             String projectRole = roleComboBox.getValue();
-           // memberList.getItems().add(memberMail);
-
             String actionResponse = createProject.onAddMemberClicked(memberMail,jobLabel,projectRole);
 
             if(actionResponse.equals("Member added")){
@@ -119,6 +117,6 @@ public class CreateProjectSceneController implements CreateProjectCellClickHandl
 
     @Override
     public void onRemoveUserClicked() {
-
+        //todo implement me
     }
 }
