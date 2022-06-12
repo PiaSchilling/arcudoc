@@ -48,6 +48,12 @@
 /* searchbar */
 .searchbar{
     -fx-background-color: transparent;
+    -fx-text-fill: white;
+    -fx-font-family: "Poppins";
+}
+.searchbar:focused{
+    -fx-background-color: #3f3b46;
+    -fx-text-fill: white;
 }
 
 .searchbar-container{

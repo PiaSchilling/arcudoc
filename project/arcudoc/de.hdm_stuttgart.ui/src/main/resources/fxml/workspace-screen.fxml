@@ -43,7 +43,7 @@
                   <Image url="@/images/searchIcon.png" />
                </image>
             </ImageView>
-            <TextField fx:id="projectsSearchbar" prefHeight="45.0" prefWidth="994.0" />
+            <TextField fx:id="projectsSearchbar" prefHeight="45.0" prefWidth="994.0" styleClass="searchbar" stylesheets="@../styles/workspace-screen.css" />
          </children>
          <padding>
             <Insets left="30.0" />
