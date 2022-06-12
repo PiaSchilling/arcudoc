@@ -84,8 +84,7 @@
 }
 
 .project-invitation-cell{
-    -fx-background-color: #2B2934;
-    -fx-stroke: #969597;
+    -fx-background-color: transparent;
     -fx-background-radius: 15px;
 }
 
