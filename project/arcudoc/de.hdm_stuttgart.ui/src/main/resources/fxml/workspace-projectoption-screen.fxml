@@ -6,8 +6,6 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
@@ -25,7 +23,7 @@
             <VBox alignment="CENTER_LEFT" prefHeight="60.0" prefWidth="230.0" spacing="5.0">
                <children>
                   <Label fx:id="userNameLabel" styleClass="user-name" text="user name" textFill="WHITE" />
-                  <Label fx:id="userMailLabel" styleClass="user-subdescription" text="useremail.com" textFill="WHITE" />
+                  <Label fx:id="userMailLabel" styleClass="user-subdescription" text="useremail@mail.com" textFill="WHITE" />
                </children>
             </VBox>
          </children>
@@ -68,7 +66,7 @@
             <String fx:value="h2" />
          </styleClass>
       </Button>
-      <Label layoutX="861.0" layoutY="604.0" prefHeight="32.0" prefWidth="165.0" styleClass="h3" text="hinzugefügte Mitglieder:" />
+      <Label layoutX="861.0" layoutY="604.0" prefHeight="32.0" prefWidth="303.0" styleClass="h2" text="hinzugefügte Mitglieder:" />
       <Button fx:id="createProjectButton" layoutX="1172.0" layoutY="856.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="300.0" text="Projekt anlegen">
          <styleClass>
             <String fx:value="button1" />
@@ -80,15 +78,11 @@
             <String fx:value="comboboxbase" />
             <String fx:value="h2" />
          </styleClass></ComboBox>
-      <ImageView fx:id="projectAvatar" fitHeight="200.0" fitWidth="200.0" layoutX="861.0" layoutY="235.0" pickOnBounds="true" preserveRatio="true" styleClass="projectAvatar">
-         <image>
-            <Image url="/images/default-userImage.jpg" />
-         </image>
-      </ImageView>
-      <ScrollPane layoutX="861.0" layoutY="643.0">
+      <ScrollPane layoutX="861.0" layoutY="643.0" styleClass="scrollpane">
          <content>
-            <VBox fx:id="membersVBox" prefHeight="260.0" prefWidth="238.0" />
+            <VBox fx:id="membersVBox" prefHeight="260.0" prefWidth="238.0" styleClass="scrollpane" stylesheets="/styles/workspace-projectoption-screen.css" />
          </content>
       </ScrollPane>
+      <Circle fx:id="userAvatar1" centerX="1172.0" centerY="21.0" fill="#67717980" layoutX="-204.0" layoutY="315.0" radius="107.0" stroke="TRANSPARENT" strokeType="INSIDE" styleClass="userAvatar" />
    </children>
 </AnchorPane>

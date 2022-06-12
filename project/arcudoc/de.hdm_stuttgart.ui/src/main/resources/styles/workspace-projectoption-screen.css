@@ -25,7 +25,7 @@
 }
 
 .userAvatar{
-    -fx-fill: "default-userImage.jpg";
+    -fx-background-color: none;
 }
 
 .projectAvatar{
@@ -48,7 +48,8 @@
 }
 
 .user-subdescription{
-    -fx-font-family: 'Poppins SemiBold';
+    -fx-font-family: 'Poppins';
+    -fx-font-weight: 300;
     -fx-font-size: 16px;
     -fx-line-height: 24px;
     -fx-text-fill: #969597;
@@ -78,11 +79,12 @@
 }
 
 
-/* searchbar */
+/* textfield */
 .textfield{
     -fx-background-color: #2B2934;
     -fx-background-radius: 15px;
-
+    -fx-text-fill: white;
+    -fx-font-family: "Poppins";
 }
 
 
