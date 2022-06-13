@@ -1,7 +1,7 @@
 module workspace {
     exports de.hdm_stuttgart.workspace.service;
     exports de.hdm_stuttgart.workspace.guice;
-    exports de.hdm_stuttgart.workspace.integration;
+    //exports de.hdm_stuttgart.workspace.integration;
 
     requires de.hdm.stuttgart.api;
 
@@ -14,6 +14,8 @@ module workspace {
     requires com.google.gson;
     requires javafx.fxml;
     requires javafx.base;
+    requires annotations;
+    //requires org.mockito;
 
     opens de.hdm_stuttgart.workspace.model to com.google.gson;
     exports de.hdm_stuttgart.workspace.data to com.google.guice;
