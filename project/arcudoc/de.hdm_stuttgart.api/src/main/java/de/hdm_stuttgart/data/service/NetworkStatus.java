@@ -6,10 +6,14 @@ package de.hdm_stuttgart.data.service;
  */
 public enum NetworkStatus {
 
+    // - - - general - - -
     SUCCESS("-"),
     FAIL("-"),
     LOADING("-"),
-    DEFAULT("-");
+    DEFAULT("-"),
+
+    // - - - authentication - - -
+    AUTH_SUCCESS("Authentication successful");
 
     private String networkMessage;
 

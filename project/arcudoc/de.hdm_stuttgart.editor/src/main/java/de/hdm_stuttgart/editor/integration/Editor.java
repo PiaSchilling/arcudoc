@@ -1,16 +1,16 @@
 package de.hdm_stuttgart.editor.integration;
 
 import com.google.inject.Inject;
+import de.hdm_stuttgart.editor.service.EditorState;
 import de.hdm_stuttgart.editor.service.IEditor;
 import javafx.beans.property.StringProperty;
 
 public class Editor implements IEditor {
 
     private EditorState editorState = EditorState.VIEW;
-    private EditorController editorController;
+    private final EditorController editorController;
 
     private final StringProperty htmlStringProperty;
-    private String markdownInput = "";
 
     @Inject
     public Editor(EditorController editorController) {
@@ -23,10 +23,6 @@ public class Editor implements IEditor {
     public void onSaveButtonClicked() {
         editorState = EditorState.VIEW;
 
-    }
-
-    public void setMarkdownInput(String markdownInput){
-        this.markdownInput = markdownInput;
     }
 
     @Override

@@ -1,6 +1,5 @@
 package de.hdm_stuttgart.editor.service;
 
-import de.hdm_stuttgart.editor.integration.EditorState;
 import javafx.beans.property.StringProperty;
 
 public interface IEditor {
@@ -15,5 +14,4 @@ public interface IEditor {
 
     StringProperty getHtmlStringProperty();
 
-    void setMarkdownInput(String markdownInput);
 }

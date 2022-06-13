@@ -1,6 +1,7 @@
 package de.hdm_stuttgart.workspace;
 
 import com.google.inject.Inject;
+import de.hdm_stuttgart.navigation.NavigationController;
 import de.hdm_stuttgart.workspace.service.ICreateProject;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -10,9 +11,10 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.VBox;
 
 
-public class CreateProjectSceneController {
+public class CreateProjectSceneController implements CreateProjectCellClickHandler{
 
     private final ICreateProject createProject;
 
@@ -48,8 +50,8 @@ public class CreateProjectSceneController {
     @FXML
     private ImageView logo; //todo can be removed?
 
-    @FXML
-    private ListView<String> memberList;
+   @FXML
+    private  VBox membersVBox;
 
     @FXML
     private ComboBox<String> roleComboBox;
@@ -70,6 +72,7 @@ public class CreateProjectSceneController {
      *  defines action for "create Project" click
      */
     private void onCreateProjectClicked(){
+        System.out.println("create project clicked");
         String projectTitle = enterTitleTextField.getText();
         String projectDescription = enterDescriptionTextField.getText();
 
@@ -79,6 +82,7 @@ public class CreateProjectSceneController {
             //todo show error
         }else{
             createProject.onCreateProjectClicked(projectTitle,projectDescription);
+            NavigationController.getINSTANCE().showWorkspaceScene();
         }
     }
 
@@ -86,7 +90,7 @@ public class CreateProjectSceneController {
      * defines action for "add Member" click
      */
     private void onAddMemberClicked(){
-
+        System.out.println("Add member clicked");
         String memberMail = enterMailTextField.getText();
         String jobLabel = enterLabelTextField.getText();
 
@@ -98,13 +102,21 @@ public class CreateProjectSceneController {
             //todo show error
         }else{
             String projectRole = roleComboBox.getValue();
-            memberList.getItems().add(memberMail);
             String actionResponse = createProject.onAddMemberClicked(memberMail,jobLabel,projectRole);
-            //todo show actionResponse to user
+
+            if(actionResponse.equals("Member added")){
+                System.out.println(memberMail);
+                UserCellComponent userCellComponent = new UserCellComponent(memberMail,this);
+                membersVBox.getChildren().add(userCellComponent);
+            }else{
+                //todo show error
+            }
+
         }
     }
 
-
-
-
+    @Override
+    public void onRemoveUserClicked() {
+        //todo implement me
+    }
 }

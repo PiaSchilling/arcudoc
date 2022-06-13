@@ -1,6 +1,7 @@
 package de.hdm_stuttgart.workspace;
 
 import com.google.inject.Inject;
+import de.hdm_stuttgart.navigation.NavigationController;
 import de.hdm_stuttgart.workspace.service.IInvitationResponse;
 import de.hdm_stuttgart.workspace.service.IMemberProjectResponse;
 import de.hdm_stuttgart.workspace.service.IWorkspace;
@@ -14,12 +15,9 @@ import javafx.scene.layout.VBox;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
 
-import java.util.Arrays;
-import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
-public class WorkspaceSceneController implements CellClickHandler {
+public class WorkspaceSceneController implements WorkspaceCellClickHandler {
 
     private final IWorkspace workspace;
 
@@ -64,6 +62,9 @@ public class WorkspaceSceneController implements CellClickHandler {
 
         //show the users project invitations
         workspace.getProjectInvitationsProperty().addListener((observable, oldValue, newValue) -> {
+
+            Platform.runLater(() -> setInvitationContainerHeight(newValue.size()));
+
             for(IInvitationResponse invitation : newValue){
                 InvitationCellComponent invitationCell = new InvitationCellComponent(invitation,this);
                 Platform.runLater(() -> invitationCellVBox.getChildren().add(invitationCell));
@@ -73,37 +74,25 @@ public class WorkspaceSceneController implements CellClickHandler {
         //show the users projects he is already a part of
         workspace.getMemberProjectsProperty().addListener((observable, oldValue, newValue) -> {
 
-            if(oldValue != null){
-                newValue.removeAll(oldValue);
-            }
+            Platform.runLater(() -> {
+                projectCellVBox.getChildren().clear();
+                setProjectContainerHeight(newValue.size());
+            }); //todo can be solved better by filtering the list
 
             for(IMemberProjectResponse memberProject : newValue){
-                ProjectCellComponent projectCell = new ProjectCellComponent(memberProject); //todo prevent duplicate adding of nodes
+                ProjectCellComponent projectCell = new ProjectCellComponent(memberProject);
 
                 Platform.runLater(() -> projectCellVBox.getChildren().add(projectCell));
 
             }
         });
 
-        projectsSearchbar.setOnAction(event -> onProjectSearchBarClicked());
-        createProjectButton.setOnMouseClicked(event -> onCreateProjectClicked());
+        projectsSearchbar.setOnAction(event -> {});//todo implement searchbar
+        createProjectButton.setOnMouseClicked(event -> NavigationController.getINSTANCE().showCreateProjectScene());
 
         userNameLabel.setText(workspace.getUserName());
         userMailLabel.setText(workspace.getUserMail());
 
-    }
-
-    private void onProjectSearchBarClicked(){
-        workspace.onProjectSearchbarClicked();
-        System.out.println("Searchbar clicked");
-    }
-
-
-    /**
-     * defines action for click on "createProject"
-     */
-    private void onCreateProjectClicked(){
-        workspace.onCreateProjectClicked();
     }
 
 
@@ -121,5 +110,23 @@ public class WorkspaceSceneController implements CellClickHandler {
                 .filter(invitationCellComponent -> invitationCellComponent.getCellId() == projectId)
                 .findAny();
         componentOptional.ifPresent(invitationCellComponent -> invitationCellVBox.getChildren().removeAll(invitationCellComponent));
+    }
+
+    /**
+     * auto compute the height of the vbox to enable scrolling if many cells are added
+     * @param projectsCount the number of cells going to be displayed in the box
+     */
+    private void setProjectContainerHeight(int projectsCount){
+        double height = projectsCount * 175;
+        this.projectCellVBox.setPrefHeight(height);
+    }
+
+    /**
+     * auto compute the height of the vbox to enable scrolling if many cells are added
+     * @param invitationsCount the number of cells going to be displayed in the box
+     */
+    private void setInvitationContainerHeight(int invitationsCount){
+        double height = invitationsCount * 175;
+        this.invitationCellVBox.setPrefHeight(height); //todo add spacing between cells
     }
 }

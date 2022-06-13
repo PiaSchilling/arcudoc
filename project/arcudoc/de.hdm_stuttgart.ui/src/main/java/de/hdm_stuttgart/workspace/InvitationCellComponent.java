@@ -2,7 +2,6 @@ package de.hdm_stuttgart.workspace;
 
 import de.hdm_stuttgart.Scenes;
 import de.hdm_stuttgart.workspace.service.IInvitationResponse;
-import de.hdm_stuttgart.workspace.service.IWorkspace;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.layout.AnchorPane;
@@ -13,14 +12,14 @@ public class InvitationCellComponent extends AnchorPane {
 
     private final int cellId; //cellId equals projectId of the invitation
 
-    public InvitationCellComponent(IInvitationResponse invitationResponse,CellClickHandler cellClickHandler) {
+    public InvitationCellComponent(IInvitationResponse invitationResponse, WorkspaceCellClickHandler workspaceCellClickHandler) {
         super();
 
         this.cellId = invitationResponse.getProjectId();
 
         try{
             FXMLLoader loader = new FXMLLoader(getClass().getResource(Scenes.INVITATION_CELL.getPath()));
-            InvitationCellController invitationCellController = new InvitationCellController(invitationResponse, cellClickHandler);
+            InvitationCellController invitationCellController = new InvitationCellController(invitationResponse, workspaceCellClickHandler);
             loader.setController(invitationCellController);
             Node node = loader.load();
             this.getChildren().add(node);
