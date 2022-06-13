@@ -2,8 +2,10 @@ package de.hdm_stuttgart.project;
 
 import com.google.inject.Inject;
 import de.hdm_stuttgart.docu.service.IDocu;
+import de.hdm_stuttgart.docu.service.ITemplateResponse;
 import de.hdm_stuttgart.editor.service.EditorState;
 import de.hdm_stuttgart.editor.service.IEditor;
+import de.hdm_stuttgart.workspace.service.IWorkspace;
 import javafx.application.Platform;
 import javafx.beans.property.StringProperty;
 import javafx.fxml.FXML;
@@ -18,12 +20,16 @@ import javafx.scene.web.WebView;
 public class ProjectSceneController {
 
 
-
     private IEditor editor;
     private IDocu docu;
+    private ITemplateResponse template;
     private StringProperty markdownStringProperty;
 
+
+
+
     @Inject
+
     public ProjectSceneController(IEditor editor, IDocu docu) {
         this.editor = editor;
         this.docu = docu;
@@ -265,10 +271,11 @@ public class ProjectSceneController {
     // - - - - docu logic - - - - -
 
 
-
     public void onLogoCLicked() {
 
         //TODO open project Overview
+
+        docu.fetchTemplate();
 
     }
 
@@ -289,8 +296,6 @@ public class ProjectSceneController {
         subchapterNumber.setText("01.1");
 
     }
-
-
 
 
     public void onQualitaetszieleClicked() {
@@ -354,6 +359,7 @@ public class ProjectSceneController {
         subchapterTitle.setText(null);
         subchapterNumber.setText(null);
     }
+
     public void onFachlicherKontextClicked() {
 
         chapterTitle.setText("Kontextabgrenzung");
