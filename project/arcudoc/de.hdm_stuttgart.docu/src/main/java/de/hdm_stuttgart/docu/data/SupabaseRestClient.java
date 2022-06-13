@@ -15,6 +15,6 @@ public interface SupabaseRestClient {
             @Header("apikey") String apikey,
             @Header("Authorization") String bearerToken,
             @Query("select") String selectFilter,
-            @Query("project_id") String projectId
+            @Query("id") String projectId
     );
 }
