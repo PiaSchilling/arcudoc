@@ -24,7 +24,7 @@ public class Docu implements IDocu {
 
     @Override
     public void onAufgabenstellungClicked() {
-        controller.printTest();
+
     }
 
     @Override
@@ -134,6 +134,13 @@ public class Docu implements IDocu {
 
     @Override
     public void onGlossarClicked() {
+
+    }
+
+    @Override
+    public void fetchTemplate(){
+
+        controller.getTemplateResponseListProperty();
 
     }
 }
