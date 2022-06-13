@@ -15,5 +15,4 @@ public interface IEditor {
 
     StringProperty getHtmlStringProperty();
 
-    void setMarkdownInput(String markdownInput);
 }

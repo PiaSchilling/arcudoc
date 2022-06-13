@@ -7,10 +7,9 @@ import javafx.beans.property.StringProperty;
 public class Editor implements IEditor {
 
     private EditorState editorState = EditorState.VIEW;
-    private EditorController editorController;
+    private final EditorController editorController;
 
     private final StringProperty htmlStringProperty;
-    private String markdownInput = "";
 
     @Inject
     public Editor(EditorController editorController) {
@@ -25,9 +24,6 @@ public class Editor implements IEditor {
 
     }
 
-    public void setMarkdownInput(String markdownInput){
-        this.markdownInput = markdownInput;
-    }
 
     @Override
     public void onTextFieldClicked() {
