@@ -11,11 +11,11 @@ import org.apache.logging.log4j.Logger;
 public class LoginController {
 
     private static final Logger log = LogManager.getLogger(LoginController.class);
-    private final String authBaseUrl = ApiConstants.SUPABASE_AUTH_URL_PROVIDER;
 
-    private final PortListener portListener = new PortListener();
+    private final PortListener portListener = new PortListener(); //todo inject
 
     public String getAuthUrl(AuthProvider provider) {
+        String authBaseUrl = ApiConstants.SUPABASE_AUTH_URL_PROVIDER;
         return authBaseUrl + provider.toString().toLowerCase();
     }
 
