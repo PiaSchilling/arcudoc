@@ -2,6 +2,7 @@ package de.hdm_stuttgart.docu.integration;
 
 import com.google.inject.Inject;
 import de.hdm_stuttgart.docu.service.IDocu;
+import de.hdm_stuttgart.docu.service.ITemplateResponse;
 
 public class Docu implements IDocu {
 
@@ -138,9 +139,8 @@ public class Docu implements IDocu {
     }
 
     @Override
-    public void fetchTemplate(){
+    public ITemplateResponse fetchTemplate(){
 
-        controller.getTemplateResponseListProperty();
-
+       return controller.getTemplateResponseListProperty();
     }
 }
