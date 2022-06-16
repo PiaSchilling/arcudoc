@@ -2,7 +2,7 @@ package de.hdm_stuttgart.docu.service;
 
 public interface IDocu {
 
-    void fetchTemplate();
+    ITemplateResponse fetchTemplate();
 
     String getProjectName();
 
