@@ -12,6 +12,7 @@ module gui {
     requires de.hdm.stuttgart.docu;
     requires java.prefs;
     requires de.hdm.stuttgart.api;
+    requires com.google.gson;
 
     uses com.google.inject.AbstractModule;
 
@@ -19,6 +20,7 @@ module gui {
     opens de.hdm_stuttgart.login to javafx.fxml, javafx.graphics, javafx.controls;
     opens de.hdm_stuttgart.workspace to javafx.fxml, javafx.graphics, javafx.controls;
     opens de.hdm_stuttgart.project to javafx.fxml, javafx.graphics, javafx.controls;
+
 
     exports de.hdm_stuttgart.login to javafx.fxml, javafx.graphics, javafx.controls;
     exports de.hdm_stuttgart;
