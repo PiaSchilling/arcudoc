@@ -5,7 +5,6 @@ import de.hdm_stuttgart.docu.service.IDocu;
 import de.hdm_stuttgart.docu.service.ITemplateResponse;
 import de.hdm_stuttgart.editor.service.EditorState;
 import de.hdm_stuttgart.editor.service.IEditor;
-import de.hdm_stuttgart.workspace.service.IWorkspace;
 import javafx.application.Platform;
 import javafx.beans.property.StringProperty;
 import javafx.fxml.FXML;
@@ -165,6 +164,8 @@ public class ProjectSceneController {
             setHtmlToWebView(newValue);
         });
 
+
+
         logo.setOnMouseClicked(event -> onLogoCLicked());
         titleEinfuehrungUndZiele.setOnMouseClicked(event -> onEinfuehrungUndZieleClicked());
         titleRandbedingungen.setOnMouseClicked(event -> onRandbedingungenClicked());
@@ -218,6 +219,9 @@ public class ProjectSceneController {
 
         webView.getEngine().setUserStyleSheetLocation(getClass().getResource("/styles/webview.css").toString());
 
+        ITemplateResponse templateResponse = docu.fetchTemplate();
+        editor.onEditButtonClicked(templateResponse.getTemplate().get(0).getAsJsonObject().get("1.0_Einführung-und-Ziele").getAsString());
+        System.out.println(templateResponse.getTemplate().get(0).getAsJsonObject().get("1.0_Einführung-und-Ziele").getAsString());
     }
 
     private void onEditButtonClicked() {
@@ -275,7 +279,7 @@ public class ProjectSceneController {
 
         //TODO open project Overview
 
-        docu.fetchTemplate();
+
 
     }
 
