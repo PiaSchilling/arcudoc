@@ -31,8 +31,8 @@ public class DocuController {
         templateResponseListProperty.setValue(observableList);
     }
 
-    public ListProperty<ITemplateResponse> getTemplateResponseListProperty() {
-        docuRepo.getTemplate();
-        return templateResponseListProperty;
+    public ITemplateResponse getTemplateResponse() {
+       // docuRepo.getTemplate();
+        return docuRepo.getTemplate();
     }
 }
