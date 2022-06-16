@@ -2,9 +2,10 @@ package de.hdm_stuttgart.docu.data;
 
 import de.hdm_stuttgart.data.service.ApiConstants;
 import de.hdm_stuttgart.docu.model.*;
+import de.hdm_stuttgart.docu.service.ITemplateResponse;
 import javafx.beans.property.ListProperty;
 import javafx.beans.property.SimpleListProperty;
-import javafx.collections.ObservableList;
+import javafx.collections.FXCollections;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import retrofit2.Call;
@@ -13,7 +14,10 @@ import retrofit2.Response;
 
 
 import java.util.List;
-
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.Future;
+import java.util.concurrent.FutureTask;
 
 
 public class DocuRepo {
@@ -29,8 +33,9 @@ public class DocuRepo {
     /**
      * calls corresponding api endpoints for getting template text for Chapter (based on the project ID)
      */
-    public void getTemplate() {
+    public ITemplateResponse getTemplate() {
 
+        CompletableFuture<ITemplateResponse> futureTask = new CompletableFuture<>();
         Call<List<TemplateResponse>> call = supabaseRestClient.getTemplate(
                 ApiConstants.API_KEY,
                 ApiConstants.BEARER_KEY,
@@ -45,8 +50,9 @@ public class DocuRepo {
             public void onResponse(Call<List<TemplateResponse>> call, Response<List<TemplateResponse>> response) {
                 if (response.isSuccessful()) {
                     log.debug(response.code() + " Template has been loaded");
-                   template = response.body();
-                    templateResponseProperty.setValue((ObservableList<TemplateResponse>) template);
+                    template = response.body();
+                    // templateResponseProperty.setValue(FXCollections.observableList(template));
+                    futureTask.complete((ITemplateResponse) template.get(0));
 
                 } else {
                     log.error(response.code() + response.message() + " Template was not loaded ");
@@ -60,7 +66,13 @@ public class DocuRepo {
             }
         });
 
-
+        try {
+            return futureTask.get();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        } return null;
     }
 
     public ListProperty<TemplateResponse> getTemplateResponseProperty() {
