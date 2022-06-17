@@ -35,4 +35,9 @@ public class DocuController {
        // docuRepo.getTemplate();
         return docuRepo.getTemplate();
     }
+
+    public void setContent (TemplateResponse templateResponse){
+
+        docuRepo.setContent(templateResponse);
+    }
 }

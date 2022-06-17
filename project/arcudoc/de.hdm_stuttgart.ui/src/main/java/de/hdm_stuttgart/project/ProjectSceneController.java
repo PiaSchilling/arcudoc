@@ -684,6 +684,7 @@ public class ProjectSceneController {
 
         templateResponse.getTemplate().get(0).getAsJsonObject().remove(property);
         templateResponse.getTemplate().get(0).getAsJsonObject().addProperty(property, value);
+        docu.setContent(templateResponse);
 
     }
 
