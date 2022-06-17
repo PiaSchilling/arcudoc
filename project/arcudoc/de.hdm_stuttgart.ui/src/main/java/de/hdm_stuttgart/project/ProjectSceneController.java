@@ -1,6 +1,5 @@
 package de.hdm_stuttgart.project;
 
-import com.google.gson.JsonObject;
 import com.google.inject.Inject;
 import de.hdm_stuttgart.docu.service.IDocu;
 import de.hdm_stuttgart.docu.service.ITemplateResponse;
@@ -24,7 +23,6 @@ public class ProjectSceneController {
 
     private IEditor editor;
     private IDocu docu;
-    private ITemplateResponse template;
     private StringProperty markdownStringProperty;
     private ITemplateResponse templateResponse;
 
@@ -160,9 +158,12 @@ public class ProjectSceneController {
     @FXML
     private Label chapterVerteilungskontext;
 
+    private String save;
+    private String property;
+
 
     public void initialize() {
-        editButton.setOnAction(event -> onEditButtonClicked());
+        editButton.setOnAction(event -> onEditButtonClicked(""));
         markdownStringProperty.addListener((observable, oldValue, newValue) -> {
             setHtmlToWebView(newValue);
         });
@@ -223,9 +224,9 @@ public class ProjectSceneController {
         editor.getEditorState();
 
          templateResponse = docu.fetchTemplate();
-        System.out.println(templateResponse.getTemplate().get(0).getAsJsonObject().get("1.0_Einführung-und-Ziele").getAsString());
+        // System.out.println(templateResponse.getTemplate().get(0).getAsJsonObject().get("1.0_Einführung-und-Ziele").getAsString());
 
-        fillTemplate("1.0_Einführung-und-Ziele");
+        fillWithTemplate("1.0_Einführung-und-Ziele");
 
 
 
@@ -233,10 +234,11 @@ public class ProjectSceneController {
 
     }
 
-    private void onEditButtonClicked() {
+    private void onEditButtonClicked(String property) {
         editor.onEditButtonClicked(textArea.getText());
         setButtonState(editor.getEditorState());
         setEditorArea(editor.getEditorState());
+        //save = textArea.getText();
 
         //TODO Pass content to repo and send it to database
     }
@@ -290,7 +292,7 @@ public class ProjectSceneController {
 
         //TODO open project Overview
 
-
+        saveToTemplate("1.0_Einführung-und-Ziele", textArea.getText());
 
 
     }
@@ -301,7 +303,8 @@ public class ProjectSceneController {
         chapterNumber.setText("01");
         subchapterTitle.setText(null);
         subchapterNumber.setText(null);
-        fillTemplate("1.0_Einführung-und-Ziele");
+        fillWithTemplate("1.0_Einführung-und-Ziele");
+
 
     }
 
@@ -313,7 +316,7 @@ public class ProjectSceneController {
         subchapterTitle.setText("Aufgabenstellung");
         subchapterNumber.setText("01.1");
 
-        fillTemplate("1.1_Aufgabenstellung");
+        fillWithTemplate("1.1_Aufgabenstellung");
     }
 
 
@@ -323,7 +326,8 @@ public class ProjectSceneController {
         chapterNumber.setText("01");
         subchapterTitle.setText("Qualitätsziele");
         subchapterNumber.setText("01.2");
-        fillTemplate("1.2_Qualiteatsziele");
+        fillWithTemplate("1.2_Qualiteatsziele");
+
     }
 
 
@@ -333,7 +337,7 @@ public class ProjectSceneController {
         chapterNumber.setText("01");
         subchapterTitle.setText("Stakeholder");
         subchapterNumber.setText("01.3");
-        fillTemplate("1.3_Stakeholder");
+        fillWithTemplate("1.3_Stakeholder");
     }
 
     public void onRandbedingungenClicked() {
@@ -342,7 +346,7 @@ public class ProjectSceneController {
         chapterNumber.setText("02");
         subchapterTitle.setText(null);
         subchapterNumber.setText(null);
-        fillTemplate("2.0_Randbedingungen");
+        fillWithTemplate("2.0_Randbedingungen");
     }
 
 
@@ -352,7 +356,7 @@ public class ProjectSceneController {
         chapterNumber.setText("02");
         subchapterTitle.setText("Technische Randbedingungen");
         subchapterNumber.setText("02.1");
-        fillTemplate("2.1_Technische-Randbedingungen");
+        fillWithTemplate("2.1_Technische-Randbedingungen");
     }
 
 
@@ -362,7 +366,7 @@ public class ProjectSceneController {
         chapterNumber.setText("02");
         subchapterTitle.setText("Organisatorische Randbedingungen");
         subchapterNumber.setText("02.2");
-        fillTemplate("2.2_Organisatorische-Randbedingungen");
+        fillWithTemplate("2.2_Organisatorische-Randbedingungen");
     }
 
 
@@ -372,7 +376,7 @@ public class ProjectSceneController {
         chapterNumber.setText("02");
         subchapterTitle.setText("Konventionen");
         subchapterNumber.setText("02.3");
-        fillTemplate("2.3_Konventionen");
+        fillWithTemplate("2.3_Konventionen");
     }
 
 
@@ -382,7 +386,7 @@ public class ProjectSceneController {
         chapterNumber.setText("03");
         subchapterTitle.setText(null);
         subchapterNumber.setText(null);
-        fillTemplate("3.0_Kontextabgrenzug");
+        fillWithTemplate("3.0_Kontextabgrenzug");
     }
 
     public void onFachlicherKontextClicked() {
@@ -391,7 +395,7 @@ public class ProjectSceneController {
         chapterNumber.setText("03");
         subchapterTitle.setText("Fachlicher Kontext");
         subchapterNumber.setText("03.1");
-        fillTemplate("3.1_Fachlicher-Kontext");
+        fillWithTemplate("3.1_Fachlicher-Kontext");
     }
 
 
@@ -401,7 +405,7 @@ public class ProjectSceneController {
         chapterNumber.setText("03");
         subchapterTitle.setText("Verteilungskontext");
         subchapterNumber.setText("03.2");
-        fillTemplate("3.2_Technischer-Verteilungskontexz");
+        fillWithTemplate("3.2_Technischer-Verteilungskontexz");
     }
 
 
@@ -411,7 +415,7 @@ public class ProjectSceneController {
         chapterNumber.setText("04");
         subchapterTitle.setText(null);
         subchapterNumber.setText(null);
-        fillTemplate("4.0_Lösungsstrategien");
+        fillWithTemplate("4.0_Lösungsstrategien");
     }
 
 
@@ -421,7 +425,7 @@ public class ProjectSceneController {
         chapterNumber.setText("05");
         subchapterTitle.setText(null);
         subchapterNumber.setText(null);
-        fillTemplate("5.0_Bausteinsicht");
+        fillWithTemplate("5.0_Bausteinsicht");
     }
 
 
@@ -431,7 +435,7 @@ public class ProjectSceneController {
         chapterNumber.setText("05");
         subchapterTitle.setText("Ebene 1");
         subchapterNumber.setText("05.1");
-        fillTemplate("5.1_Ebene-1");
+        fillWithTemplate("5.1_Ebene-1");
     }
 
 
@@ -441,7 +445,7 @@ public class ProjectSceneController {
         chapterNumber.setText("05");
         subchapterTitle.setText("Ebene 2");
         subchapterNumber.setText("05.2");
-        fillTemplate("5.1_Ebene-1");
+        fillWithTemplate("5.1_Ebene-1");
     }
 
 
@@ -451,7 +455,7 @@ public class ProjectSceneController {
         chapterNumber.setText("06");
         subchapterTitle.setText(null);
         subchapterNumber.setText(null);
-        fillTemplate("6.0_Laufzeitsicht");
+        fillWithTemplate("6.0_Laufzeitsicht");
     }
 
 
@@ -461,7 +465,7 @@ public class ProjectSceneController {
         chapterNumber.setText("06");
         subchapterTitle.setText("Laufzeitszenario 1");
         subchapterNumber.setText("06.1");
-        fillTemplate("6.1_Laufzeitszenario-1");
+        fillWithTemplate("6.1_Laufzeitszenario-1");
     }
 
 
@@ -471,7 +475,7 @@ public class ProjectSceneController {
         chapterNumber.setText("06");
         subchapterTitle.setText("Laufzeitszenario 2");
         subchapterNumber.setText("06.2");
-        fillTemplate("6.1_Laufzeitszenario-1");
+        fillWithTemplate("6.1_Laufzeitszenario-1");
     }
 
 
@@ -481,7 +485,7 @@ public class ProjectSceneController {
         chapterNumber.setText("07");
         subchapterTitle.setText(null);
         subchapterNumber.setText(null);
-        fillTemplate("7.0_Verteilungssicht");
+        fillWithTemplate("7.0_Verteilungssicht");
     }
 
 
@@ -491,7 +495,7 @@ public class ProjectSceneController {
         chapterNumber.setText("07");
         subchapterTitle.setText("Infrastruktur Ebene 1");
         subchapterNumber.setText("07.1");
-        fillTemplate("7.1_Infrastrukur-Ebene-1");
+        fillWithTemplate("7.1_Infrastrukur-Ebene-1");
     }
 
 
@@ -501,7 +505,7 @@ public class ProjectSceneController {
         chapterNumber.setText("07");
         subchapterTitle.setText("Infrastruktur Ebene 2");
         subchapterNumber.setText("07.2");
-        fillTemplate("7.2_Infrastrukur-Ebene-2");
+        fillWithTemplate("7.2_Infrastrukur-Ebene-2");
     }
 
 
@@ -511,7 +515,7 @@ public class ProjectSceneController {
         chapterNumber.setText("08");
         subchapterTitle.setText(null);
         subchapterNumber.setText(null);
-        fillTemplate("8.0_Querschnittliche-Konzepte");
+        fillWithTemplate("8.0_Querschnittliche-Konzepte");
     }
 
 
@@ -521,7 +525,7 @@ public class ProjectSceneController {
         chapterNumber.setText("08");
         subchapterTitle.setText("Fachliche Struktur und Modelle");
         subchapterNumber.setText("08.1");
-        fillTemplate("8.0_Querschnittliche-Konzepte");
+        fillWithTemplate("8.0_Querschnittliche-Konzepte");
     }
 
 
@@ -531,7 +535,7 @@ public class ProjectSceneController {
         chapterNumber.setText("08");
         subchapterTitle.setText("Architektur- und Entwurfsmuster");
         subchapterNumber.setText("08.2");
-        fillTemplate("8.0_Querschnittliche-Konzepte");
+        fillWithTemplate("8.0_Querschnittliche-Konzepte");
     }
 
 
@@ -541,7 +545,7 @@ public class ProjectSceneController {
         chapterNumber.setText("09");
         subchapterTitle.setText(null);
         subchapterNumber.setText(null);
-        fillTemplate("9.0_Entwurfsentscheidung");
+        fillWithTemplate("9.0_Entwurfsentscheidung");
     }
 
 
@@ -551,7 +555,7 @@ public class ProjectSceneController {
         chapterNumber.setText("09");
         subchapterTitle.setText("Entwurfsentscheidung 1");
         subchapterNumber.setText("09.1");
-        fillTemplate("9.1_Entwurfsentscheidung-1");
+        fillWithTemplate("9.1_Entwurfsentscheidung-1");
     }
 
 
@@ -561,7 +565,7 @@ public class ProjectSceneController {
         chapterNumber.setText("09");
         subchapterTitle.setText("Entwurfsentscheidung 2");
         subchapterNumber.setText("09.2");
-        fillTemplate("9.1_Entwurfsentscheidung-1");
+        fillWithTemplate("9.1_Entwurfsentscheidung-1");
     }
 
 
@@ -571,7 +575,7 @@ public class ProjectSceneController {
         chapterNumber.setText("10");
         subchapterTitle.setText(null);
         subchapterNumber.setText(null);
-        fillTemplate("10.1_Qualitätsanforderungen");
+        fillWithTemplate("10.1_Qualitätsanforderungen");
     }
 
 
@@ -581,7 +585,7 @@ public class ProjectSceneController {
         chapterNumber.setText("10");
         subchapterTitle.setText("Qualitätsbaum");
         subchapterNumber.setText("10.1");
-        fillTemplate("10.1_Qualitätsbaum");
+        fillWithTemplate("10.1_Qualitätsbaum");
     }
 
 
@@ -591,7 +595,7 @@ public class ProjectSceneController {
         chapterNumber.setText("10");
         subchapterTitle.setText("Qualitätsszenarien");
         subchapterNumber.setText("10.2");
-        fillTemplate("10.2_Qualitätsszenarien");
+        fillWithTemplate("10.2_Qualitätsszenarien");
     }
 
 
@@ -601,7 +605,7 @@ public class ProjectSceneController {
         chapterNumber.setText("11");
         subchapterTitle.setText(null);
         subchapterNumber.setText(null);
-        fillTemplate("11.0_Risiken-und-technische-Schulden");
+        fillWithTemplate("11.0_Risiken-und-technische-Schulden");
 
     }
 
@@ -612,13 +616,22 @@ public class ProjectSceneController {
         chapterNumber.setText("12");
         subchapterTitle.setText(null);
         subchapterNumber.setText(null);
-        fillTemplate("12.0_Glossar");
+        fillWithTemplate("12.0_Glossar");
     }
 
-    public void fillTemplate(String temp){
+    public void fillWithTemplate(String property){
 
-        setHtmlToWebView(templateResponse.getTemplate().get(0).getAsJsonObject().get(temp).getAsString());
+        setHtmlToWebView(templateResponse.getTemplate().get(0).getAsJsonObject().get(property).getAsString());
+        textArea.setText(templateResponse.getTemplate().get(0).getAsJsonObject().get(property).getAsString());
         setEditorArea(EditorState.VIEW);
+
+
+    }
+
+    public void saveToTemplate(String property, String value){
+
+        templateResponse.getTemplate().get(0).getAsJsonObject().remove(property);
+        templateResponse.getTemplate().get(0).getAsJsonObject().addProperty(property, value);
 
     }
 
