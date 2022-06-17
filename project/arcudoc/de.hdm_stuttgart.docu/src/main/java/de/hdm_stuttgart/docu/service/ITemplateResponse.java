@@ -8,6 +8,8 @@ public interface ITemplateResponse {
 
     String getTitle();
 
+    void setTitle(String test);
+
     void setTemplate(JsonArray template);
 
 }
