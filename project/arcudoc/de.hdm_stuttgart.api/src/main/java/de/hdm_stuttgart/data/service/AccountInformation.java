@@ -1,18 +1,20 @@
 package de.hdm_stuttgart.data.service;
 
-import de.hdm_stuttgart.data.integration.ProfileRepository;
+import de.hdm_stuttgart.data.api.ProfileRepository;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 public class AccountInformation {
 
     private static AccountInformation INSTANCE;
 
     private final ProfileRepository profileRepository = new ProfileRepository(); //todo inject
+    private static final Logger log = LogManager.getLogger(AccountInformation.class);
 
     private String accessToken;
     private String refreshToken;
     private long expiresIn;
     private long tokenTimestamp;
-    private String userMail;
 
     private AccountInformation(){
         //Singleton access
@@ -36,6 +38,7 @@ public class AccountInformation {
 
     public void setRefreshToken(String refreshToken) {
         this.refreshToken = refreshToken;
+        profileRepository.setRefreshTokenToPreferences(refreshToken);
     }
 
     public void setExpiresIn(long expiresIn) {
@@ -49,7 +52,8 @@ public class AccountInformation {
      */
     public String getAccessToken() {
         if(isExpired()){
-            profileRepository.fetchProfile(refreshToken);
+            log.info("Access token expired, fetch new token");
+            profileRepository.fetchProfileSync();
         }
         return accessToken;
     }
@@ -59,10 +63,8 @@ public class AccountInformation {
      * @return true if expired false if not
      */
     private boolean isExpired(){
+        log.debug("token time stamp " + tokenTimestamp + ", expires in " + expiresIn);
         return tokenTimestamp + expiresIn < System.currentTimeMillis();
     }
 
-    public String getUserMail() {
-        return userMail;
-    }
 }

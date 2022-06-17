@@ -1,0 +1,54 @@
+
+
+.pane{
+    -fx-background-color: #19181F;
+}
+
+#logo{
+    -fx-font-family: "Poppins";
+    -fx-font-size: 32px;
+    -fx-font-weight: 700;
+    -fx-background-color: transparent;
+    -fx-text-fill: #FFFFFF;
+
+}
+
+#logo2{
+    -fx-font-family: 'Poppins';
+    -fx-font-weight: 700;
+    -fx-font-size: 32px;
+    -fx-background-color: transparent;
+    -fx-text-fill: #5553E1;
+}
+
+.h1{
+    -fx-font-family: 'Poppins';
+    -fx-font-weight: 700;
+    -fx-font-size: 18px;
+    -fx-text-fill: #FFFFFF;
+
+}
+
+.h2{
+    -fx-font-family: "Poppins";
+    -fx-font-size: 16px;
+    -fx-font-weight: 300;
+    -fx-line-height: 24px;
+    -fx-text-fill: #FFFFFF;
+}
+
+.button1 {
+    -fx-background-color: #9197CB;
+    -fx-background-radius: 30px;
+
+}
+
+
+
+
+
+
+
+
+
+

@@ -1,34 +1,27 @@
 package de.hdm_stuttgart.editor.integration;
 
 import com.google.inject.Inject;
-import de.hdm_stuttgart.editor.data.ChangeListener;
 import de.hdm_stuttgart.editor.data.IEditorRepo;
-import de.hdm_stuttgart.editor.model.HtmlResponse;
-import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
-public class EditorController implements ChangeListener {
+public class EditorController {
 
-    private IEditorRepo editorRepo;
-    private final StringProperty htmlStringProperty;
+    private final IEditorRepo editorRepo;
 
     @Inject
     public EditorController(IEditorRepo editorRepo) {
         this.editorRepo = editorRepo;
-        htmlStringProperty = new SimpleStringProperty("empty");
     }
 
+    /**
+     * calls repo which converts markdown to html
+     * @param textToRender the markdown string which should be converted
+     */
     public void renderMarkdownToHtml(String textToRender){
         editorRepo.fetchMarkDown(textToRender);
     }
 
-    @Override
-    public void htmlReceived(HtmlResponse html) {
-        System.out.println(html.getHtml());
-        htmlStringProperty.setValue(html.getHtml());
-    }
-
     public StringProperty getHtmlStringProperty() {
-        return htmlStringProperty;
+        return editorRepo.getHtmlStringProperty();
     }
 }

@@ -5,6 +5,7 @@ module de.hdm.stuttgart.login {
     requires org.apache.logging.log4j;
     requires jdk.httpserver;
     requires com.google.guice;
+    requires javafx.fxml;
 
 
     //provides de.hdm_stuttgart.login.service.ILogin with de.hdm_stuttgart.login.integration.Login;
