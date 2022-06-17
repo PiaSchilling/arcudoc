@@ -5,7 +5,6 @@ import de.hdm_stuttgart.docu.model.*;
 import de.hdm_stuttgart.docu.service.ITemplateResponse;
 import javafx.beans.property.ListProperty;
 import javafx.beans.property.SimpleListProperty;
-import javafx.collections.FXCollections;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import retrofit2.Call;
@@ -16,8 +15,7 @@ import retrofit2.Response;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutionException;
-import java.util.concurrent.Future;
-import java.util.concurrent.FutureTask;
+
 
 
 public class DocuRepo {
@@ -73,6 +71,20 @@ public class DocuRepo {
         } catch (ExecutionException e) {
             e.printStackTrace();
         } return null;
+    }
+
+    public void setContent(TemplateResponse templateResponse){
+
+        Call<Void> call = supabaseRestClient.setContent(
+                ApiConstants.API_KEY,
+                ApiConstants.BEARER_KEY,
+                "*",
+                "eq." + projectId,
+                templateResponse
+
+        );
+
+
     }
 
     public ListProperty<TemplateResponse> getTemplateResponseProperty() {
