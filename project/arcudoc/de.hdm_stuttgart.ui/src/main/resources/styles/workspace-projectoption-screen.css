@@ -116,6 +116,13 @@
     -fx-line-height: 24px;
 }
 
+.errom{
+    -fx-text-fill: #BE7171;
+    -fx-font-family: 'Poppins';
+    -fx-font-size: 10px;
+    -fx-line-height: 16px;
+}
+
 
 /* buttons */
 .backbutton{
