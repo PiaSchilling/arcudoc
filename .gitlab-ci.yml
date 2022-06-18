@@ -2,11 +2,13 @@ cache:
     paths:
         - .m2/repository #From Slides
 
+image: maven:3.8.5-openjdk-17 
+
 variables:
     MAVEN_OPTS: "-Dmaven.repo.local=$CI_PROJECT_DIR/.m2/repository" #From Slides
 
 before_script:
-  - cd project/arcudoc/de.hdm_stuttgart.ui
+  - cd project/arcudoc #/de.hdm_stuttgart.ui/rest
   
 workflow:
   rules:
@@ -20,17 +22,27 @@ stages:          # List of stages for jobs, and their order of execution
   - test         # Unit-Test werden ausgeführt 
   - deploy       # Projekt wird eingesetzt und JAR Datei gebildet
 
-build-job:       # This job runs in the build stage, which runs first.
+build-login:      
   stage: build
-  image: maven:3.8.5-openjdk-17 # zur Sicherheit ältere Version
+
   script:
+    - cd /de.hdm_stuttgart.login
+    - echo "Compiling the code..."
+    - echo "Compile complete."
+    - "mvn compile"
+
+build-api:      
+  stage: build
+  needs: 
+    - build-login
+  script:
+    - cd /de.hdm_stuttgart.api
     - echo "Compiling the code..."
     - echo "Compile complete."
     - "mvn compile"
 
 unit-test-job:   # This job runs in the test stage.
   stage: test    # It only starts when the job in the build stage completes successfully.
-  image: maven:3.8.5-openjdk-17
   script:
     - echo "Running unit tests"
     - "mvn test"
@@ -38,7 +50,6 @@ unit-test-job:   # This job runs in the test stage.
 
 deploy-job:      # This job runs in the deploy stage.
   stage: deploy  # It only runs when *both* jobs in the test stage complete successfully.
-  image: maven:3.8.5-openjdk-17
   script:
     - echo "Deploying application..."
     - echo "Application successfully deployed."
