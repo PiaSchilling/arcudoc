@@ -69,7 +69,7 @@
             <String fx:value="h2" />
          </styleClass>
       </Button>
-      <Label layoutX="861.0" layoutY="604.0" prefHeight="32.0" prefWidth="165.0" styleClass="h3" text="hinzugefügte Mitglieder:" />
+      <Label layoutX="861.0" layoutY="604.0" prefHeight="32.0" prefWidth="180.0" styleClass="h3" text="hinzugefügte Mitglieder:" />
       <Button fx:id="createProjectButton" layoutX="1172.0" layoutY="856.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="300.0" text="Projekt anlegen">
          <styleClass>
             <String fx:value="button1" />
@@ -86,9 +86,9 @@
             <Image url="@../images/default-userImage.jpg" />
          </image>
       </ImageView>
-      <ScrollPane layoutX="861.0" layoutY="634.0" prefHeight="260.0" prefWidth="270.0">
+      <ScrollPane layoutX="861.0" layoutY="634.0" prefHeight="260.0" prefWidth="300.0">
          <content>
-            <ListView fx:id="memberList" prefHeight="405.0" prefWidth="251.0" styleClass="scrollpane" />
+            <ListView fx:id="memberList" prefHeight="405.0" prefWidth="301.0" styleClass="scrollpane" />
          </content>
       </ScrollPane>
    </children>
