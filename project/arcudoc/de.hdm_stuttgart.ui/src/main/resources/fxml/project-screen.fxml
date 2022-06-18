@@ -21,6 +21,9 @@
          <image>
             <Image url="@/images/logoArcUdoc.png" />
          </image>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
       </ImageView>
       <StackPane layoutX="1201.0" />
       <Label layoutX="1120.0" layoutY="100.0" styleClass="h3" text="Versionsverlauf" />
@@ -30,7 +33,7 @@
          </content>
       </ScrollPane>
       <Polyline fill="CHARTREUSE" layoutX="242.0" layoutY="570.0" points="-140.99508666992188, 229.99993896484375, -242.0, 229.99993896484375, -241.8736572265625, -525.0, -140.9951171875, -444.9861755371094" strokeLineCap="BUTT" strokeType="INSIDE" strokeWidth="0.0" styleClass="user-card" />
-      <VBox layoutX="36.0" layoutY="169.0" spacing="60.0">
+      <VBox layoutX="30.0" layoutY="169.0" prefHeight="258.0" prefWidth="50.0" spacing="60.0">
          <children>
             <VBox alignment="CENTER" spacing="5.0">
                <children>
@@ -41,6 +44,9 @@
                   </ImageView>
                   <Label styleClass="menu-title" text="Doku" />
                </children>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
             </VBox>
             <VBox alignment="CENTER" spacing="5.0">
                <children>
@@ -51,6 +57,9 @@
                   </ImageView>
                   <Label styleClass="menu-title" text="Design" />
                </children>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
             </VBox>
             <VBox alignment="CENTER" spacing="5.0">
                <children>
@@ -61,6 +70,9 @@
                   </ImageView>
                   <Label styleClass="menu-title" text="Team" />
                </children>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
             </VBox>
          </children>
       </VBox>
@@ -361,6 +373,9 @@
                </children>
             </AnchorPane>
          </content>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
       </ScrollPane>
       <Label fx:id="nameOfProject" layoutX="489.0" layoutY="27.0" prefHeight="71.0" prefWidth="394.0" styleClass="subchapter-title" text="Name of project" />
       <AnchorPane fx:id="anchorPane" layoutX="456.0" layoutY="241.0" prefHeight="541.0" prefWidth="632.0" />
@@ -372,6 +387,9 @@
                </image>
             </ImageView>
          </graphic>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
       </Button>
       <Line endX="529.3092041015625" layoutX="557.0" layoutY="219.0" startX="-100.0" stroke="WHITE" strokeWidth="0.5" />
    </children>
