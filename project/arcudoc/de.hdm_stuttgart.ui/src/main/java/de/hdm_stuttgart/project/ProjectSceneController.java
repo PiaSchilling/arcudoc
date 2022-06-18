@@ -20,7 +20,6 @@ public class ProjectSceneController {
 
 
 
-
     private IEditor editor;
     private IDocu docu;
     private StringProperty markdownStringProperty;
@@ -47,6 +46,9 @@ public class ProjectSceneController {
     private WebView webView;
 
     // - - - - docu - - - - -
+    @FXML
+    private Label nameOfProject;
+
     @FXML
     private Label chapterNumber;
 
@@ -162,7 +164,7 @@ public class ProjectSceneController {
 
 
     public void initialize() {
-        editButton.setOnAction(event -> onEditButtonClicked(""));
+        editButton.setOnAction(event -> onEditButtonClicked());
         markdownStringProperty.addListener((observable, oldValue, newValue) -> {
             setHtmlToWebView(newValue);
         });
@@ -201,6 +203,7 @@ public class ProjectSceneController {
         chapterTechnRandbedinungen.setOnMouseClicked(event -> onTechnischeRandbedigungenClicked());
         chapterVerteilungskontext.setOnMouseClicked(event -> onVerteilungskontextClicked());
 
+
         anchorPane.setStyle("-fx-background-color: transparent");
 
         textArea = new TextArea();
@@ -223,16 +226,15 @@ public class ProjectSceneController {
         editor.getEditorState();
 
         templateResponse = docu.fetchTemplate();
+        nameOfProject.setText(templateResponse.getTitle());
         fillWithContent("1.0_Einführung-und-Ziele");
     }
 
-    private void onEditButtonClicked(String property) {
+    private void onEditButtonClicked() {
         editor.onEditButtonClicked(textArea.getText());
         setButtonState(editor.getEditorState());
         setEditorArea(editor.getEditorState());
 
-
-        //TODO Pass content to repo and send it to database
     }
 
     /**
@@ -283,6 +285,8 @@ public class ProjectSceneController {
     public void onLogoCLicked() {
 
         //TODO open project Overview
+
+
 
     }
 
