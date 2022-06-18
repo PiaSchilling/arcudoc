@@ -29,7 +29,7 @@ build-api:
     - cd de.hdm_stuttgart.api/
     - echo "Compiling the code..."
     - echo "Compile complete."
-    - "mvn compile"
+    - "mvn $MAVEN_OPTS compile"
 
 build-login:      
   stage: build
