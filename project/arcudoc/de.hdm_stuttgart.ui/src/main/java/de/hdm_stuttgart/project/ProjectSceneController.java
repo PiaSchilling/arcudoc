@@ -231,8 +231,6 @@ public class ProjectSceneController {
         setButtonState(editor.getEditorState());
         setEditorArea(editor.getEditorState());
 
-
-        //TODO Pass content to repo and send it to database
     }
 
     /**
@@ -283,6 +281,8 @@ public class ProjectSceneController {
     public void onLogoCLicked() {
 
         //TODO open project Overview
+
+
 
     }
 
