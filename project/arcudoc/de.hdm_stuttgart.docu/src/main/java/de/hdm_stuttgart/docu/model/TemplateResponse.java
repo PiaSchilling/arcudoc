@@ -4,7 +4,6 @@ import com.google.gson.JsonArray;
 import com.google.gson.annotations.SerializedName;
 import de.hdm_stuttgart.docu.service.ITemplateResponse;
 
-import java.util.List;
 
 public class TemplateResponse implements ITemplateResponse {
 
@@ -13,6 +12,9 @@ public class TemplateResponse implements ITemplateResponse {
 
     @SerializedName("title")
     private String title;
+
+    @SerializedName("id")
+    private int projectId;
 
     private String einfuehrungUndZiele;
 
@@ -88,9 +90,10 @@ public class TemplateResponse implements ITemplateResponse {
 
 
 
-    public TemplateResponse(JsonArray template, String title){
+    public TemplateResponse(JsonArray template, String title, Integer projectId){
         this.template = template;
         this.title = title;
+        this.projectId = projectId;
     }
 
 
@@ -121,6 +124,11 @@ public class TemplateResponse implements ITemplateResponse {
     @Override
     public void setTemplate(JsonArray template) {
         this.template = template;
+    }
+
+    @Override
+    public Integer getProjectId() {
+        return projectId;
     }
 
 

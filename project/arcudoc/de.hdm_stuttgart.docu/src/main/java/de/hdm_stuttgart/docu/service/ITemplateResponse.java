@@ -12,4 +12,6 @@ public interface ITemplateResponse {
 
     void setTemplate(JsonArray template);
 
+    Integer getProjectId();
+
 }
