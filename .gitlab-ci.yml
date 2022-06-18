@@ -5,7 +5,9 @@ cache:
 variables:
     MAVEN_OPTS: "-Dmaven.repo.local=$CI_PROJECT_DIR/.m2/repository" #From Slides
 
-
+before_script:
+  - cd project/arcudoc/de.hdm_stuttgart.ui
+  
 workflow:
   rules:
   - if: '($CI_PIPELINE_SOURCE == "push" && $CI_COMMIT_BRANCH == "main") || $CI_COMMIT_BRANCH == "develop"' # yaml Datei startet nur bei Zutreffen der angegebenen Bedingung 
