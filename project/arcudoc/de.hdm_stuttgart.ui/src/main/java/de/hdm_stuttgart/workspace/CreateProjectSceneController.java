@@ -96,9 +96,9 @@ public class CreateProjectSceneController implements CreateProjectCellClickHandl
         String projectDescription = enterDescriptionTextField.getText();
 
         if(projectTitle == null || projectTitle.isEmpty()){
-            //todo show error
+            error_project.setText("Wie heißt dein Projekt? Gebe hier den Projektnamen an.");
         }else if(projectDescription == null || projectDescription.isEmpty()){
-            //todo show error
+            error_description.setText("Was macht dein Projekt? Gebe hier eine Beschreibung an.");
         }else{
             createProject.onCreateProjectClicked(projectTitle,projectDescription);
             NavigationController.getINSTANCE().showWorkspaceScene();
