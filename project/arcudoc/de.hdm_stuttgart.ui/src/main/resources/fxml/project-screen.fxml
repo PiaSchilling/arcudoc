@@ -11,386 +11,368 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.shape.Circle?>
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.shape.Polyline?>
 <?import javafx.scene.shape.Rectangle?>
 
-
-<ScrollPane xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.hdm_stuttgart.project.ProjectSceneController">
-   <content>
-      <AnchorPane maxHeight="982.0" maxWidth="1512.0" minHeight="982.0" minWidth="1512.0" prefHeight="982.0" prefWidth="1350.0" styleClass="background" stylesheets="@/styles/project-screen.css">
-          <children>
-              <Polyline fill="CHARTREUSE" layoutX="1438.0" layoutY="351.0" points="74.0, -351.0, 74.0, -264.9272155761719, -255.7071533203125, -264.9272155761719, -353.9251708984375, -351.0" strokeLineCap="BUTT" strokeType="INSIDE" strokeWidth="0.0" styleClass="user-card" />
-              <ImageView fx:id="logo" fitHeight="60.0" fitWidth="227.0" layoutX="44.0" layoutY="29.0" pickOnBounds="true" preserveRatio="true" styleClass="logo">
-                  <image>
-                      <Image url="@/images/logoArcUdoc.png" />
-                  </image>
-              </ImageView>
-              <StackPane layoutX="1201.0" />
-              <HBox layoutX="1180.0" layoutY="13.0" nodeOrientation="LEFT_TO_RIGHT" spacing="30.0">
-                  <children>
-                      <Circle centerX="1172.0" centerY="21.0" fill="#67717980" radius="30.0" stroke="TRANSPARENT" strokeType="INSIDE" styleClass="userAvatar" />
-                      <VBox alignment="CENTER_LEFT" spacing="5.0">
-                          <children>
-                              <Label styleClass="user-name" text="user name" textFill="WHITE" />
-                              <Label styleClass="user-subdescription" text="user(at)email.com" textFill="WHITE" />
-                          </children>
-                      </VBox>
-                  </children>
-              </HBox>
-              <Label layoutX="1192.0" layoutY="130.0" styleClass="h3" text="Versionsverlauf" />
-              <ScrollPane layoutX="1185.0" layoutY="182.0" prefHeight="771.0" prefWidth="300.0" styleClass="scrollpane" stylesheets="@/styles/workspace-screen.css">
-                  <content>
-                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="769.0" prefWidth="295.0" />
-                  </content>
-              </ScrollPane>
-            <Polyline fill="CHARTREUSE" layoutX="242.0" layoutY="570.0" points="-150.98822021484375, 388.76116943359375, -241.8736572265625, 388.76116943359375, -241.8736572265625, -525.0, -140.9951171875, -444.9861755371094" strokeLineCap="BUTT" strokeType="INSIDE" strokeWidth="0.0" styleClass="user-card" />
-            <VBox layoutX="36.0" layoutY="169.0" spacing="60.0">
+<AnchorPane maxHeight="800.0" maxWidth="1434.0" minHeight="800.0" minWidth="1080.0" prefHeight="800.0" prefWidth="1434.0" styleClass="background" stylesheets="/styles/project-screen.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.hdm_stuttgart.project.ProjectSceneController">
+   <children>
+      <ImageView fx:id="logo" fitHeight="60.0" fitWidth="227.0" layoutX="44.0" layoutY="29.0" pickOnBounds="true" preserveRatio="true" styleClass="logo">
+         <image>
+            <Image url="@/images/logoArcUdoc.png" />
+         </image>
+      </ImageView>
+      <StackPane layoutX="1201.0" />
+      <Label layoutX="1120.0" layoutY="100.0" styleClass="h3" text="Versionsverlauf" />
+      <ScrollPane layoutX="1120.0" layoutY="160.0" prefHeight="639.0" prefWidth="300.0" styleClass="scrollpane" stylesheets="@/styles/workspace-screen.css">
+         <content>
+            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="717.0" prefWidth="295.0" />
+         </content>
+      </ScrollPane>
+      <Polyline fill="CHARTREUSE" layoutX="242.0" layoutY="570.0" points="-140.99508666992188, 229.99993896484375, -242.0, 229.99993896484375, -241.8736572265625, -525.0, -140.9951171875, -444.9861755371094" strokeLineCap="BUTT" strokeType="INSIDE" strokeWidth="0.0" styleClass="user-card" />
+      <VBox layoutX="36.0" layoutY="169.0" spacing="60.0">
+         <children>
+            <VBox alignment="CENTER" spacing="5.0">
                <children>
-                  <VBox alignment="CENTER" spacing="5.0">
-                     <children>
-                        <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@/images/menuIcon_Doku.png" />
-                           </image>
-                        </ImageView>
-                        <Label styleClass="menu-title" text="Doku" />
-                     </children>
-                  </VBox>
-                  <VBox alignment="CENTER" spacing="5.0">
-                     <children>
-                        <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@/images/menuIcon_Design.png" />
-                           </image>
-                        </ImageView>
-                        <Label styleClass="menu-title" text="Design" />
-                     </children>
-                  </VBox>
-                  <VBox alignment="CENTER" spacing="5.0">
-                     <children>
-                        <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@/images/menuIcon_Teams.png" />
-                           </image>
-                        </ImageView>
-                        <Label styleClass="menu-title" text="Team" />
-                     </children>
-                  </VBox>
+                  <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@/images/menuIcon_Doku.png" />
+                     </image>
+                  </ImageView>
+                  <Label styleClass="menu-title" text="Doku" />
                </children>
             </VBox>
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="831.0" stroke="BLACK" strokeType="INSIDE" styleClass="documentation-content-container" width="684.0" y="125.0" AnchorPane.leftAnchor="442.0" AnchorPane.rightAnchor="386.0" AnchorPane.topAnchor="125.0" />
-            <Label layoutX="123.0" layoutY="130.0" styleClass="h3" text="Softwaredokumentation" />
-            <HBox alignment="BASELINE_LEFT" layoutX="414.0" layoutY="174.0" spacing="20.0">
+            <VBox alignment="CENTER" spacing="5.0">
                <children>
-                  <Label fx:id="chapterNumber" styleClass="chapter-number" text="01" />
-                  <Label fx:id="chapterTitle"  styleClass="chapter-title" text="Einführungen und Ziele" />
+                  <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@/images/menuIcon_Design.png" />
+                     </image>
+                  </ImageView>
+                  <Label styleClass="menu-title" text="Design" />
                </children>
-            </HBox>
-            <HBox alignment="BASELINE_LEFT" layoutX="414.0" layoutY="257.0" spacing="20.0">
+            </VBox>
+            <VBox alignment="CENTER" spacing="5.0">
                <children>
-                  <Label fx:id="subchapterNumber"  styleClass="subchapter-number" text="01.1" />
-                  <Label fx:id="subchapterTitle"  styleClass="subchapter-title" text="Aufgabenstellung" />
+                  <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@/images/menuIcon_Teams.png" />
+                     </image>
+                  </ImageView>
+                  <Label styleClass="menu-title" text="Team" />
                </children>
-            </HBox>
-            <ScrollPane layoutX="120.0" layoutY="172.0" prefHeight="788.0" prefWidth="273.0" styleClass="scrollpane">
-               <content>
-                  <AnchorPane>
+            </VBox>
+         </children>
+      </VBox>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="769.0" layoutY="-111.0" stroke="BLACK" strokeType="INSIDE" styleClass="documentation-content-container" width="660.0" y="125.0" AnchorPane.leftAnchor="442.0" AnchorPane.rightAnchor="332.0" AnchorPane.topAnchor="14.0" />
+      <Label layoutX="123.0" layoutY="100.0" styleClass="h3" text="Softwaredokumentation" />
+      <HBox alignment="BASELINE_LEFT" layoutX="416.0" layoutY="90.0" spacing="20.0">
+         <children>
+            <Label fx:id="chapterNumber" styleClass="chapter-number" text="01" />
+            <Label fx:id="chapterTitle" styleClass="chapter-title" text="Einführungen und Ziele" />
+         </children>
+      </HBox>
+      <HBox alignment="BASELINE_LEFT" layoutX="414.0" layoutY="160.0" spacing="20.0">
+         <children>
+            <Label fx:id="subchapterNumber" styleClass="subchapter-number" text="01.1" />
+            <Label fx:id="subchapterTitle" styleClass="subchapter-title" text="Aufgabenstellung" />
+         </children>
+      </HBox>
+      <ScrollPane layoutX="120.0" layoutY="160.0" prefHeight="641.0" prefWidth="273.0" styleClass="scrollpane">
+         <content>
+            <AnchorPane>
+               <children>
+                  <VBox>
                      <children>
                         <VBox>
                            <children>
                               <VBox>
                                  <children>
-                                    <VBox>
+                                    <Label fx:id="titleEinfuehrungUndZiele" styleClass="menu-chapter-title" text="01 - Einführungen und Ziele" />
+                                    <VBox spacing="5.0">
                                        <children>
-                                          <Label fx:id="titleEinfuehrungUndZiele" styleClass="menu-chapter-title" text="01 - Einführungen und Ziele" />
-                                          <VBox spacing="5.0">
-                                             <children>
-                                                <Label fx:id="chapterAufgabenstellung" styleClass="menu-subchapter-title" text="01.1 - Aufgabenstellung" />
-                                                <Label fx:id="chapterQualitaetsziele" styleClass="menu-subchapter-title" text="01.2 - Qualitätsziele" />
-                                                <Label fx:id="chapterStakeholder" styleClass="menu-subchapter-title" text="01.3 - Stakeholder" />
-                                             </children>
-                                             <VBox.margin>
-                                                <Insets left="10.0" top="5.0" />
-                                             </VBox.margin>
-                                          </VBox>
+                                          <Label fx:id="chapterAufgabenstellung" styleClass="menu-subchapter-title" text="01.1 - Aufgabenstellung" />
+                                          <Label fx:id="chapterQualitaetsziele" styleClass="menu-subchapter-title" text="01.2 - Qualitätsziele" />
+                                          <Label fx:id="chapterStakeholder" styleClass="menu-subchapter-title" text="01.3 - Stakeholder" />
                                        </children>
                                        <VBox.margin>
-                                          <Insets />
+                                          <Insets left="10.0" top="5.0" />
                                        </VBox.margin>
                                     </VBox>
                                  </children>
                                  <VBox.margin>
-                                    <Insets bottom="20.0" />
-                                 </VBox.margin>
-                              </VBox>
-                              <VBox>
-                                 <children>
-                                    <VBox>
-                                       <children>
-                                          <Label fx:id="titleRandbedingungen"  styleClass="menu-chapter-title" text="02 - Randbedingungen">
-                                             <cursor>
-                                                <Cursor fx:constant="HAND" />
-                                             </cursor>
-                                          </Label>
-                                          <VBox spacing="5.0">
-                                             <children>
-                                                <Label fx:id="chapterTechnRandbedinungen" styleClass="menu-subchapter-title" text="02.1 - Techn. Randbedingungen" />
-                                                <Label fx:id="chapterOrganRandbedinungen" styleClass="menu-subchapter-title" text="02.2 - Organ. Randbedingungen" />
-                                                <Label fx:id="chapterKonventionen" styleClass="menu-subchapter-title" text="02.3 - Konventionen" />
-                                             </children>
-                                             <VBox.margin>
-                                                <Insets left="10.0" top="5.0" />
-                                             </VBox.margin>
-                                          </VBox>
-                                       </children>
-                                       <VBox.margin>
-                                          <Insets />
-                                       </VBox.margin>
-                                    </VBox>
-                                 </children>
-                                 <VBox.margin>
-                                    <Insets bottom="20.0" />
-                                 </VBox.margin>
-                              </VBox>
-                              <VBox>
-                                 <children>
-                                    <VBox>
-                                       <children>
-                                          <Label fx:id="titleKontextabgrenzung"  styleClass="menu-chapter-title" text="03 - Kontextabgrenzung" />
-                                          <VBox spacing="5.0">
-                                             <children>
-                                                <Label fx:id="chapterFachlicherKontext" styleClass="menu-subchapter-title" text="03.1 - Fachlicher Kontext" />
-                                                <Label fx:id="chapterVerteilungskontext" styleClass="menu-subchapter-title" text="03.2 - Verteilungskontext" />
-                                             </children>
-                                             <VBox.margin>
-                                                <Insets left="10.0" top="5.0" />
-                                             </VBox.margin>
-                                          </VBox>
-                                       </children>
-                                       <VBox.margin>
-                                          <Insets />
-                                       </VBox.margin>
-                                    </VBox>
-                                 </children>
-                                 <VBox.margin>
-                                    <Insets bottom="20.0" />
-                                 </VBox.margin>
-                              </VBox>
-                              <VBox>
-                                 <children>
-                                    <VBox>
-                                       <children>
-                                          <Label fx:id="chapterLoesungskontext" styleClass="menu-chapter-title" text="04 - Lösungsstrategie" />
-                                          <VBox spacing="5.0">
-                                             <VBox.margin>
-                                                <Insets left="10.0" top="5.0" />
-                                             </VBox.margin>
-                                          </VBox>
-                                       </children>
-                                       <VBox.margin>
-                                          <Insets />
-                                       </VBox.margin>
-                                    </VBox>
-                                 </children>
-                                 <VBox.margin>
-                                    <Insets bottom="20.0" />
-                                 </VBox.margin>
-                              </VBox>
-                              <VBox>
-                                 <children>
-                                    <VBox>
-                                       <children>
-                                          <Label  fx:id="titleBausteineinsicht"  styleClass="menu-chapter-title" text="05 - Bausteinsicht" />
-                                          <VBox spacing="5.0">
-                                             <children>
-                                                <Label fx:id="chapterBausteinsichtEbeneEins" styleClass="menu-subchapter-title" text="05.1 - Ebene 1" />
-                                                <Label fx:id="chapterBausteinsichtEbeneZwei" styleClass="menu-subchapter-title" text="05.2 - Ebene 2" />
-                                             </children>
-                                             <VBox.margin>
-                                                <Insets left="10.0" top="5.0" />
-                                             </VBox.margin>
-                                          </VBox>
-                                       </children>
-                                       <VBox.margin>
-                                          <Insets />
-                                       </VBox.margin>
-                                    </VBox>
-                                 </children>
-                                 <VBox.margin>
-                                    <Insets bottom="20.0" />
-                                 </VBox.margin>
-                              </VBox>
-                              <VBox>
-                                 <children>
-                                    <VBox>
-                                       <children>
-                                          <Label fx:id="titleLaufzeisicht"  styleClass="menu-chapter-title" text="06 - Laufzeitsicht" />
-                                          <VBox spacing="5.0">
-                                             <children>
-                                                <Label fx:id="chapterLaufzeitszenarioEins" styleClass="menu-subchapter-title" text="06.1 - Laufzeitszenario 1" />
-                                                <Label fx:id="chapterLaufzeitszenarioZwei" styleClass="menu-subchapter-title" text="06.2 - Laufzeitszenario 2" />
-                                             </children>
-                                             <VBox.margin>
-                                                <Insets left="10.0" top="5.0" />
-                                             </VBox.margin>
-                                          </VBox>
-                                       </children>
-                                       <VBox.margin>
-                                          <Insets />
-                                       </VBox.margin>
-                                    </VBox>
-                                 </children>
-                                 <VBox.margin>
-                                    <Insets bottom="20.0" />
-                                 </VBox.margin>
-                              </VBox>
-                              <VBox>
-                                 <children>
-                                    <VBox>
-                                       <children>
-                                          <Label fx:id="titleVerteilungssicht"  styleClass="menu-chapter-title" text="07 - Verteilungssicht" />
-                                          <VBox spacing="5.0">
-                                             <children>
-                                                <Label fx:id="chapterInfrastrukturEbeneEins" styleClass="menu-subchapter-title" text="07.1 - Infrastruktur Ebene 1" />
-                                                <Label fx:id="chapterInfrastrukturEbeneZwei" styleClass="menu-subchapter-title" text="07.2 - Infrastruktur Ebene 2" />
-                                             </children>
-                                             <VBox.margin>
-                                                <Insets left="10.0" top="5.0" />
-                                             </VBox.margin>
-                                          </VBox>
-                                       </children>
-                                       <VBox.margin>
-                                          <Insets />
-                                       </VBox.margin>
-                                    </VBox>
-                                 </children>
-                                 <VBox.margin>
-                                    <Insets bottom="20.0" />
-                                 </VBox.margin>
-                              </VBox>
-                              <VBox>
-                                 <children>
-                                    <VBox>
-                                       <children>
-                                          <Label fx:id="titleQuerschnitt"  styleClass="menu-chapter-title" text="08 - Querschnittliche Konzepte" />
-                                          <VBox spacing="5.0">
-                                             <children>
-                                                <Label fx:id="chapterFachlStruktur" styleClass="menu-subchapter-title" text="08.1 - Fachl. Stuktur &amp; Modelle" />
-                                                <Label fx:id="chapterArchitektur" styleClass="menu-subchapter-title" text="08.2 - Architektur- &amp; Entwurfsmuster" />
-                                             </children>
-                                             <VBox.margin>
-                                                <Insets left="10.0" top="5.0" />
-                                             </VBox.margin>
-                                          </VBox>
-                                       </children>
-                                       <VBox.margin>
-                                          <Insets />
-                                       </VBox.margin>
-                                    </VBox>
-                                 </children>
-                                 <VBox.margin>
-                                    <Insets bottom="20.0" />
-                                 </VBox.margin>
-                              </VBox>
-                              <VBox>
-                                 <children>
-                                    <VBox>
-                                       <children>
-                                          <Label fx:id="titleEntwurfsentscheidung"  styleClass="menu-chapter-title" text="09 - Entwurfsentscheidungen" />
-                                          <VBox spacing="5.0">
-                                             <children>
-                                                <Label fx:id="chapterEntwurfsentscheidungEins" styleClass="menu-subchapter-title" text="09.1 - Entwufsentscheidung 1" />
-                                                <Label fx:id="chapterEntwurfsentscheidungZwei" styleClass="menu-subchapter-title" text="09.2 - Entwurfsentscheidung 2" />
-                                             </children>
-                                             <VBox.margin>
-                                                <Insets left="10.0" top="5.0" />
-                                             </VBox.margin>
-                                          </VBox>
-                                       </children>
-                                       <VBox.margin>
-                                          <Insets />
-                                       </VBox.margin>
-                                    </VBox>
-                                 </children>
-                                 <VBox.margin>
-                                    <Insets bottom="20.0" />
-                                 </VBox.margin>
-                              </VBox>
-                              <VBox>
-                                 <children>
-                                    <VBox>
-                                       <children>
-                                          <Label fx:id="titleQualität"  styleClass="menu-chapter-title" text="10 - Qualitätsanforderungen" />
-                                          <VBox spacing="5.0">
-                                             <children>
-                                                <Label fx:id="chapterQualibaum" styleClass="menu-subchapter-title" text="10.1 - Qualitätsbaum" />
-                                                <Label fx:id="chapterQualitaetsszenarien" styleClass="menu-subchapter-title" text="10.2 - Qualitätsszenarien" />
-                                             </children>
-                                             <VBox.margin>
-                                                <Insets left="10.0" top="5.0" />
-                                             </VBox.margin>
-                                          </VBox>
-                                       </children>
-                                       <VBox.margin>
-                                          <Insets />
-                                       </VBox.margin>
-                                    </VBox>
-                                 </children>
-                                 <VBox.margin>
-                                    <Insets bottom="20.0" />
-                                 </VBox.margin>
-                              </VBox>
-                              <VBox>
-                                 <children>
-                                    <VBox>
-                                       <children>
-                                          <Label fx:id="chapterRisikenUndTechnSchulden" styleClass="menu-chapter-title" text="11 - Risiken &amp; techn. Schulden" />
-                                       </children>
-                                       <VBox.margin>
-                                          <Insets />
-                                       </VBox.margin>
-                                    </VBox>
-                                 </children>
-                                 <VBox.margin>
-                                    <Insets bottom="20.0" />
-                                 </VBox.margin>
-                              </VBox>
-                              <VBox>
-                                 <children>
-                                    <VBox>
-                                       <children>
-                                          <Label fx:id="chapterGlossar" styleClass="menu-chapter-title" text="12 - Glossar" />
-                                       </children>
-                                       <VBox.margin>
-                                          <Insets />
-                                       </VBox.margin>
-                                    </VBox>
-                                 </children>
-                                 <VBox.margin>
-                                    <Insets bottom="20.0" />
+                                    <Insets />
                                  </VBox.margin>
                               </VBox>
                            </children>
+                           <VBox.margin>
+                              <Insets bottom="20.0" />
+                           </VBox.margin>
+                        </VBox>
+                        <VBox>
+                           <children>
+                              <VBox>
+                                 <children>
+                                    <Label fx:id="titleRandbedingungen" styleClass="menu-chapter-title" text="02 - Randbedingungen">
+                                       <cursor>
+                                          <Cursor fx:constant="HAND" />
+                                       </cursor>
+                                    </Label>
+                                    <VBox spacing="5.0">
+                                       <children>
+                                          <Label fx:id="chapterTechnRandbedinungen" styleClass="menu-subchapter-title" text="02.1 - Techn. Randbedingungen" />
+                                          <Label fx:id="chapterOrganRandbedinungen" styleClass="menu-subchapter-title" text="02.2 - Organ. Randbedingungen" />
+                                          <Label fx:id="chapterKonventionen" styleClass="menu-subchapter-title" text="02.3 - Konventionen" />
+                                       </children>
+                                       <VBox.margin>
+                                          <Insets left="10.0" top="5.0" />
+                                       </VBox.margin>
+                                    </VBox>
+                                 </children>
+                                 <VBox.margin>
+                                    <Insets />
+                                 </VBox.margin>
+                              </VBox>
+                           </children>
+                           <VBox.margin>
+                              <Insets bottom="20.0" />
+                           </VBox.margin>
+                        </VBox>
+                        <VBox>
+                           <children>
+                              <VBox>
+                                 <children>
+                                    <Label fx:id="titleKontextabgrenzung" styleClass="menu-chapter-title" text="03 - Kontextabgrenzung" />
+                                    <VBox spacing="5.0">
+                                       <children>
+                                          <Label fx:id="chapterFachlicherKontext" styleClass="menu-subchapter-title" text="03.1 - Fachlicher Kontext" />
+                                          <Label fx:id="chapterVerteilungskontext" styleClass="menu-subchapter-title" text="03.2 - Verteilungskontext" />
+                                       </children>
+                                       <VBox.margin>
+                                          <Insets left="10.0" top="5.0" />
+                                       </VBox.margin>
+                                    </VBox>
+                                 </children>
+                                 <VBox.margin>
+                                    <Insets />
+                                 </VBox.margin>
+                              </VBox>
+                           </children>
+                           <VBox.margin>
+                              <Insets bottom="20.0" />
+                           </VBox.margin>
+                        </VBox>
+                        <VBox>
+                           <children>
+                              <VBox>
+                                 <children>
+                                    <Label fx:id="chapterLoesungskontext" styleClass="menu-chapter-title" text="04 - Lösungsstrategie" />
+                                    <VBox spacing="5.0">
+                                       <VBox.margin>
+                                          <Insets left="10.0" top="5.0" />
+                                       </VBox.margin>
+                                    </VBox>
+                                 </children>
+                                 <VBox.margin>
+                                    <Insets />
+                                 </VBox.margin>
+                              </VBox>
+                           </children>
+                           <VBox.margin>
+                              <Insets bottom="20.0" />
+                           </VBox.margin>
+                        </VBox>
+                        <VBox>
+                           <children>
+                              <VBox>
+                                 <children>
+                                    <Label fx:id="titleBausteineinsicht" styleClass="menu-chapter-title" text="05 - Bausteinsicht" />
+                                    <VBox spacing="5.0">
+                                       <children>
+                                          <Label fx:id="chapterBausteinsichtEbeneEins" styleClass="menu-subchapter-title" text="05.1 - Ebene 1" />
+                                          <Label fx:id="chapterBausteinsichtEbeneZwei" styleClass="menu-subchapter-title" text="05.2 - Ebene 2" />
+                                       </children>
+                                       <VBox.margin>
+                                          <Insets left="10.0" top="5.0" />
+                                       </VBox.margin>
+                                    </VBox>
+                                 </children>
+                                 <VBox.margin>
+                                    <Insets />
+                                 </VBox.margin>
+                              </VBox>
+                           </children>
+                           <VBox.margin>
+                              <Insets bottom="20.0" />
+                           </VBox.margin>
+                        </VBox>
+                        <VBox>
+                           <children>
+                              <VBox>
+                                 <children>
+                                    <Label fx:id="titleLaufzeisicht" styleClass="menu-chapter-title" text="06 - Laufzeitsicht" />
+                                    <VBox spacing="5.0">
+                                       <children>
+                                          <Label fx:id="chapterLaufzeitszenarioEins" styleClass="menu-subchapter-title" text="06.1 - Laufzeitszenario 1" />
+                                          <Label fx:id="chapterLaufzeitszenarioZwei" styleClass="menu-subchapter-title" text="06.2 - Laufzeitszenario 2" />
+                                       </children>
+                                       <VBox.margin>
+                                          <Insets left="10.0" top="5.0" />
+                                       </VBox.margin>
+                                    </VBox>
+                                 </children>
+                                 <VBox.margin>
+                                    <Insets />
+                                 </VBox.margin>
+                              </VBox>
+                           </children>
+                           <VBox.margin>
+                              <Insets bottom="20.0" />
+                           </VBox.margin>
+                        </VBox>
+                        <VBox>
+                           <children>
+                              <VBox>
+                                 <children>
+                                    <Label fx:id="titleVerteilungssicht" styleClass="menu-chapter-title" text="07 - Verteilungssicht" />
+                                    <VBox spacing="5.0">
+                                       <children>
+                                          <Label fx:id="chapterInfrastrukturEbeneEins" styleClass="menu-subchapter-title" text="07.1 - Infrastruktur Ebene 1" />
+                                          <Label fx:id="chapterInfrastrukturEbeneZwei" styleClass="menu-subchapter-title" text="07.2 - Infrastruktur Ebene 2" />
+                                       </children>
+                                       <VBox.margin>
+                                          <Insets left="10.0" top="5.0" />
+                                       </VBox.margin>
+                                    </VBox>
+                                 </children>
+                                 <VBox.margin>
+                                    <Insets />
+                                 </VBox.margin>
+                              </VBox>
+                           </children>
+                           <VBox.margin>
+                              <Insets bottom="20.0" />
+                           </VBox.margin>
+                        </VBox>
+                        <VBox>
+                           <children>
+                              <VBox>
+                                 <children>
+                                    <Label fx:id="titleQuerschnitt" styleClass="menu-chapter-title" text="08 - Querschnittliche Konzepte" />
+                                    <VBox spacing="5.0">
+                                       <children>
+                                          <Label fx:id="chapterFachlStruktur" styleClass="menu-subchapter-title" text="08.1 - Fachl. Stuktur &amp; Modelle" />
+                                          <Label fx:id="chapterArchitektur" styleClass="menu-subchapter-title" text="08.2 - Architektur- &amp; Entwurfsmuster" />
+                                       </children>
+                                       <VBox.margin>
+                                          <Insets left="10.0" top="5.0" />
+                                       </VBox.margin>
+                                    </VBox>
+                                 </children>
+                                 <VBox.margin>
+                                    <Insets />
+                                 </VBox.margin>
+                              </VBox>
+                           </children>
+                           <VBox.margin>
+                              <Insets bottom="20.0" />
+                           </VBox.margin>
+                        </VBox>
+                        <VBox>
+                           <children>
+                              <VBox>
+                                 <children>
+                                    <Label fx:id="titleEntwurfsentscheidung" styleClass="menu-chapter-title" text="09 - Entwurfsentscheidungen" />
+                                    <VBox spacing="5.0">
+                                       <children>
+                                          <Label fx:id="chapterEntwurfsentscheidungEins" styleClass="menu-subchapter-title" text="09.1 - Entwufsentscheidung 1" />
+                                          <Label fx:id="chapterEntwurfsentscheidungZwei" styleClass="menu-subchapter-title" text="09.2 - Entwurfsentscheidung 2" />
+                                       </children>
+                                       <VBox.margin>
+                                          <Insets left="10.0" top="5.0" />
+                                       </VBox.margin>
+                                    </VBox>
+                                 </children>
+                                 <VBox.margin>
+                                    <Insets />
+                                 </VBox.margin>
+                              </VBox>
+                           </children>
+                           <VBox.margin>
+                              <Insets bottom="20.0" />
+                           </VBox.margin>
+                        </VBox>
+                        <VBox>
+                           <children>
+                              <VBox>
+                                 <children>
+                                    <Label fx:id="titleQualität" styleClass="menu-chapter-title" text="10 - Qualitätsanforderungen" />
+                                    <VBox spacing="5.0">
+                                       <children>
+                                          <Label fx:id="chapterQualibaum" styleClass="menu-subchapter-title" text="10.1 - Qualitätsbaum" />
+                                          <Label fx:id="chapterQualitaetsszenarien" styleClass="menu-subchapter-title" text="10.2 - Qualitätsszenarien" />
+                                       </children>
+                                       <VBox.margin>
+                                          <Insets left="10.0" top="5.0" />
+                                       </VBox.margin>
+                                    </VBox>
+                                 </children>
+                                 <VBox.margin>
+                                    <Insets />
+                                 </VBox.margin>
+                              </VBox>
+                           </children>
+                           <VBox.margin>
+                              <Insets bottom="20.0" />
+                           </VBox.margin>
+                        </VBox>
+                        <VBox>
+                           <children>
+                              <VBox>
+                                 <children>
+                                    <Label fx:id="chapterRisikenUndTechnSchulden" styleClass="menu-chapter-title" text="11 - Risiken &amp; techn. Schulden" />
+                                 </children>
+                                 <VBox.margin>
+                                    <Insets />
+                                 </VBox.margin>
+                              </VBox>
+                           </children>
+                           <VBox.margin>
+                              <Insets bottom="20.0" />
+                           </VBox.margin>
+                        </VBox>
+                        <VBox>
+                           <children>
+                              <VBox>
+                                 <children>
+                                    <Label fx:id="chapterGlossar" styleClass="menu-chapter-title" text="12 - Glossar" />
+                                 </children>
+                                 <VBox.margin>
+                                    <Insets />
+                                 </VBox.margin>
+                              </VBox>
+                           </children>
+                           <VBox.margin>
+                              <Insets bottom="20.0" />
+                           </VBox.margin>
                         </VBox>
                      </children>
-                  </AnchorPane>
-               </content>
-            </ScrollPane>
-            <Label fx:id="nameOfProject" layoutX="414.0" layoutY="27.0" prefHeight="71.0" prefWidth="467.0" styleClass="subchapter-title" text="Name of project" />
-            <AnchorPane fx:id="anchorPane" layoutX="456.0" layoutY="341.0" prefHeight="609.0" prefWidth="636.0" />
-            <Button fx:id="editButton" layoutX="1038.0" layoutY="276.0" mnemonicParsing="false" styleClass="button-textArea" stylesheets="@/styles/project-screen.css">
-               <graphic>
-                  <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@/images/edit.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </Button>
-            <Line endX="534.5" layoutX="557.0" layoutY="320.0" startX="-100.0" stroke="WHITE" strokeWidth="0.5" />
-          </children>
-      </AnchorPane>
-   </content>
-</ScrollPane>
+                  </VBox>
+               </children>
+            </AnchorPane>
+         </content>
+      </ScrollPane>
+      <Label fx:id="nameOfProject" layoutX="489.0" layoutY="27.0" prefHeight="71.0" prefWidth="394.0" styleClass="subchapter-title" text="Name of project" />
+      <AnchorPane fx:id="anchorPane" layoutX="456.0" layoutY="241.0" prefHeight="541.0" prefWidth="632.0" />
+      <Button fx:id="editButton" layoutX="1038.0" layoutY="170.0" mnemonicParsing="false" styleClass="button-textArea" stylesheets="@/styles/project-screen.css">
+         <graphic>
+            <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@/images/edit.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Line endX="529.3092041015625" layoutX="557.0" layoutY="219.0" startX="-100.0" stroke="WHITE" strokeWidth="0.5" />
+   </children>
+</AnchorPane>
