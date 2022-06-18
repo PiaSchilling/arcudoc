@@ -378,7 +378,7 @@
                   </AnchorPane>
                </content>
             </ScrollPane>
-            <Label layoutX="414.0" layoutY="27.0" prefHeight="71.0" prefWidth="467.0" styleClass="subchapter-title" text="Name of project" />
+            <Label fx:id="nameOfProject" layoutX="414.0" layoutY="27.0" prefHeight="71.0" prefWidth="467.0" styleClass="subchapter-title" text="Name of project" />
             <AnchorPane fx:id="anchorPane" layoutX="456.0" layoutY="341.0" prefHeight="609.0" prefWidth="636.0" />
             <Button fx:id="editButton" layoutX="1038.0" layoutY="276.0" mnemonicParsing="false" styleClass="button-textArea" stylesheets="@/styles/project-screen.css">
                <graphic>
