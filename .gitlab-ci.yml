@@ -7,8 +7,9 @@ image: maven:3.8.5-openjdk-17
 variables:
     MAVEN_OPTS: "-Dmaven.repo.local=$CI_PROJECT_DIR/.m2/repository" #From Slides
 
-before_script:
-  - cd project/arcudoc #/de.hdm_stuttgart.ui/rest
+default:
+  before_script:
+    - cd project/arcudoc/ #/de.hdm_stuttgart.ui/rest
   
 workflow:
   rules:
@@ -26,7 +27,7 @@ build-login:
   stage: build
 
   script:
-    - cd /de.hdm_stuttgart.login
+    - cd de.hdm_stuttgart.login/
     - echo "Compiling the code..."
     - echo "Compile complete."
     - "mvn compile"
@@ -36,7 +37,7 @@ build-api:
   needs: 
     - build-login
   script:
-    - cd /de.hdm_stuttgart.api
+    - cd de.hdm_stuttgart.api/
     - echo "Compiling the code..."
     - echo "Compile complete."
     - "mvn compile"
