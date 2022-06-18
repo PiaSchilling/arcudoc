@@ -78,11 +78,27 @@ public class DocuRepo {
         Call<Void> call = supabaseRestClient.setContent(
                 ApiConstants.API_KEY,
                 ApiConstants.BEARER_KEY,
-                "*",
+                "application/json",
+                "return=representation",
                 "eq." + projectId,
                 templateResponse
 
         );
+        call.enqueue(new Callback<Void>() {
+            @Override
+            public void onResponse(Call<Void> call, Response<Void> response) {
+                if (response.isSuccessful()) {
+                    log.debug(response.code() + " - content added successfully");
+                } else {
+                    log.error(response.code() +  response.message() + " - no content added");
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Void> call, Throwable throwable) {
+                log.error(throwable.getMessage() + " - failed to add content");
+            }
+        });
 
 
     }
