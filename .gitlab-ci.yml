@@ -27,6 +27,7 @@ build-api:
   stage: build
   script:
     - cd de.hdm_stuttgart.api/
+    - mvn clean install
     - echo "Compiling the code..."
     - echo "Compile complete."
     - "mvn $MAVEN_OPTS compile"
