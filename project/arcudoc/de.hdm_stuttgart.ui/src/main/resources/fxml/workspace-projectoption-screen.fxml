@@ -10,116 +10,117 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.shape.Line?>
-<?import javafx.scene.shape.Polyline?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="982.0" prefWidth="1512.0" styleClass="background" stylesheets="@../styles/workspace-projectoption-screen.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="800.0" maxWidth="1434.0" minHeight="800.0" minWidth="1080.0" prefHeight="800.0" prefWidth="1434.0" styleClass="background" stylesheets="/styles/workspace-projectoption-screen.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Polyline fill="CHARTREUSE" layoutX="1438.0" layoutY="351.0" points="74.0, -351.0, 74.0, -264.9272155761719, -255.7071533203125, -264.9272155761719, -353.9251708984375, -351.0" strokeLineCap="BUTT" strokeType="INSIDE" strokeWidth="0.0" styleClass="user-card" />
-      <HBox layoutX="1180.0" layoutY="13.0" nodeOrientation="LEFT_TO_RIGHT" spacing="30.0">
-         <children>
-            <Circle fx:id="userAvatar" centerX="1172.0" centerY="21.0" fill="#67717980" radius="30.0" stroke="TRANSPARENT" strokeType="INSIDE" styleClass="userAvatar" />
-            <VBox alignment="CENTER_LEFT" prefHeight="60.0" prefWidth="230.0" spacing="5.0">
-               <children>
-                  <Label fx:id="userNameLabel" styleClass="user-name" text="user name" textFill="WHITE" />
-                  <Label fx:id="userMailLabel" styleClass="user-subdescription" text="useremail.com" textFill="WHITE" />
-               </children>
-            </VBox>
-         </children>
-      </HBox>
-      <Button layoutX="77.0" layoutY="137.0" mnemonicParsing="false" prefHeight="5.5" prefWidth="9.5" styleClass="backbutton" />
-      <Label layoutX="129.0" layoutY="132.0" prefHeight="32.0" prefWidth="180.0" styleClass="h1" text="Projekt erstellen">
+      <Button layoutX="18.0" layoutY="40.0" mnemonicParsing="false" prefHeight="5.5" prefWidth="9.5" style="-fx-background-color: none;" styleClass="backbutton" />
+      <Label layoutX="70.0" layoutY="40.0" prefHeight="32.0" prefWidth="180.0" styleClass="h1" text="Projekt erstellen">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <Label layoutX="129.0" layoutY="192.0" prefHeight="32.0" prefWidth="165.0" styleClass="h2" text="Name des Projekts" />
-      <TextField fx:id="enterTitleTextField" layoutX="129.0" layoutY="235.0" prefHeight="50.0" prefWidth="645.0" styleClass="textfield" />
-      <Label layoutX="129.0" layoutY="311.0" prefHeight="32.0" prefWidth="139.0" styleClass="h2" text="Beschreibung" />
-      <TextField fx:id="enterDescriptionTextField" alignment="TOP_LEFT" layoutX="129.0" layoutY="354.0" prefHeight="150.0" prefWidth="645.0" styleClass="textfield" />
-      <Button fx:id="addFileButton" layoutX="861.0" layoutY="463.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="200.0" text="aus Datei wählen">
-         <styleClass>
-            <String fx:value="button1" />
-            <String fx:value="h2" />
-         </styleClass>
-      </Button>
-      <Label layoutX="861.0" layoutY="192.0" prefHeight="32.0" prefWidth="165.0" styleClass="h2" text="Avatar" />
-      <Line endX="1043.0" layoutX="129.0" layoutY="539.0" styleClass="linie" />
-      <Label layoutX="129.0" layoutY="561.0" prefHeight="32.0" prefWidth="165.0" styleClass="h2" text="Projektmitglieder" />
-      <TextField fx:id="enterMailTextField" layoutX="129.0" layoutY="634.0" prefHeight="50.0" prefWidth="645.0" styleClass="textfield" />
-      <Label layoutX="129.0" layoutY="604.0" prefHeight="32.0" prefWidth="165.0" styleClass="h3" text="Email - Adresse">
-         <font>
-            <Font size="11.0" />
-         </font>
-      </Label>
-      <TextField fx:id="enterLabelTextField" layoutX="129.0" layoutY="738.0" prefHeight="50.0" prefWidth="645.0" styleClass="textfield" />
-      <Label layoutX="129.0" layoutY="711.0" prefHeight="32.0" prefWidth="165.0" styleClass="h3" text="Job - Label">
-         <font>
-            <Font size="11.0" />
-         </font>
-      </Label>
-      <Label layoutX="129.0" layoutY="815.0" prefHeight="32.0" prefWidth="165.0" styleClass="h3" text="Rolle" />
-      <Button fx:id="addMemberButton" layoutX="527.0" layoutY="856.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="247.0" text="Mitglied hinzufügen">
-         <styleClass>
-            <String fx:value="button1" />
-            <String fx:value="h2" />
-         </styleClass>
-      </Button>
-      <Label layoutX="861.0" layoutY="604.0" prefHeight="32.0" prefWidth="180.0" styleClass="h3" text="hinzugefügte Mitglieder:" />
-      <Button fx:id="createProjectButton" layoutX="1172.0" layoutY="856.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="300.0" text="Projekt anlegen">
-         <styleClass>
-            <String fx:value="button1" />
-            <String fx:value="h2" />
-         </styleClass>
-      </Button>
-      <ComboBox fx:id="roleComboBox" layoutX="129.0" layoutY="846.0" prefHeight="50.0" prefWidth="302.0" promptText="select a role" visibleRowCount="4">
-         <styleClass>
-            <String fx:value="comboboxbase" />
-            <String fx:value="h2" />
-         </styleClass></ComboBox>
-      <ImageView fx:id="projectAvatar" fitHeight="200.0" fitWidth="200.0" layoutX="861.0" layoutY="235.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../images/default-userImage.jpg" />
-         </image>
-      </ImageView>
-      <ScrollPane layoutX="861.0" layoutY="634.0" prefHeight="260.0" prefWidth="300.0">
+      <VBox layoutX="70.0" layoutY="100.0" spacing="20.0">
+         <children>
+            <VBox spacing="10.0">
+               <children>
+                  <Label prefHeight="32.0" prefWidth="165.0" styleClass="h2" text="Name des Projekts" />
+                  <TextField fx:id="enterTitleTextField" prefHeight="45.0" prefWidth="499.0" styleClass="textfield" />
+               </children>
+            </VBox>
+            <VBox spacing="10.0">
+               <children>
+                  <Label prefHeight="32.0" prefWidth="139.0" styleClass="h2" text="Beschreibung" />
+                  <TextField fx:id="enterDescriptionTextField" alignment="TOP_LEFT" prefHeight="150.0" prefWidth="645.0" styleClass="textfield" />
+               </children>
+            </VBox>
+         </children>
+      </VBox>
+      <Button fx:id="addFileButton" layoutX="802.0" layoutY="348.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="246.0" styleClass="button1" stylesheets="/styles/workspace-projectoption-screen.css" text="aus Datei wählen" />
+      <Label layoutX="802.0" layoutY="97.0" prefHeight="32.0" prefWidth="165.0" styleClass="h2" text="Profil Avatar" />
+      <Line endX="975.0255126953125" endY="-3.0517578125E-5" layoutX="70.0" layoutY="441.0" strokeMiterLimit="1.0" strokeWidth="5.0" styleClass="linie" />
+      <Label layoutX="70.0" layoutY="476.0" prefHeight="32.0" prefWidth="165.0" styleClass="h2" text="Projektmitglieder" />
+      <VBox layoutX="70.0" layoutY="520.0" prefHeight="174.0" prefWidth="637.0" spacing="10.0">
+         <children>
+            <VBox spacing="5.0">
+               <children>
+                  <Label prefHeight="32.0" prefWidth="165.0" styleClass="h3" text="Email - Adresse">
+                     <font>
+                        <Font size="11.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="enterMailTextField" prefHeight="45.0" prefWidth="648.0" styleClass="textfield" />
+               </children>
+            </VBox>
+            <VBox spacing="5.0">
+               <children>
+                  <Label prefHeight="32.0" prefWidth="165.0" styleClass="h3" text="Job - Label">
+                     <font>
+                        <Font size="11.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="enterLabelTextField" prefHeight="45.0" prefWidth="707.0" styleClass="textfield" />
+               </children>
+            </VBox>
+         </children>
+      </VBox>
+      <VBox layoutX="803.0" layoutY="522.0" spacing="5.0">
+         <children>
+            <Label prefHeight="32.0" prefWidth="165.0" styleClass="h3" text="Rolle" />
+            <ComboBox fx:id="roleComboBox" prefHeight="45.0" prefWidth="243.0" promptText="select a role" visibleRowCount="4">
+               <styleClass>
+                  <String fx:value="comboboxbase" />
+                  <String fx:value="h2" />
+               </styleClass>
+            </ComboBox>
+         </children>
+      </VBox>
+      <Button fx:id="addMemberButton" layoutX="802.0" layoutY="651.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="246.0" styleClass="button1" stylesheets="/styles/workspace-projectoption-screen.css" text="Mitglied hinzufügen" />
+      <Label layoutX="1102.0" layoutY="505.0" prefHeight="32.0" prefWidth="180.0" styleClass="h3" text="hinzugefügte Mitglieder:" />
+      <Button fx:id="createProjectButton" layoutX="1083.0" layoutY="134.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="300.0" stylesheets="/styles/workspace-projectoption-screen.css" text="Projekt anlegen" />
+      <ScrollPane layoutX="1099.0" layoutY="556.0" prefHeight="192.0" prefWidth="251.0" styleClass="scrollpane" stylesheets="/styles/workspace-projectoption-screen.css">
          <content>
-            <ListView fx:id="memberList" prefHeight="405.0" prefWidth="301.0" styleClass="scrollpane" />
+            <ListView fx:id="memberList" prefHeight="405.0" prefWidth="251.0" styleClass="scrollpane" />
          </content>
       </ScrollPane>
-      <Label fx:id="error_project" layoutX="129.0" layoutY="285.0" prefHeight="32.0" prefWidth="645.0" styleClass="errom">
+      <Label fx:id="error_project" layoutX="70.0" layoutY="170.0" prefHeight="32.0" prefWidth="645.0" styleClass="errom">
          <font>
             <Font size="11.0" />
          </font>
       </Label>
-      <Label fx:id="error_description" layoutX="129.0" layoutY="504.0" prefHeight="32.0" prefWidth="645.0" styleClass="errom">
+      <Label fx:id="error_description" layoutX="70.0" layoutY="389.0" prefHeight="32.0" prefWidth="645.0" styleClass="errom">
          <font>
             <Font size="11.0" />
          </font>
       </Label>
-      <Label fx:id="error_email" layoutX="129.0" layoutY="683.0" prefHeight="32.0" prefWidth="645.0" styleClass="errom">
+      <Label fx:id="error_email" layoutX="70.0" layoutY="568.0" prefHeight="32.0" prefWidth="645.0" styleClass="errom">
          <font>
             <Font size="11.0" />
          </font>
       </Label>
-      <Label fx:id="error_job" layoutX="129.0" layoutY="787.0" prefHeight="32.0" prefWidth="645.0" styleClass="errom">
+      <Label fx:id="error_job" layoutX="70.0" layoutY="672.0" prefHeight="32.0" prefWidth="347.0" styleClass="errom">
          <font>
             <Font size="11.0" />
          </font>
       </Label>
-      <Label fx:id="error_role" layoutX="129.0" layoutY="894.0" prefHeight="32.0" prefWidth="302.0" styleClass="errom">
+      <Label fx:id="error_role" layoutX="73.0" layoutY="734.0" prefHeight="32.0" prefWidth="302.0" styleClass="errom">
          <font>
             <Font size="11.0" />
          </font>
       </Label>
-      <Label fx:id="error_memberAlreadyAdded" layoutX="861.0" layoutY="577.0" prefHeight="32.0" prefWidth="302.0" styleClass="errom">
+      <Label fx:id="error_memberAlreadyAdded" layoutX="802.0" layoutY="462.0" prefHeight="32.0" prefWidth="302.0" styleClass="errom">
          <font>
             <Font size="11.0" />
          </font>
       </Label>
+      <Circle fill="#2b2934" layoutX="917.0" layoutY="230.0" radius="91.0" stroke="BLACK" strokeType="INSIDE" />
+      <ImageView fitHeight="104.0" fitWidth="110.0" layoutX="866.0" layoutY="182.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="/images/userRoleIcon.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>
