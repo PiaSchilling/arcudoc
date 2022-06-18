@@ -1,9 +1,43 @@
 package de.hdm_stuttgart.docu.integration;
 
+import com.google.inject.Inject;
+import de.hdm_stuttgart.docu.data.DocuRepo;
+import de.hdm_stuttgart.docu.model.TemplateResponse;
+import de.hdm_stuttgart.docu.service.ITemplateResponse;
+import javafx.beans.property.ListProperty;
+import javafx.beans.property.SimpleListProperty;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+
+
 public class DocuController {
 
+    private final DocuRepo docuRepo;
+    private final ListProperty<ITemplateResponse> templateResponseListProperty;
 
-   public void printTest(){
-       System.out.println("Method in controller triggered");
-   }
+    @Inject
+    public DocuController(DocuRepo docuRepo) {
+        this.docuRepo = docuRepo;
+
+        ListProperty<TemplateResponse> templateResponseRepo = docuRepo.getTemplateResponseProperty();
+        templateResponseListProperty = new SimpleListProperty<>();
+        templateResponseRepo.addListener((observable, oldValue, newValue) -> updateTemplateResponseProperty());
+
+    }
+
+    private void updateTemplateResponseProperty(){
+        ObservableList<ITemplateResponse> observableList = FXCollections.observableArrayList();
+        observableList.addAll(docuRepo.getTemplateResponseProperty());
+        templateResponseListProperty.setValue(observableList);
+    }
+
+    public ITemplateResponse getTemplateResponse() {
+       // docuRepo.getTemplate();
+        return docuRepo.getTemplate();
+    }
+
+    public void setContent (TemplateResponse templateResponse){
+
+        docuRepo.setContent(templateResponse);
+    }
 }

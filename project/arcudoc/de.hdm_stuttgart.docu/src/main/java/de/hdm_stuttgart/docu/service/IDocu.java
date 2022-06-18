@@ -1,6 +1,10 @@
 package de.hdm_stuttgart.docu.service;
 
+import de.hdm_stuttgart.docu.model.TemplateResponse;
+
 public interface IDocu {
+
+    ITemplateResponse fetchTemplate();
 
     String getProjectName();
 
@@ -53,4 +57,6 @@ public interface IDocu {
 
     /* Chapter 12 */
     void onGlossarClicked();
+
+    void setContent(ITemplateResponse templateResponse);
 }

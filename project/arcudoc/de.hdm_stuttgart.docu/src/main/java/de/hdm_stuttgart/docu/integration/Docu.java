@@ -1,7 +1,9 @@
 package de.hdm_stuttgart.docu.integration;
 
 import com.google.inject.Inject;
+import de.hdm_stuttgart.docu.model.TemplateResponse;
 import de.hdm_stuttgart.docu.service.IDocu;
+import de.hdm_stuttgart.docu.service.ITemplateResponse;
 
 public class Docu implements IDocu {
 
@@ -24,7 +26,7 @@ public class Docu implements IDocu {
 
     @Override
     public void onAufgabenstellungClicked() {
-        controller.printTest();
+
     }
 
     @Override
@@ -135,5 +137,16 @@ public class Docu implements IDocu {
     @Override
     public void onGlossarClicked() {
 
+    }
+
+    @Override
+    public ITemplateResponse fetchTemplate(){
+
+       return controller.getTemplateResponse();
+    }
+    @Override
+    public void setContent(ITemplateResponse templateResponse){
+
+        controller.setContent((TemplateResponse) templateResponse);
     }
 }

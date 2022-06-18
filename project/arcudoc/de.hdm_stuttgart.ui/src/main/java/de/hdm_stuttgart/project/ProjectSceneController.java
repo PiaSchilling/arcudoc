@@ -2,6 +2,7 @@ package de.hdm_stuttgart.project;
 
 import com.google.inject.Inject;
 import de.hdm_stuttgart.docu.service.IDocu;
+import de.hdm_stuttgart.docu.service.ITemplateResponse;
 import de.hdm_stuttgart.editor.service.EditorState;
 import de.hdm_stuttgart.editor.service.IEditor;
 import javafx.application.Platform;
@@ -19,11 +20,16 @@ public class ProjectSceneController {
 
 
 
+
     private IEditor editor;
     private IDocu docu;
     private StringProperty markdownStringProperty;
+    private ITemplateResponse templateResponse;
+
+
 
     @Inject
+
     public ProjectSceneController(IEditor editor, IDocu docu) {
         this.editor = editor;
         this.docu = docu;
@@ -152,9 +158,11 @@ public class ProjectSceneController {
     @FXML
     private Label chapterVerteilungskontext;
 
+    private String property = "1.1_Aufgabenstellung";
+
 
     public void initialize() {
-        editButton.setOnAction(event -> onEditButtonClicked());
+        editButton.setOnAction(event -> onEditButtonClicked(""));
         markdownStringProperty.addListener((observable, oldValue, newValue) -> {
             setHtmlToWebView(newValue);
         });
@@ -212,12 +220,19 @@ public class ProjectSceneController {
 
         webView.getEngine().setUserStyleSheetLocation(getClass().getResource("/styles/webview.css").toString());
 
+        editor.getEditorState();
+
+        templateResponse = docu.fetchTemplate();
+        fillWithContent("1.0_Einführung-und-Ziele");
     }
 
-    private void onEditButtonClicked() {
+    private void onEditButtonClicked(String property) {
         editor.onEditButtonClicked(textArea.getText());
         setButtonState(editor.getEditorState());
         setEditorArea(editor.getEditorState());
+
+
+        //TODO Pass content to repo and send it to database
     }
 
     /**
@@ -265,7 +280,6 @@ public class ProjectSceneController {
     // - - - - docu logic - - - - -
 
 
-
     public void onLogoCLicked() {
 
         //TODO open project Overview
@@ -278,6 +292,11 @@ public class ProjectSceneController {
         chapterNumber.setText("01");
         subchapterTitle.setText(null);
         subchapterNumber.setText(null);
+        saveContent(property, textArea.getText());
+        property = "1.0_Einführung-und-Ziele";
+        fillWithContent("1.0_Einführung-und-Ziele");
+
+
     }
 
 
@@ -287,10 +306,10 @@ public class ProjectSceneController {
         chapterNumber.setText("01");
         subchapterTitle.setText("Aufgabenstellung");
         subchapterNumber.setText("01.1");
-
+        saveContent(property, textArea.getText());
+        property = "1.1_Aufgabenstellung";
+        fillWithContent("1.1_Aufgabenstellung");
     }
-
-
 
 
     public void onQualitaetszieleClicked() {
@@ -299,6 +318,9 @@ public class ProjectSceneController {
         chapterNumber.setText("01");
         subchapterTitle.setText("Qualitätsziele");
         subchapterNumber.setText("01.2");
+        saveContent(property, textArea.getText());
+        property = "1.2_Qualiteatsziele";
+        fillWithContent("1.2_Qualiteatsziele");
 
     }
 
@@ -309,6 +331,9 @@ public class ProjectSceneController {
         chapterNumber.setText("01");
         subchapterTitle.setText("Stakeholder");
         subchapterNumber.setText("01.3");
+        saveContent(property, textArea.getText());
+        property = "1.3_Stakeholder";
+        fillWithContent("1.3_Stakeholder");
     }
 
     public void onRandbedingungenClicked() {
@@ -317,6 +342,9 @@ public class ProjectSceneController {
         chapterNumber.setText("02");
         subchapterTitle.setText(null);
         subchapterNumber.setText(null);
+        saveContent(property, textArea.getText());
+        property = "2.0_Randbedingungen";
+        fillWithContent("2.0_Randbedingungen");
     }
 
 
@@ -326,6 +354,9 @@ public class ProjectSceneController {
         chapterNumber.setText("02");
         subchapterTitle.setText("Technische Randbedingungen");
         subchapterNumber.setText("02.1");
+        saveContent(property, textArea.getText());
+        property = "2.1_Technische-Randbedingungen";
+        fillWithContent("2.1_Technische-Randbedingungen");
     }
 
 
@@ -335,6 +366,9 @@ public class ProjectSceneController {
         chapterNumber.setText("02");
         subchapterTitle.setText("Organisatorische Randbedingungen");
         subchapterNumber.setText("02.2");
+        saveContent(property, textArea.getText());
+        property = "2.2_Organisatorische-Randbedingungen";
+        fillWithContent("2.2_Organisatorische-Randbedingungen");
     }
 
 
@@ -344,6 +378,9 @@ public class ProjectSceneController {
         chapterNumber.setText("02");
         subchapterTitle.setText("Konventionen");
         subchapterNumber.setText("02.3");
+        saveContent(property, textArea.getText());
+        property = "2.3_Konventionen";
+        fillWithContent("2.3_Konventionen");
     }
 
 
@@ -353,13 +390,20 @@ public class ProjectSceneController {
         chapterNumber.setText("03");
         subchapterTitle.setText(null);
         subchapterNumber.setText(null);
+        saveContent(property, textArea.getText());
+        property = "3.0_Kontextabgrenzug";
+        fillWithContent("3.0_Kontextabgrenzug");
     }
+
     public void onFachlicherKontextClicked() {
 
         chapterTitle.setText("Kontextabgrenzung");
         chapterNumber.setText("03");
         subchapterTitle.setText("Fachlicher Kontext");
         subchapterNumber.setText("03.1");
+        saveContent(property, textArea.getText());
+        property =  "3.1_Fachlicher-Kontext" ;
+        fillWithContent("3.1_Fachlicher-Kontext");
     }
 
 
@@ -369,6 +413,9 @@ public class ProjectSceneController {
         chapterNumber.setText("03");
         subchapterTitle.setText("Verteilungskontext");
         subchapterNumber.setText("03.2");
+        saveContent(property, textArea.getText());
+        property = "3.2_Technischer-Verteilungskontexz";
+        fillWithContent("3.2_Technischer-Verteilungskontexz");
     }
 
 
@@ -378,6 +425,9 @@ public class ProjectSceneController {
         chapterNumber.setText("04");
         subchapterTitle.setText(null);
         subchapterNumber.setText(null);
+        saveContent(property, textArea.getText());
+        property =  "4.0_Lösungsstrategien" ;
+        fillWithContent("4.0_Lösungsstrategien");
     }
 
 
@@ -387,6 +437,9 @@ public class ProjectSceneController {
         chapterNumber.setText("05");
         subchapterTitle.setText(null);
         subchapterNumber.setText(null);
+        saveContent(property, textArea.getText());
+        property = "5.0_Bausteinsicht";
+        fillWithContent("5.0_Bausteinsicht");
     }
 
 
@@ -396,6 +449,9 @@ public class ProjectSceneController {
         chapterNumber.setText("05");
         subchapterTitle.setText("Ebene 1");
         subchapterNumber.setText("05.1");
+        saveContent(property, textArea.getText());
+        property = "5.1_Ebene-1";
+        fillWithContent("5.1_Ebene-1");
     }
 
 
@@ -405,6 +461,9 @@ public class ProjectSceneController {
         chapterNumber.setText("05");
         subchapterTitle.setText("Ebene 2");
         subchapterNumber.setText("05.2");
+        saveContent(property, textArea.getText());
+        property = "5.1_Ebene-1";
+        fillWithContent("5.1_Ebene-1");
     }
 
 
@@ -414,6 +473,9 @@ public class ProjectSceneController {
         chapterNumber.setText("06");
         subchapterTitle.setText(null);
         subchapterNumber.setText(null);
+        saveContent(property, textArea.getText());
+        property = "6.0_Laufzeitsicht";
+        fillWithContent("6.0_Laufzeitsicht");
     }
 
 
@@ -423,6 +485,9 @@ public class ProjectSceneController {
         chapterNumber.setText("06");
         subchapterTitle.setText("Laufzeitszenario 1");
         subchapterNumber.setText("06.1");
+        saveContent(property, textArea.getText());
+        property = "6.1_Laufzeitszenario-1";
+        fillWithContent("6.1_Laufzeitszenario-1");
     }
 
 
@@ -432,6 +497,9 @@ public class ProjectSceneController {
         chapterNumber.setText("06");
         subchapterTitle.setText("Laufzeitszenario 2");
         subchapterNumber.setText("06.2");
+        saveContent(property, textArea.getText());
+        property = "6.1_Laufzeitszenario-1";
+        fillWithContent("6.1_Laufzeitszenario-1");
     }
 
 
@@ -441,6 +509,9 @@ public class ProjectSceneController {
         chapterNumber.setText("07");
         subchapterTitle.setText(null);
         subchapterNumber.setText(null);
+        saveContent(property, textArea.getText());
+        property = "7.0_Verteilungssicht";
+        fillWithContent("7.0_Verteilungssicht");
     }
 
 
@@ -450,6 +521,9 @@ public class ProjectSceneController {
         chapterNumber.setText("07");
         subchapterTitle.setText("Infrastruktur Ebene 1");
         subchapterNumber.setText("07.1");
+        saveContent(property, textArea.getText());
+        property = "7.1_Infrastrukur-Ebene-1";
+        fillWithContent("7.1_Infrastrukur-Ebene-1");
     }
 
 
@@ -459,6 +533,9 @@ public class ProjectSceneController {
         chapterNumber.setText("07");
         subchapterTitle.setText("Infrastruktur Ebene 2");
         subchapterNumber.setText("07.2");
+        saveContent(property, textArea.getText());
+        property = "7.2_Infrastrukur-Ebene-2";
+        fillWithContent("7.2_Infrastrukur-Ebene-2");
     }
 
 
@@ -468,6 +545,9 @@ public class ProjectSceneController {
         chapterNumber.setText("08");
         subchapterTitle.setText(null);
         subchapterNumber.setText(null);
+        saveContent(property, textArea.getText());
+        property = "8.0_Querschnittliche-Konzepte";
+        fillWithContent("8.0_Querschnittliche-Konzepte");
     }
 
 
@@ -477,6 +557,9 @@ public class ProjectSceneController {
         chapterNumber.setText("08");
         subchapterTitle.setText("Fachliche Struktur und Modelle");
         subchapterNumber.setText("08.1");
+        saveContent(property, textArea.getText());
+        property = "8.0_Querschnittliche-Konzepte";
+        fillWithContent("8.0_Querschnittliche-Konzepte");
     }
 
 
@@ -486,6 +569,9 @@ public class ProjectSceneController {
         chapterNumber.setText("08");
         subchapterTitle.setText("Architektur- und Entwurfsmuster");
         subchapterNumber.setText("08.2");
+        saveContent(property, textArea.getText());
+        property = "8.0_Querschnittliche-Konzepte";
+        fillWithContent("8.0_Querschnittliche-Konzepte");
     }
 
 
@@ -495,6 +581,9 @@ public class ProjectSceneController {
         chapterNumber.setText("09");
         subchapterTitle.setText(null);
         subchapterNumber.setText(null);
+        saveContent(property, textArea.getText());
+        property = "9.0_Entwurfsentscheidung";
+        fillWithContent("9.0_Entwurfsentscheidung");
     }
 
 
@@ -504,6 +593,9 @@ public class ProjectSceneController {
         chapterNumber.setText("09");
         subchapterTitle.setText("Entwurfsentscheidung 1");
         subchapterNumber.setText("09.1");
+        saveContent(property, textArea.getText());
+        property = "9.1_Entwurfsentscheidung-1";
+        fillWithContent("9.1_Entwurfsentscheidung-1");
     }
 
 
@@ -513,6 +605,9 @@ public class ProjectSceneController {
         chapterNumber.setText("09");
         subchapterTitle.setText("Entwurfsentscheidung 2");
         subchapterNumber.setText("09.2");
+        saveContent(property, textArea.getText());
+        property = "9.1_Entwurfsentscheidung-1";
+        fillWithContent("9.1_Entwurfsentscheidung-1");
     }
 
 
@@ -522,6 +617,9 @@ public class ProjectSceneController {
         chapterNumber.setText("10");
         subchapterTitle.setText(null);
         subchapterNumber.setText(null);
+        saveContent(property, textArea.getText());
+        property =  "10.1_Qualitätsanforderungen";
+        fillWithContent("10.1_Qualitätsanforderungen");
     }
 
 
@@ -531,6 +629,9 @@ public class ProjectSceneController {
         chapterNumber.setText("10");
         subchapterTitle.setText("Qualitätsbaum");
         subchapterNumber.setText("10.1");
+        saveContent(property, textArea.getText());
+        property =  "10.1_Qualitätsbaum" ;
+        fillWithContent("10.1_Qualitätsbaum");
     }
 
 
@@ -540,6 +641,9 @@ public class ProjectSceneController {
         chapterNumber.setText("10");
         subchapterTitle.setText("Qualitätsszenarien");
         subchapterNumber.setText("10.2");
+        saveContent(property, textArea.getText());
+        property = "10.2_Qualitätsszenarien";
+        fillWithContent("10.2_Qualitätsszenarien");
     }
 
 
@@ -549,6 +653,10 @@ public class ProjectSceneController {
         chapterNumber.setText("11");
         subchapterTitle.setText(null);
         subchapterNumber.setText(null);
+        saveContent(property, textArea.getText());
+        property = "11.0_Risiken-und-technische-Schulden";
+        fillWithContent("11.0_Risiken-und-technische-Schulden");
+
     }
 
 
@@ -558,6 +666,26 @@ public class ProjectSceneController {
         chapterNumber.setText("12");
         subchapterTitle.setText(null);
         subchapterNumber.setText(null);
+        saveContent(property, textArea.getText());
+        property = "12.0_Glossar";
+        fillWithContent("12.0_Glossar");
+    }
+
+    public void fillWithContent(String property){
+
+        setHtmlToWebView(templateResponse.getTemplate().get(0).getAsJsonObject().get(property).getAsString());
+        textArea.setText(templateResponse.getTemplate().get(0).getAsJsonObject().get(property).getAsString());
+        setEditorArea(EditorState.VIEW);
+
+
+    }
+
+    public void saveContent(String property, String value){
+
+        templateResponse.getTemplate().get(0).getAsJsonObject().remove(property);
+        templateResponse.getTemplate().get(0).getAsJsonObject().addProperty(property, value);
+        docu.setContent(templateResponse);
+
     }
 
 }
