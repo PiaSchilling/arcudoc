@@ -12,6 +12,7 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
+import javafx.scene.control.Label;
 
 
 public class CreateProjectSceneController implements CreateProjectCellClickHandler{
@@ -55,6 +56,24 @@ public class CreateProjectSceneController implements CreateProjectCellClickHandl
 
     @FXML
     private ComboBox<String> roleComboBox;
+
+    @FXML
+    private Label error_description;
+
+    @FXML
+    private Label error_email;
+
+    @FXML
+    private Label error_job;
+
+    @FXML
+    private Label error_memberAlreadyAdded;
+
+    @FXML
+    private Label error_project;
+
+    @FXML
+    private Label error_role;
 
 
     public void initialize(){
