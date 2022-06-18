@@ -466,8 +466,8 @@ public class ProjectSceneController {
         subchapterTitle.setText("Ebene 2");
         subchapterNumber.setText("05.2");
         saveContent(property, textArea.getText());
-        property = "5.1_Ebene-1";
-        fillWithContent("5.1_Ebene-1");
+        property = "5.1_Ebene-2";
+        fillWithContent("5.1_Ebene-2");
     }
 
 
@@ -502,8 +502,8 @@ public class ProjectSceneController {
         subchapterTitle.setText("Laufzeitszenario 2");
         subchapterNumber.setText("06.2");
         saveContent(property, textArea.getText());
-        property = "6.1_Laufzeitszenario-1";
-        fillWithContent("6.1_Laufzeitszenario-1");
+        property = "6.1_Laufzeitszenario-2";
+        fillWithContent("6.1_Laufzeitszenario-2");
     }
 
 
@@ -562,8 +562,8 @@ public class ProjectSceneController {
         subchapterTitle.setText("Fachliche Struktur und Modelle");
         subchapterNumber.setText("08.1");
         saveContent(property, textArea.getText());
-        property = "8.0_Querschnittliche-Konzepte";
-        fillWithContent("8.0_Querschnittliche-Konzepte");
+        property = "8.1_Struktur-Modelle";
+        fillWithContent("8.1_Struktur-Modelle");
     }
 
 
@@ -574,8 +574,8 @@ public class ProjectSceneController {
         subchapterTitle.setText("Architektur- und Entwurfsmuster");
         subchapterNumber.setText("08.2");
         saveContent(property, textArea.getText());
-        property = "8.0_Querschnittliche-Konzepte";
-        fillWithContent("8.0_Querschnittliche-Konzepte");
+        property = "8.2_Architektur";
+        fillWithContent("8.2_Architektur");
     }
 
 
@@ -610,8 +610,8 @@ public class ProjectSceneController {
         subchapterTitle.setText("Entwurfsentscheidung 2");
         subchapterNumber.setText("09.2");
         saveContent(property, textArea.getText());
-        property = "9.1_Entwurfsentscheidung-1";
-        fillWithContent("9.1_Entwurfsentscheidung-1");
+        property = "9.1_Entwurfsentscheidung-2";
+        fillWithContent("9.1_Entwurfsentscheidung-2");
     }
 
 
@@ -622,8 +622,8 @@ public class ProjectSceneController {
         subchapterTitle.setText(null);
         subchapterNumber.setText(null);
         saveContent(property, textArea.getText());
-        property =  "10.1_Qualitätsanforderungen";
-        fillWithContent("10.1_Qualitätsanforderungen");
+        property =  "10.0_Qualitätsanforderungen";
+        fillWithContent("10.0_Qualitätsanforderungen");
     }
 
 
