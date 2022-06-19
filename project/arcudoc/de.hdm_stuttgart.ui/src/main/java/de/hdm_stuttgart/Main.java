@@ -49,6 +49,7 @@ public class Main extends Application{
         NavigationController.initNavigationController(stage,controllerFactory);
 
         Preferences userPreferences = Preferences.userRoot().node("/arcudoc/profile");
+        userPreferences.put("REFRESH_TOKEN","default");
         String auth = userPreferences.get("REFRESH_TOKEN","default");
 
         if(auth.equals("default")){
@@ -58,7 +59,7 @@ public class Main extends Application{
             NavigationController.getINSTANCE().showWorkspaceScene();
             log.debug("Refresh token found - No login required - show workspace scene");
         }
-
+        //NavigationController.getINSTANCE().showProjectScene();
     }
 
 
