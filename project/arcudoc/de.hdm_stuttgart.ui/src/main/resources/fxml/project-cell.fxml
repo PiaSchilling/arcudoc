@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -25,6 +26,9 @@
             </VBox>
             <Line endX="-25.2254638671875" endY="30.405296325683594" startX="-25.2254638671875" startY="-38.41181564331055" stroke="#969597" strokeWidth="0.5" />
          </children>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
       </HBox>
       <HBox alignment="CENTER_LEFT" layoutX="480.0" prefHeight="100.0" prefWidth="167.0" spacing="15.0">
          <children>
@@ -34,6 +38,7 @@
                </image>
             </ImageView>
             <Label fx:id="projectRoleLabel" prefHeight="20.0" prefWidth="129.0" styleClass="project-attributes" stylesheets="@../styles/project-cell.css" text="role" />
+            <Line endX="-25.2254638671875" endY="30.405296325683594" startX="-25.2254638671875" startY="-38.41181564331055" stroke="#969597" strokeWidth="0.5" />
          </children>
       </HBox>
       <HBox alignment="CENTER_LEFT" layoutX="738.0" prefHeight="100.0" prefWidth="294.0" spacing="15.0">
