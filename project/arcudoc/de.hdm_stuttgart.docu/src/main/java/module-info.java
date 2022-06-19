@@ -1,7 +1,7 @@
 module de.hdm.stuttgart.docu {
     exports de.hdm_stuttgart.docu.service;
     exports de.hdm_stuttgart.docu.guice;
-    exports de.hdm_stuttgart.docu.integration;
+    exports de.hdm_stuttgart.docu.integration; //todo should not be exported!
 
     opens de.hdm_stuttgart.docu.model to com.google.gson;
 

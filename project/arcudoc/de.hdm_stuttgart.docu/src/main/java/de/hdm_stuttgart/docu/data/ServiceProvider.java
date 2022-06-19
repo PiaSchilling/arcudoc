@@ -1,6 +1,6 @@
 package de.hdm_stuttgart.docu.data;
 
-import de.hdm_stuttgart.data.api.SupabaseAuthClient;
+//import de.hdm_stuttgart.data.api.SupabaseAuthClient;
 import de.hdm_stuttgart.data.service.ApiConstants;
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;

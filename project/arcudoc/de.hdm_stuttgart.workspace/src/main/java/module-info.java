@@ -1,10 +1,10 @@
 module workspace {
+
+    //exported modules
     exports de.hdm_stuttgart.workspace.service;
     exports de.hdm_stuttgart.workspace.guice;
-    exports de.hdm_stuttgart.workspace.integration;
 
-    requires de.hdm.stuttgart.api;
-
+    //external dependencies
     requires com.google.guice;
     requires org.apache.logging.log4j;
     requires okhttp3;
@@ -15,8 +15,13 @@ module workspace {
     requires javafx.fxml;
     requires javafx.base;
 
-    opens de.hdm_stuttgart.workspace.model to com.google.gson;
+    //module dependencies
+    requires de.hdm.stuttgart.api;
+
+    //exports to external modules
     exports de.hdm_stuttgart.workspace.data to com.google.guice;
+    exports de.hdm_stuttgart.workspace.integration to com.google.guice;
+    opens de.hdm_stuttgart.workspace.model to com.google.gson;
 
 
 }
