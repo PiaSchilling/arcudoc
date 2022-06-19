@@ -15,6 +15,8 @@
 .textfield{
     -fx-background-color: #2B2934;
     -fx-background-radius: 15px;
+    -fx-text-fill: white;
+    -fx-font-family: 'Poppins';
 }
 
 /* -------------------- */
@@ -39,6 +41,10 @@
     -fx-background-color: #3E3B4A;
     -fx-padding: 0 20 0 20;
     -fx-background-radius: 15px;
+}
+
+.combo-box-base > .arrow-button:hover{
+    -fx-background-color: #5a566b;
 }
 
 .combo-box-base > .arrow-button > .arrow {
@@ -140,6 +146,9 @@
     -fx-text-fill: #FFFFFF;
 }
 
+.button:hover{
+    -fx-background-color: #9197CB;
+}
 
 .button1 {
     -fx-background-color: #9197CB;
@@ -148,4 +157,8 @@
     -fx-text-fill: #FFFFFF;
     -fx-font-weight: 300;
     -fx-font-size: 14px;
+}
+
+.button1:hover{
+    -fx-background-color: #757aa6;
 }
