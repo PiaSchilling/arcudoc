@@ -92,12 +92,12 @@
          </cursor>
       </Button>
       <Label layoutX="1102.0" layoutY="505.0" prefHeight="32.0" prefWidth="180.0" styleClass="h3" text="hinzugefügte Mitglieder:" />
-      <Button fx:id="createProjectButton" layoutX="1083.0" layoutY="105.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="300.0" stylesheets="@../styles/workspace-projectoption-screen.css" text="Projekt anlegen">
+      <Button fx:id="createProjectButton" layoutX="1083.0" layoutY="105.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="300.0" stylesheets="/styles/workspace-projectoption-screen.css" text="Projekt anlegen">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
-      <ScrollPane layoutX="1099.0" layoutY="556.0" prefHeight="192.0" prefWidth="251.0" styleClass="scrollpane" stylesheets="@../styles/workspace-projectoption-screen.css">
+      <ScrollPane layoutX="1099.0" layoutY="556.0" prefHeight="192.0" prefWidth="251.0" styleClass="scrollpane" stylesheets="/styles/workspace-projectoption-screen.css">
          <content>
             <ListView fx:id="memberList" prefHeight="405.0" prefWidth="251.0" styleClass="scrollpane" />
          </content>

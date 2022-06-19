@@ -147,7 +147,7 @@
 }
 
 .button:hover{
-    -fx-background-color: #9197CB;
+    -fx-background-color: #35358f;
 }
 
 .button1 {
@@ -160,5 +160,5 @@
 }
 
 .button1:hover{
-    -fx-background-color: #757aa6;
+    -fx-background-color: #606488;
 }
