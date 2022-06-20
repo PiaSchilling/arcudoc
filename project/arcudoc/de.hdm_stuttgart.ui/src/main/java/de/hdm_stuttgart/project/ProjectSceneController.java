@@ -5,6 +5,7 @@ import de.hdm_stuttgart.docu.service.IDocu;
 import de.hdm_stuttgart.docu.service.ITemplateResponse;
 import de.hdm_stuttgart.editor.service.EditorState;
 import de.hdm_stuttgart.editor.service.IEditor;
+import de.hdm_stuttgart.navigation.NavigationController;
 import javafx.application.Platform;
 import javafx.beans.property.StringProperty;
 import javafx.fxml.FXML;
@@ -25,10 +26,10 @@ public class ProjectSceneController {
     private StringProperty markdownStringProperty;
     private ITemplateResponse templateResponse;
 
+    private int projectId;
 
 
     @Inject
-
     public ProjectSceneController(IEditor editor, IDocu docu) {
         this.editor = editor;
         this.docu = docu;
@@ -164,45 +165,16 @@ public class ProjectSceneController {
 
 
     public void initialize() {
+
         editButton.setOnAction(event -> onEditButtonClicked());
+
         markdownStringProperty.addListener((observable, oldValue, newValue) -> {
             setHtmlToWebView(newValue);
         });
 
-        logo.setOnMouseClicked(event -> onLogoCLicked());
-        titleEinfuehrungUndZiele.setOnMouseClicked(event -> onEinfuehrungUndZieleClicked());
-        titleRandbedingungen.setOnMouseClicked(event -> onRandbedingungenClicked());
-        titleKontextabgrenzung.setOnMouseClicked(event -> onKontextabgrenzungClicked());
-        titleBausteineinsicht.setOnMouseClicked(event -> onBausteinsichtClicked());
-        titleLaufzeisicht.setOnMouseClicked(event -> onLaufzeitsichtClicked());
-        titleVerteilungssicht.setOnMouseClicked(event -> onVerteilungssichtClicked());
-        titleQuerschnitt.setOnMouseClicked(event -> onQuerschnittClicked());
-        titleEntwurfsentscheidung.setOnMouseClicked(event -> onEntwurfentscheidungenClicked());
-        titleQualität.setOnMouseClicked(event -> onQualitaetsanforderungenClicked());
-        chapterAufgabenstellung.setOnMouseClicked(event -> onAufgabenstellungClicked());
-        chapterArchitektur.setOnMouseClicked(event -> onArchitekturUndEntwurfsmusterClicked());
-        chapterBausteinsichtEbeneEins.setOnMouseClicked(event -> onBausteinsichtEbeneEinsClicked());
-        chapterBausteinsichtEbeneZwei.setOnMouseClicked(event -> onBausteinsichtEbeneZweiClicked());
-        chapterEntwurfsentscheidungEins.setOnMouseClicked(event -> onEntwurfsentscheidungEinsClicked());
-        chapterEntwurfsentscheidungZwei.setOnMouseClicked(event -> onEntwurfsentscheidnungZweiClicked());
-        chapterFachlStruktur.setOnMouseClicked(event -> onFachlicheStrukturClicked());
-        chapterFachlicherKontext.setOnMouseClicked(event -> onFachlicherKontextClicked());
-        chapterGlossar.setOnMouseClicked(event -> onGlossarClicked());
-        chapterInfrastrukturEbeneEins.setOnMouseClicked(event -> onInfrastrukturEbeneEinsClicked());
-        chapterInfrastrukturEbeneZwei.setOnMouseClicked(event -> onInfrastrukturEbeneZweiClicked());
-        chapterKonventionen.setOnMouseClicked(event -> onKonventionenClicked());
-        chapterLaufzeitszenarioEins.setOnMouseClicked(event -> onLaufzeitszenarioEinsCLicked());
-        chapterLaufzeitszenarioZwei.setOnMouseClicked(event -> onLaufzeitszenarioZweiClicked());
-        chapterLoesungskontext.setOnMouseClicked(event -> onLoesungsstrategieClicked());
-        chapterOrganRandbedinungen.setOnMouseClicked(event -> onOrganisatorischeRandbedigungenClicked());
-        chapterQualibaum.setOnMouseClicked(event -> onQualitaetsbaumClicked());
-        chapterQualitaetsszenarien.setOnMouseClicked(event -> onQualitaetsszenarienClicked());
-        chapterQualitaetsziele.setOnMouseClicked(event -> onQualitaetszieleClicked());
-        chapterRisikenUndTechnSchulden.setOnMouseClicked(event -> onRisikenClicked());
-        chapterStakeholder.setOnMouseClicked(event -> onStakeholderClicked());
-        chapterTechnRandbedinungen.setOnMouseClicked(event -> onTechnischeRandbedigungenClicked());
-        chapterVerteilungskontext.setOnMouseClicked(event -> onVerteilungskontextClicked());
+        logo.setOnMouseClicked(event -> NavigationController.getINSTANCE().showWorkspaceScene());
 
+        setChapterOnClicks();
 
         anchorPane.setStyle("-fx-background-color: transparent");
 
@@ -224,8 +196,23 @@ public class ProjectSceneController {
         webView.getEngine().setUserStyleSheetLocation(getClass().getResource("/styles/webview.css").toString());
 
         editor.getEditorState();
+    }
 
-        templateResponse = docu.fetchTemplate();
+    /**
+     * sets the project id which indicates which project content is displayed in the view
+     * @param projectId the id of the project of which the content should be displayed
+     */
+    public void setProjectId(int projectId) {
+        this.projectId = projectId;
+        initEditorContent(projectId);
+    }
+
+    /**
+     * fetch project content and set first chapter to the view
+     * @param projectId the id of the project for which the content should be fetched
+     */
+    private void initEditorContent(int projectId){
+        templateResponse = docu.fetchTemplate(); //todo hand over projectId
         nameOfProject.setText(templateResponse.getTitle());
         fillWithContent("1.0_Einführung-und-Ziele");
     }
@@ -275,19 +262,56 @@ public class ProjectSceneController {
         }
     }
 
+    /**
+     * sets html content to the webview that it can be rendered
+     * @param html
+     */
     private void setHtmlToWebView(String html) {
+        //todo escape javascript
         Platform.runLater(() -> webView.getEngine().loadContent(html, "text/html"));
+    }
+
+    private void setChapterOnClicks(){
+
+        titleEinfuehrungUndZiele.setOnMouseClicked(event -> onEinfuehrungUndZieleClicked());
+        titleRandbedingungen.setOnMouseClicked(event -> onRandbedingungenClicked());
+        titleKontextabgrenzung.setOnMouseClicked(event -> onKontextabgrenzungClicked());
+        titleBausteineinsicht.setOnMouseClicked(event -> onBausteinsichtClicked());
+        titleLaufzeisicht.setOnMouseClicked(event -> onLaufzeitsichtClicked());
+        titleVerteilungssicht.setOnMouseClicked(event -> onVerteilungssichtClicked());
+        titleQuerschnitt.setOnMouseClicked(event -> onQuerschnittClicked());
+        titleEntwurfsentscheidung.setOnMouseClicked(event -> onEntwurfentscheidungenClicked());
+        titleQualität.setOnMouseClicked(event -> onQualitaetsanforderungenClicked());
+        chapterAufgabenstellung.setOnMouseClicked(event -> onAufgabenstellungClicked());
+        chapterArchitektur.setOnMouseClicked(event -> onArchitekturUndEntwurfsmusterClicked());
+        chapterBausteinsichtEbeneEins.setOnMouseClicked(event -> onBausteinsichtEbeneEinsClicked());
+        chapterBausteinsichtEbeneZwei.setOnMouseClicked(event -> onBausteinsichtEbeneZweiClicked());
+        chapterEntwurfsentscheidungEins.setOnMouseClicked(event -> onEntwurfsentscheidungEinsClicked());
+        chapterEntwurfsentscheidungZwei.setOnMouseClicked(event -> onEntwurfsentscheidnungZweiClicked());
+        chapterFachlStruktur.setOnMouseClicked(event -> onFachlicheStrukturClicked());
+        chapterFachlicherKontext.setOnMouseClicked(event -> onFachlicherKontextClicked());
+        chapterGlossar.setOnMouseClicked(event -> onGlossarClicked());
+        chapterInfrastrukturEbeneEins.setOnMouseClicked(event -> onInfrastrukturEbeneEinsClicked());
+        chapterInfrastrukturEbeneZwei.setOnMouseClicked(event -> onInfrastrukturEbeneZweiClicked());
+        chapterKonventionen.setOnMouseClicked(event -> onKonventionenClicked());
+        chapterLaufzeitszenarioEins.setOnMouseClicked(event -> onLaufzeitszenarioEinsCLicked());
+        chapterLaufzeitszenarioZwei.setOnMouseClicked(event -> onLaufzeitszenarioZweiClicked());
+        chapterLoesungskontext.setOnMouseClicked(event -> onLoesungsstrategieClicked());
+        chapterOrganRandbedinungen.setOnMouseClicked(event -> onOrganisatorischeRandbedigungenClicked());
+        chapterQualibaum.setOnMouseClicked(event -> onQualitaetsbaumClicked());
+        chapterQualitaetsszenarien.setOnMouseClicked(event -> onQualitaetsszenarienClicked());
+        chapterQualitaetsziele.setOnMouseClicked(event -> onQualitaetszieleClicked());
+        chapterRisikenUndTechnSchulden.setOnMouseClicked(event -> onRisikenClicked());
+        chapterStakeholder.setOnMouseClicked(event -> onStakeholderClicked());
+        chapterTechnRandbedinungen.setOnMouseClicked(event -> onTechnischeRandbedigungenClicked());
+        chapterVerteilungskontext.setOnMouseClicked(event -> onVerteilungskontextClicked());
     }
 
     // - - - - docu logic - - - - -
 
 
     public void onLogoCLicked() {
-
         //TODO open project Overview
-
-
-
     }
 
     public void onEinfuehrungUndZieleClicked() {

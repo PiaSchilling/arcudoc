@@ -7,6 +7,9 @@ public class Project {
 
     private String title;
 
+    @SerializedName("id")
+    private int projectId;
+
     @SerializedName("last_updated")
     private String lastUpdated; //todo this should be an Instant or LocalDateTime (unfortunately not possible with retrofit at the moment)
 
@@ -25,7 +28,8 @@ public class Project {
     public String toString() {
         return "Project{" +
                 "title='" + title + '\'' +
-                ", lastUpdated=" + lastUpdated +
+                ", projectId=" + projectId +
+                ", lastUpdated='" + lastUpdated + '\'' +
                 ", projectOwner=" + projectOwner +
                 '}';
     }
@@ -40,5 +44,9 @@ public class Project {
 
     public Profile getProjectOwner() {
         return projectOwner;
+    }
+
+    public int getProjectId() {
+        return projectId;
     }
 }

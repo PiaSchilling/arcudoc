@@ -7,5 +7,5 @@ public interface INavigationController {
     void showLoginScene();
     void showWorkspaceScene();
     void showCreateProjectScene();
-    void showProjectScene();
+    void showProjectScene(int projectId);
 }

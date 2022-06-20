@@ -1,0 +1,66 @@
+cache:
+    paths:
+        - .m2/repository #From Slides
+
+image: maven:3.8.5-openjdk-17 
+
+variables:
+    MAVEN_OPTS: "-Dmaven.repo.local=$CI_PROJECT_DIR/.m2/repository" #From Slides
+
+default:
+  before_script:
+    - cd project/arcudoc/ #/de.hdm_stuttgart.ui/rest
+  
+workflow:
+  rules:
+  - if: '($CI_PIPELINE_SOURCE == "push" && $CI_COMMIT_BRANCH == "main") || $CI_COMMIT_BRANCH == "develop"' # yaml Datei startet nur bei Zutreffen der angegebenen Bedingung 
+    when: always
+  - when: never
+
+
+stages:          # List of stages for jobs, and their order of execution
+  - build        # Project wird kompiliert
+  - test         # Unit-Test werden ausgeführt 
+  - deploy       # Projekt wird eingesetzt und JAR Datei gebildet
+
+build-api:      
+  stage: build
+  script:
+    - cd de.hdm_stuttgart.api/
+    - mvn clean install
+    - echo "Compiling the code..."
+    - echo "Compile complete."
+    - "mvn $MAVEN_OPTS compile"
+
+build-login:      
+  stage: build
+  needs: 
+      - build-api
+  script:
+    - cd de.hdm_stuttgart.login/
+    - echo "Compiling the code..."
+    - echo "Compile complete."
+    - "mvn compile"
+
+
+
+unit-test-job:   # This job runs in the test stage.
+  stage: test    # It only starts when the job in the build stage completes successfully.
+  script:
+    - echo "Running unit tests"
+    - "mvn test"
+
+
+deploy-job:      # This job runs in the deploy stage.
+  stage: deploy  # It only runs when *both* jobs in the test stage complete successfully.
+  script:
+    - echo "Deploying application..."
+    - echo "Application successfully deployed."
+    - "mvn deploy" 
+  only: #From Slides
+    refs:
+      - main
+  artifacts:
+    paths:
+      - target/*.jar
+    expire_in: 2 days

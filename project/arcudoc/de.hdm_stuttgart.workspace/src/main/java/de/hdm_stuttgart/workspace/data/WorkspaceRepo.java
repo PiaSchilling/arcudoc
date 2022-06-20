@@ -15,6 +15,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+import java.util.Arrays;
 import java.util.List;
 
 //todo present error messages to the user
@@ -279,7 +280,7 @@ public class WorkspaceRepo {
         Call<List<MemberProjectResponse>> call = supabaseRestClient.getMemberProjects(
                 ApiConstants.API_KEY,
                 ApiConstants.BEARER_KEY,
-                "projects(title,last_updated,profiles!projects_owner_fkey(mail)),project_role" //indicates to select title and id of project table although project_members table is queried in request (linked in supabase)
+                "projects(title,last_updated,id,profiles!projects_owner_fkey(mail)),project_role" //indicates to select title and id of project table although project_members table is queried in request (linked in supabase)
         );
 
         call.enqueue(new Callback<List<MemberProjectResponse>>() {
@@ -288,8 +289,9 @@ public class WorkspaceRepo {
                 if (response.isSuccessful()) {
                     log.debug("Member projects fetched successfully");
                     List<MemberProjectResponse> memberProjects = response.body();
-
                     if(memberProjects != null){
+                        System.out.println(Arrays.toString(memberProjects.toArray()));
+
                         ObservableList<MemberProjectResponse> observableList = FXCollections.observableArrayList();
                         observableList.addAll(memberProjects);
                         memberProjectsProperty.setValue(observableList);

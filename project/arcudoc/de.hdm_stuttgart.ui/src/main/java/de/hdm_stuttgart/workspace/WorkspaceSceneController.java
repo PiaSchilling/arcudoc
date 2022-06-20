@@ -17,6 +17,7 @@ import javafx.scene.shape.Rectangle;
 
 import java.util.Optional;
 
+//todo add loading spinner when clicked on project cell
 public class WorkspaceSceneController implements WorkspaceCellClickHandler {
 
     private final IWorkspace workspace;
@@ -90,9 +91,10 @@ public class WorkspaceSceneController implements WorkspaceCellClickHandler {
         projectsSearchbar.setOnAction(event -> {});//todo implement searchbar
         createProjectButton.setOnMouseClicked(event -> NavigationController.getINSTANCE().showCreateProjectScene());
 
+        /*
         userNameLabel.setText(workspace.getUserName());
         userMailLabel.setText(workspace.getUserMail());
-
+*/
     }
 
 

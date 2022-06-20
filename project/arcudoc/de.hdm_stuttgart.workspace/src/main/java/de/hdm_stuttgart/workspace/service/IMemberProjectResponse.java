@@ -10,4 +10,6 @@ public interface IMemberProjectResponse {
 
     String getOwnerMail();
 
+    int getProjectId();
+
 }
