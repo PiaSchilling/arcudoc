@@ -1,6 +1,5 @@
 .background {
     -fx-background-color: #19181F;
-    -fx-background-radius: 20px;
 }
 
 /* base elements */
@@ -60,6 +59,11 @@
     -fx-line-height: 24px;
 
     -fx-text-fill: #FFFFFF;
+}
+
+.menu-title:hover{
+    -fx-text-fill: #969597;
+    -fx-font-size: 12px;
 }
 
 .menu-chapter-title{

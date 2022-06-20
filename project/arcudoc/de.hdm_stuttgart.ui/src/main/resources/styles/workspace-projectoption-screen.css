@@ -1,7 +1,6 @@
 
 .background {
     -fx-background-color: #19181F;
-    -fx-background-radius: 20px;
 }
 
 /* base elements */
@@ -16,6 +15,8 @@
 .textfield{
     -fx-background-color: #2B2934;
     -fx-background-radius: 15px;
+    -fx-text-fill: white;
+    -fx-font-family: 'Poppins';
 }
 
 /* -------------------- */
@@ -23,7 +24,7 @@
 .combo-box {
     -fx-background-color: transparent, transparent, transparent, #2B2934;
     -fx-background-insets: 0, 1, 2, 0 0 -1 0;
-    -fx-background-radius: 20px;
+    -fx-background-radius: 15px;
     -fx-padding: 0 0 0 8;
 }
 
@@ -38,8 +39,12 @@
 
 .combo-box-base > .arrow-button {
     -fx-background-color: #3E3B4A;
-    -fx-padding: 0 38 0 38;
+    -fx-padding: 0 20 0 20;
     -fx-background-radius: 15px;
+}
+
+.combo-box-base > .arrow-button:hover{
+    -fx-background-color: #5a566b;
 }
 
 .combo-box-base > .arrow-button > .arrow {
@@ -63,7 +68,7 @@
 
 .linie{
     -fx-stroke: #A5A5A5 ;
-    -fx-stroke-width: 0.5;
+    -fx-stroke-width: 0.25;
 }
 
 
@@ -87,33 +92,31 @@
 /* -------------------- */
 
 .h1{
-    -fx-font-family: "Poppins";
-    -fx-text-fill: #FFFF;
-    -fx-font-size: 20px;
+    -fx-font-family: 'Poppins';
+    -fx-font-weight: 700;
+    -fx-font-size: 16px;
     -fx-line-height: 24px;
+
+    -fx-text-fill: #FFFFFF;
 }
 
 .h2{
     -fx-font-family: 'Poppins';
     -fx-text-fill: #FFFFFF;
     -fx-font-weight: 300;
-    -fx-font-size: 16px;
-    -fx-line-height: 33px;
-
+    -fx-font-size: 14px;
 }
 
 .h3{
     -fx-text-fill: #969597;
     -fx-font-family: 'Poppins';
     -fx-font-size: 14px;
-    -fx-line-height: 24px;
 }
 
 .h4{
     -fx-text-fill: #969597;
     -fx-font-family: 'Poppins';
     -fx-font-size: 14px;
-    -fx-line-height: 24px;
 }
 
 .errom{
@@ -132,9 +135,30 @@
     -fx-background-repeat: no-repeat;
     -fx-background-image: url("../images/back.png");
 }
+.button {
+    -fx-background-color: #5553E1;
+    -fx-background-radius: 30px;
+    -fx-font-family: 'Poppins';
+    -fx-font-weight: 700;
+    -fx-font-size: 16px;
+    -fx-line-height: 24px;
+
+    -fx-text-fill: #FFFFFF;
+}
+
+.button:hover{
+    -fx-background-color: #35358f;
+}
 
 .button1 {
     -fx-background-color: #9197CB;
     -fx-background-radius: 30px;
+    -fx-font-family: 'Poppins';
+    -fx-text-fill: #FFFFFF;
+    -fx-font-weight: 300;
+    -fx-font-size: 14px;
+}
 
+.button1:hover{
+    -fx-background-color: #606488;
 }

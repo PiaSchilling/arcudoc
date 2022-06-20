@@ -90,9 +90,10 @@ public class WorkspaceSceneController implements WorkspaceCellClickHandler {
         projectsSearchbar.setOnAction(event -> {});//todo implement searchbar
         createProjectButton.setOnMouseClicked(event -> NavigationController.getINSTANCE().showCreateProjectScene());
 
+        /*
         userNameLabel.setText(workspace.getUserName());
         userMailLabel.setText(workspace.getUserMail());
-
+*/
     }
 
 

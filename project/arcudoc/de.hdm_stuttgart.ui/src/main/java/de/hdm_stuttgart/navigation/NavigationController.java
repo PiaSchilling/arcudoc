@@ -67,7 +67,7 @@ public class NavigationController implements INavigationController{
             FXMLLoader loader = new FXMLLoader();
             loader.setControllerFactory(controller);
             final Parent rootNode = loader.load(getClass().getResourceAsStream(fxmlFile));
-            final Scene scene = new Scene(rootNode, 1512, 800);
+            final Scene scene = new Scene(rootNode, 1434, 800);
             Platform.runLater(() -> {
                 stage.setScene(scene);
                 stage.show();
@@ -84,7 +84,7 @@ public class NavigationController implements INavigationController{
             FXMLLoader loader = new FXMLLoader();
             loader.setControllerFactory(controller);
             final Parent rootNode = loader.load(getClass().getResourceAsStream(fxmlFile));
-            final Scene scene = new Scene(rootNode, 1512, 800);
+            final Scene scene = new Scene(rootNode, 1434, 800);
             Platform.runLater(() -> {
                 stage.setScene(scene);
                 stage.show();
@@ -101,7 +101,7 @@ public class NavigationController implements INavigationController{
             FXMLLoader loader = new FXMLLoader();
             loader.setControllerFactory(controller);
             final Parent rootNode = loader.load(getClass().getResourceAsStream(fxmlFile));
-            final Scene scene = new Scene(rootNode, 1512, 800);
+            final Scene scene = new Scene(rootNode, 1434, 800);
             Platform.runLater(() -> {
                 stage.setScene(scene);
                 stage.show();

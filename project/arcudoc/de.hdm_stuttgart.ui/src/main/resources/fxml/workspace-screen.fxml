@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextField?>
@@ -10,48 +11,40 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.shape.Circle?>
 <?import javafx.scene.shape.Line?>
-<?import javafx.scene.shape.Polyline?>
 <?import javafx.scene.shape.Rectangle?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="982.0" prefWidth="1512.0" styleClass="background" stylesheets="@/styles/workspace-screen.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.hdm_stuttgart.workspace.WorkspaceSceneController">
+<AnchorPane maxHeight="800.0" maxWidth="1434.0" minHeight="800.0" minWidth="1080.0" prefHeight="800.0" prefWidth="1434.0" styleClass="background" stylesheets="/styles/workspace-screen.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.hdm_stuttgart.workspace.WorkspaceSceneController">
    <children>
-      <Polyline fill="CHARTREUSE" layoutX="1438.0" layoutY="351.0" points="74.0, -351.0, 74.0, -264.9272155761719, -255.7071533203125, -264.9272155761719, -353.9251708984375, -351.0" strokeLineCap="BUTT" strokeType="INSIDE" strokeWidth="0.0" styleClass="user-card" />
       <ImageView fitHeight="60.0" fitWidth="227.0" layoutX="44.0" layoutY="29.0" pickOnBounds="true" preserveRatio="true" styleClass="logo">
          <image>
             <Image url="@/images/logoArcUdoc.png" />
          </image>
       </ImageView>
       <StackPane layoutX="1201.0" />
-      <HBox layoutX="1180.0" layoutY="13.0" nodeOrientation="LEFT_TO_RIGHT" spacing="30.0">
-         <children>
-            <Circle fx:id="userAvatar" centerX="1172.0" centerY="21.0" fill="#67717980" radius="30.0" stroke="TRANSPARENT" strokeType="INSIDE" styleClass="userAvatar" />
-            <VBox alignment="CENTER_LEFT" spacing="5.0">
-               <children>
-                  <Label fx:id="userNameLabel" styleClass="user-name" text="user name" textFill="WHITE" />
-                  <Label fx:id="userMailLabel" styleClass="user-subdescription" text="useremail.com" textFill="WHITE" />
-               </children>
-            </VBox>
-         </children>
-      </HBox>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="45.0" layoutX="37.0" layoutY="127.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" styleClass="searchbar-container" width="1089.0" />
-      <HBox alignment="CENTER_LEFT" layoutX="37.0" layoutY="127.0" prefHeight="45.0" prefWidth="1090.0" spacing="30.0">
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="45.0" layoutX="15.0" layoutY="127.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" styleClass="searchbar-container" width="1086.0" />
+      <HBox alignment="CENTER_LEFT" layoutX="15.0" layoutY="127.0" prefHeight="45.0" prefWidth="1087.0" spacing="30.0">
          <children>
             <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@/images/searchIcon.png" />
                </image>
             </ImageView>
-            <TextField fx:id="projectsSearchbar" prefHeight="45.0" prefWidth="994.0" styleClass="searchbar" stylesheets="@../styles/workspace-screen.css" />
+            <TextField fx:id="projectsSearchbar" prefHeight="45.0" prefWidth="994.0" styleClass="searchbar" stylesheets="@/styles/workspace-screen.css">
+               <cursor>
+                  <Cursor fx:constant="TEXT" />
+               </cursor></TextField>
          </children>
          <padding>
             <Insets left="30.0" />
          </padding>
       </HBox>
-      <Label layoutX="1192.0" layoutY="130.0" styleClass="h3" text="Projekt- Optionen" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="40.0" layoutX="1185.0" layoutY="181.0" stroke="TRANSPARENT" strokeType="INSIDE" styleClass="button" width="300.0" />
-      <HBox fx:id="createProjectButton" alignment="CENTER_LEFT" layoutX="1187.0" layoutY="182.0" prefHeight="40.0" prefWidth="298.0" spacing="35.0">
+      <Label layoutX="1120.0" layoutY="130.0" styleClass="h3" text="Projekt- Optionen" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="40.0" layoutX="1120.0" layoutY="181.0" stroke="TRANSPARENT" strokeType="INSIDE" styleClass="button" width="300.0">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></Rectangle>
+      <HBox fx:id="createProjectButton" alignment="CENTER_LEFT" layoutX="1120.0" layoutY="181.0" prefHeight="40.0" prefWidth="300.0" spacing="35.0" styleClass="button-overlay" stylesheets="@../styles/workspace-screen.css">
          <children>
             <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -66,9 +59,15 @@
          <padding>
             <Insets left="45.0" />
          </padding>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
       </HBox>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="40.0" layoutX="1185.0" layoutY="238.0" stroke="TRANSPARENT" strokeType="INSIDE" styleClass="button" width="300.0" />
-      <HBox fx:id="joinProjectButton" alignment="CENTER_LEFT" layoutX="1185.0" layoutY="238.0" prefHeight="40.0" prefWidth="298.0" spacing="35.0">
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="40.0" layoutX="1120.0" layoutY="238.0" stroke="TRANSPARENT" strokeType="INSIDE" styleClass="button" width="300.0">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></Rectangle>
+      <HBox fx:id="joinProjectButton" alignment="CENTER_LEFT" layoutX="1120.0" layoutY="238.0" prefHeight="40.0" prefWidth="300.0" spacing="35.0" styleClass="button-overlay" stylesheets="@../styles/workspace-screen.css">
          <children>
             <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -83,15 +82,18 @@
          <padding>
             <Insets left="45.0" />
          </padding>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
       </HBox>
-      <Line endX="300.0" endY="3.0517578125E-5" layoutX="1183.0" layoutY="312.0" startY="3.0517578125E-5" stroke="#969597" strokeWidth="0.5" />
-      <Label layoutX="1193.0" layoutY="356.0" styleClass="h3" text="Projekt- Einladungen" />
-      <ScrollPane layoutX="39.0" layoutY="211.0" prefHeight="741.0" prefWidth="1089.0" styleClass="scrollpane" stylesheets="@/styles/workspace-screen.css">
+      <Line endX="300.0" endY="3.0517578125E-5" layoutX="1120.0" layoutY="312.0" startY="3.0517578125E-5" stroke="#969597" strokeWidth="0.5" />
+      <Label layoutX="1120.0" layoutY="356.0" styleClass="h3" text="Projekt- Einladungen" />
+      <ScrollPane layoutX="40.0" layoutY="211.0" prefHeight="583.0" prefWidth="1089.0" styleClass="scrollpane" stylesheets="@/styles/workspace-screen.css" AnchorPane.rightAnchor="332.0">
          <content>
             <VBox fx:id="projectCellVBox" prefHeight="737.0" prefWidth="1086.0" />
          </content>
       </ScrollPane>
-      <ScrollPane fx:id="projectInvitationsScrollPane" layoutX="1185.0" layoutY="405.0" prefHeight="548.0" prefWidth="300.0" styleClass="scrollpane" stylesheets="@/styles/workspace-screen.css">
+      <ScrollPane fx:id="projectInvitationsScrollPane" layoutX="1120.0" layoutY="405.0" prefHeight="395.0" prefWidth="300.0" styleClass="scrollpane" stylesheets="@/styles/workspace-screen.css">
          <content>
             <VBox fx:id="invitationCellVBox" prefHeight="546.0" prefWidth="296.0" />
          </content>

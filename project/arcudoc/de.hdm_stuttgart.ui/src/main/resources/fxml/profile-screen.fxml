@@ -8,20 +8,20 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="584.0" prefWidth="561.0" styleClass="pane" stylesheets="/styles/profile-screen.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane prefHeight="584.0" prefWidth="561.0" styleClass="pane" stylesheets="@../styles/profile-screen.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
     <children>
         <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="52.0" layoutY="52.0" pickOnBounds="true" preserveRatio="true">
             <image>
-                <Image url="/images/logo.png" />
+                <Image url="@../images/logo.png" />
             </image>
         </ImageView>
-        <Label id="logo" layoutX="137.0" layoutY="58.0" styleClass="root" stylesheets="/styles/profile-screen.css" text="ArcUdoc" />
-        <Label layoutX="137.0" layoutY="166.0" styleClass="h1" stylesheets="/styles/profile-screen.css" text="Profile information" />
-        <Label id="logo2" layoutX="192.5" layoutY="58.0" styleClass="root" stylesheets="/styles/login-screen.css" text="U" />
+        <Label id="logo" layoutX="137.0" layoutY="58.0" styleClass="root" stylesheets="@../styles/profile-screen.css" text="ArcUdoc" />
+        <Label layoutX="137.0" layoutY="166.0" styleClass="h1" stylesheets="@../styles/profile-screen.css" text="Profile information" />
+        <Label id="logo2" layoutX="192.5" layoutY="58.0" styleClass="root" stylesheets="@../styles/login-screen.css" text="U" />
       <TextField layoutX="137.0" layoutY="265.0" prefHeight="27.0" prefWidth="300.0" />
-      <Label layoutX="137.0" layoutY="225.0" prefHeight="18.0" prefWidth="74.0" styleClass="h2" stylesheets="/styles/profile-screen.css" text="Vorname" />
+      <Label layoutX="137.0" layoutY="225.0" prefHeight="18.0" prefWidth="74.0" styleClass="h2" stylesheets="@../styles/profile-screen.css" text="Vorname" />
       <TextField layoutX="137.0" layoutY="360.0" prefHeight="27.0" prefWidth="300.0" />
-      <Label layoutX="137.0" layoutY="320.0" prefHeight="18.0" prefWidth="74.0" styleClass="h2" stylesheets="/styles/profile-screen.css" text="Name" />
+      <Label layoutX="137.0" layoutY="320.0" prefHeight="18.0" prefWidth="74.0" styleClass="h2" stylesheets="@../styles/profile-screen.css" text="Name" />
         <Button fx:id="addMemberButton" layoutX="150.0" layoutY="454.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="247.0" text="Profil ergänzen">
             <styleClass>
                 <String fx:value="button1" />
