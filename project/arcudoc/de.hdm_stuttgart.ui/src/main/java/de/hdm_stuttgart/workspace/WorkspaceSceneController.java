@@ -17,6 +17,7 @@ import javafx.scene.shape.Rectangle;
 
 import java.util.Optional;
 
+//todo add loading spinner when clicked on project cell
 public class WorkspaceSceneController implements WorkspaceCellClickHandler {
 
     private final IWorkspace workspace;

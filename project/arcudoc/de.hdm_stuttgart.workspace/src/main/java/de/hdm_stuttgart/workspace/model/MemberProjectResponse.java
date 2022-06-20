@@ -76,4 +76,9 @@ public class MemberProjectResponse implements IMemberProjectResponse {
     public String getOwnerMail() {
         return project.getProjectOwner().getMail();
     }
+
+    @Override
+    public int getProjectId() {
+        return project.getProjectId();
+    }
 }

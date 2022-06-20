@@ -2,6 +2,7 @@ package de.hdm_stuttgart.navigation;
 
 import de.hdm_stuttgart.ControllerFactory;
 import de.hdm_stuttgart.Scenes;
+import de.hdm_stuttgart.project.ProjectSceneController;
 import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -95,12 +96,14 @@ public class NavigationController implements INavigationController{
     }
 
     @Override
-    public void showProjectScene() {
+    public void showProjectScene(int projectId) {
         try{
             final String fxmlFile = Scenes.PROJECT.getPath();
             FXMLLoader loader = new FXMLLoader();
             loader.setControllerFactory(controller);
             final Parent rootNode = loader.load(getClass().getResourceAsStream(fxmlFile));
+            ProjectSceneController controller = loader.getController();
+            controller.setProjectId(projectId);
             final Scene scene = new Scene(rootNode, 1434, 800);
             Platform.runLater(() -> {
                 stage.setScene(scene);
