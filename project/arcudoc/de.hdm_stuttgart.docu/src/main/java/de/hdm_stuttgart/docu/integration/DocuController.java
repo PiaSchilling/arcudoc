@@ -31,9 +31,9 @@ public class DocuController {
         templateResponseListProperty.setValue(observableList);
     }
 
-    public ITemplateResponse getTemplateResponse() {
+    public ITemplateResponse getTemplateResponse(Integer projectId) {
        // docuRepo.getTemplate();
-        return docuRepo.getTemplate();
+        return docuRepo.getTemplate(projectId);
     }
 
     public void setContent (TemplateResponse templateResponse){

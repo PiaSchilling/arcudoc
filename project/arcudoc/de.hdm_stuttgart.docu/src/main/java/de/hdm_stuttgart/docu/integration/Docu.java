@@ -140,9 +140,9 @@ public class Docu implements IDocu {
     }
 
     @Override
-    public ITemplateResponse fetchTemplate(){
+    public ITemplateResponse fetchTemplate(Integer projectID){
 
-       return controller.getTemplateResponse();
+       return controller.getTemplateResponse(projectID);
     }
     @Override
     public void setContent(ITemplateResponse templateResponse){

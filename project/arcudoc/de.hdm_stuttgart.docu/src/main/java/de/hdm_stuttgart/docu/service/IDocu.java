@@ -4,7 +4,7 @@ import de.hdm_stuttgart.docu.model.TemplateResponse;
 
 public interface IDocu {
 
-    ITemplateResponse fetchTemplate();
+    ITemplateResponse fetchTemplate(Integer projectId);
 
     String getProjectName();
 
