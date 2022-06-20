@@ -52,6 +52,9 @@ public class WorkspaceSceneController implements WorkspaceCellClickHandler {
     private ScrollPane projectInvitationsScrollPane;
 
     @FXML
+    private ScrollPane projectScrollPane;
+
+    @FXML
     private VBox invitationCellVBox; //todo auto compute height of box
 
     @FXML
@@ -89,6 +92,10 @@ public class WorkspaceSceneController implements WorkspaceCellClickHandler {
 
         projectsSearchbar.setOnAction(event -> {});//todo implement searchbar
         createProjectButton.setOnMouseClicked(event -> NavigationController.getINSTANCE().showCreateProjectScene());
+        projectInvitationsScrollPane.setVbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
+        projectInvitationsScrollPane.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
+        projectScrollPane.setVbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
+        projectScrollPane.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
 
         /*
         userNameLabel.setText(workspace.getUserName());

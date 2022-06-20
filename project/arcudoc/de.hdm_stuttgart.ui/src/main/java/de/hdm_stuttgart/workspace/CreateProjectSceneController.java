@@ -6,13 +6,9 @@ import de.hdm_stuttgart.workspace.service.ICreateProject;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.ListView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
-import javafx.scene.control.Label;
 
 
 public class CreateProjectSceneController implements CreateProjectCellClickHandler{
@@ -55,6 +51,9 @@ public class CreateProjectSceneController implements CreateProjectCellClickHandl
     private  VBox membersVBox;
 
     @FXML
+    private ScrollPane memberListScrollPane;
+
+    @FXML
     private ComboBox<String> roleComboBox;
 
     @FXML
@@ -85,6 +84,8 @@ public class CreateProjectSceneController implements CreateProjectCellClickHandl
 
         addMemberButton.setOnAction(event -> onAddMemberClicked());
         createProjectButton.setOnAction(event -> onCreateProjectClicked());
+        memberListScrollPane.setVbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
+        memberListScrollPane.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
     }
 
     /**

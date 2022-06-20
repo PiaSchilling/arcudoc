@@ -16,7 +16,7 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="800.0" maxWidth="1434.0" minHeight="800.0" minWidth="1080.0" prefHeight="800.0" prefWidth="1434.0" styleClass="background" stylesheets="/styles/workspace-projectoption-screen.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="800.0" maxWidth="1434.0" minHeight="800.0" minWidth="1080.0" prefHeight="800.0" prefWidth="1434.0" styleClass="background" stylesheets="/styles/workspace-projectoption-screen.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.hdm_stuttgart.workspace.CreateProjectSceneController">
    <children>
       <Button layoutX="18.0" layoutY="40.0" mnemonicParsing="false" prefHeight="5.5" prefWidth="9.5" style="-fx-background-color: none;" styleClass="backbutton" />
       <Label layoutX="70.0" layoutY="40.0" prefHeight="32.0" prefWidth="180.0" styleClass="h1" text="Projekt erstellen">
@@ -97,7 +97,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
-      <ScrollPane layoutX="1099.0" layoutY="556.0" prefHeight="192.0" prefWidth="251.0" styleClass="scrollpane" stylesheets="/styles/workspace-projectoption-screen.css">
+      <ScrollPane fx:id="memberListScrollPane" layoutX="1099.0" layoutY="556.0" prefHeight="192.0" prefWidth="251.0" styleClass="scrollpane" stylesheets="/styles/workspace-projectoption-screen.css">
          <content>
             <ListView fx:id="memberList" prefHeight="405.0" prefWidth="251.0" styleClass="scrollpane" />
             <VBox fx:id="membersVBox" prefHeight="260.0" prefWidth="238.0" styleClass="scrollpane" stylesheets="/styles/workspace-projectoption-screen.css" />

@@ -88,7 +88,7 @@
       </HBox>
       <Line endX="300.0" endY="3.0517578125E-5" layoutX="1120.0" layoutY="312.0" startY="3.0517578125E-5" stroke="#969597" strokeWidth="0.5" />
       <Label layoutX="1120.0" layoutY="356.0" styleClass="h3" text="Projekt- Einladungen" />
-      <ScrollPane layoutX="40.0" layoutY="211.0" prefHeight="583.0" prefWidth="1089.0" styleClass="scrollpane" stylesheets="@/styles/workspace-screen.css" AnchorPane.rightAnchor="332.0">
+      <ScrollPane fx:id="projectScrollPane" layoutX="40.0" layoutY="211.0" prefHeight="583.0" prefWidth="1089.0" styleClass="scrollpane" stylesheets="@/styles/workspace-screen.css" AnchorPane.rightAnchor="332.0">
          <content>
             <VBox fx:id="projectCellVBox" prefHeight="737.0" prefWidth="1086.0" />
          </content>

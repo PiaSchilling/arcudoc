@@ -10,6 +10,7 @@ import javafx.beans.property.StringProperty;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextArea;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -41,6 +42,12 @@ public class ProjectSceneController {
 
     @FXML
     private AnchorPane anchorPane; //todo rename
+
+    @FXML
+    private ScrollPane templateMenuScrollPane;
+
+    @FXML
+    private ScrollPane versionScrollPane;
 
     private TextArea textArea;
     private WebView webView;
@@ -203,8 +210,12 @@ public class ProjectSceneController {
         chapterTechnRandbedinungen.setOnMouseClicked(event -> onTechnischeRandbedigungenClicked());
         chapterVerteilungskontext.setOnMouseClicked(event -> onVerteilungskontextClicked());
 
-
         anchorPane.setStyle("-fx-background-color: transparent");
+
+        templateMenuScrollPane.setVbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
+        templateMenuScrollPane.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
+        versionScrollPane.setVbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
+        versionScrollPane.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
 
         textArea = new TextArea();
         textArea.setStyle(getClass().getResource("/styles/project-screen.css").toString());
