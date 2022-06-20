@@ -39,10 +39,10 @@
                <children>
                   <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@/images/menuIcon_Doku.png" />
+                        <Image url="@/images/menuIcon_Doku_active.png" />
                      </image>
                   </ImageView>
-                  <Label styleClass="menu-title" text="Doku" />
+                  <Label id="active" styleClass="menu-title" text="Doku" />
                </children>
                <cursor>
                   <Cursor fx:constant="HAND" />
