@@ -12,6 +12,7 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
+import javafx.scene.control.Label;
 
 
 public class CreateProjectSceneController implements CreateProjectCellClickHandler{
@@ -56,6 +57,24 @@ public class CreateProjectSceneController implements CreateProjectCellClickHandl
     @FXML
     private ComboBox<String> roleComboBox;
 
+    @FXML
+    private Label error_description;
+
+    @FXML
+    private Label error_email;
+
+    @FXML
+    private Label error_job;
+
+    @FXML
+    private Label error_memberAlreadyAdded;
+
+    @FXML
+    private Label error_project;
+
+    @FXML
+    private Label error_role;
+
 
     public void initialize(){
 
@@ -77,9 +96,9 @@ public class CreateProjectSceneController implements CreateProjectCellClickHandl
         String projectDescription = enterDescriptionTextField.getText();
 
         if(projectTitle == null || projectTitle.isEmpty()){
-            //todo show error
+            error_project.setText("Wie heißt dein Projekt? Gebe hier den Projektnamen an.");
         }else if(projectDescription == null || projectDescription.isEmpty()){
-            //todo show error
+            error_description.setText("Was macht dein Projekt? Gebe hier eine Beschreibung an.");
         }else{
             createProject.onCreateProjectClicked(projectTitle,projectDescription);
             NavigationController.getINSTANCE().showWorkspaceScene();
@@ -95,11 +114,11 @@ public class CreateProjectSceneController implements CreateProjectCellClickHandl
         String jobLabel = enterLabelTextField.getText();
 
         if(jobLabel == null || jobLabel.isEmpty()){
-            //todo show error
+            error_job.setText("Welchen Job hat das Mitglied? Gebe hier ein Job Label an.");
         }else if(memberMail == null || memberMail.isEmpty()){
-            //todo show error
+            error_email.setText("Welche Mail hat das Mitglied? Gebe hier die Mail an.");
         }else if(roleComboBox.getSelectionModel().isEmpty()){
-            //todo show error
+            error_role.setText("Welche Rolle hat das Mitglied im Projekt? Wähle hier die Rolle aus.");
         }else{
             String projectRole = roleComboBox.getValue();
             String actionResponse = createProject.onAddMemberClicked(memberMail,jobLabel,projectRole);
@@ -109,7 +128,7 @@ public class CreateProjectSceneController implements CreateProjectCellClickHandl
                 UserCellComponent userCellComponent = new UserCellComponent(memberMail,this);
                 membersVBox.getChildren().add(userCellComponent);
             }else{
-                //todo show error
+               error_memberAlreadyAdded.setText("Ups, Mitglied wurde bereits hinzugefügt");
             }
 
         }
