@@ -14,7 +14,7 @@ public class TemplateResponse implements de.hdm_stuttgart.docu.service.ITemplate
     @SerializedName("1.1_Aufgabenstellung")
     private String aufgabenstellung;
 
-    @SerializedName("1.2_Qualiteatsziele")
+    @SerializedName("1.2_Qualitaetsziele")
     private String qualiteatsziele;
 
     @SerializedName("1.3_Stakeholder")
@@ -35,14 +35,14 @@ public class TemplateResponse implements de.hdm_stuttgart.docu.service.ITemplate
     @SerializedName("3.0_Kontextabgrenzug")
     private String kontextabgrenzug;
 
-    @SerializedName("3.1_Fachlicher-Kontex")
+    @SerializedName("3.1_Fachlicher-Kontext")
     private String fachlicherKontext;
 
-    @SerializedName("3.2_Technischer-Verteilungskontexz")
+    @SerializedName("3.2_Technischer-Verteilungskontext")
     private String technischerVerteilungskontext;
 
-    @SerializedName("4.0_Lösungsstrategien")
-    private String lösungsstrategien;
+    @SerializedName("4.0_Loesungsstrategien")
+    private String loesungsstrategien;
 
     @SerializedName("5.0_Bausteinsicht")
     private String bausteinsicht;
@@ -117,7 +117,7 @@ public class TemplateResponse implements de.hdm_stuttgart.docu.service.ITemplate
         this.kontextabgrenzug = kontextabgrenzug;
         this.fachlicherKontext = fachlicherKontext;
         this.technischerVerteilungskontext = technischerVerteilungskontext;
-        this.lösungsstrategien = lösungsstrategien;
+        this.loesungsstrategien = lösungsstrategien;
         this.bausteinsicht = bausteinsicht;
         this.bausteinsichtEbeneEins = bausteinsichtEbeneEins;
         this.bausteinsichtEbendeZwei = bausteinsichtEbendeZwei;
@@ -202,8 +202,8 @@ public class TemplateResponse implements de.hdm_stuttgart.docu.service.ITemplate
     }
 
     @Override
-    public String getLösungsstrategien() {
-        return lösungsstrategien;
+    public String getLoesungsstrategien() {
+        return loesungsstrategien;
     }
 
     @Override
@@ -375,8 +375,8 @@ public class TemplateResponse implements de.hdm_stuttgart.docu.service.ITemplate
     }
 
     @Override
-    public void setLösungsstrategien(String lösungsstrategien) {
-        this.lösungsstrategien = lösungsstrategien;
+    public void setLoesungsstrategien(String loesungsstrategien) {
+        this.loesungsstrategien = loesungsstrategien;
     }
 
     @Override

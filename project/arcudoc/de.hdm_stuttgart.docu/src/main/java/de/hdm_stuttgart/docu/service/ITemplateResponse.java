@@ -25,7 +25,7 @@ public interface ITemplateResponse {
 
     String getTechnischerVerteilungskontext();
 
-    String getLösungsstrategien();
+    String getLoesungsstrategien();
 
     String getBausteinsicht();
 
@@ -93,7 +93,7 @@ public interface ITemplateResponse {
 
     void setTechnischerVerteilungskontext(String technischerVerteilungskontext);
 
-    void setLösungsstrategien(String lösungsstrategien);
+    void setLoesungsstrategien(String loesungsstrategien);
 
     void setBausteinsicht(String bausteinsicht);
 

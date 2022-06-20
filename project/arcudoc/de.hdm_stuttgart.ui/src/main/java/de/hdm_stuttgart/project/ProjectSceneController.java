@@ -25,7 +25,6 @@ public class ProjectSceneController {
     private IDocu docu;
     private StringProperty markdownStringProperty;
     private ITemplateResponse templateResponse;
-
     private int projectId;
 
 
@@ -212,9 +211,9 @@ public class ProjectSceneController {
      * @param projectId the id of the project for which the content should be fetched
      */
     private void initEditorContent(int projectId){
-        templateResponse = docu.fetchTemplate(); //todo hand over projectId
-        nameOfProject.setText(templateResponse.getTitle());
-        fillWithContent("1.0_Einführung-und-Ziele");
+        templateResponse = docu.fetchTemplate(projectId);
+       // nameOfProject.setText(templateResponse.getTitle());
+        fillWithContent("1.1_Aufgabenstellung");
     }
 
     private void onEditButtonClicked() {
@@ -322,7 +321,7 @@ public class ProjectSceneController {
         subchapterNumber.setText(null);
         saveContent(property, textArea.getText());
         property = "1.0_Einführung-und-Ziele";
-        fillWithContent("1.0_Einführung-und-Ziele");
+        fillWithContent(property);
 
 
     }
@@ -336,7 +335,7 @@ public class ProjectSceneController {
         subchapterNumber.setText("01.1");
         saveContent(property, textArea.getText());
         property = "1.1_Aufgabenstellung";
-        fillWithContent("1.1_Aufgabenstellung");
+        fillWithContent(property);
     }
 
 
@@ -347,8 +346,8 @@ public class ProjectSceneController {
         subchapterTitle.setText("Qualitätsziele");
         subchapterNumber.setText("01.2");
         saveContent(property, textArea.getText());
-        property = "1.2_Qualiteatsziele";
-        fillWithContent("1.2_Qualiteatsziele");
+        property = "1.2_Qualitaetsziele";
+        fillWithContent(property);
 
     }
 
@@ -361,7 +360,7 @@ public class ProjectSceneController {
         subchapterNumber.setText("01.3");
         saveContent(property, textArea.getText());
         property = "1.3_Stakeholder";
-        fillWithContent("1.3_Stakeholder");
+        fillWithContent(property);
     }
 
     public void onRandbedingungenClicked() {
@@ -372,7 +371,7 @@ public class ProjectSceneController {
         subchapterNumber.setText(null);
         saveContent(property, textArea.getText());
         property = "2.0_Randbedingungen";
-        fillWithContent("2.0_Randbedingungen");
+        fillWithContent(property);
     }
 
 
@@ -384,7 +383,7 @@ public class ProjectSceneController {
         subchapterNumber.setText("02.1");
         saveContent(property, textArea.getText());
         property = "2.1_Technische-Randbedingungen";
-        fillWithContent("2.1_Technische-Randbedingungen");
+        fillWithContent(property);
     }
 
 
@@ -396,7 +395,7 @@ public class ProjectSceneController {
         subchapterNumber.setText("02.2");
         saveContent(property, textArea.getText());
         property = "2.2_Organisatorische-Randbedingungen";
-        fillWithContent("2.2_Organisatorische-Randbedingungen");
+        fillWithContent(property);
     }
 
 
@@ -408,7 +407,7 @@ public class ProjectSceneController {
         subchapterNumber.setText("02.3");
         saveContent(property, textArea.getText());
         property = "2.3_Konventionen";
-        fillWithContent("2.3_Konventionen");
+        fillWithContent(property);
     }
 
 
@@ -420,7 +419,7 @@ public class ProjectSceneController {
         subchapterNumber.setText(null);
         saveContent(property, textArea.getText());
         property = "3.0_Kontextabgrenzug";
-        fillWithContent("3.0_Kontextabgrenzug");
+        fillWithContent(property);
     }
 
     public void onFachlicherKontextClicked() {
@@ -431,7 +430,7 @@ public class ProjectSceneController {
         subchapterNumber.setText("03.1");
         saveContent(property, textArea.getText());
         property =  "3.1_Fachlicher-Kontext" ;
-        fillWithContent("3.1_Fachlicher-Kontext");
+        fillWithContent(property);
     }
 
 
@@ -442,8 +441,8 @@ public class ProjectSceneController {
         subchapterTitle.setText("Verteilungskontext");
         subchapterNumber.setText("03.2");
         saveContent(property, textArea.getText());
-        property = "3.2_Technischer-Verteilungskontexz";
-        fillWithContent("3.2_Technischer-Verteilungskontexz");
+        property = "3.2_Technischer-Verteilungskontext";
+        fillWithContent(property);
     }
 
 
@@ -454,8 +453,8 @@ public class ProjectSceneController {
         subchapterTitle.setText(null);
         subchapterNumber.setText(null);
         saveContent(property, textArea.getText());
-        property =  "4.0_Lösungsstrategien" ;
-        fillWithContent("4.0_Lösungsstrategien");
+        property = "4.0_Loesungsstrategien";
+        fillWithContent(property);
     }
 
 
@@ -467,7 +466,7 @@ public class ProjectSceneController {
         subchapterNumber.setText(null);
         saveContent(property, textArea.getText());
         property = "5.0_Bausteinsicht";
-        fillWithContent("5.0_Bausteinsicht");
+        fillWithContent(property);
     }
 
 
@@ -479,7 +478,7 @@ public class ProjectSceneController {
         subchapterNumber.setText("05.1");
         saveContent(property, textArea.getText());
         property = "5.1_Ebene-1";
-        fillWithContent("5.1_Ebene-1");
+        fillWithContent(property);
     }
 
 
@@ -490,8 +489,8 @@ public class ProjectSceneController {
         subchapterTitle.setText("Ebene 2");
         subchapterNumber.setText("05.2");
         saveContent(property, textArea.getText());
-        property = "5.1_Ebene-2";
-        fillWithContent("5.1_Ebene-2");
+        property = "5.2_Ebene-2";
+        fillWithContent(property);
     }
 
 
@@ -503,7 +502,7 @@ public class ProjectSceneController {
         subchapterNumber.setText(null);
         saveContent(property, textArea.getText());
         property = "6.0_Laufzeitsicht";
-        fillWithContent("6.0_Laufzeitsicht");
+        fillWithContent(property);
     }
 
 
@@ -515,7 +514,7 @@ public class ProjectSceneController {
         subchapterNumber.setText("06.1");
         saveContent(property, textArea.getText());
         property = "6.1_Laufzeitszenario-1";
-        fillWithContent("6.1_Laufzeitszenario-1");
+        fillWithContent(property);
     }
 
 
@@ -526,8 +525,8 @@ public class ProjectSceneController {
         subchapterTitle.setText("Laufzeitszenario 2");
         subchapterNumber.setText("06.2");
         saveContent(property, textArea.getText());
-        property = "6.1_Laufzeitszenario-2";
-        fillWithContent("6.1_Laufzeitszenario-2");
+        property = "6.2_Laufzeitszenario-2";
+        fillWithContent(property);
     }
 
 
@@ -539,7 +538,7 @@ public class ProjectSceneController {
         subchapterNumber.setText(null);
         saveContent(property, textArea.getText());
         property = "7.0_Verteilungssicht";
-        fillWithContent("7.0_Verteilungssicht");
+        fillWithContent(property);
     }
 
 
@@ -551,7 +550,7 @@ public class ProjectSceneController {
         subchapterNumber.setText("07.1");
         saveContent(property, textArea.getText());
         property = "7.1_Infrastrukur-Ebene-1";
-        fillWithContent("7.1_Infrastrukur-Ebene-1");
+        fillWithContent(property);
     }
 
 
@@ -563,7 +562,7 @@ public class ProjectSceneController {
         subchapterNumber.setText("07.2");
         saveContent(property, textArea.getText());
         property = "7.2_Infrastrukur-Ebene-2";
-        fillWithContent("7.2_Infrastrukur-Ebene-2");
+        fillWithContent(property);
     }
 
 
@@ -575,7 +574,7 @@ public class ProjectSceneController {
         subchapterNumber.setText(null);
         saveContent(property, textArea.getText());
         property = "8.0_Querschnittliche-Konzepte";
-        fillWithContent("8.0_Querschnittliche-Konzepte");
+        fillWithContent(property);
     }
 
 
@@ -587,7 +586,7 @@ public class ProjectSceneController {
         subchapterNumber.setText("08.1");
         saveContent(property, textArea.getText());
         property = "8.1_Struktur-Modelle";
-        fillWithContent("8.1_Struktur-Modelle");
+        fillWithContent(property);
     }
 
 
@@ -599,7 +598,7 @@ public class ProjectSceneController {
         subchapterNumber.setText("08.2");
         saveContent(property, textArea.getText());
         property = "8.2_Architektur";
-        fillWithContent("8.2_Architektur");
+        fillWithContent(property);
     }
 
 
@@ -611,7 +610,7 @@ public class ProjectSceneController {
         subchapterNumber.setText(null);
         saveContent(property, textArea.getText());
         property = "9.0_Entwurfsentscheidung";
-        fillWithContent("9.0_Entwurfsentscheidung");
+        fillWithContent(property);
     }
 
 
@@ -623,7 +622,7 @@ public class ProjectSceneController {
         subchapterNumber.setText("09.1");
         saveContent(property, textArea.getText());
         property = "9.1_Entwurfsentscheidung-1";
-        fillWithContent("9.1_Entwurfsentscheidung-1");
+        fillWithContent(property);
     }
 
 
@@ -634,8 +633,8 @@ public class ProjectSceneController {
         subchapterTitle.setText("Entwurfsentscheidung 2");
         subchapterNumber.setText("09.2");
         saveContent(property, textArea.getText());
-        property = "9.1_Entwurfsentscheidung-2";
-        fillWithContent("9.1_Entwurfsentscheidung-2");
+        property = "9.2_Entwurfsentscheidung-2";
+        fillWithContent(property);
     }
 
 
@@ -647,7 +646,7 @@ public class ProjectSceneController {
         subchapterNumber.setText(null);
         saveContent(property, textArea.getText());
         property =  "10.0_Qualitätsanforderungen";
-        fillWithContent("10.0_Qualitätsanforderungen");
+        fillWithContent(property);
     }
 
 
@@ -659,7 +658,7 @@ public class ProjectSceneController {
         subchapterNumber.setText("10.1");
         saveContent(property, textArea.getText());
         property =  "10.1_Qualitätsbaum" ;
-        fillWithContent("10.1_Qualitätsbaum");
+        fillWithContent(property);
     }
 
 
@@ -671,7 +670,7 @@ public class ProjectSceneController {
         subchapterNumber.setText("10.2");
         saveContent(property, textArea.getText());
         property = "10.2_Qualitätsszenarien";
-        fillWithContent("10.2_Qualitätsszenarien");
+        fillWithContent(property);
     }
 
 
@@ -683,7 +682,7 @@ public class ProjectSceneController {
         subchapterNumber.setText(null);
         saveContent(property, textArea.getText());
         property = "11.0_Risiken-und-technische-Schulden";
-        fillWithContent("11.0_Risiken-und-technische-Schulden");
+        fillWithContent(property);
 
     }
 
@@ -696,24 +695,255 @@ public class ProjectSceneController {
         subchapterNumber.setText(null);
         saveContent(property, textArea.getText());
         property = "12.0_Glossar";
-        fillWithContent("12.0_Glossar");
+        fillWithContent(property);
     }
 
     public void fillWithContent(String property){
 
-        setHtmlToWebView(templateResponse.getTemplate().get(0).getAsJsonObject().get(property).getAsString());
-        textArea.setText(templateResponse.getTemplate().get(0).getAsJsonObject().get(property).getAsString());
-        setEditorArea(EditorState.VIEW);
 
+        switch (property){
+
+            case "1.0_Einführung-und-Ziele":
+                setHtmlToWebView(templateResponse.getEinfuehrungUndZiele());
+                textArea.setText(templateResponse.getEinfuehrungUndZiele());
+                break;
+            case "1.1_Aufgabenstellung":
+                setHtmlToWebView(templateResponse.getAufgabenstellung());
+                textArea.setText(templateResponse.getAufgabenstellung());
+                break;
+            case "1.2_Qualitaetsziele":
+                setHtmlToWebView(templateResponse.getQualiteatsziele());
+                textArea.setText(templateResponse.getQualiteatsziele());
+                break;
+            case "1.3_Stakeholder":
+                setHtmlToWebView(templateResponse.getStakeholder());
+                textArea.setText(templateResponse.getStakeholder());
+                break;
+            case "2.0_Randbedingungen":
+                setHtmlToWebView(templateResponse.getRandbedingungen());
+                textArea.setText(templateResponse.getRandbedingungen());
+                break;
+            case "2.1_Technische-Randbedingungen":
+                setHtmlToWebView(templateResponse.getTechnischeRandbedingungen());
+                textArea.setText(templateResponse.getTechnischeRandbedingungen());
+                break;
+            case "2.2_Organisatorische-Randbedingungen":
+                setHtmlToWebView(templateResponse.getOrganisatorischeRandbedingungen());
+                textArea.setText(templateResponse.getOrganisatorischeRandbedingungen());
+                break;
+            case "2.3_Konventionen":
+                setHtmlToWebView(templateResponse.getKonventionen());
+                textArea.setText(templateResponse.getKonventionen());
+                break;
+            case "3.0_Kontextabgrenzug":
+                setHtmlToWebView(templateResponse.getKontextabgrenzug());
+                textArea.setText(templateResponse.getKontextabgrenzug());
+                break;
+            case "3.1_Fachlicher-Kontext":
+                setHtmlToWebView(templateResponse.getFachlicherKontext());
+                textArea.setText(templateResponse.getFachlicherKontext());
+                break;
+            case "3.2_Technischer-Verteilungskontext":
+                setHtmlToWebView(templateResponse.getTechnischerVerteilungskontext());
+                textArea.setText(templateResponse.getTechnischerVerteilungskontext());
+                break;
+            case "4.0_Loesungsstrategien":
+                setHtmlToWebView(templateResponse.getLoesungsstrategien());
+                textArea.setText(templateResponse.getLoesungsstrategien());
+                break;
+            case "5.0_Bausteinsicht":
+                setHtmlToWebView(templateResponse.getBausteinsicht());
+                textArea.setText(templateResponse.getBausteinsicht());
+                break;
+            case "5.1_Ebene-1":
+                setHtmlToWebView(templateResponse.getBausteinsichtEbeneEins());
+                textArea.setText(templateResponse.getBausteinsichtEbeneEins());
+                break;
+            case "5.2_Ebene-2":
+                setHtmlToWebView(templateResponse.getBausteinsichtEbendeZwei());
+                textArea.setText(templateResponse.getBausteinsichtEbendeZwei());
+                break;
+            case "6.0_Laufzeitsicht":
+                setHtmlToWebView(templateResponse.getLaufzeitsicht());
+                textArea.setText(templateResponse.getLaufzeitsicht());
+                break;
+            case "6.1_Laufzeitszenario-1":
+                setHtmlToWebView(templateResponse.getLaufzeitsichtSzenarioEins());
+                textArea.setText(templateResponse.getLaufzeitsichtSzenarioEins());
+                break;
+            case "6.2_Laufzeitszenario-2":
+                setHtmlToWebView(templateResponse.getLaufzeitsichtSzenarioZwei());
+                textArea.setText(templateResponse.getLaufzeitsichtSzenarioZwei());
+                break;
+            case "7.0_Verteilungssicht":
+                setHtmlToWebView(templateResponse.getVertreilungssicht());
+                textArea.setText(templateResponse.getVertreilungssicht());
+                break;
+            case "7.1_Infrastrukur-Ebene-1":
+                setHtmlToWebView(templateResponse.getInfrastrukurEbeneEins());
+                textArea.setText(templateResponse.getInfrastrukurEbeneEins());
+                break;
+            case "7.2_Infrastrukur-Ebene-2":
+                setHtmlToWebView(templateResponse.getInfrastrukurEbeneZwei());
+                textArea.setText(templateResponse.getInfrastrukurEbeneZwei());
+                break;
+            case "8.0_Querschnittliche-Konzepte":
+                setHtmlToWebView(templateResponse.getQuerschnittlicheKonzepte());
+                textArea.setText(templateResponse.getQuerschnittlicheKonzepte());
+                break;
+            case "8.1_Struktur-Modelle":
+                setHtmlToWebView(templateResponse.getFachStrukturUndModelle());
+                textArea.setText(templateResponse.getFachStrukturUndModelle());
+                break;
+            case "8.2_Architektur":
+                setHtmlToWebView(templateResponse.getArchitekturUndEntwurfsmuster());
+                textArea.setText(templateResponse.getArchitekturUndEntwurfsmuster());
+                break;
+            case "9.0_Entwurfsentscheidung":
+                setHtmlToWebView(templateResponse.getEntwurfsentscheidung());
+                textArea.setText(templateResponse.getEntwurfsentscheidung());
+                break;
+            case "9.1_Entwurfsentscheidung-1":
+                setHtmlToWebView(templateResponse.getEntwurfsentscheidungEins());
+                textArea.setText(templateResponse.getEntwurfsentscheidungEins());
+                break;
+            case "9.2_Entwurfsentscheidung-2":
+                setHtmlToWebView(templateResponse.getEntwurfsentscheidungZwei());
+                textArea.setText(templateResponse.getEntwurfsentscheidungZwei());
+                break;
+            case "10.0_Qualitätsanforderungen":
+                setHtmlToWebView(templateResponse.getQualitätsanforderungen());
+                textArea.setText(templateResponse.getQualitätsanforderungen());
+                break;
+            case "10.1_Qualitätsbaum":
+                setHtmlToWebView(templateResponse.getQualitätsbaum());
+                textArea.setText(templateResponse.getQualitätsbaum());
+                break;
+            case "10.2_Qualitätsszenarien":
+                setHtmlToWebView(templateResponse.getQualitätszenarien());
+                textArea.setText(templateResponse.getQualitätszenarien());
+                break;
+            case "11.0_Risiken-und-technische-Schulden":
+                setHtmlToWebView(templateResponse.getRisikenUndTechnischeSchulden());
+                textArea.setText(templateResponse.getRisikenUndTechnischeSchulden());
+                break;
+            case "12.0_Glossar":
+                setHtmlToWebView(templateResponse.getGlosar());
+                textArea.setText(templateResponse.getGlosar());
+                break;
+
+        }
+
+        setEditorArea(EditorState.VIEW);
 
     }
 
     public void saveContent(String property, String value){
 
-        templateResponse.getTemplate().get(0).getAsJsonObject().remove(property);
-        templateResponse.getTemplate().get(0).getAsJsonObject().addProperty(property, value);
-        docu.setContent(templateResponse);
 
+        switch (property){
+
+            case "1.0_Einführung-und-Ziele":
+                templateResponse.setEinfuehrungUndZiele(value);
+                break;
+            case "1.1_Aufgabenstellung":
+                templateResponse.setAufgabenstellung(value);
+                break;
+            case "1.2_Qualitaetsziele":
+                templateResponse.setQualiteatsziele(value);
+                break;
+            case "1.3_Stakeholder":
+                templateResponse.setStakeholder(value);
+                break;
+            case "2.0_Randbedingungen":
+                templateResponse.setRandbedingungen(value);
+                break;
+            case "2.1_Technische-Randbedingungen":
+                templateResponse.setTechnischeRandbedingungen(value);
+                break;
+            case "2.2_Organisatorische-Randbedingungen":
+                templateResponse.setOrganisatorischeRandbedingungen(value);
+                break;
+            case "2.3_Konventionen":
+                templateResponse.setKonventionen(value);
+                break;
+            case "3.0_Kontextabgrenzug":
+                templateResponse.setKontextabgrenzug(value);
+                break;
+            case "3.1_Fachlicher-Kontext":
+                templateResponse.setFachlicherKontext(value);
+                break;
+            case "3.2_Technischer-Verteilungskontext":
+                templateResponse.setTechnischerVerteilungskontext(value);
+                break;
+            case "4.0_Loesungsstrategien":
+                templateResponse.setLoesungsstrategien(value);
+                break;
+            case "5.0_Bausteinsicht":
+                templateResponse.setBausteinsicht(value);
+                break;
+            case "5.1_Ebene-1":
+                templateResponse.setBausteinsichtEbeneEins(value);
+                break;
+            case "5.2_Ebene-2":
+                templateResponse.setBausteinsichtEbendeZwei(value);
+                break;
+            case "6.0_Laufzeitsicht":
+                templateResponse.setLaufzeitsicht(value);
+                break;
+            case "6.1_Laufzeitszenario-1":
+                templateResponse.setLaufzeitsichtSzenarioEins(value);
+                break;
+            case "6.2_Laufzeitszenario-2":
+                templateResponse.setLaufzeitsichtSzenarioZwei(value);
+                break;
+            case "7.0_Verteilungssicht":
+                templateResponse.setVertreilungssicht(value);
+                break;
+            case "7.1_Infrastrukur-Ebene-1":
+                templateResponse.setInfrastrukurEbeneEins(value);
+                break;
+            case "7.2_Infrastrukur-Ebene-2":
+                templateResponse.setInfrastrukurEbeneZwei(value);
+                break;
+            case "8.0_Querschnittliche-Konzepte":
+                templateResponse.setQuerschnittlicheKonzepte(value);
+                break;
+            case "8.1_Struktur-Modelle":
+                templateResponse.setFachStrukturUndModelle(value);
+                break;
+            case "8.2_Architektur":
+                templateResponse.setArchitekturUndEntwurfsmuster(value);
+                break;
+            case "9.0_Entwurfsentscheidung":
+                templateResponse.setEntwurfsentscheidung(value);
+                break;
+            case "9.1_Entwurfsentscheidung-1":
+                templateResponse.setEntwurfsentscheidungEins(value);
+                break;
+            case "9.2_Entwurfsentscheidung-2":
+                templateResponse.setEntwurfsentscheidungZwei(value);
+                break;
+            case "10.0_Qualitätsanforderungen":
+                templateResponse.setQualitätsanforderungen(value);
+                break;
+            case "10.1_Qualitätsbaum":
+                templateResponse.setQualitätsbaum(value);
+                break;
+            case "10.2_Qualitätsszenarien":
+                templateResponse.setQualitätszenarien(value);
+                break;
+            case "11.0_Risiken-und-technische-Schulden":
+                templateResponse.setRisikenUndTechnischeSchulden(value);
+                break;
+            case "12.0_Glossar":
+                templateResponse.setGlosar(value);
+                break;
+
+
+        }
+
+        docu.setContent(templateResponse);
     }
 
 }
