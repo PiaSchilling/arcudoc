@@ -10,7 +10,7 @@ import java.util.List;
 public interface SupabaseRestClient {
 
 
-    @GET("projects")
+    @GET("content")
     Call<List<TemplateResponse>> getTemplate(
             @Header("apikey") String apikey,
             @Header("Authorization") String bearerToken,
@@ -18,7 +18,7 @@ public interface SupabaseRestClient {
             @Query("id") String projectId
     );
 
-    @PATCH("projects")
+    @PATCH("content")
     Call<Void> setContent(
             @Header("apikey") String apikey,
             @Header("Authorization") String bearerToken,

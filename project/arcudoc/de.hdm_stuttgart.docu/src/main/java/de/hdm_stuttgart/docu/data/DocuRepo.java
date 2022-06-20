@@ -22,7 +22,7 @@ public class DocuRepo {
 
     private static final Logger log = LogManager.getLogger(DocuRepo.class);
     private final SupabaseRestClient supabaseRestClient = ServiceProvider.getSupabaseRestClient();
-    private final int projectId = 1;
+    private int projectId;
     private List template;
 
     private final ListProperty<TemplateResponse> templateResponseProperty = new SimpleListProperty<>();
@@ -31,7 +31,7 @@ public class DocuRepo {
     /**
      * calls corresponding api endpoints for getting template text for Chapter (based on the project ID)
      */
-    public ITemplateResponse getTemplate() {
+    public ITemplateResponse getTemplate(Integer projectId) {
 
         CompletableFuture<ITemplateResponse> futureTask = new CompletableFuture<>();
         Call<List<TemplateResponse>> call = supabaseRestClient.getTemplate(
@@ -42,6 +42,8 @@ public class DocuRepo {
 
 
         );
+
+        this.projectId = projectId;
 
         call.enqueue(new Callback<List<TemplateResponse>>() {
             @Override
