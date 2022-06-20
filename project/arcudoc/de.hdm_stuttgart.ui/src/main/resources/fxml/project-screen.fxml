@@ -27,7 +27,7 @@
       </ImageView>
       <StackPane layoutX="1201.0" />
       <Label layoutX="1120.0" layoutY="100.0" styleClass="h3" text="Versionsverlauf" />
-      <ScrollPane layoutX="1120.0" layoutY="160.0" prefHeight="639.0" prefWidth="300.0" styleClass="scrollpane" stylesheets="@/styles/workspace-screen.css">
+      <ScrollPane fx:id="versionScrollPane" layoutX="1120.0" layoutY="160.0" prefHeight="639.0" prefWidth="300.0" styleClass="scrollpane" stylesheets="/styles/workspace-screen.css">
          <content>
             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="717.0" prefWidth="295.0" />
          </content>
@@ -39,10 +39,10 @@
                <children>
                   <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@/images/menuIcon_Doku.png" />
+                        <Image url="@/images/menuIcon_Doku_active.png" />
                      </image>
                   </ImageView>
-                  <Label styleClass="menu-title" text="Doku" />
+                  <Label id="active" styleClass="menu-title" text="Doku" />
                </children>
                <cursor>
                   <Cursor fx:constant="HAND" />
@@ -90,7 +90,7 @@
             <Label fx:id="subchapterTitle" styleClass="subchapter-title" text="Aufgabenstellung" />
          </children>
       </HBox>
-      <ScrollPane layoutX="120.0" layoutY="160.0" prefHeight="641.0" prefWidth="273.0" styleClass="scrollpane">
+      <ScrollPane fx:id="templateMenuScrollPane" layoutX="120.0" layoutY="160.0" prefHeight="641.0" prefWidth="273.0" styleClass="scrollpane">
          <content>
             <AnchorPane>
                <children>

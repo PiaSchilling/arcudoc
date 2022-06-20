@@ -96,6 +96,9 @@
     -fx-arc-height: 30px;
 }
 
+.project-cell-container:hover{
+    -fx-fill: #23212a;
+}
 
 
 

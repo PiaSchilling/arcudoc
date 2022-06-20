@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -10,47 +9,59 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.shape.Line?>
-<?import javafx.scene.shape.Rectangle?>
 
 <AnchorPane prefHeight="115.0" prefWidth="1081.0" stylesheets="@../styles/project-cell.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="100.0" layoutX="33.0" stroke="BLACK" strokeType="INSIDE" styleClass="project-cell-container" width="1048.0" />
-      <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="417.0" spacing="30.0">
+      <HBox alignment="CENTER_LEFT" layoutX="32.0" prefHeight="100.0" prefWidth="1049.0" styleClass="project-cell-container" stylesheets="@../styles/project-cell.css">
          <children>
-            <Circle fx:id="projectAvatarFrame" fill="#3c4e5e" radius="37.5" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
-            <VBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="298.0" spacing="5.0">
+            <VBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="384.0" spacing="5.0">
                <children>
                   <Label fx:id="projectTitleLabel" styleClass="project-name" stylesheets="@../styles/project-cell.css" text="project name" />
                   <Label fx:id="projectOwnerLabel" styleClass="project-attributes" stylesheets="@../styles/project-cell.css" text="project owner" />
                </children>
+               <padding>
+                  <Insets left="60.0" />
+               </padding>
             </VBox>
-            <Line endX="-25.2254638671875" endY="30.405296325683594" startX="-25.2254638671875" startY="-38.41181564331055" stroke="#969597" strokeWidth="0.5" />
+            <Line endX="-25.2254638671875" endY="30.405296325683594" startX="-25.2254638671875" startY="-38.41181564331055" stroke="#969597" strokeWidth="0.5">
+               <HBox.margin>
+                  <Insets left="30.0" />
+               </HBox.margin>
+            </Line>
+            <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="95.0" spacing="15.0">
+               <children>
+                  <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/userRoleIcon.png" />
+                     </image>
+                  </ImageView>
+                  <Label fx:id="projectRoleLabel" prefHeight="20.0" prefWidth="54.0" styleClass="project-attributes" stylesheets="@../styles/project-cell.css" text="viewer" />
+               </children>
+               <HBox.margin>
+                  <Insets left="70.0" />
+               </HBox.margin>
+            </HBox>
+            <Line endX="-25.2254638671875" endY="30.405296325683594" startX="-25.2254638671875" startY="-38.41181564331055" stroke="#969597" strokeWidth="0.5">
+               <HBox.margin>
+                  <Insets left="70.0" />
+               </HBox.margin>
+            </Line>
+            <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="294.0" spacing="15.0">
+               <children>
+                  <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/uploadIcon.png" />
+                     </image>
+                  </ImageView>
+                  <Label fx:id="lastUpdatedLabel" prefHeight="20.0" prefWidth="254.0" styleClass="project-attributes" stylesheets="@../styles/project-cell.css" text="dd.mm.yyyy, hh:mm Uhr" />
+               </children>
+               <HBox.margin>
+                  <Insets left="70.0" />
+               </HBox.margin>
+            </HBox>
          </children>
-         <cursor>
-            <Cursor fx:constant="HAND" />
-         </cursor>
       </HBox>
-      <HBox alignment="CENTER_LEFT" layoutX="480.0" prefHeight="100.0" prefWidth="167.0" spacing="15.0">
-         <children>
-            <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../images/userRoleIcon.png" />
-               </image>
-            </ImageView>
-            <Label fx:id="projectRoleLabel" prefHeight="20.0" prefWidth="129.0" styleClass="project-attributes" stylesheets="@../styles/project-cell.css" text="role" />
-            <Line endX="-25.2254638671875" endY="30.405296325683594" startX="-25.2254638671875" startY="-38.41181564331055" stroke="#969597" strokeWidth="0.5" />
-         </children>
-      </HBox>
-      <HBox alignment="CENTER_LEFT" layoutX="738.0" prefHeight="100.0" prefWidth="294.0" spacing="15.0">
-         <children>
-            <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../images/uploadIcon.png" />
-               </image>
-            </ImageView>
-            <Label fx:id="lastUpdatedLabel" prefHeight="20.0" prefWidth="254.0" styleClass="project-attributes" stylesheets="@../styles/project-cell.css" text="dd.mm.yyyy, hh:mm Uhr" />
-         </children>
-      </HBox>
+      <Circle fx:id="projectAvatarFrame" fill="#3f3b46" layoutX="39.0" layoutY="50.0" radius="37.5" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
    </children>
    <padding>
       <Insets bottom="15.0" />

@@ -1,9 +1,11 @@
 
 .project-invitation-cell{
-    -fx-background-color: #2B2934;
-    -fx-background-radius: 15px;
-
+    -fx-fill: #2B2934;
+    -fx-stroke-width: 0px;
+    -fx-arc-width: 30px;
+    -fx-arc-height: 30px;
 }
+
 
 .h1{
     -fx-font-family: 'Poppins Light';
@@ -21,4 +23,8 @@
     -fx-background-position: center center;
     -fx-background-repeat: no-repeat;
     -fx-background-image: url("../images/cross.png");
+}
+
+.button:hover{
+    -fx-background-color: #23212a;
 }

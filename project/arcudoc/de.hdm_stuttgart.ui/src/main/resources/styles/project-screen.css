@@ -60,9 +60,12 @@
 
     -fx-text-fill: #FFFFFF;
 }
+#active.menu-title{
+    -fx-text-fill: #5553E1;
+}
 
 .menu-title:hover{
-    -fx-text-fill: #969597;
+    -fx-text-fill: #9197CB;
     -fx-font-size: 12px;
 }
 
@@ -76,7 +79,7 @@
 }
 
 .menu-chapter-title:hover{
-    -fx-text-fill: #5553E1;
+    -fx-text-fill: #9197CB;
     -fx-font-scale: 10;
 }
 
@@ -90,7 +93,7 @@
 }
 
 .menu-subchapter-title:hover{
-    -fx-text-fill: #5553E1;
+    -fx-text-fill: #9197CB;
     -fx-font-weight: 700;
 }
 
