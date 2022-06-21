@@ -113,7 +113,7 @@
             <Font size="11.0" />
          </font>
       </Label>
-      <Label fx:id="error_email" layoutX="70.0" layoutY="568.0" prefHeight="32.0" prefWidth="645.0" styleClass="errom">
+      <Label fx:id="error_email" layoutX="201.0" layoutY="519.0" prefHeight="32.0" prefWidth="514.0" styleClass="errom">
          <font>
             <Font size="11.0" />
          </font>
