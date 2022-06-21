@@ -29,3 +29,11 @@
 .project-cell-container:hover{
     -fx-background-color: #23212a;
 }
+
+.default-avatar{
+    -fx-font-family: 'Poppins';
+    -fx-font-weight: 700;
+    -fx-font-size: 30px;
+    -fx-line-height: 24px;
+    -fx-text-fill: #5553E1;
+}
