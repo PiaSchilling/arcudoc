@@ -9,11 +9,12 @@ variables:
 
 default:
   before_script:
-    - cd project/arcudoc/ #/de.hdm_stuttgart.ui/rest
+    - cd project/arcudoc/de.hdm_stuttgart.api
   
 workflow:
   rules:
-  - if: '($CI_PIPELINE_SOURCE == "push" && $CI_COMMIT_BRANCH == "main") || $CI_COMMIT_BRANCH == "develop"' # yaml Datei startet nur bei Zutreffen der angegebenen Bedingung 
+  - if: '($CI_PIPELINE_SOURCE == "push" && $CI_COMMIT_BRANCH == "docs/53_CI-CD") 
+  #|| $CI_COMMIT_BRANCH == "develop"'
     when: always
   - when: never
 
@@ -26,7 +27,7 @@ stages:          # List of stages for jobs, and their order of execution
 build-api:      
   stage: build
   script:
-    - cd de.hdm_stuttgart.api/
+    #- cd de.hdm_stuttgart.api/
     - echo "Compiling the code..."
     - echo "Compile complete."
     - "mvn $MAVEN_OPTS compile"
