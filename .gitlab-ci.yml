@@ -10,11 +10,12 @@ variables:
 default:
   before_script:
     - cd project/arcudoc/de.hdm_stuttgart.api
-  
+
+#|| $CI_COMMIT_BRANCH == "develop"'  
+#$CI_PIPELINE_SOURCE == "push" && 
 workflow:
   rules:
-  - if: '($CI_PIPELINE_SOURCE == "push" && $CI_COMMIT_BRANCH == "docs/53_CI-CD") 
-  #|| $CI_COMMIT_BRANCH == "develop"'
+  - if: '($CI_COMMIT_BRANCH == "docs/53_CI-CD")'
     when: always
   - when: never
 
