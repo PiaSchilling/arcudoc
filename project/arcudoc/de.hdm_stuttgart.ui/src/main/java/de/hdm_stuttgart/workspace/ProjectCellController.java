@@ -6,7 +6,7 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.shape.Circle;
+import javafx.scene.layout.HBox;
 import org.w3c.dom.ls.LSOutput;
 
 public class ProjectCellController {
@@ -21,9 +21,6 @@ public class ProjectCellController {
     private Label lastUpdatedLabel;
 
     @FXML
-    private Circle projectAvatarFrame;
-
-    @FXML
     private Label projectOwnerLabel;
 
     @FXML
@@ -32,13 +29,20 @@ public class ProjectCellController {
     @FXML
     private Label projectTitleLabel;
 
+    @FXML
+    private HBox projectCellFrame;
+
+    @FXML
+    private Label projectInitialLabel;
+
+
     public void initialize(){
         lastUpdatedLabel.setText(memberProject.getLastUpdated());
         projectOwnerLabel.setText(memberProject.getOwnerMail());
         projectRoleLabel.setText(memberProject.getProjectRole());
         projectTitleLabel.setText(memberProject.getProjectTitle());
-
-        projectAvatarFrame.setOnMouseClicked(event -> { //todo move onclick to label or arrow button
+        projectInitialLabel.setText(memberProject.getProjectTitle().substring(0,1).toUpperCase());
+        projectCellFrame.setOnMouseClicked(event -> { //todo move onclick to label or arrow button
             NavigationController.getINSTANCE()
                     .showProjectScene(memberProject.getProjectId());
         });
