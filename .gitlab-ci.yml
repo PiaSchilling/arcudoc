@@ -20,6 +20,7 @@ workflow:
   - when: never
 
 
+
 stages:          # List of stages for jobs, and their order of execution
   - build        # Project wird kompiliert
   - test         # Unit-Test werden ausgeführt 
