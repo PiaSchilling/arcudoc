@@ -7,7 +7,6 @@ image: maven:3.8.5-openjdk-17
 variables:
     MAVEN_OPTS: "-Dmaven.repo.local=$CI_PROJECT_DIR/.m2/repository" #From Slides
 
-
 default:
   before_script:
     - cd project/arcudoc/de.hdm_stuttgart.api
