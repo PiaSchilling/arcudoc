@@ -22,6 +22,9 @@ public class MemberProjectResponse implements IMemberProjectResponse {
     @SerializedName("project_role")
     private String projectRole;
 
+    @SerializedName("job_label")
+    private String jobLabel;
+
     public MemberProjectResponse(Project project) {
         this.project = project;
     }
@@ -46,6 +49,16 @@ public class MemberProjectResponse implements IMemberProjectResponse {
         return projectRole;
     }
 
+    @Override
+    public String getJobLabel() {
+        System.out.println(jobLabel);
+
+        if (jobLabel == null){
+            return "Team-Admin";
+        }
+        return jobLabel;
+    }
+
     //info: getter for attributes of nested objects placed here that only IMemberProjectResponse has to be exposed to other modules
 
     @Override
@@ -56,14 +69,11 @@ public class MemberProjectResponse implements IMemberProjectResponse {
     @Override
     public String getLastUpdated() {
         String formattedDate = new String();
-        System.out.println("Date String: " + project.getLastUpdated());
         DateFormat sdf = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
         try{
             Date date = new Date(sdf.parse(project.getLastUpdated()).getTime());
-            System.out.println(date);
-            DateFormat dateFormat = new SimpleDateFormat("'last modified:' HH:mm 'Uhr' - dd.MM.yyyy");
+            DateFormat dateFormat = new SimpleDateFormat("HH:mm 'Uhr' - dd.MM.yyyy");
             formattedDate = dateFormat.format(date);
-            System.out.println(formattedDate);
 
         } catch (ParseException e) {
             log.error("Failed parsing project creation date " + e.getMessage());

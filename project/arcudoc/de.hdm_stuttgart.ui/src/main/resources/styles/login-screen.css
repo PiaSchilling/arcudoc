@@ -46,7 +46,13 @@
     -fx-font-weight: 300;
     -fx-font-size: 14px;
     -fx-text-fill: #969597;
-    -fx-pref-width: 63px;
+}
+
+#roleTitle{
+    -fx-font-family: "Poppins";
+    -fx-font-weight: 300;
+    -fx-font-size: 10px;
+    -fx-text-fill: #969597;
 }
 
 .button1{

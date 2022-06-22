@@ -4,6 +4,8 @@ public interface IMemberProjectResponse {
 
     String getProjectRole();
 
+    String getJobLabel();
+
     String getProjectTitle();
 
     String getLastUpdated();
@@ -11,5 +13,6 @@ public interface IMemberProjectResponse {
     String getOwnerMail();
 
     int getProjectId();
+
 
 }

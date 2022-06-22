@@ -13,12 +13,12 @@
 
 <AnchorPane prefHeight="115.0" prefWidth="1081.0" stylesheets="/styles/project-cell.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <HBox fx:id="projectCellFrame" alignment="CENTER_LEFT" layoutX="32.0" prefHeight="100.0" prefWidth="1049.0" styleClass="project-cell-container" stylesheets="/styles/project-cell.css">
+      <HBox fx:id="projectCellFrame" alignment="CENTER_LEFT" layoutX="32.0" prefHeight="100.0" prefWidth="1049.0" styleClass="project-cell-container" stylesheets="@/styles/project-cell.css">
          <children>
-            <VBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="384.0" spacing="5.0">
+            <VBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="321.0" spacing="5.0">
                <children>
-                  <Label fx:id="projectTitleLabel" styleClass="project-name" stylesheets="/styles/project-cell.css" text="project name" />
-                  <Label fx:id="projectOwnerLabel" styleClass="project-attributes" stylesheets="/styles/project-cell.css" text="project owner" />
+                  <Label fx:id="projectTitleLabel" prefHeight="27.0" prefWidth="251.0" styleClass="project-name" stylesheets="@/styles/project-cell.css" text="project nameeeeeeeeeeeee" />
+                  <Label fx:id="projectOwnerLabel" prefHeight="17.0" prefWidth="272.0" styleClass="project-attributes" stylesheets="/styles/project-cell.css" text="project owner" />
                </children>
                <padding>
                   <Insets left="60.0" />
@@ -26,38 +26,56 @@
             </VBox>
             <Line endX="-25.2254638671875" endY="30.405296325683594" startX="-25.2254638671875" startY="-38.41181564331055" stroke="#969597" strokeWidth="0.5">
                <HBox.margin>
-                  <Insets left="30.0" />
+                  <Insets left="20.0" />
                </HBox.margin>
             </Line>
-            <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="95.0" spacing="15.0">
+            <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="111.0" spacing="15.0">
                <children>
                   <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../images/userRoleIcon.png" />
+                        <Image url="@/images/userRoleIcon.png" />
                      </image>
                   </ImageView>
-                  <Label fx:id="projectRoleLabel" prefHeight="20.0" prefWidth="54.0" styleClass="project-attributes" stylesheets="/styles/project-cell.css" text="viewer" />
+                  <Label fx:id="projectRoleLabel" prefHeight="20.0" prefWidth="54.0" styleClass="project-attributes" stylesheets="@/styles/project-cell.css" text="viewer" />
                </children>
                <HBox.margin>
-                  <Insets left="70.0" />
+                  <Insets left="40.0" />
                </HBox.margin>
             </HBox>
             <Line endX="-25.2254638671875" endY="30.405296325683594" startX="-25.2254638671875" startY="-38.41181564331055" stroke="#969597" strokeWidth="0.5">
                <HBox.margin>
-                  <Insets left="70.0" />
+                  <Insets left="40.0" />
                </HBox.margin>
             </Line>
-            <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="294.0" spacing="15.0">
+            <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="145.0" spacing="15.0">
+               <children>
+                  <ImageView fitHeight="21.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@/images/Lightbulb-alt.png" />
+                     </image>
+                  </ImageView>
+                  <Label fx:id="projectJobLabel" prefHeight="20.0" prefWidth="108.0" styleClass="project-attributes" stylesheets="@/styles/project-cell.css" text="Softwarearchitekt" />
+               </children>
+               <HBox.margin>
+                  <Insets left="40.0" />
+               </HBox.margin>
+            </HBox>
+            <Line endX="-25.2254638671875" endY="30.405296325683594" startX="-25.2254638671875" startY="-38.41181564331055" stroke="#969597" strokeWidth="0.5">
+               <HBox.margin>
+                  <Insets left="30.0" />
+               </HBox.margin>
+            </Line>
+            <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="198.0" spacing="15.0">
                <children>
                   <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="/images/uploadIcon.png" />
+                        <Image url="@../images/uploadIcon.png" />
                      </image>
                   </ImageView>
-                  <Label fx:id="lastUpdatedLabel" prefHeight="20.0" prefWidth="254.0" styleClass="project-attributes" stylesheets="/styles/project-cell.css" text="dd.mm.yyyy, hh:mm Uhr" />
+                  <Label fx:id="lastUpdatedLabel" prefHeight="20.0" prefWidth="201.0" styleClass="project-attributes" stylesheets="@/styles/project-cell.css" text="dd.mm.yyyy, hh:mm Uhr" />
                </children>
                <HBox.margin>
-                  <Insets left="70.0" />
+                  <Insets left="40.0" />
                </HBox.margin>
             </HBox>
          </children>
@@ -66,7 +84,7 @@
          </cursor>
       </HBox>
       <Circle fx:id="projectAvatarFrame" fill="#3f3b46" layoutX="39.0" layoutY="50.0" radius="37.5" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
-      <Label fx:id="projectInitialLabel" alignment="CENTER" layoutX="1.0" layoutY="12.0" prefHeight="76.0" prefWidth="76.0" styleClass="default-avatar" stylesheets="/styles/project-cell.css" text="D" textFill="#5553e1" />
+      <Label fx:id="projectInitialLabel" alignment="CENTER" layoutX="1.0" layoutY="12.0" prefHeight="76.0" prefWidth="76.0" styleClass="default-avatar" stylesheets="@/styles/project-cell.css" text="D" textFill="#5553e1" />
    </children>
    <padding>
       <Insets bottom="15.0" />
