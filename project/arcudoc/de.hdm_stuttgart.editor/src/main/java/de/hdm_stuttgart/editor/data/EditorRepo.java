@@ -48,6 +48,8 @@ public class EditorRepo implements IEditorRepo {
         });
     }
 
+
+
     public StringProperty getHtmlStringProperty() {
         return htmlStringProperty;
     }

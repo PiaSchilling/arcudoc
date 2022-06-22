@@ -41,6 +41,13 @@ public class Editor implements IEditor {
         }
     }
 
+    @Override
+    public void renderMarkdownClicked(String markdownInput) {
+
+        editorController.renderMarkdownToHtml(markdownInput);
+
+    }
+
     public EditorState getEditorState() {
         return editorState;
     }

@@ -214,6 +214,7 @@ public class ProjectSceneController {
         templateResponse = docu.fetchTemplate(projectId);
        // nameOfProject.setText(templateResponse.getTitle());
         fillWithContent("1.1_Aufgabenstellung");
+        editor.renderMarkdownClicked(textArea.getText());
     }
 
     private void onEditButtonClicked() {
@@ -704,136 +705,106 @@ public class ProjectSceneController {
         switch (property){
 
             case "1.0_Einführung-und-Ziele":
-                setHtmlToWebView(templateResponse.getEinfuehrungUndZiele());
                 textArea.setText(templateResponse.getEinfuehrungUndZiele());
                 break;
             case "1.1_Aufgabenstellung":
-                setHtmlToWebView(templateResponse.getAufgabenstellung());
                 textArea.setText(templateResponse.getAufgabenstellung());
                 break;
             case "1.2_Qualitaetsziele":
-                setHtmlToWebView(templateResponse.getQualiteatsziele());
                 textArea.setText(templateResponse.getQualiteatsziele());
                 break;
             case "1.3_Stakeholder":
-                setHtmlToWebView(templateResponse.getStakeholder());
                 textArea.setText(templateResponse.getStakeholder());
                 break;
             case "2.0_Randbedingungen":
-                setHtmlToWebView(templateResponse.getRandbedingungen());
                 textArea.setText(templateResponse.getRandbedingungen());
                 break;
             case "2.1_Technische-Randbedingungen":
-                setHtmlToWebView(templateResponse.getTechnischeRandbedingungen());
                 textArea.setText(templateResponse.getTechnischeRandbedingungen());
                 break;
             case "2.2_Organisatorische-Randbedingungen":
-                setHtmlToWebView(templateResponse.getOrganisatorischeRandbedingungen());
                 textArea.setText(templateResponse.getOrganisatorischeRandbedingungen());
                 break;
             case "2.3_Konventionen":
-                setHtmlToWebView(templateResponse.getKonventionen());
                 textArea.setText(templateResponse.getKonventionen());
                 break;
             case "3.0_Kontextabgrenzug":
-                setHtmlToWebView(templateResponse.getKontextabgrenzug());
                 textArea.setText(templateResponse.getKontextabgrenzug());
                 break;
             case "3.1_Fachlicher-Kontext":
-                setHtmlToWebView(templateResponse.getFachlicherKontext());
                 textArea.setText(templateResponse.getFachlicherKontext());
                 break;
             case "3.2_Technischer-Verteilungskontext":
-                setHtmlToWebView(templateResponse.getTechnischerVerteilungskontext());
                 textArea.setText(templateResponse.getTechnischerVerteilungskontext());
                 break;
             case "4.0_Loesungsstrategien":
-                setHtmlToWebView(templateResponse.getLoesungsstrategien());
                 textArea.setText(templateResponse.getLoesungsstrategien());
                 break;
             case "5.0_Bausteinsicht":
-                setHtmlToWebView(templateResponse.getBausteinsicht());
                 textArea.setText(templateResponse.getBausteinsicht());
                 break;
             case "5.1_Ebene-1":
-                setHtmlToWebView(templateResponse.getBausteinsichtEbeneEins());
                 textArea.setText(templateResponse.getBausteinsichtEbeneEins());
                 break;
             case "5.2_Ebene-2":
-                setHtmlToWebView(templateResponse.getBausteinsichtEbendeZwei());
                 textArea.setText(templateResponse.getBausteinsichtEbendeZwei());
                 break;
             case "6.0_Laufzeitsicht":
-                setHtmlToWebView(templateResponse.getLaufzeitsicht());
                 textArea.setText(templateResponse.getLaufzeitsicht());
                 break;
             case "6.1_Laufzeitszenario-1":
-                setHtmlToWebView(templateResponse.getLaufzeitsichtSzenarioEins());
                 textArea.setText(templateResponse.getLaufzeitsichtSzenarioEins());
                 break;
             case "6.2_Laufzeitszenario-2":
-                setHtmlToWebView(templateResponse.getLaufzeitsichtSzenarioZwei());
                 textArea.setText(templateResponse.getLaufzeitsichtSzenarioZwei());
                 break;
             case "7.0_Verteilungssicht":
-                setHtmlToWebView(templateResponse.getVertreilungssicht());
                 textArea.setText(templateResponse.getVertreilungssicht());
                 break;
             case "7.1_Infrastrukur-Ebene-1":
-                setHtmlToWebView(templateResponse.getInfrastrukurEbeneEins());
                 textArea.setText(templateResponse.getInfrastrukurEbeneEins());
                 break;
             case "7.2_Infrastrukur-Ebene-2":
-                setHtmlToWebView(templateResponse.getInfrastrukurEbeneZwei());
                 textArea.setText(templateResponse.getInfrastrukurEbeneZwei());
                 break;
             case "8.0_Querschnittliche-Konzepte":
-                setHtmlToWebView(templateResponse.getQuerschnittlicheKonzepte());
                 textArea.setText(templateResponse.getQuerschnittlicheKonzepte());
                 break;
             case "8.1_Struktur-Modelle":
-                setHtmlToWebView(templateResponse.getFachStrukturUndModelle());
                 textArea.setText(templateResponse.getFachStrukturUndModelle());
                 break;
             case "8.2_Architektur":
-                setHtmlToWebView(templateResponse.getArchitekturUndEntwurfsmuster());
                 textArea.setText(templateResponse.getArchitekturUndEntwurfsmuster());
                 break;
             case "9.0_Entwurfsentscheidung":
-                setHtmlToWebView(templateResponse.getEntwurfsentscheidung());
                 textArea.setText(templateResponse.getEntwurfsentscheidung());
                 break;
             case "9.1_Entwurfsentscheidung-1":
-                setHtmlToWebView(templateResponse.getEntwurfsentscheidungEins());
                 textArea.setText(templateResponse.getEntwurfsentscheidungEins());
                 break;
             case "9.2_Entwurfsentscheidung-2":
-                setHtmlToWebView(templateResponse.getEntwurfsentscheidungZwei());
                 textArea.setText(templateResponse.getEntwurfsentscheidungZwei());
                 break;
             case "10.0_Qualitätsanforderungen":
-                setHtmlToWebView(templateResponse.getQualitätsanforderungen());
                 textArea.setText(templateResponse.getQualitätsanforderungen());
                 break;
             case "10.1_Qualitätsbaum":
-                setHtmlToWebView(templateResponse.getQualitätsbaum());
                 textArea.setText(templateResponse.getQualitätsbaum());
                 break;
             case "10.2_Qualitätsszenarien":
-                setHtmlToWebView(templateResponse.getQualitätszenarien());
                 textArea.setText(templateResponse.getQualitätszenarien());
                 break;
             case "11.0_Risiken-und-technische-Schulden":
-                setHtmlToWebView(templateResponse.getRisikenUndTechnischeSchulden());
                 textArea.setText(templateResponse.getRisikenUndTechnischeSchulden());
                 break;
             case "12.0_Glossar":
-                setHtmlToWebView(templateResponse.getGlosar());
                 textArea.setText(templateResponse.getGlosar());
                 break;
 
         }
 
+
+        editor.renderMarkdownClicked(textArea.getText());
         setEditorArea(EditorState.VIEW);
 
     }
