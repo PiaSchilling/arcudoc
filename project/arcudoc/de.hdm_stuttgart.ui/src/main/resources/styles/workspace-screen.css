@@ -83,3 +83,16 @@
     -fx-line-height: 24px;
     -fx-text-fill: #FFFFFF;
 }
+
+.refresh-button{
+    -fx-background-color: none;
+    -fx-background-position: center center;
+    -fx-background-size: 9,5px 5,5px;
+    -fx-background-repeat: no-repeat;
+    -fx-background-radius: 15px;
+}
+
+.refresh-button:hover{
+    -fx-background-color: #2B2934;
+
+}
