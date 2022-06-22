@@ -29,9 +29,13 @@ public class InvitationCellController {
     @FXML
     private Label projectRoleLabel;
 
+    @FXML
+    private Label projectJobLabel;
+
     public void initialize(){
         projectNameLabel.setText(invitationResponse.getProjectTitle());
-        projectRoleLabel.setText(invitationResponse.getProjectRole());
+        projectJobLabel.setText(invitationResponse.getJobLabel());
+        projectRoleLabel.setText( invitationResponse.getProjectRole());
 
         acceptButton.setOnMouseClicked(event -> cellClickHandler.onAcceptInvitationClicked(invitationResponse.getProjectId()));
 

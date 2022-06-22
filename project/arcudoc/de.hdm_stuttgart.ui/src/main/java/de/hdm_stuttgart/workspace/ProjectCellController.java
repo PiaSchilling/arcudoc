@@ -27,6 +27,9 @@ public class ProjectCellController {
     private Label projectRoleLabel;
 
     @FXML
+    private Label projectJobLabel;
+
+    @FXML
     private Label projectTitleLabel;
 
     @FXML
@@ -40,6 +43,7 @@ public class ProjectCellController {
         lastUpdatedLabel.setText(memberProject.getLastUpdated());
         projectOwnerLabel.setText(memberProject.getOwnerMail());
         projectRoleLabel.setText(memberProject.getProjectRole());
+        projectJobLabel.setText(memberProject.getJobLabel());
         projectTitleLabel.setText(memberProject.getProjectTitle());
         projectInitialLabel.setText(memberProject.getProjectTitle().substring(0,1).toUpperCase());
         projectCellFrame.setOnMouseClicked(event -> { //todo move onclick to label or arrow button

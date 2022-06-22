@@ -6,31 +6,42 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.shape.Rectangle?>
 
 <AnchorPane prefHeight="101.0" prefWidth="300.0" styleClass="project-invitation-cell" stylesheets="@../styles/login-screen.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="100.0" stroke="BLACK" strokeType="INSIDE" styleClass="project-cell-container" width="298.0" />
-      <Line endX="-55.0" endY="8.5" layoutX="123.0" layoutY="76.0" startX="-55.0" startY="-56.5" stroke="#969597" styleClass="project-invitation-cell" />
-      <ImageView fx:id="acceptButton" fitHeight="24.0" fitWidth="27.0" layoutX="19.87" layoutY="20.0" pickOnBounds="true" preserveRatio="true" styleClass="image2">
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="106.0" stroke="BLACK" strokeType="INSIDE" styleClass="project-cell-container" width="298.0" />
+      <Line endX="-55.00000762939453" endY="13.792633056640625" layoutX="117.0" layoutY="76.0" startX="-55.0" startY="-56.5" stroke="#969597" styleClass="project-invitation-cell" />
+      <VBox layoutX="18.0" layoutY="20.0" spacing="20.0">
+         <children>
+            <ImageView fx:id="acceptButton" fitHeight="24.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true" styleClass="image2">
+               <image>
+                  <Image url="@/images/check.png" />
+               </image>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </ImageView>
+            <ImageView fx:id="declineButton" fitHeight="24.0" fitWidth="26.0" pickOnBounds="true" preserveRatio="true" styleClass="image2">
+               <image>
+                  <Image url="@/images/cross.png" />
+               </image>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </ImageView>
+         </children>
+      </VBox>
+      <Label id="h2" fx:id="projectNameLabel" layoutX="84.0" layoutY="23.0" prefHeight="23.0" prefWidth="191.0" styleClass="root" stylesheets="@/styles/login-screen.css" text="Projektname" />
+      <Label id="h31" fx:id="projectRoleLabel" layoutX="230.0" layoutY="64.0" prefHeight="20.0" prefWidth="59.0" styleClass="project-invitation-cell" stylesheets="@/styles/login-screen.css" text="viewer" />
+      <Label id="h31" fx:id="projectJobLabel" layoutX="84.0" layoutY="64.0" prefHeight="20.0" prefWidth="115.0" styleClass="project-invitation-cell" text="Job Label" />
+      <ImageView fitHeight="18.0" fitWidth="18.0" layoutX="207.0" layoutY="65.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@/images/check.png" />
+            <Image url="@../images/userRoleIcon.png" />
          </image>
-         <cursor>
-            <Cursor fx:constant="HAND" />
-         </cursor>
       </ImageView>
-      <ImageView fx:id="declineButton" fitHeight="24.0" fitWidth="26.0" layoutX="19.78" layoutY="59.0" pickOnBounds="true" preserveRatio="true" styleClass="image2">
-         <image>
-            <Image url="@/images/cross.png" />
-         </image>
-         <cursor>
-            <Cursor fx:constant="HAND" />
-         </cursor>
-      </ImageView>
-      <Label id="h2" fx:id="projectNameLabel" layoutX="91.21" layoutY="20.0" styleClass="root" stylesheets="@/styles/login-screen.css" text="Projektname" />
-      <Label id="h31" fx:id="projectRoleLabel" layoutX="91.0" layoutY="62.0" prefWidth="62.0" styleClass="project-invitation-cell" stylesheets="@/styles/login-screen.css" text="Role" />
    </children>
    <padding>
       <Insets bottom="15.0" />
