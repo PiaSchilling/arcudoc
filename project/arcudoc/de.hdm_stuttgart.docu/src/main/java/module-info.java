@@ -1,7 +1,6 @@
 module de.hdm.stuttgart.docu {
     exports de.hdm_stuttgart.docu.service;
     exports de.hdm_stuttgart.docu.guice;
-    exports de.hdm_stuttgart.docu.integration;
 
     opens de.hdm_stuttgart.docu.model to com.google.gson;
 
@@ -18,4 +17,5 @@ module de.hdm.stuttgart.docu {
     requires javafx.base;
 
     exports de.hdm_stuttgart.docu.data to com.google.guice;
+    exports de.hdm_stuttgart.docu.integration to com.google.guice;
 }

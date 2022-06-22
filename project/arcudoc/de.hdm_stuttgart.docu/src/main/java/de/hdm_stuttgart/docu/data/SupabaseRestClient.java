@@ -1,6 +1,7 @@
 package de.hdm_stuttgart.docu.data;
 
 
+import de.hdm_stuttgart.docu.model.Project;
 import de.hdm_stuttgart.docu.model.TemplateResponse;
 import retrofit2.Call;
 import retrofit2.http.*;
@@ -26,6 +27,14 @@ public interface SupabaseRestClient {
             @Header("Prefer") String prefer,
             @Query("id") String projectId,
             @Body TemplateResponse templateResponse
+    );
+
+    @GET("projects")
+    Call<List<Project>> getProjectTitle(
+            @Header("apikey") String apikey,
+            @Header("Authorization") String bearerToken,
+            @Query("select") String selectFilter,
+            @Query("id") String projectId
     );
 
 

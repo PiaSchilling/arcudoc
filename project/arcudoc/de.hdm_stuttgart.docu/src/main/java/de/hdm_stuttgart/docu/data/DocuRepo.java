@@ -2,6 +2,7 @@ package de.hdm_stuttgart.docu.data;
 
 import de.hdm_stuttgart.data.service.ApiConstants;
 import de.hdm_stuttgart.docu.model.*;
+import de.hdm_stuttgart.docu.service.IProject;
 import de.hdm_stuttgart.docu.service.ITemplateResponse;
 import javafx.beans.property.ListProperty;
 import javafx.beans.property.SimpleListProperty;
@@ -24,6 +25,7 @@ public class DocuRepo {
     private final SupabaseRestClient supabaseRestClient = ServiceProvider.getSupabaseRestClient();
     private int projectId;
     private List template;
+    private List project;
 
     private final ListProperty<TemplateResponse> templateResponseProperty = new SimpleListProperty<>();
 
@@ -104,6 +106,50 @@ public class DocuRepo {
 
 
     }
+
+    /**
+     * calls corresponding api endpoints for getting Project Title (based on the project ID)
+     */
+    public IProject getProjectTitle() {
+
+        CompletableFuture<IProject> futureTask = new CompletableFuture<>();
+        Call<List<Project>> call = supabaseRestClient.getProjectTitle(
+                ApiConstants.API_KEY,
+                ApiConstants.BEARER_KEY,
+                "title",
+                "eq." + projectId
+        );
+
+
+        call.enqueue(new Callback<List<Project>>() {
+            @Override
+            public void onResponse(Call<List<Project>> call, Response<List<Project>> response) {
+                if (response.isSuccessful()) {
+                    log.debug(response.code() + " Project has been loaded");
+                    project = response.body();
+                    futureTask.complete((IProject) project.get(0));
+
+                } else {
+                    log.error(response.code() + response.message() + " Project was not loaded ");
+
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<Project>> call, Throwable throwable) {
+                log.error(throwable.getMessage() + " Project was not loaded - fetch failed");
+            }
+        });
+
+        try {
+            return futureTask.get();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        } return null;
+    }
+
 
     public ListProperty<TemplateResponse> getTemplateResponseProperty() {
         return templateResponseProperty;

@@ -10,6 +10,8 @@ public interface IEditor {
 
     void onEditButtonClicked(String markdownInput);
 
+    void renderMarkdownClicked(String markdownInput);
+
     EditorState getEditorState();
 
     StringProperty getHtmlStringProperty();
