@@ -1,12 +1,10 @@
 package de.hdm_stuttgart.workspace.model;
 
 import com.google.gson.annotations.SerializedName;
-import de.hdm_stuttgart.data.api.ProfileRepository;
 import de.hdm_stuttgart.workspace.service.IMemberProjectResponse;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import java.io.IOException;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -85,6 +83,11 @@ public class MemberProjectResponse implements IMemberProjectResponse {
     @Override
     public String getOwnerMail() {
         return project.getProjectOwner().getMail();
+    }
+
+    @Override
+    public String getOwnerName() {
+        return project.getProjectOwner().getUserName();
     }
 
     @Override

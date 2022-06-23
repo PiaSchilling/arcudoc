@@ -12,6 +12,8 @@ public interface IMemberProjectResponse {
 
     String getOwnerMail();
 
+    String getOwnerName();
+
     int getProjectId();
 
 

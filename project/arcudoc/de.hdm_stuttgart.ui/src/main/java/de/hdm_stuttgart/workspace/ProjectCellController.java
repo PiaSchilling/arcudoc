@@ -41,7 +41,8 @@ public class ProjectCellController {
 
     public void initialize(){
         lastUpdatedLabel.setText(memberProject.getLastUpdated());
-        projectOwnerLabel.setText(memberProject.getOwnerMail());
+        //projectOwnerLabel.setText(memberProject.getOwnerMail());
+        projectOwnerLabel.setText(memberProject.getOwnerName());
         projectRoleLabel.setText(memberProject.getProjectRole());
         projectJobLabel.setText(memberProject.getJobLabel());
         projectTitleLabel.setText(memberProject.getProjectTitle());

@@ -280,7 +280,7 @@ public class WorkspaceRepo {
         Call<List<MemberProjectResponse>> call = supabaseRestClient.getMemberProjects(
                 ApiConstants.API_KEY,
                 ApiConstants.BEARER_KEY,
-                "projects(title,last_updated,id,profiles!projects_owner_fkey(mail)),project_role,job_label" //indicates to select title and id of project table although project_members table is queried in request (linked in supabase)
+                "projects(title,last_updated,id,profiles!projects_owner_fkey(mail,display_name)),project_role,job_label" //indicates to select title and id of project table although project_members table is queried in request (linked in supabase)
         );
 
         call.enqueue(new Callback<List<MemberProjectResponse>>() {
