@@ -1,15 +1,11 @@
 package de.hdm_stuttgart.login;
 
 import com.google.inject.Inject;
-import de.hdm_stuttgart.data.service.AccountInformation;
 import de.hdm_stuttgart.data.service.NetworkStatus;
-import de.hdm_stuttgart.navigation.INavigationController;
 import de.hdm_stuttgart.login.service.ILogin;
 
 import de.hdm_stuttgart.navigation.NavigationController;
 import javafx.application.Application;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import org.apache.logging.log4j.LogManager;

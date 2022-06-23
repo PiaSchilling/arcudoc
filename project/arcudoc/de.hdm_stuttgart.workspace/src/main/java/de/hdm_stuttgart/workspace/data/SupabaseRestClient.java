@@ -156,5 +156,20 @@ public interface SupabaseRestClient {
             @Query("project_id") String projectIdFilter
     );
 
+    // - - - - user profile - - - -
+
+    /**
+     * get the users profile
+     * @param apikey
+     * @param bearerToken
+     * @param selectFilter
+     */
+    @GET("profiles")
+    Call<List<UserProfile>> fetchUserProfile(
+            @Header("apikey") String apikey,
+            @Header("Authorization") String bearerToken,
+            @Query("select") String selectFilter
+    );
+
 
 }
