@@ -6,5 +6,6 @@ package de.hdm_stuttgart.workspace;
 public interface WorkspaceCellClickHandler {
 
     void onAcceptInvitationClicked(int projectId);
-    //todo  onDeclineInvitationClicked
+
+    void onDeclineInvitationClicked(int projectId);
 }

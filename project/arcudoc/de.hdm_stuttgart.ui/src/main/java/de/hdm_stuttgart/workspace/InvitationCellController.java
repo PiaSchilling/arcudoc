@@ -39,6 +39,8 @@ public class InvitationCellController {
 
         acceptButton.setOnMouseClicked(event -> cellClickHandler.onAcceptInvitationClicked(invitationResponse.getProjectId()));
 
+        declineButton.setOnMouseClicked(event -> cellClickHandler.onDeclineInvitationClicked(invitationResponse.getProjectId()));
+
         //todo decline invitation
 
         //todo delete node when accepted/declined

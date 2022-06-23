@@ -23,22 +23,6 @@ public class Workspace implements IWorkspace {
     }
 
     @Override
-    public String getUserName() {
-        return null;
-    }
-
-    @Override
-    public String getUserMail() {
-        return null;
-    }
-
-    @Override
-    public String getUserAvatarUrl() {
-        return null;
-    }
-
-
-    @Override
     public void onCreateProjectClicked() {
 
     }
@@ -57,12 +41,17 @@ public class Workspace implements IWorkspace {
     }
 
     @Override
-    public void acceptProjectInvitation(int projectId) {
+    public void acceptProjectInvitationClicked(int projectId) {
         workspaceController.acceptProjectInvitation(projectId);
     }
 
     @Override
-    public void declineProjectInvitation(int projectId) {
+    public void declineProjectInvitationClicked(int projectId) {
         workspaceController.declineProjectInvitation(projectId);
+    }
+
+    @Override
+    public void refreshButtonClicked() {
+        workspaceController.reloadProjectsAndInvitations();
     }
 }

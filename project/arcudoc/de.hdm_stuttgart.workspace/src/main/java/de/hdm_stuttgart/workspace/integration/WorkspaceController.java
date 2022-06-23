@@ -68,6 +68,11 @@ public class WorkspaceController {
         workspaceRepo.respondProjectInvitation(projectId,false);
     }
 
+    public void reloadProjectsAndInvitations(){
+        workspaceRepo.fetchMemberProjects();
+        workspaceRepo.fetchProjectInvitations();
+    }
+
     // - - - -  get observable properties - - - -
 
     public ListProperty<IInvitationResponse> getProjectInvitationsProperty() {

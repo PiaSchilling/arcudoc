@@ -8,12 +8,6 @@ public interface IWorkspace {
 
     void onProjectSearchbarClicked();
 
-    String getUserName();
-
-    String getUserMail();
-
-    String getUserAvatarUrl();
-
     void onCreateProjectClicked();
 
     ListProperty<IInvitationResponse> getProjectInvitationsProperty();
@@ -22,8 +16,10 @@ public interface IWorkspace {
 
     ObjectProperty<NetworkStatus> getNetworkStatusProperty();
 
-    void acceptProjectInvitation(int projectId);
+    void acceptProjectInvitationClicked(int projectId);
 
-    void declineProjectInvitation(int projectId);
+    void declineProjectInvitationClicked(int projectId);
+
+    void refreshButtonClicked();
 
 }
