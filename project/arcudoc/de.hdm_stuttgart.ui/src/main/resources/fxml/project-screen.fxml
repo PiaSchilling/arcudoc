@@ -16,7 +16,7 @@
 <?import javafx.scene.shape.Polyline?>
 <?import javafx.scene.shape.Rectangle?>
 
-<AnchorPane maxHeight="800.0" maxWidth="1434.0" minHeight="800.0" minWidth="1080.0" prefHeight="800.0" prefWidth="1434.0" styleClass="background" stylesheets="@../styles/project-screen.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.hdm_stuttgart.project.ProjectSceneController">
+<AnchorPane maxHeight="800.0" maxWidth="1434.0" minHeight="800.0" minWidth="1080.0" prefHeight="800.0" prefWidth="1434.0" styleClass="background" stylesheets="@/styles/project-screen.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.hdm_stuttgart.project.ProjectSceneController">
    <children>
       <ImageView fx:id="logo" fitHeight="60.0" fitWidth="227.0" layoutX="44.0" layoutY="29.0" pickOnBounds="true" preserveRatio="true" styleClass="logo">
          <image>
@@ -393,9 +393,13 @@
          </cursor>
       </Button>
       <Line endX="529.3092041015625" layoutX="557.0" layoutY="219.0" startX="-100.0" stroke="WHITE" strokeWidth="0.5" />
-      <Polyline fill="CHARTREUSE" layoutX="1262.0" layoutY="3.0" points="172.0, -2.999999523162842, 172.0, 75.12503814697266, -53.995094299316406, 75.12503051757812, -155.00001525878906, -3.9999961853027344" strokeType="INSIDE" strokeWidth="0.0" styleClass="user-card" />
-      <Circle fill="DODGERBLUE" layoutX="1224.0" layoutY="39.0" radius="29.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" style="-fx-fill: purple;" styleClass="userAvatar" />
-      <Label layoutX="1268.0" layoutY="16.0" prefHeight="27.0" prefWidth="155.0" styleClass="user-name" text="Hi, Username!" />
-      <Label layoutX="1270.0" layoutY="44.0" prefHeight="17.0" prefWidth="152.0" styleClass="user-subdescription" text="username@mail.com" />
+      <Polyline fill="CHARTREUSE" layoutX="1207.0" layoutY="3.0" points="227.0, -3.0, 227.0, 75.1250228881836, -53.995094299316406, 75.12503051757812, -155.00001525878906, -3.9999961853027344" strokeType="INSIDE" strokeWidth="0.0" styleClass="user-card" />
+      <Circle fill="DODGERBLUE" layoutX="1180.0" layoutY="38.0" radius="29.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0"  styleClass="userAvatar" />
+      <VBox layoutX="1229.0" layoutY="16.0" prefHeight="44.0" prefWidth="202.0">
+         <children>
+            <Label prefHeight="27.0" prefWidth="216.0" styleClass="user-name" text="Hi, Username!" />
+            <Label prefHeight="17.0" prefWidth="213.0" styleClass="user-subdescription" text="username@mail.com" />
+         </children>
+      </VBox>
    </children>
 </AnchorPane>
