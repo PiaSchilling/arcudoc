@@ -2,7 +2,7 @@ package de.hdm_stuttgart;
 
 public enum Scenes {
 
-    LOGIN("/fxml/test.fxml"),
+    LOGIN("/fxml/login-scene.fxml"),
     WORKSPACE("/fxml/workspace-screen.fxml"),
     PROJECT("/fxml/project-screen.fxml"),
     CREATE_PROJECT("/fxml/workspace-projectoption-screen.fxml"),

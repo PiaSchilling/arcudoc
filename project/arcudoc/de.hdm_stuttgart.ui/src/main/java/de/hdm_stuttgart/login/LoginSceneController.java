@@ -1,17 +1,17 @@
 package de.hdm_stuttgart.login;
 
 import com.google.inject.Inject;
-import de.hdm_stuttgart.data.service.AccountInformation;
 import de.hdm_stuttgart.data.service.NetworkStatus;
-import de.hdm_stuttgart.navigation.INavigationController;
 import de.hdm_stuttgart.login.service.ILogin;
 
 import de.hdm_stuttgart.navigation.NavigationController;
 import javafx.application.Application;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -27,6 +27,9 @@ public class LoginSceneController {
 
     @FXML
     private Button googleButton;
+
+    @FXML
+    private ImageView gitlabImageButton;
 
     @Inject
     public LoginSceneController(ILogin login, Application application) {

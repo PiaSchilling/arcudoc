@@ -1,5 +1,6 @@
 package de.hdm_stuttgart.workspace.data;
 
+import de.hdm_stuttgart.data.service.AccountInformation;
 import de.hdm_stuttgart.data.service.ApiConstants;
 import de.hdm_stuttgart.data.service.NetworkStatus;
 import de.hdm_stuttgart.workspace.model.*;
@@ -28,7 +29,7 @@ public class WorkspaceRepo {
     private final ListProperty<InvitationResponse> projectInvitationsProperty = new SimpleListProperty<>();
     private final ListProperty<MemberProjectResponse> memberProjectsProperty = new SimpleListProperty<>();
     private final ObjectProperty<NetworkStatus> networkStatusObjectProperty = new SimpleObjectProperty<>();
-
+    private final ObjectProperty<UserProfile> userProfileObjectProperty = new SimpleObjectProperty<>();
 
     // - - - - projects - - - -
 
@@ -309,6 +310,38 @@ public class WorkspaceRepo {
         });
     }
 
+    /**
+     * fetch the profile of the authenticated user (async)
+     * gets the users mail, avatar and name
+     */
+    public void fetchUserProfileAsync(){
+        System.out.println("Fetch user profile called");
+        Call<List<UserProfile>> call = supabaseRestClient.fetchUserProfile(
+                ApiConstants.API_KEY,
+                ApiConstants.BEARER_KEY,
+                "mail,avatar,display_name");
+
+        call.enqueue(new Callback<>() {
+            @Override
+            public void onResponse( Call<List<UserProfile>> call,  Response<List<UserProfile>> response) {
+                if (response.isSuccessful()) {
+                    List<UserProfile> userProfile = response.body();
+                    if(userProfile != null && userProfile.size() > 0){
+                        userProfileObjectProperty.setValue(userProfile.get(0));
+                    }
+                    log.debug("UserProfile fetched successfully ");
+                } else {
+                    log.error("Fetch userProfile not successful - " + response.message());
+                }
+            }
+
+            @Override
+            public void onFailure( Call<List<UserProfile>> call,  Throwable throwable) {
+                log.error("Fetch userProfile failed - " + throwable.getMessage());
+            }
+        });
+    }
+
     // - - - - - property getters - - - - -
 
     public ListProperty<InvitationResponse> getProjectInvitationsProperty() {
@@ -323,4 +356,7 @@ public class WorkspaceRepo {
         return networkStatusObjectProperty;
     }
 
+    public ObjectProperty<UserProfile> getUserProfileObjectProperty() {
+        return userProfileObjectProperty;
+    }
 }

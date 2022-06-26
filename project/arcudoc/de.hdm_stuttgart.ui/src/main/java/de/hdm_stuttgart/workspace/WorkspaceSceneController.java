@@ -8,11 +8,18 @@ import de.hdm_stuttgart.workspace.service.IWorkspace;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.ImagePattern;
+import javafx.scene.shape.Circle;
 
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.URL;
 import java.util.Optional;
 
 //todo add loading spinner when clicked on project cell
@@ -50,10 +57,38 @@ public class WorkspaceSceneController implements WorkspaceCellClickHandler {
     @FXML
     private Button refreshButton;
 
+    @FXML
+    private Circle userAvatarCircle;
+
+    @FXML
+    private Label userMailLabel;
+
+    @FXML
+    private Label userNameLabel;
+
 
     public void initialize() {
 
         refreshButton.setOnAction(event -> workspace.refreshButtonClicked());
+
+        workspace.getUserProfileProperty().addListener((observable, oldValue, newValue) -> {
+
+            Platform.runLater(() -> {
+
+                userMailLabel.setText(newValue.getMail());
+                userNameLabel.setText(newValue.getHelloText());
+
+                try {
+                    URL url = new URL(newValue.getAvatar());
+                    InputStream inputStream =  url.openStream();
+                    Image image = new Image(inputStream);
+                    userAvatarCircle.setFill(new ImagePattern(image));
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            });
+
+        });
 
         //show the users project invitations
         workspace.getProjectInvitationsProperty().addListener((observable, oldValue, newValue) -> {
