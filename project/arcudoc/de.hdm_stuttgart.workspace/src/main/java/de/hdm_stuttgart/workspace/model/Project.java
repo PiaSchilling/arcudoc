@@ -13,7 +13,7 @@ public class Project {
     @SerializedName("last_updated")
     private String lastUpdated; //todo this should be an Instant or LocalDateTime (unfortunately not possible with retrofit at the moment)
 
-    @SerializedName("profiles")
+    @SerializedName("project_owners")
     private Profile projectOwner;
 
     public Project(String title) {
