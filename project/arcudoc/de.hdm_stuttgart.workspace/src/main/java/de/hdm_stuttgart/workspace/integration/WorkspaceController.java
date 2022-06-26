@@ -1,7 +1,6 @@
 package de.hdm_stuttgart.workspace.integration;
 
 import com.google.inject.Inject;
-import de.hdm_stuttgart.data.service.AccountInformation;
 import de.hdm_stuttgart.data.service.NetworkStatus;
 import de.hdm_stuttgart.workspace.data.WorkspaceRepo;
 import de.hdm_stuttgart.workspace.model.InvitationResponse;
@@ -105,7 +104,7 @@ public class WorkspaceController {
 
 
     public ObjectProperty<IUserProfile> getUserProfileProperty(){
-        workspaceRepo.fetchUserProfileAsync();
+        workspaceRepo.fetchUserProfile();
         return userProfileForUi;
     }
 

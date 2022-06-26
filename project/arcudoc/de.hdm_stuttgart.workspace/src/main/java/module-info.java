@@ -17,6 +17,7 @@ module workspace {
 
     //module dependencies
     requires de.hdm.stuttgart.api;
+    requires annotations;
 
     //exports to external modules
     exports de.hdm_stuttgart.workspace.data to com.google.guice;

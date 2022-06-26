@@ -1,6 +1,5 @@
 package de.hdm_stuttgart.workspace.data;
 
-import de.hdm_stuttgart.data.service.AccountInformation;
 import de.hdm_stuttgart.data.service.ApiConstants;
 import de.hdm_stuttgart.data.service.NetworkStatus;
 import de.hdm_stuttgart.workspace.model.*;
@@ -12,6 +11,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.jetbrains.annotations.NotNull;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -49,9 +49,9 @@ public class WorkspaceRepo {
                 "return=representation",
                 new ProjectRequest(projectTitle));
 
-        call.enqueue(new Callback<List<ProjectResponse>>() {
+        call.enqueue(new Callback<>() {
             @Override
-            public void onResponse(Call<List<ProjectResponse>> call, Response<List<ProjectResponse>> response) {
+            public void onResponse(@NotNull Call<List<ProjectResponse>> call, @NotNull Response<List<ProjectResponse>> response) {
                 if (response.isSuccessful()) {
                     log.debug(response.code() + " - Project created successfully");
                     List<ProjectResponse> createdProject = response.body();
@@ -66,7 +66,7 @@ public class WorkspaceRepo {
             }
 
             @Override
-            public void onFailure(Call<List<ProjectResponse>> call, Throwable throwable) {
+            public void onFailure(@NotNull Call<List<ProjectResponse>> call, @NotNull Throwable throwable) {
                 log.error(throwable.getMessage() + " - Project creation not successful");
             }
         });
@@ -76,7 +76,7 @@ public class WorkspaceRepo {
 
     /**
      * calls corresponding api endpoints to invite a member to a project
-     * if member is alreay invited to the project, invitation will be replaced by a new one
+     * if member is already invited to the project, invitation will be replaced by a new one
      *
      * @param members list of members which should be invited
      * @param projectId id of the project the members should be invited to
@@ -94,18 +94,18 @@ public class WorkspaceRepo {
                 invitationRequests
         );
 
-        call.enqueue(new Callback<Void>() {
+        call.enqueue(new Callback<>() {
             @Override
-            public void onResponse(Call<Void> call, Response<Void> response) {
+            public void onResponse(@NotNull Call<Void> call, @NotNull Response<Void> response) {
                 if (response.isSuccessful()) {
                     log.debug(response.code() + " - Invitations added successfully");
                 } else {
-                    log.error(response.code() +  response.message() + " - Invitation not successful");
+                    log.error(response.code() + response.message() + " - Invitation not successful");
                 }
             }
 
             @Override
-            public void onFailure(Call<Void> call, Throwable throwable) {
+            public void onFailure(@NotNull Call<Void> call, @NotNull Throwable throwable) {
                 log.error(throwable.getMessage() + " - Invitation failed");
             }
         });
@@ -123,17 +123,17 @@ public class WorkspaceRepo {
                 "*,projects(title)"
         );
 
-        call.enqueue(new Callback<List<InvitationResponse>>() {
+        call.enqueue(new Callback<>() {
             @Override
-            public void onResponse(Call<List<InvitationResponse>> call, Response<List<InvitationResponse>> response) {
+            public void onResponse(@NotNull Call<List<InvitationResponse>> call, @NotNull Response<List<InvitationResponse>> response) {
                 if (response.isSuccessful()) {
                     log.debug("Invitations fetches successfully");
                     List<InvitationResponse> invitations = response.body();
-                    if(invitations != null){
+                    if (invitations != null) {
                         ObservableList<InvitationResponse> observableList = FXCollections.observableArrayList();
                         observableList.addAll(invitations);
                         projectInvitationsProperty.setValue(observableList);
-                    }else{
+                    } else {
                         log.error("InvitationList is null");
                     }
                 } else {
@@ -143,7 +143,7 @@ public class WorkspaceRepo {
             }
 
             @Override
-            public void onFailure(Call<List<InvitationResponse>> call, Throwable throwable) {
+            public void onFailure(@NotNull Call<List<InvitationResponse>> call, @NotNull Throwable throwable) {
                 log.error(throwable.getMessage() + " - Fetching invitations failed");
             }
         });
@@ -164,38 +164,38 @@ public class WorkspaceRepo {
                 "*"
         );
 
-        call.enqueue(new Callback<List<ProjectMember>>() {
+        call.enqueue(new Callback<>() {
             @Override
-            public void onResponse(Call<List<ProjectMember>> call, Response<List<ProjectMember>> response) {
-                if(response.isSuccessful()){
+            public void onResponse(@NotNull Call<List<ProjectMember>> call, @NotNull Response<List<ProjectMember>> response) {
+                if (response.isSuccessful()) {
                     List<ProjectMember> projectMembers = response.body();
-                    if(projectMembers != null && projectMembers.size() > 0){
+                    if (projectMembers != null && projectMembers.size() > 0) {
 
-                        if(isAccepted){
-                            addProjectMember(projectId,projectMembers.get(0)); //only add project member if invitation is accepted
+                        if (isAccepted) {
+                            addProjectMember(projectId, projectMembers.get(0)); //only add project member if invitation is accepted
                             deleteProjectInvitation(projectId);
 
                             NetworkStatus.SUCCESS.setNetworkMessage("Invitation accepted");
                             networkStatusObjectProperty.setValue(NetworkStatus.SUCCESS);
-                        }else{
+                        } else {
                             deleteProjectInvitation(projectId); //if not accepted only delete invitation
 
                             NetworkStatus.SUCCESS.setNetworkMessage("Invitation declined");
                             networkStatusObjectProperty.setValue(NetworkStatus.SUCCESS);
                         }
 
-                    }else{
+                    } else {
                         log.error("Empty or null response for fetching project invitation for project with id " + projectId);
 
                     }
-                }else{
+                } else {
                     log.error(response.code() + response.message() + "Getting single invitation for project " + projectId + " not successful");
                     NetworkStatus.FAIL.setNetworkMessage(response.message());
                 }
             }
 
             @Override
-            public void onFailure(Call<List<ProjectMember>> call, Throwable throwable) {
+            public void onFailure(@NotNull Call<List<ProjectMember>> call, @NotNull Throwable throwable) {
                 log.error(throwable.getMessage() + "Getting single invitation for project " + projectId + " failed");
             }
         });
@@ -215,9 +215,9 @@ public class WorkspaceRepo {
                 "eq." + projectId
         );
 
-        call.enqueue(new Callback<Void>() {
+        call.enqueue(new Callback<>() {
             @Override
-            public void onResponse(Call<Void> call, Response<Void> response) {
+            public void onResponse(@NotNull Call<Void> call, @NotNull Response<Void> response) {
                 if (response.isSuccessful()) {
                     log.debug("Delete project invitation successful");
                 } else {
@@ -226,7 +226,7 @@ public class WorkspaceRepo {
             }
 
             @Override
-            public void onFailure(Call<Void> call, Throwable throwable) {
+            public void onFailure(@NotNull Call<Void> call, @NotNull Throwable throwable) {
                 log.error(throwable.getMessage() + " - Delete project invitation failed");
             }
         });
@@ -250,15 +250,15 @@ public class WorkspaceRepo {
                 new MemberRequest(projectId, projectMember)
         );
 
-        call.enqueue(new Callback<Void>() {
+        call.enqueue(new Callback<>() {
             @Override
-            public void onResponse(Call<Void> call, Response<Void> response) {
+            public void onResponse(@NotNull Call<Void> call, @NotNull Response<Void> response) {
                 if (response.isSuccessful()) {
                     log.debug("Project member added successfully");
                     fetchMemberProjects(); //update memberProjects
                 } else {
                     log.error(response.code() + response.message() + " - Project member adding not successful");
-                    if(response.code() == 409){
+                    if (response.code() == 409) {
                         NetworkStatus.FAIL.setNetworkMessage(projectMember.getMail() + "is already member of the project");
                         networkStatusObjectProperty.setValue(NetworkStatus.FAIL);
                     }
@@ -266,7 +266,7 @@ public class WorkspaceRepo {
             }
 
             @Override
-            public void onFailure(Call<Void> call, Throwable throwable) {
+            public void onFailure(@NotNull Call<Void> call, @NotNull Throwable throwable) {
                 log.error(throwable.getMessage() + " - Add project member failed");
             }
         });
@@ -284,13 +284,13 @@ public class WorkspaceRepo {
                 "projects(title,last_updated,id,project_owners!projects_owner_id_fkey(mail,display_name,avatar)),project_role,job_label" //indicates to select title and id of project table although project_members table is queried in request (linked in supabase)
         );
 
-        call.enqueue(new Callback<List<MemberProjectResponse>>() {
+        call.enqueue(new Callback<>() {
             @Override
-            public void onResponse(Call<List<MemberProjectResponse>> call, Response<List<MemberProjectResponse>> response) {
+            public void onResponse(@NotNull Call<List<MemberProjectResponse>> call, @NotNull Response<List<MemberProjectResponse>> response) {
                 if (response.isSuccessful()) {
                     log.debug("Member projects fetched successfully");
                     List<MemberProjectResponse> memberProjects = response.body();
-                    if(memberProjects != null){
+                    if (memberProjects != null) {
                         System.out.println(Arrays.toString(memberProjects.toArray()));
 
                         ObservableList<MemberProjectResponse> observableList = FXCollections.observableArrayList();
@@ -304,7 +304,7 @@ public class WorkspaceRepo {
             }
 
             @Override
-            public void onFailure(Call<List<MemberProjectResponse>> call, Throwable throwable) {
+            public void onFailure(@NotNull Call<List<MemberProjectResponse>> call, @NotNull Throwable throwable) {
                 log.error(throwable.getMessage() + " - Fetching member projects failed");
             }
         });
@@ -314,7 +314,7 @@ public class WorkspaceRepo {
      * fetch the profile of the authenticated user (async)
      * gets the users mail, avatar and name
      */
-    public void fetchUserProfileAsync(){
+    public void fetchUserProfile(){
         System.out.println("Fetch user profile called");
         Call<List<UserProfile>> call = supabaseRestClient.fetchUserProfile(
                 ApiConstants.API_KEY,
@@ -323,7 +323,7 @@ public class WorkspaceRepo {
 
         call.enqueue(new Callback<>() {
             @Override
-            public void onResponse( Call<List<UserProfile>> call,  Response<List<UserProfile>> response) {
+            public void onResponse(@NotNull Call<List<UserProfile>> call, @NotNull Response<List<UserProfile>> response) {
                 if (response.isSuccessful()) {
                     List<UserProfile> userProfile = response.body();
                     if(userProfile != null && userProfile.size() > 0){
@@ -336,7 +336,7 @@ public class WorkspaceRepo {
             }
 
             @Override
-            public void onFailure( Call<List<UserProfile>> call,  Throwable throwable) {
+            public void onFailure(@NotNull Call<List<UserProfile>> call, @NotNull Throwable throwable) {
                 log.error("Fetch userProfile failed - " + throwable.getMessage());
             }
         });
