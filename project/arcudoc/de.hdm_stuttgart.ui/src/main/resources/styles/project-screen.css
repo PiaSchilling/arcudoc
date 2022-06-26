@@ -72,7 +72,7 @@
 .menu-chapter-title{
     -fx-font-family: 'Poppins';
     -fx-font-weight: 700;
-    -fx-font-size: 14px;
+    -fx-font-size: 12px;
     -fx-line-height: 24px;
 
     -fx-text-fill: #FFFFFF;
@@ -86,7 +86,7 @@
 .menu-subchapter-title{
     -fx-font-family: 'Poppins';
     -fx-font-weight: 500;
-    -fx-font-size: 14px;
+    -fx-font-size: 12px;
     -fx-line-height: 24px;
 
     -fx-text-fill: #FFFFFF;
@@ -154,10 +154,9 @@
     /* text - view */
 
     .text-area {
-        -fx-font-family: Poppins;
-        -fx-font-size: 12pt;
+        -fx-font-family: Monospaced;
+        -fx-font-size: 13px;
         -fx-text-fill: #ffffff;
-
     }
 
     .text-area:focused{
@@ -170,7 +169,7 @@
 }
 
 .text-area:focused .content {
-    -fx-background-color: #3f3b46;
+    -fx-background-color: #19181F;
 
 }
 
