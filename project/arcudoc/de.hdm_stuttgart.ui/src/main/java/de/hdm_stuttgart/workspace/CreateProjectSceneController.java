@@ -2,6 +2,7 @@ package de.hdm_stuttgart.workspace;
 
 import com.google.inject.Inject;
 import de.hdm_stuttgart.navigation.NavigationController;
+import de.hdm_stuttgart.workspace.userCell.UserCellComponent;
 import de.hdm_stuttgart.workspace.service.ICreateProject;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;

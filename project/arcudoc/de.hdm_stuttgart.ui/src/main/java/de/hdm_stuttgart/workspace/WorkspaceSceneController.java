@@ -2,6 +2,8 @@ package de.hdm_stuttgart.workspace;
 
 import com.google.inject.Inject;
 import de.hdm_stuttgart.navigation.NavigationController;
+import de.hdm_stuttgart.workspace.invitationCell.InvitationCellComponent;
+import de.hdm_stuttgart.workspace.projectCell.ProjectCellComponent;
 import de.hdm_stuttgart.workspace.service.IInvitationResponse;
 import de.hdm_stuttgart.workspace.service.IMemberProjectResponse;
 import de.hdm_stuttgart.workspace.service.IWorkspace;

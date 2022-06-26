@@ -1,4 +1,4 @@
-package de.hdm_stuttgart.workspace;
+package de.hdm_stuttgart.workspace.projectCell;
 
 import de.hdm_stuttgart.Scenes;
 import de.hdm_stuttgart.workspace.service.IMemberProjectResponse;

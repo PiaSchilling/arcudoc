@@ -1,15 +1,11 @@
-package de.hdm_stuttgart.workspace;
+package de.hdm_stuttgart.workspace.projectCell;
 
 import de.hdm_stuttgart.navigation.NavigationController;
+import de.hdm_stuttgart.workspace.ownerCell.OwnerCellComponent;
 import de.hdm_stuttgart.workspace.service.IMemberProjectResponse;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
-import org.w3c.dom.ls.LSOutput;
 
 public class ProjectCellController {
 

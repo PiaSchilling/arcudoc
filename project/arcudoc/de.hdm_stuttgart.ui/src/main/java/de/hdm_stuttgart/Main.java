@@ -49,7 +49,7 @@ public class Main extends Application{
         NavigationController.initNavigationController(stage,controllerFactory);
 
         Preferences userPreferences = Preferences.userRoot().node("/arcudoc/profile");
-       // userPreferences.put("REFRESH_TOKEN","default");
+        userPreferences.put("REFRESH_TOKEN","default"); //todo remove once done with testing
         String auth = userPreferences.get("REFRESH_TOKEN","default");
 
         if(auth.equals("default")){

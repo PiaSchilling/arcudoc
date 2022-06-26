@@ -29,4 +29,8 @@ module gui {
     opens styles;
     exports de.hdm_stuttgart.navigation;
     opens de.hdm_stuttgart.navigation to javafx.controls, javafx.fxml, javafx.graphics;
+    opens de.hdm_stuttgart.workspace.invitationCell to javafx.controls, javafx.fxml, javafx.graphics;
+    opens de.hdm_stuttgart.workspace.ownerCell to javafx.controls, javafx.fxml, javafx.graphics;
+    opens de.hdm_stuttgart.workspace.userCell to javafx.controls, javafx.fxml, javafx.graphics;
+    opens de.hdm_stuttgart.workspace.projectCell to javafx.controls, javafx.fxml, javafx.graphics;
 }

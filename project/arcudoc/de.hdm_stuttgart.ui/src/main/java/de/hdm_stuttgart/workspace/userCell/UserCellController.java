@@ -1,5 +1,6 @@
-package de.hdm_stuttgart.workspace;
+package de.hdm_stuttgart.workspace.userCell;
 
+import de.hdm_stuttgart.workspace.CreateProjectCellClickHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.text.Text;

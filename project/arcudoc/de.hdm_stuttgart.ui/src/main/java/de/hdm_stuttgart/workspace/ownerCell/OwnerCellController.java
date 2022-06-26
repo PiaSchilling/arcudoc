@@ -1,4 +1,4 @@
-package de.hdm_stuttgart.workspace;
+package de.hdm_stuttgart.workspace.ownerCell;
 
 import de.hdm_stuttgart.workspace.service.IMemberProjectResponse;
 import javafx.fxml.FXML;

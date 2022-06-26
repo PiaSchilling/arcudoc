@@ -1,6 +1,7 @@
-package de.hdm_stuttgart.workspace;
+package de.hdm_stuttgart.workspace.invitationCell;
 
 import de.hdm_stuttgart.Scenes;
+import de.hdm_stuttgart.workspace.WorkspaceCellClickHandler;
 import de.hdm_stuttgart.workspace.service.IInvitationResponse;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;

@@ -78,7 +78,7 @@ td {
 }
 ::-webkit-scrollbar-thumb {
     border-radius: 6px;
-    background: rgba(159,216,239,0.8);
+    background: rgba(90, 86, 107);
 }
 ::-webkit-scrollbar-thumb:vertical {
     min-height: 50px;

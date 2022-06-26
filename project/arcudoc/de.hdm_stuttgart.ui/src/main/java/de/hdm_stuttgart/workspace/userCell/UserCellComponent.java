@@ -1,6 +1,7 @@
-package de.hdm_stuttgart.workspace;
+package de.hdm_stuttgart.workspace.userCell;
 
 import de.hdm_stuttgart.Scenes;
+import de.hdm_stuttgart.workspace.CreateProjectCellClickHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.layout.AnchorPane;
