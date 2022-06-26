@@ -1,5 +1,9 @@
 module de.hdm.stuttgart.editor {
 
+    //exported modules
+    exports de.hdm_stuttgart.editor.service;
+    exports de.hdm_stuttgart.editor.guice;
+
     //external dependencies
     requires com.google.guice;
     requires retrofit2;
@@ -13,10 +17,6 @@ module de.hdm.stuttgart.editor {
 
     //module dependencies
     requires de.hdm.stuttgart.api;
-
-    //exported modules
-    exports de.hdm_stuttgart.editor.service;
-    exports de.hdm_stuttgart.editor.guice;
 
     //exports to external modules
     exports de.hdm_stuttgart.editor.data to com.google.guice;

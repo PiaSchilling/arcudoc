@@ -11,17 +11,21 @@
 
     <artifactId>de.hdm_stuttgart.login</artifactId>
     <dependencies>
+
         <dependency>
             <groupId>de.hdm_stuttgart</groupId>
             <artifactId>data</artifactId>
             <version>1.0-SNAPSHOT</version>
             <scope>compile</scope>
         </dependency>
+
+        <!-- JavaFx (required for observable properties)-->
         <dependency>
             <groupId>org.openjfx</groupId>
             <artifactId>javafx-fxml</artifactId>
             <version>14.0.1</version>
         </dependency>
+
     </dependencies>
 
     <properties>

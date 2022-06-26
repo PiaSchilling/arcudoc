@@ -23,6 +23,8 @@
     </properties>
 
     <dependencies>
+
+        <!-- Logging -->
         <!-- https://mvnrepository.com/artifact/org.apache.logging.log4j/log4j-core -->
         <dependency>
             <groupId>org.apache.logging.log4j</groupId>
@@ -30,33 +32,21 @@
             <version>2.17.2</version>
         </dependency>
 
+        <!-- Api communication -->
         <!-- https://mvnrepository.com/artifact/com.squareup.retrofit2/converter-gson -->
         <dependency>
             <groupId>com.squareup.retrofit2</groupId>
             <artifactId>converter-gson</artifactId>
             <version>2.9.0</version>
         </dependency>
+
         <dependency>
             <groupId>com.google.code.gson</groupId>
             <artifactId>gson</artifactId>
             <version>2.9.0</version>
         </dependency>
 
-        <!-- https://mvnrepository.com/artifact/com.google.inject/guice -->
-        <dependency>
-            <groupId>com.google.inject</groupId>
-            <artifactId>guice</artifactId>
-            <version>5.1.0</version>
-        </dependency>
-
-        <!-- https://mvnrepository.com/artifact/org.junit.jupiter/junit-jupiter-engine -->
-        <dependency>
-            <groupId>org.junit.jupiter</groupId>
-            <artifactId>junit-jupiter-engine</artifactId>
-            <version>5.0.0</version>
-            <scope>test</scope>
-        </dependency>
-
+        <!-- Api logging -->
         <!-- https://mvnrepository.com/artifact/com.squareup.okhttp3/logging-interceptor -->
         <dependency>
             <groupId>com.squareup.okhttp3</groupId>
@@ -71,8 +61,22 @@
             <version>4.9.0</version>
         </dependency>
 
+        <!-- Dependency injection -->
+        <!-- https://mvnrepository.com/artifact/com.google.inject/guice -->
+        <dependency>
+            <groupId>com.google.inject</groupId>
+            <artifactId>guice</artifactId>
+            <version>5.1.0</version>
+        </dependency>
 
-
+        <!-- Test -->
+        <!-- https://mvnrepository.com/artifact/org.junit.jupiter/junit-jupiter-engine -->
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-engine</artifactId>
+            <version>5.0.0</version>
+            <scope>test</scope>
+        </dependency>
 
     </dependencies>
 
