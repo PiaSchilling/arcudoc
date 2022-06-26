@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="45.0" prefWidth="250.0" styleClass="project-invitation-cell" stylesheets="@../styles/addedUser-cell.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#5553e1" height="47.0" stroke="BLACK" strokeType="INSIDE" styleClass="project-invitation-cell" width="251.0" />
+      <Text fx:id="ownerMailLabel" layoutX="62.0" layoutY="29.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="h1" text="user@testung.de" />
+      <Circle fx:id="ownerAvatarFrame" fill="DODGERBLUE" layoutX="23.0" layoutY="23.0" radius="22.0" stroke="BLACK" strokeType="INSIDE" />
+   </children>
+</AnchorPane>

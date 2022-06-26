@@ -9,6 +9,9 @@ public class Profile {
     @SerializedName("display_name")
     private String userName;
 
+    @SerializedName("avatar")
+    private String avatarUrl;
+
     public Profile(String mail) {
         this.mail = mail;
     }
@@ -24,6 +27,10 @@ public class Profile {
         return userName;
     }
 
+    public String getAvatarUrl() {
+        return avatarUrl;
+    }
+
     @Override
     public String toString() {
         return "Profile{" +
@@ -31,4 +38,6 @@ public class Profile {
                 ", userName='" + userName + '\'' +
                 '}';
     }
+
+
 }

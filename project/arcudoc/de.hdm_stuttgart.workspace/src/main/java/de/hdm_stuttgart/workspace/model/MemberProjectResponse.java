@@ -91,6 +91,11 @@ public class MemberProjectResponse implements IMemberProjectResponse {
     }
 
     @Override
+    public String getOwnerAvatarUrl(){
+        return project.getProjectOwner().getAvatarUrl();
+    }
+
+    @Override
     public int getProjectId() {
         return project.getProjectId();
     }

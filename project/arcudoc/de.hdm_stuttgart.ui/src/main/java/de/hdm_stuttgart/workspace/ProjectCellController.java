@@ -2,6 +2,8 @@ package de.hdm_stuttgart.workspace;
 
 import de.hdm_stuttgart.navigation.NavigationController;
 import de.hdm_stuttgart.workspace.service.IMemberProjectResponse;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
@@ -41,16 +43,18 @@ public class ProjectCellController {
 
     public void initialize(){
         lastUpdatedLabel.setText(memberProject.getLastUpdated());
-        //projectOwnerLabel.setText(memberProject.getOwnerMail());
         projectOwnerLabel.setText(memberProject.getOwnerName());
         projectRoleLabel.setText(memberProject.getProjectRole());
         projectJobLabel.setText(memberProject.getJobLabel());
         projectTitleLabel.setText(memberProject.getProjectTitle());
         projectInitialLabel.setText(memberProject.getProjectTitle().substring(0,1).toUpperCase());
-        projectCellFrame.setOnMouseClicked(event -> { //todo move onclick to label or arrow button
+        projectCellFrame.setOnMouseClicked(event -> {
             NavigationController.getINSTANCE()
                     .showProjectScene(memberProject.getProjectId());
         });
+
+        projectOwnerLabel.setTooltip(new OwnerCellComponent(memberProject));
+
     }
 
 

@@ -14,6 +14,8 @@ public interface IMemberProjectResponse {
 
     String getOwnerName();
 
+    String getOwnerAvatarUrl();
+
     int getProjectId();
 
 
