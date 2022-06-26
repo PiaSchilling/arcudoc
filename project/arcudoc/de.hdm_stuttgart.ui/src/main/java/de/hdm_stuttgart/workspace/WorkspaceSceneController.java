@@ -72,19 +72,22 @@ public class WorkspaceSceneController implements WorkspaceCellClickHandler {
         refreshButton.setOnAction(event -> workspace.refreshButtonClicked());
 
         workspace.getUserProfileProperty().addListener((observable, oldValue, newValue) -> {
-            //todo set props to user card
 
-            userMailLabel.setText(newValue.getMail());
-            userNameLabel.setText(newValue.getHelloText());
+            Platform.runLater(() -> {
 
-            try {
-                URL url = new URL(newValue.getAvatar());
-                InputStream inputStream =  url.openStream();
-                Image image = new Image(inputStream);
-                userAvatarCircle.setFill(new ImagePattern(image));
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+                userMailLabel.setText(newValue.getMail());
+                userNameLabel.setText(newValue.getHelloText());
+
+                try {
+                    URL url = new URL(newValue.getAvatar());
+                    InputStream inputStream =  url.openStream();
+                    Image image = new Image(inputStream);
+                    userAvatarCircle.setFill(new ImagePattern(image));
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            });
+
         });
 
         //show the users project invitations
