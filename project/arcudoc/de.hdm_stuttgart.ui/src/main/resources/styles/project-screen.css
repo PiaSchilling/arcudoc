@@ -165,6 +165,7 @@
 
 .text-area .content {
     -fx-background-color: #2B2934;
+    -fx-padding: 30px;
 
 }
 
@@ -173,6 +174,14 @@
 
 }
 
+.text-area .scroll-bar:vertical {
+    -fx-pref-width: 1;
+    -fx-opacity: 0;
+}
+.text-area .scroll-bar:horizontal {
+    -fx-pref-height: 1;
+    -fx-opacity: 0;
+}
 
 
 

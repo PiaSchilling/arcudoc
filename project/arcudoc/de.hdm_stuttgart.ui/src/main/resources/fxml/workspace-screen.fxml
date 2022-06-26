@@ -114,11 +114,11 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
-      <Polyline fill="CHARTREUSE" layoutX="1207.0" layoutY="3.0" points="227.0, -3.0, 227.0, 75.1250228881836, -53.995094299316406, 75.12503051757812, -155.00001525878906, -3.9999961853027344" strokeType="INSIDE" strokeWidth="0.0" styleClass="user-card" />
-      <Circle fill="DODGERBLUE" layoutX="1180.0" layoutY="38.0" radius="29.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0"  styleClass="userAvatar" />
-      <VBox layoutX="1229.0" layoutY="16.0" prefHeight="44.0" prefWidth="202.0">
+      <Polyline fill="CHARTREUSE" layoutX="1226.0" layoutY="3.0" points="208.0, -3.000002145767212, 208.0, 75.1250228881836, -53.995094299316406, 75.12503051757812, -155.00001525878906, -3.9999961853027344" strokeType="INSIDE" strokeWidth="0.0" styleClass="user-card" />
+      <Circle fill="DODGERBLUE" layoutX="1193.0" layoutY="38.0" radius="29.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" styleClass="userAvatar" />
+      <VBox layoutX="1231.0" layoutY="16.0" prefHeight="44.0" prefWidth="188.0">
          <children>
-            <Label prefHeight="27.0" prefWidth="216.0" styleClass="user-name" text="Hi, Username!" />
+            <Label prefHeight="27.0" prefWidth="198.0" styleClass="user-name" text="Hi, Username!" />
             <Label prefHeight="17.0" prefWidth="213.0" styleClass="user-subdescription" text="username@mail.com" />
          </children>
       </VBox>

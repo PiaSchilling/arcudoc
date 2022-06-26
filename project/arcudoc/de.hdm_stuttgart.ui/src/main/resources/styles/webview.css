@@ -6,6 +6,7 @@ body {
     padding-left: 0px;
     padding-right: 0px;
     line-height: 24px;
+    overflow-x: hidden;
 }
 
 h1 {
@@ -69,3 +70,23 @@ td {
     padding: 15px;
 }
 
+::-webkit-scrollbar {
+    width: 10px;
+}
+::-webkit-scrollbar-track  {
+    background-color: #2B2934;
+}
+::-webkit-scrollbar-thumb {
+    border-radius: 6px;
+    background: rgba(159,216,239,0.8);
+}
+::-webkit-scrollbar-thumb:vertical {
+    min-height: 50px;
+}
+::-webkit-scrollbar-thumb:window-inactive {
+    background: rgb(90, 86, 107);
+}
+
+.text-area .scroll-bar:vertical:disabled {
+    opacity: 0;
+}
