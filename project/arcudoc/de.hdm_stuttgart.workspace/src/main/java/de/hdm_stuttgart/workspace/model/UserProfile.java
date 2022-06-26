@@ -30,15 +30,24 @@ public class UserProfile implements IUserProfile {
                 '}';
     }
 
+    @Override
     public String getMail() {
         return mail;
     }
 
+    @Override
     public String getAvatar() {
         return avatar;
     }
 
+    @Override
     public String getUserName() {
         return userName;
+    }
+
+    @Override
+    public String getHelloText(){
+        String firstName = userName.split(" ")[0];
+        return "Hi, " + firstName + "!";
     }
 }

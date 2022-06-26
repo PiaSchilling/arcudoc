@@ -75,15 +75,14 @@ public class WorkspaceSceneController implements WorkspaceCellClickHandler {
             //todo set props to user card
 
             userMailLabel.setText(newValue.getMail());
-            userNameLabel.setText(newValue.getUserName());
-            System.out.println("Avatar " + newValue.getAvatar());
+            userNameLabel.setText(newValue.getHelloText());
 
-            try{
+            try {
                 URL url = new URL(newValue.getAvatar());
-                InputStream inputStream = url.openStream();
+                InputStream inputStream =  url.openStream();
                 Image image = new Image(inputStream);
                 userAvatarCircle.setFill(new ImagePattern(image));
-            }catch (IOException e){
+            } catch (IOException e) {
                 e.printStackTrace();
             }
         });

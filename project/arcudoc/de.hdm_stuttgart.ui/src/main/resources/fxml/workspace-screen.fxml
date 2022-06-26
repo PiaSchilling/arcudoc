@@ -115,7 +115,7 @@
          </cursor>
       </Button>
       <Polyline fill="CHARTREUSE" layoutX="1226.0" layoutY="3.0" points="208.0, -3.000002145767212, 208.0, 75.1250228881836, -53.995094299316406, 75.12503051757812, -155.00001525878906, -3.9999961853027344" strokeType="INSIDE" strokeWidth="0.0" styleClass="user-card" />
-      <Circle fx:id="userAvatarCircle" fill="DODGERBLUE" layoutX="1193.0" layoutY="38.0" radius="29.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" styleClass="userAvatar" />
+      <Circle fx:id="userAvatarCircle" fill="DODGERBLUE" layoutX="1193.0" layoutY="38.0" radius="29.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
       <VBox layoutX="1231.0" layoutY="16.0" prefHeight="44.0" prefWidth="188.0">
          <children>
             <Label fx:id="userNameLabel" prefHeight="27.0" prefWidth="198.0" styleClass="user-name" text="Hi, Username!" />
