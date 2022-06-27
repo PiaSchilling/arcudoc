@@ -40,7 +40,6 @@ public class Main extends Application{
                 new LoginGuiceModule(),
                 new UiGuiceModule(),
                 new WorkspaceGuiceModule(),
-                new UiGuiceModule(),
                 new EditorGuiceModule(),
                 new DocuGuiceModule());
 

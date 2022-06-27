@@ -2,7 +2,6 @@ package de.hdm_stuttgart.workspace.integration;
 
 import com.google.inject.Inject;
 import de.hdm_stuttgart.data.service.NetworkStatus;
-import de.hdm_stuttgart.workspace.model.UserProfile;
 import de.hdm_stuttgart.workspace.service.IInvitationResponse;
 import de.hdm_stuttgart.workspace.service.IMemberProjectResponse;
 import de.hdm_stuttgart.workspace.service.IUserProfile;
@@ -17,16 +16,6 @@ public class Workspace implements IWorkspace {
     @Inject
     public Workspace(WorkspaceController workspaceController) {
         this.workspaceController = workspaceController;
-    }
-
-    @Override
-    public void onProjectSearchbarClicked() {
-
-    }
-
-    @Override
-    public void onCreateProjectClicked() {
-
     }
 
 

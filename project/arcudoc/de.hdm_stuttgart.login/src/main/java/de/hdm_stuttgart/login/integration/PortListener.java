@@ -7,8 +7,6 @@ import de.hdm_stuttgart.data.service.AccountInformation;
 import de.hdm_stuttgart.data.service.NetworkStatus;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
-import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.property.StringProperty;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -33,9 +31,7 @@ public class PortListener {
     private String requestQuery;
     private String accessToken;
     private String expiresIn;
-    private String providerToken;
     private String refreshToken;
-    private long tokenTimestamp;
 
 
     public PortListener() {
@@ -77,9 +73,9 @@ public class PortListener {
 
                 accessToken = parsedTokens.get(0);
                 expiresIn = parsedTokens.get(1);
-                providerToken = parsedTokens.get(2);
+                String providerToken = parsedTokens.get(2);
                 refreshToken = parsedTokens.get(3);
-                tokenTimestamp = System.currentTimeMillis();
+                long tokenTimestamp = System.currentTimeMillis();
 
                 setTokensToAccountInfos();
             }

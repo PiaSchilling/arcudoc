@@ -1,11 +1,13 @@
 module de.hdm.stuttgart.login {
 
-    //exported modules
+    //exported packages
     exports de.hdm_stuttgart.login.service;
     exports de.hdm_stuttgart.login.guice;
 
-    //external dependencies
+    //module dependencies
     requires de.hdm.stuttgart.api;
+
+    //external dependencies
     requires org.apache.logging.log4j;
     requires jdk.httpserver;
     requires com.google.guice;

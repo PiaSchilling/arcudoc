@@ -6,12 +6,8 @@ import de.hdm_stuttgart.login.service.ILogin;
 
 import de.hdm_stuttgart.navigation.NavigationController;
 import javafx.application.Application;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseEvent;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -28,8 +24,6 @@ public class LoginSceneController {
     @FXML
     private Button googleButton;
 
-    @FXML
-    private ImageView gitlabImageButton;
 
     @Inject
     public LoginSceneController(ILogin login, Application application) {
@@ -44,7 +38,7 @@ public class LoginSceneController {
         login.getAuthStatusProperty().addListener((observable, oldValue, newValue) -> {
             if(newValue == NetworkStatus.AUTH_SUCCESS){
                 NavigationController.getINSTANCE().showWorkspaceScene();
-                log.debug("Login finishes, showing workspace screen");
+                log.debug("Login finished, showing workspace screen");
             }else{
                 NavigationController.getINSTANCE().showLoginScene();
                 log.error("Login failed, showing login screen");

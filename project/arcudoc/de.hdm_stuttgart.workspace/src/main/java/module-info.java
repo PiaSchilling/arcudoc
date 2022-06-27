@@ -1,6 +1,6 @@
-module workspace {
+module de.hdm.stuttgart.workspace {
 
-    //exported modules
+    //exported packages
     exports de.hdm_stuttgart.workspace.service;
     exports de.hdm_stuttgart.workspace.guice;
 

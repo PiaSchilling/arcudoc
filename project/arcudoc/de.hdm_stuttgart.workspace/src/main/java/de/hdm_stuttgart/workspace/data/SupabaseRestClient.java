@@ -160,9 +160,9 @@ public interface SupabaseRestClient {
 
     /**
      * get the users profile
-     * @param apikey
-     * @param bearerToken
-     * @param selectFilter
+     * @param apikey supabase key
+     * @param bearerToken the users access token
+     * @param selectFilter specifies which columns to select
      */
     @GET("profiles")
     Call<List<UserProfile>> fetchUserProfile(
