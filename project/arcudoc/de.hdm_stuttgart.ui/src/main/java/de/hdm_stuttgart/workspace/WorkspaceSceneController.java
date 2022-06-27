@@ -91,7 +91,10 @@ public class WorkspaceSceneController implements WorkspaceCellClickHandler {
         //show the users project invitations
         workspace.getProjectInvitationsProperty().addListener((observable, oldValue, newValue) -> {
 
-            Platform.runLater(() -> setInvitationContainerHeight(newValue.size()));
+            Platform.runLater(() -> {
+                invitationCellVBox.getChildren().clear();
+                setInvitationContainerHeight(newValue.size());
+            });
 
             for (IInvitationResponse invitation : newValue) {
                 InvitationCellComponent invitationCell = new InvitationCellComponent(invitation, this);
