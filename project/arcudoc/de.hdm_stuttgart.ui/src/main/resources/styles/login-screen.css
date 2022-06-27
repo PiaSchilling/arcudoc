@@ -21,8 +21,9 @@
 }
 
 #h1{
-    -fx-font-family: "Poppins SemiBold";
+    -fx-font-family: 'Poppins';
     -fx-font-size: 18px;
+    -fx-font-weight: 700;
 }
 
 #h2{
@@ -34,7 +35,7 @@
 }
 
 #h3{
-    -fx-font-family: "Poppins Light";
+    -fx-font-family: "Poppins";
     -fx-font-size: 14px;
     -fx-text-fill: #969597;
     -fx-pref-width: 63px;
@@ -57,32 +58,17 @@
 
 .button1{
     -fx-background-color: #2B2934;
-    -fx-pref-width: 63px;
-    -fx-pref-height: 63px;
     -fx-background-radius: 15px;
-    -fx-background-size: 42px 42px;
-    -fx-background-position: center center;
-    -fx-background-repeat: no-repeat;
 }
 
-#google{
-    -fx-background-image: url("../images/google.png");
-}
-
-#gitlab{
-    -fx-background-image: url("../images/gitlab.png");
-}
-
-#weiteres{
-    -fx-background-size: 45px 42,3px;
-    -fx-background-image: url("../images/weiteres.png");
+.button1:hover{
+    -fx-background-color: #23212a;
 }
 
 
 
 #button2 {
-    -fx-font-family: "Poppins Light";
-    -fx-padding: none;
+    -fx-font-family: "Poppins";
     -fx-text-fill: #969597;
     -fx-font-size: 12px;
     -fx-underline: true;

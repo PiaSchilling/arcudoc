@@ -7,4 +7,6 @@ public interface IUserProfile {
      String getAvatar();
 
      String getUserName();
+
+    String getHelloText();
 }
