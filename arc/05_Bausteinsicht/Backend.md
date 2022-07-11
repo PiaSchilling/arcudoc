@@ -4,7 +4,7 @@ Das Backend wurde mit Supabase umgesetzt. Es handelt sich um eine [PostgrestSQL]
 
 ## ER-Diagramm
 
-![Untitled Diagram.drawio](/Users/piaschilling/Desktop/Untitled Diagram.drawio.png)
+![ER-Diagramm](./ER-Diagramm.png)
 
 ## Entitäten 
 
