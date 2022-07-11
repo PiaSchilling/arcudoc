@@ -27,18 +27,6 @@ Folgende Abbildung zeigt die Module und deren Zusammenarbeit. Die Module wurden 
 
 -----
 
-## 2. Datenbank Aufbau
-
-| profiles           |                                                              |      |
-| ------------------ | ------------------------------------------------------------ | ---- |
-| Beschreibung       | Hält die Profilinformationen der Authentifizierten user      |      |
-| Trigger            | Zeilen werden ausschließlich durch den Trigger `create_profile_for_user_trigger` insertet (für Trigger Doku siehe anderer Abschnitt) |      |
-| Row level security | Enable select for users based on user_id(uid() = id) -> user können nur ihr eigenes Profil selecten |      |
-| Anmerkungen        | Profilinformationen werden aus der aus der `auth.users` Tabelle gewonnen, welche von Supabase bereitgestellt wird. Hier wird jeder user erfasst der sich durch das oAuth verfahren authentifiziert hat. Aus der Spalte `raw_user_metadata` werden zusätzliche user-Informationen wie der Name und der Avatar des users gewonnen. (für weitere Informationen zur Authentifizierung siehe anderer Abschnitt) |      |
-|                    |                                                              |      |
-
-
-
 ## 2. Modulaufbau & Packageaufbau
 
 ### 2.1 Logik Modul
