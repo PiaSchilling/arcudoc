@@ -1,4 +1,4 @@
-# Konventionen 
+# 2.1 Konventionen 
 
 [TOC]
 
@@ -54,7 +54,14 @@ Implement button in the login screen to provide registration action to the user
 closes #34
 ```
 
-
 source: https://gist.github.com/joshbuchea/6f47e86d2510bce28f8e7f42ae84c716, https://ec.europa.eu/component-library/v1.15.0/eu/docs/conventions/git/ 
+
+----
+
+### Git-Flow 
+
+### //todo 
+
+
 
 ------

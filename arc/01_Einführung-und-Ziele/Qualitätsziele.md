@@ -2,8 +2,6 @@
 
 Die folgende Tabelle beschreibt die zentralen Qualitätsziele von [toolname], wobei die Reihenfolge eine grobe Orientierung bezüglich der  Wichtigkeit vorgibt
 
-
-
 | Qualitätsziel                            | Motivation und Erläuterung                                   |
 | ---------------------------------------- | ------------------------------------------------------------ |
 | Änderbarkeit/ Erweiterbarkeit            | Da bereits viele Ideen für weitere Features bestehen, die im zeitlichen Rahmen des SE3 Projektes nicht umgesetzt werden können, sollte das System sehr offen für Erweiterungen (durch neue Features sein). |

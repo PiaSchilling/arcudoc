@@ -1,0 +1,26 @@
+Index: de.hdm_stuttgart.ui/src/main/java/de/hdm_stuttgart/workspace/OwnerCellController.java
+===================================================================
+diff --git a/de.hdm_stuttgart.ui/src/main/java/de/hdm_stuttgart/workspace/OwnerCellController.java b/de.hdm_stuttgart.ui/src/main/java/de/hdm_stuttgart/workspace/OwnerCell/OwnerCellController.java
+rename from de.hdm_stuttgart.ui/src/main/java/de/hdm_stuttgart/workspace/OwnerCellController.java
+rename to de.hdm_stuttgart.ui/src/main/java/de/hdm_stuttgart/workspace/OwnerCell/OwnerCellController.java
+--- a/de.hdm_stuttgart.ui/src/main/java/de/hdm_stuttgart/workspace/OwnerCellController.java	
++++ b/de.hdm_stuttgart.ui/src/main/java/de/hdm_stuttgart/workspace/OwnerCell/OwnerCellController.java	
+@@ -1,4 +1,4 @@
+-package de.hdm_stuttgart.workspace;
++package de.hdm_stuttgart.workspace.OwnerCell;
+ 
+ import de.hdm_stuttgart.workspace.service.IMemberProjectResponse;
+ import javafx.fxml.FXML;
+Index: de.hdm_stuttgart.ui/src/main/java/de/hdm_stuttgart/workspace/OwnerCellComponent.java
+===================================================================
+diff --git a/de.hdm_stuttgart.ui/src/main/java/de/hdm_stuttgart/workspace/OwnerCellComponent.java b/de.hdm_stuttgart.ui/src/main/java/de/hdm_stuttgart/workspace/OwnerCell/OwnerCellComponent.java
+rename from de.hdm_stuttgart.ui/src/main/java/de/hdm_stuttgart/workspace/OwnerCellComponent.java
+rename to de.hdm_stuttgart.ui/src/main/java/de/hdm_stuttgart/workspace/OwnerCell/OwnerCellComponent.java
+--- a/de.hdm_stuttgart.ui/src/main/java/de/hdm_stuttgart/workspace/OwnerCellComponent.java	
++++ b/de.hdm_stuttgart.ui/src/main/java/de/hdm_stuttgart/workspace/OwnerCell/OwnerCellComponent.java	
+@@ -1,4 +1,4 @@
+-package de.hdm_stuttgart.workspace;
++package de.hdm_stuttgart.workspace.OwnerCell;
+ 
+ import de.hdm_stuttgart.Scenes;
+ import de.hdm_stuttgart.workspace.service.IMemberProjectResponse;
