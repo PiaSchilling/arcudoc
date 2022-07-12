@@ -10,14 +10,14 @@ import de.hdm_stuttgart.navigation.NavigationController;
 import javafx.application.Platform;
 import javafx.beans.property.StringProperty;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.ScrollPane;
-import javafx.scene.control.TextArea;
+import javafx.scene.Node;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.web.WebView;
+
+import java.util.Set;
 
 public class ProjectSceneController {
 
@@ -237,7 +237,6 @@ public class ProjectSceneController {
         setButtonState(editor.getEditorState());
         setEditorArea(editor.getEditorState());
         saveContent(property, textArea.getText());
-
     }
 
     /**
