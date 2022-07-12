@@ -23,8 +23,3 @@ Zudem haben wir für das UI Java FX verwendet, um im Rahmen der Möglichkeiten e
 ## Strukturierung
 Aus Interesse und in Hinblick der Modularität wurden die Java 9 Module verwendet. Dies stellt uns die Möglichkeit bereit, den Code klar zu strukturieren und sicherte uns eine reibungslose Zusammenarbeit. 
 
-# 4.0 Lösungsstrategie
-
-- java 9 module -> für modularität
-- javafx -> für fetziges ui 
-
