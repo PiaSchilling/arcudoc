@@ -10,13 +10,6 @@ variables:
 default:
   before_script:
     - cd project/arcudoc/de.hdm_stuttgart.api/
-  
-workflow:
-  rules:
-  - if: '($CI_PIPELINE_SOURCE == "push" && $CI_COMMIT_BRANCH == "main") || $CI_COMMIT_BRANCH == "develop"' # yaml Datei startet nur bei Zutreffen der angegebenen Bedingung 
-    when: always
-  - when: never
-
 
 stages:          # List of stages for jobs, and their order of execution
   - build        # Project wird kompiliert
