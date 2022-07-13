@@ -4,6 +4,7 @@ import de.hdm_stuttgart.data.service.NetworkStatus;
 import de.hdm_stuttgart.workspace.model.InvitationResponse;
 import de.hdm_stuttgart.workspace.model.MemberProjectResponse;
 import de.hdm_stuttgart.workspace.model.ProjectMember;
+import de.hdm_stuttgart.workspace.model.UserProfile;
 import javafx.beans.property.ListProperty;
 import javafx.beans.property.ObjectProperty;
 
@@ -24,9 +25,13 @@ public interface IWorkspaceRepo {
 
     void fetchMemberProjects();
 
+    void fetchUserProfileAsync();
+
     ListProperty<InvitationResponse> getProjectInvitationsProperty();
 
     ListProperty<MemberProjectResponse> getMemberProjectsProperty();
 
     ObjectProperty<NetworkStatus> getNetworkStatusObjectProperty();
+
+    ObjectProperty<UserProfile> getUserProfileObjectProperty();
 }

@@ -1,6 +1,5 @@
 package de.hdm_stuttgart.workspace.data;
 
-import de.hdm_stuttgart.data.service.AccountInformation;
 import de.hdm_stuttgart.data.service.ApiConstants;
 import de.hdm_stuttgart.data.service.NetworkStatus;
 import de.hdm_stuttgart.workspace.model.*;
@@ -21,7 +20,7 @@ import java.util.Arrays;
 import java.util.List;
 
 //todo present error messages to the user
-public class WorkspaceRepo implements IWorkspaceRepo {
+public class WorkspaceRepo implements IWorkspaceRepo{
 
     private static final Logger log = LogManager.getLogger(WorkspaceRepo.class);
     private final SupabaseRestClient supabaseRestClient = ServiceProvider.getSupabaseRestClient(); //todo inject
@@ -322,6 +321,7 @@ public class WorkspaceRepo implements IWorkspaceRepo {
      * fetch the profile of the authenticated user (async)
      * gets the users mail, avatar and name
      */
+    @Override
     public void fetchUserProfileAsync(){
         System.out.println("Fetch user profile called");
         Call<List<UserProfile>> call = supabaseRestClient.fetchUserProfile(
@@ -367,6 +367,7 @@ public class WorkspaceRepo implements IWorkspaceRepo {
         return networkStatusObjectProperty;
     }
 
+    @Override
     public ObjectProperty<UserProfile> getUserProfileObjectProperty() {
         return userProfileObjectProperty;
     }

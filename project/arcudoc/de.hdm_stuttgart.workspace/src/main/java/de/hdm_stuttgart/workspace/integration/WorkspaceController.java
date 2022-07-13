@@ -1,7 +1,6 @@
 package de.hdm_stuttgart.workspace.integration;
 
 import com.google.inject.Inject;
-import de.hdm_stuttgart.data.service.AccountInformation;
 import de.hdm_stuttgart.data.service.NetworkStatus;
 import de.hdm_stuttgart.workspace.data.IWorkspaceRepo;
 import de.hdm_stuttgart.workspace.model.InvitationResponse;
@@ -19,20 +18,20 @@ import javafx.collections.ObservableList;
 
 public class WorkspaceController {
 
-    private final IWorkspaceRepo IWorkspaceRepo;
+    private final IWorkspaceRepo workspaceRepo;
     private final ListProperty<IInvitationResponse> invitationResponsesForUi; //ui class works with IInvitationResponse, Repo works with InvitationResponse
     private final ListProperty<IMemberProjectResponse> memberProjectResponsesForUi;
     private final ObjectProperty<IUserProfile> userProfileForUi;
 
     @Inject
-    public WorkspaceController(IWorkspaceRepo IWorkspaceRepo) {
-        this.IWorkspaceRepo = IWorkspaceRepo;
+    public WorkspaceController(IWorkspaceRepo workspaceRepo) {
+        this.workspaceRepo = workspaceRepo;
 
-        ListProperty<InvitationResponse> invitationResponsesFromRepo = IWorkspaceRepo.getProjectInvitationsProperty(); //map repo response in ui response
+        ListProperty<InvitationResponse> invitationResponsesFromRepo = workspaceRepo.getProjectInvitationsProperty(); //map repo response in ui response
         invitationResponsesForUi = new SimpleListProperty<>();
         invitationResponsesFromRepo.addListener((observable, oldValue, newValue) -> updateInvitationsPropertyForUi());
 
-        ListProperty<MemberProjectResponse> memberProjectResponsesFromRepo = IWorkspaceRepo.getMemberProjectsProperty();
+        ListProperty<MemberProjectResponse> memberProjectResponsesFromRepo = workspaceRepo.getMemberProjectsProperty();
         memberProjectResponsesForUi = new SimpleListProperty<>();
         memberProjectResponsesFromRepo.addListener((observable, oldValue, newValue) -> updateMemberProjectsPropertyForUi());
 
@@ -48,7 +47,7 @@ public class WorkspaceController {
      */
     private void updateInvitationsPropertyForUi(){
         ObservableList<IInvitationResponse> observableList = FXCollections.observableArrayList();
-        observableList.addAll(IWorkspaceRepo.getProjectInvitationsProperty());
+        observableList.addAll(workspaceRepo.getProjectInvitationsProperty());
         invitationResponsesForUi.setValue(observableList);
     }
 
@@ -58,7 +57,7 @@ public class WorkspaceController {
      */
     private void updateMemberProjectsPropertyForUi(){
         ObservableList<IMemberProjectResponse> observableList = FXCollections.observableArrayList();
-        observableList.addAll(IWorkspaceRepo.getMemberProjectsProperty());
+        observableList.addAll(workspaceRepo.getMemberProjectsProperty());
         memberProjectResponsesForUi.setValue(observableList);
     }
 
@@ -71,7 +70,7 @@ public class WorkspaceController {
      * @param projectId the id of the project for which the invitation should be accepted
      */
     public void acceptProjectInvitation(int projectId){
-        IWorkspaceRepo.respondProjectInvitation(projectId,true);
+        workspaceRepo.respondProjectInvitation(projectId,true);
     }
 
     /**
@@ -79,7 +78,7 @@ public class WorkspaceController {
      * @param projectId the id of the project for which the invitation should be declined
      */
     public void declineProjectInvitation(int projectId){
-        IWorkspaceRepo.respondProjectInvitation(projectId,false);
+        workspaceRepo.respondProjectInvitation(projectId,false);
     }
 
     public void reloadProjectsAndInvitations(){
@@ -90,17 +89,17 @@ public class WorkspaceController {
     // - - - -  get observable properties - - - -
 
     public ListProperty<IInvitationResponse> getProjectInvitationsProperty() {
-        IWorkspaceRepo.fetchProjectInvitations();
+        workspaceRepo.fetchProjectInvitations();
         return invitationResponsesForUi;
     }
 
     public ListProperty<IMemberProjectResponse> getMemberProjectProperty(){
-        IWorkspaceRepo.fetchMemberProjects();
+        workspaceRepo.fetchMemberProjects();
         return memberProjectResponsesForUi;
     }
 
     public ObjectProperty<NetworkStatus> getNetworkStatusProperty(){
-        return IWorkspaceRepo.getNetworkStatusObjectProperty();
+        return workspaceRepo.getNetworkStatusObjectProperty();
     }
 
 

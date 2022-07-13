@@ -1,5 +1,6 @@
 package de.hdm_stuttgart.editor.integration;
 
+import de.hdm_stuttgart.editor.service.EditorState;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
