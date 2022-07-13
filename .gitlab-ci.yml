@@ -9,7 +9,7 @@ variables:
 
 default:
   before_script:
-    - cd project/arcudoc/ #/de.hdm_stuttgart.ui/rest
+    - cd project/arcudoc/de.hdm_stuttgart.api/
   
 workflow:
   rules:
@@ -21,42 +21,29 @@ workflow:
 stages:          # List of stages for jobs, and their order of execution
   - build        # Project wird kompiliert
   - test         # Unit-Test werden ausgeführt 
-  - deploy       # Projekt wird eingesetzt und JAR Datei gebildet
+  - package       # Projekt wird eingesetzt und JAR Datei gebildet
 
 build-api:      
   stage: build
   script:
-    - cd de.hdm_stuttgart.api/
-    - mvn clean install
     - echo "Compiling the code..."
-    - echo "Compile complete."
-    - "mvn $MAVEN_OPTS compile"
-
-build-login:      
-  stage: build
-  needs: 
-      - build-api
-  script:
-    - cd de.hdm_stuttgart.login/
-    - echo "Compiling the code..."
-    - echo "Compile complete."
     - "mvn compile"
+    - echo "Compile complete."
 
 
-
-unit-test-job:   # This job runs in the test stage.
+test-api:   # This job runs in the test stage.
   stage: test    # It only starts when the job in the build stage completes successfully.
   script:
     - echo "Running unit tests"
     - "mvn test"
 
 
-deploy-job:      # This job runs in the deploy stage.
-  stage: deploy  # It only runs when *both* jobs in the test stage complete successfully.
+package-api:      # This job runs in the deploy stage.
+  stage: package  # It only runs when *both* jobs in the test stage complete successfully.
   script:
     - echo "Deploying application..."
-    - echo "Application successfully deployed."
-    - "mvn deploy" 
+    - "mvn package"
+    - echo "Application packaged successfully." 
   only: #From Slides
     refs:
       - main
