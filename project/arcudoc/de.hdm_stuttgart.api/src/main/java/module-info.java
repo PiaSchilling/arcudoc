@@ -2,7 +2,6 @@ module de.hdm.stuttgart.api {
 
     //exported modules
     exports de.hdm_stuttgart.data.service;
-    exports de.hdm_stuttgart.data.retrofit2;
 
     //external dependencies
     requires retrofit2;
