@@ -1,7 +1,7 @@
 package de.hdm_stuttgart.workspace.integration;
 
 import com.google.inject.Inject;
-import de.hdm_stuttgart.workspace.data.WorkspaceRepo;
+import de.hdm_stuttgart.workspace.data.IWorkspaceRepo;
 import de.hdm_stuttgart.workspace.model.ProjectMember;
 import de.hdm_stuttgart.workspace.model.ProjectRole;
 import org.apache.logging.log4j.LogManager;
@@ -13,13 +13,13 @@ import java.util.List;
 
 public class CreateProjectController {
 
-    private final WorkspaceRepo workspaceRepo;
+    private final IWorkspaceRepo workspaceRepo;
     private final List<ProjectMember> projectMembers;
 
     private static final Logger log = LogManager.getLogger(CreateProjectController.class);
 
     @Inject
-    public CreateProjectController(WorkspaceRepo workspaceRepo) {
+    public CreateProjectController(IWorkspaceRepo workspaceRepo) {
         this.workspaceRepo = workspaceRepo;
         this.projectMembers = new ArrayList<>();
     }
