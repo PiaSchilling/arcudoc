@@ -60,7 +60,10 @@ source: https://gist.github.com/joshbuchea/6f47e86d2510bce28f8e7f42ae84c716, htt
 
 ### Git-Flow 
 
-### //todo 
+In unserem Projekt arbeiten wir durchgängig mit dem Git-Flow. Dabei unterscheiden wir in `doc`, `fix` und `feature` Branches. Diese basieren auf vorher erstellten Issues und deren Nummerierung. 
+Sobald das Issue erledigt war, wurde die Branch in den Develop gemergt und dann gelöscht. So hatten wir so gut wie keine Merge-Konflikte, das war aber schon durch unseren modularen Projektaufbau vorhersehbar. 
+
+Hier ist die Umsetzung auch nochmal schön sichtbar: https://gitlab.mi.hdm-stuttgart.de/ps149/se3/-/network/develop?extended_sha1=
 
 
 
