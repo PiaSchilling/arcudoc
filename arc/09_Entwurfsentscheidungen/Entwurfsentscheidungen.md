@@ -106,11 +106,11 @@ Die Wahl des UI Frameworks hängt davon ab, ob wir bereit sind Zeit in das Lerne
 Supabase ist eine open source Alternative zu Firebase. Es handelt sich um eine Postgres Datenbank. REST Api-Endpoint werden automatisch generiert. Zudem gibt es verschiedene Möglichkeiten zur Userauthentifizierung. 
 Durch sogenannte Row Level Security Policies können die Zugriffsrechte auf Tabellen einfach gesteuert werden. 
 
-Eine Ausführliche Dokumentation des Datenbankschemas sowie Datenbank-Functions und RLS ist im Kapitel 5 "Bausteinsicht" unter 5.1 "Backend" zu finden. 
+Eine Ausführliche Dokumentation des Datenbankschemas sowie Datenbank-Functions und RLS ist im Kapitel 5 "Bausteinsicht" unter [5.1 "Backend"](https://gitlab.mi.hdm-stuttgart.de/ps149/se3/-/blob/main/arc/05_Bausteinsicht/Backend.md) zu finden. 
 
 ## Authentifizierung 
 
 #### 1. OAuth (verwendet)
 
-Um nicht selbst für Passwörter und Userdaten verantwortlich zu sein, bietet es sich an, Authentifizierung über OAuth zu implementieren. Supabase bietet die Möglichkeit dies für die verschiedensten OAuth Provider einfach umzusetzen. Eine detaillierte Dokumentation des Auth-Flows ist im Kapitel 8 "Querschnittliche Konzepte" im Abschnitt 8.1 "User Experience" zu finden. 
+Um nicht selbst für Passwörter und Userdaten verantwortlich zu sein, bietet es sich an, Authentifizierung über OAuth zu implementieren. Supabase bietet die Möglichkeit dies für die verschiedensten OAuth Provider einfach umzusetzen. Eine detaillierte Dokumentation des Auth-Flows ist im Kapitel 8 "Querschnittliche Konzepte" im Abschnitt [8.1 "User Experience"](https://gitlab.mi.hdm-stuttgart.de/ps149/se3/-/blob/main/arc/08_Querschnittliche-Konzepte/User-Experience.md) zu finden. 
 

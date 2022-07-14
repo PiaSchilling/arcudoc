@@ -1,10 +1,14 @@
 # 1.1 Aufgabenstellung 
 
+[TOC]
+
+
+
 ### Was ist Arucdoc?
 
 Arucdoc soll es erleichtern eine strukturierte Architektur-/Software-/Projektdokumentation zu erstellen. Vor allem neuen Teammitgliedern soll es dadurch leichter fallen, sich ein ein neues Projekt einzuarbeiten. Auch die Zusammenarbeit zwischen Designern, Entwicklern und Architekten soll damit vereinfacht werden. Richtlinien, Konzepte und allgemein im Team geltende Vorgehensweisen werden dort festgehalten und leicht zugänglich für alle Teammitglieder. 
 
-###### "Pains" und "Needs" :
+#### "Pains" und "Needs" :
 
 - fehlende oder schlechte Dokumentation von Softwareprojekten -> schwer für neue Teammitglieder sich zurecht zu finden 
 - verschiedene Ablageorte für verschiedene Dokumente (Design, Architektur, Kontaktdaten, ...)

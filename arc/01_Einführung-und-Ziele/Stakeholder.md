@@ -1,4 +1,4 @@
-# Stakeholder
+# 1.3 Stakeholder
 
 Die folgende Tabelle stellt die Stakeholder von [toolname] und ihre jeweilige Intention dar.
 

@@ -1,4 +1,6 @@
-# 5.1_Backend-Aufbau 
+# 5.2 Backend-Aufbau 
+
+[TOC]
 
 Das Backend wurde mit Supabase umgesetzt. Es handelt sich um eine [PostgrestSQL](https://www.postgresql.org/docs/current/) Datenbank, welche über eine [PostgREST](https://postgrest.org/en/stable/api.html) API erreichbar ist. Die Kommunikation zwischen Client und Backend erfolgt somit über die Abfrage von REST-Endpoints mithilfe von Retrofit. 
 
