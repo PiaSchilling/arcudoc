@@ -5,19 +5,14 @@ import com.google.inject.Injector;
 import de.hdm_stuttgart.docu.guice.DocuGuiceModule;
 import de.hdm_stuttgart.editor.guice.EditorGuiceModule;
 import de.hdm_stuttgart.login.guice.LoginGuiceModule;
-import de.hdm_stuttgart.navigation.INavigationController;
 import de.hdm_stuttgart.navigation.NavigationController;
 import de.hdm_stuttgart.workspace.guice.WorkspaceGuiceModule;
 import javafx.application.Application;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import java.io.IOException;
 import java.util.prefs.Preferences;
 
 /**
@@ -33,7 +28,7 @@ public class Main extends Application{
         launch(args);
     }
 
-    public void start(Stage stage) throws Exception {
+    public void start(Stage stage) {
         log.info("Starting arcudoc");
 
         Injector injector = Guice.createInjector(
@@ -49,7 +44,6 @@ public class Main extends Application{
         NavigationController.initNavigationController(stage,controllerFactory);
 
         Preferences userPreferences = Preferences.userRoot().node("/arcudoc/profile");
-        userPreferences.put("REFRESH_TOKEN","default"); //todo remove once done with testing
         String auth = userPreferences.get("REFRESH_TOKEN","default");
 
         if(auth.equals("default")){

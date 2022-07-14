@@ -73,24 +73,20 @@ public class WorkspaceSceneController implements WorkspaceCellClickHandler {
 
         refreshButton.setOnAction(event -> workspace.refreshButtonClicked());
 
-        workspace.getUserProfileProperty().addListener((observable, oldValue, newValue) -> {
+        workspace.getUserProfileProperty().addListener((observable, oldValue, newValue) -> Platform.runLater(() -> {
 
-            Platform.runLater(() -> {
+            userMailLabel.setText(newValue.getMail());
+            userNameLabel.setText(newValue.getHelloText());
 
-                userMailLabel.setText(newValue.getMail());
-                userNameLabel.setText(newValue.getHelloText());
-
-                try {
-                    URL url = new URL(newValue.getAvatar());
-                    InputStream inputStream =  url.openStream();
-                    Image image = new Image(inputStream);
-                    userAvatarCircle.setFill(new ImagePattern(image));
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            });
-
-        });
+            try {
+                URL url = new URL(newValue.getAvatar());
+                InputStream inputStream =  url.openStream();
+                Image image = new Image(inputStream);
+                userAvatarCircle.setFill(new ImagePattern(image));
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }));
 
         //show the users project invitations
         workspace.getProjectInvitationsProperty().addListener((observable, oldValue, newValue) -> {
@@ -179,6 +175,6 @@ public class WorkspaceSceneController implements WorkspaceCellClickHandler {
      */
     private void setInvitationContainerHeight(int invitationsCount) {
         double height = invitationsCount * 175;
-        this.invitationCellVBox.setPrefHeight(height); //todo add spacing between cells
+        this.invitationCellVBox.setPrefHeight(height);
     }
 }
