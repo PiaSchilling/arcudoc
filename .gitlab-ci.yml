@@ -7,14 +7,20 @@ image: maven:3.8.5-openjdk-17
 variables:
     MAVEN_OPTS: "-Dmaven.repo.local=$CI_PROJECT_DIR/.m2/repository" #From Slides
 
+workflow:
+  rules:    
+  - if: '($CI_PIPELINE_SOURCE == "push" && $CI_COMMIT_BRANCH == "develop") || ($CI_PIPELINE_SOURCE == "push" && $CI_COMMIT_BRANCH == "main")'
+    when: always
+  - when: never
+
 default:
   before_script:
     - cd project/arcudoc/de.hdm_stuttgart.api/
 
-stages:          # List of stages for jobs, and their order of execution
+stages:          # Liste der Stages für Aufträge und deren Reihenfolge der Ausführung
   - build        # Project wird kompiliert
   - test         # Unit-Test werden ausgeführt 
-  - package       # Projekt wird eingesetzt und JAR Datei gebildet
+  - package      # Projekt wird eingesetzt und JAR Datei gebildet
 
 build-api:      
   stage: build
