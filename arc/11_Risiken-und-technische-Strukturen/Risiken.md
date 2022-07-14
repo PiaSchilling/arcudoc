@@ -18,4 +18,5 @@ Durch unsere Backend-Lösung ist die Datenpersistenz nur bei bestehendem Interne
 
 ## Authentifizierungsprobleme
 
-Die Anmeldung in unserem Programm funktioniert momentan nur über den Firefox-Browser. Wir konnten das Problem nachvollziehen und feststellen, dass alle angestoßenen Prozesse zwar funktionieren, allerdings blockiert der Safari-Browser das Java-Script. Den Grund hierfür konnten wir zum jetzigen Stand noch nicht klären. 
+Die Anmeldung in unserem Programm funktioniert momentan nur über den Firefox-Browser. Wir konnten das Problem nachvollziehen und feststellen, dass alle angestoßenen Prozesse zwar funktionieren, allerdings blockiert der Safari-Browser das Java-Script. Den Grund hierfür konnten wir zum jetzigen Stand noch nicht klären. Einen detaillierter Einblick zum Ablauf der Authentifizierung
+ist in den Querschnittlichen Konzepten unter User Experience zu finden.  
