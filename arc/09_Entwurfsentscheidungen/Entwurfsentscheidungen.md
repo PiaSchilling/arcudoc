@@ -1,4 +1,4 @@
-# Entwurfsentscheidungen 
+# 9.0 Entwurfsentscheidungen 
 
 [TOC]
 
@@ -10,7 +10,7 @@ Es muss entschieden werden, welche Features unterstützt werden sollen und wie d
 
 ------
 
-### Versionierung 
+### Versionierung (Feature wurde nicht implementiert)
 
 Die Versionierung/ Version control der im Tool erstellten Dateien ist ein wünschenswertes/ wichtiges Feature. 
 
@@ -21,7 +21,7 @@ Zwei mögliche Ziele der Versionierung
 - Versionierung um den Verlauf/die Entwicklung von Dateien verfolgen zu können 
   - nimmt viel/mehr Speicher in Angriff
 
-###### Arten der Implementierung:
+Arten der Implementierung:
 
 #### 1. [JGit](https://git-scm.com/book/de/v2/Anhang-B%3A-Git-in-Ihre-Anwendungen-einbetten-JGit) (Wurde verworfen, macht keinen Sinn im Zusammenhang mit dem Backend/Supabase)
 
@@ -46,7 +46,7 @@ Java library for parsing and rendering Markdown text according to the CommonMark
 | works offline   | needs to be implemented in the code |
 | well documented | check license                       |
 
-#### 2. [GitLab Markdown API](https://docs.gitlab.com/ee/api/markdown.html)
+#### 2. [GitLab Markdown API](https://docs.gitlab.com/ee/api/markdown.html) (verwendet)
 
 Render arbitrary Markdown documents via api calls 
 
@@ -56,7 +56,7 @@ Render arbitrary Markdown documents via api calls
 
 ------
 
-### UML support
+### UML support (Feature wurde nicht implementiert)
 
 Es gibt Möglichkeiten externe UML Tools einzubetten. Es sollte geprüft werden wie aufwendig und ob es überhaupt notwendig ist. 
 
@@ -74,7 +74,7 @@ Integrate PlantUML with own code by adding plantuml.jar in the classpath.
 
 Die Wahl des UI Frameworks hängt davon ab, ob wir bereit sind Zeit in das Lernen neuer Technologien zu investieren. 
 
-#### 1. [JavaFx](https://openjfx.io/)
+#### 1. [JavaFx](https://openjfx.io/) (verwendet)
 
 | pros                                     | cons                                       |
 | ---------------------------------------- | ------------------------------------------ |
@@ -101,14 +101,16 @@ Die Wahl des UI Frameworks hängt davon ab, ob wir bereit sind Zeit in das Lerne
 
 #### 1. Firebase
 
-#### 2. Supabase
+#### 2. Supabase (verwendet)
 
-#### 3. GitHub&GitLab
+Supabase ist eine open source Alternative zu Firebase. Es handelt sich um eine Postgres Datenbank. REST Api-Endpoint werden automatisch generiert. Zudem gibt es verschiedene Möglichkeiten zur Userauthentifizierung. 
+Durch sogenannte Row Level Security Policies können die Zugriffsrechte auf Tabellen einfach gesteuert werden. 
+
+Eine Ausführliche Dokumentation des Datenbankschemas sowie Datenbank-Functions und RLS ist im Kapitel 5 "Bausteinsicht" unter [5.1 "Backend"](https://gitlab.mi.hdm-stuttgart.de/ps149/se3/-/blob/main/arc/05_Bausteinsicht/Backend.md) zu finden. 
 
 ## Authentifizierung 
 
-#### 1. OAuth
+#### 1. OAuth (verwendet)
 
-#### 1. BearerToken GitHub/GitLab 
+Um nicht selbst für Passwörter und Userdaten verantwortlich zu sein, bietet es sich an, Authentifizierung über OAuth zu implementieren. Supabase bietet die Möglichkeit dies für die verschiedensten OAuth Provider einfach umzusetzen. Eine detaillierte Dokumentation des Auth-Flows ist im Kapitel 8 "Querschnittliche Konzepte" im Abschnitt [8.1 "User Experience"](https://gitlab.mi.hdm-stuttgart.de/ps149/se3/-/blob/main/arc/08_Querschnittliche-Konzepte/User-Experience.md) zu finden. 
 
-### 

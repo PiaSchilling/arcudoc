@@ -1,0 +1,16 @@
+- Konventionen gitflow #vivi
+- 2.2 Organisatorische Randbedingungen #paul
+- 4.0 Lösungsstrategie #sara
+- 8.0 Arc muster #pia
+- 8.1 prototyp verlinken #viv
+- 9.0 Entwurfsentscheidungen #pia
+- 11. Risiken #paul
+- Readme.md #sara
+  - was ist arcudoc
+  - wo ist unsere doku zu finden
+  - anmerkungen zum bewertungsbogen 
+  - techstack (technologien) -> hinweis zu entwurfsentscheidungen 
+  - usage (oder hinweis dass derzeit noch kein jar vorhanden ist, nur über intelliJ nutzbar)
+  - knwon issues/project status 
+  - entwicklerinnen (namen)
+

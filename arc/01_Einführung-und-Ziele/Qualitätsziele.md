@@ -1,8 +1,6 @@
-# Qualitätsziele
+# 1.2 Qualitätsziele
 
 Die folgende Tabelle beschreibt die zentralen Qualitätsziele von [toolname], wobei die Reihenfolge eine grobe Orientierung bezüglich der  Wichtigkeit vorgibt
-
-
 
 | Qualitätsziel                            | Motivation und Erläuterung                                   |
 | ---------------------------------------- | ------------------------------------------------------------ |

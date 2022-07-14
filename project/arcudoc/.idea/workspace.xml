@@ -1,0 +1,550 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="ce4f7112-3a4e-468c-9261-a5bc1c790a56" name="Changes" comment="fix: prevent duplicate adding of invitation cells">
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+    </list>
+    <list id="ba5f52e1-00af-49db-b98b-94098af49c3c" name="ChangesFetch" comment="fix: edit createProjectInvitation method in client&#10;&#10;Also, the invitations the user created were shown in the invitations section, this is now fixed" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="package-info" />
+        <option value="JUnit5 Test Class" />
+        <option value="Interface" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$/../.." value="develop" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+  </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2A28eobwY5YXgDtVf5pXfh1WALG" />
+  <component name="ProjectViewState">
+    <option name="flattenPackages" value="true" />
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="Git.Branch.Popup.ShowAllRemotes" value="true" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit5" />
+    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5" value="" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/de.hdm_stuttgart.ui/src/main/java/de/hdm_stuttgart" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.20133483" />
+    <property name="project.structure.side.proportion" value="0.5258278" />
+    <property name="settings.editor.selected.configurable" value="diff.external" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/de.hdm_stuttgart.ui/src/main/java/de/hdm_stuttgart" />
+      <recent name="$PROJECT_DIR$/de.hdm_stuttgart.ui/src/main/resources/styles" />
+      <recent name="$PROJECT_DIR$/de.hdm_stuttgart.ui/src/main/resources/fxml" />
+      <recent name="$PROJECT_DIR$/de.hdm_stuttgart.ui/src/main/java/de/hdm_stuttgart/project" />
+    </key>
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/de.hdm_stuttgart.ui/src/main/resources/fxml" />
+    </key>
+    <key name="ExtractSuperBase.RECENT_KEYS">
+      <recent name="de.hdm_stuttgart.workspace.data" />
+    </key>
+    <key name="CreateTestDialog.RecentsKey">
+      <recent name="de.hdm_stuttgart.login.integration" />
+      <recent name="de.hdm_stuttgart.editor.integration" />
+      <recent name="de.hdm_stuttgart.workspace.integration" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="de.hdm_stuttgart.workspace.model" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Application.Main">
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="de.hdm_stuttgart.Main" />
+      <module name="de.hdm_stuttgart.ui" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="de.hdm_stuttgart.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="EditorTest.should_returnViewState_When_ClassStateInitial" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="de.hdm_stuttgart.editor" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="de.hdm_stuttgart.editor.integration.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="de.hdm_stuttgart.editor.integration" />
+      <option name="MAIN_CLASS_NAME" value="de.hdm_stuttgart.editor.integration.EditorTest" />
+      <option name="METHOD_NAME" value="should_returnViewState_When_ClassStateInitial" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="EditorTest.should_returnViewState_When_EditButtonClickedTwice" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="de.hdm_stuttgart.editor" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="de.hdm_stuttgart.editor.integration.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="de.hdm_stuttgart.editor.integration" />
+      <option name="MAIN_CLASS_NAME" value="de.hdm_stuttgart.editor.integration.EditorTest" />
+      <option name="METHOD_NAME" value="should_returnViewState_When_EditButtonClickedTwice" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="LoginControllerTest.should_ReturnGitLabUrl_When_ProviderGitLab" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="de.hdm_stuttgart.login" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="de.hdm_stuttgart.login.integration.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="de.hdm_stuttgart.login.integration" />
+      <option name="MAIN_CLASS_NAME" value="de.hdm_stuttgart.login.integration.LoginControllerTest" />
+      <option name="METHOD_NAME" value="should_ReturnGitLabUrl_When_ProviderGitLab" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="LoginControllerTest.should_ReturnGoogleUrl_When_ProviderGoogle" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="de.hdm_stuttgart.login" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="de.hdm_stuttgart.login.integration.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="de.hdm_stuttgart.login.integration" />
+      <option name="MAIN_CLASS_NAME" value="de.hdm_stuttgart.login.integration.LoginControllerTest" />
+      <option name="METHOD_NAME" value="should_ReturnGoogleUrl_When_ProviderGoogle" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.Main" />
+        <item itemvalue="JUnit.LoginControllerTest.should_ReturnGoogleUrl_When_ProviderGoogle" />
+        <item itemvalue="JUnit.LoginControllerTest.should_ReturnGitLabUrl_When_ProviderGitLab" />
+        <item itemvalue="JUnit.EditorTest.should_returnViewState_When_EditButtonClickedTwice" />
+        <item itemvalue="JUnit.EditorTest.should_returnViewState_When_ClassStateInitial" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="ce4f7112-3a4e-468c-9261-a5bc1c790a56" name="Changes" comment="" />
+      <changelist id="ba5f52e1-00af-49db-b98b-94098af49c3c" name="ChangesFetch" comment="" />
+      <created>1654196418499</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1654196418499</updated>
+      <workItem from="1654196419799" duration="2775000" />
+      <workItem from="1654705663767" duration="16073000" />
+      <workItem from="1655027713007" duration="12256000" />
+      <workItem from="1655401341870" duration="1098000" />
+      <workItem from="1655564707840" duration="29926000" />
+      <workItem from="1655972571947" duration="3883000" />
+      <workItem from="1655981804794" duration="7092000" />
+      <workItem from="1656164453868" duration="29913000" />
+      <workItem from="1656590766634" duration="619000" />
+    </task>
+    <task id="LOCAL-00001" summary="feat: add authentication property in login module&#10;&#10;Property is required to be able to listen if auth is finished">
+      <created>1654767954239</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1654767954240</updated>
+    </task>
+    <task id="LOCAL-00002" summary="feat: finish login flow&#10;&#10;Once the user is authenticated the workspace screen is shown">
+      <created>1654767989997</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1654767989997</updated>
+    </task>
+    <task id="LOCAL-00003" summary="chore: delete unnecessary .gitignore in ui module">
+      <created>1654768046023</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1654768046023</updated>
+    </task>
+    <task id="LOCAL-00004" summary="refactor: clean up login classes &#10;&#10;Add java doc comments and delete commented code">
+      <created>1654776835355</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1654776835355</updated>
+    </task>
+    <task id="LOCAL-00005" summary="feat: connect workspace screen with create project screen&#10;&#10;Button &quot;projekt anlegen&quot; now implemented">
+      <created>1654777735151</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1654777735151</updated>
+    </task>
+    <task id="LOCAL-00006" summary="feat: connect create project screen with workspace screen&#10;&#10;Button &quot;create project&quot; now implemented">
+      <created>1654783525855</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1654783525855</updated>
+    </task>
+    <task id="LOCAL-00007" summary="fix: edit createProjectInvitation fetch &#10;&#10;Because of RLS also the invitations created by the user were shown in the invitations section, this is now fixed">
+      <created>1654940236623</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1654940236623</updated>
+    </task>
+    <task id="LOCAL-00008" summary="fix: edit createProjectInvitation method in client&#10;&#10;Also, the invitations the user created were shown in the invitations section, this is now fixed">
+      <created>1654940564787</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1654940564787</updated>
+    </task>
+    <task id="LOCAL-00009" summary="docs: add javadoc in SupabaseRestClient">
+      <created>1654941604837</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1654941604837</updated>
+    </task>
+    <task id="LOCAL-00010" summary="fix: prevent duplicate adding of project cells after accepting invitation">
+      <created>1654943482324</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1654943482324</updated>
+    </task>
+    <task id="LOCAL-00011" summary="fix: add auto compute for height of the cell boxes in WorkspaceSceneController">
+      <created>1654944246273</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1654944246273</updated>
+    </task>
+    <task id="LOCAL-00012" summary="feat: add implementation for user cells when adding a member in create project">
+      <created>1654945896820</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1654945896820</updated>
+    </task>
+    <task id="LOCAL-00013" summary="feat: add todo">
+      <created>1655028611032</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1655028611032</updated>
+    </task>
+    <task id="LOCAL-00014" summary="fix: remove circular dependency&#10;&#10;ChangeListener was replaced by property">
+      <created>1655030841041</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1655030841041</updated>
+    </task>
+    <task id="LOCAL-00015" summary="refactor: introduce IWorkspaceRepo interface for loser coupling">
+      <created>1655122494437</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1655122494437</updated>
+    </task>
+    <task id="LOCAL-00016" summary="refactor: introduce IWorkspaceRepo interface for loser coupling">
+      <created>1655122526634</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1655122526634</updated>
+    </task>
+    <task id="LOCAL-00017" summary="test: add unit test for CreateProjectController">
+      <created>1655122586043</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1655122586043</updated>
+    </task>
+    <task id="LOCAL-00018" summary="test: add unit test for Editor class">
+      <created>1655123292169</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1655123292170</updated>
+    </task>
+    <task id="LOCAL-00019" summary="test: add unit test for Editor">
+      <created>1655123312607</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1655123312607</updated>
+    </task>
+    <task id="LOCAL-00020" summary="test: add unit test for LoginController">
+      <created>1655123674157</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1655123674157</updated>
+    </task>
+    <task id="LOCAL-00021" summary="docs: remove commented code">
+      <created>1655130708575</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1655130708575</updated>
+    </task>
+    <task id="LOCAL-00022" summary="docs: remove commented code">
+      <created>1655131151293</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1655131151293</updated>
+    </task>
+    <task id="LOCAL-00023" summary="fix: recover overwritten changes&#10;&#10;controller setting in fxml was missing and adding of member cells was failing bc of missing id in fxml">
+      <created>1655624055772</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1655624055772</updated>
+    </task>
+    <task id="LOCAL-00024" summary="fix: remove unwanted exports of packages&#10;&#10;Only service and guice package may be opened to other modules">
+      <created>1655627594198</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1655627594199</updated>
+    </task>
+    <task id="LOCAL-00025" summary="fix: remove duplicate dependencies in pom.xml files">
+      <created>1655628465212</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1655628465212</updated>
+    </task>
+    <task id="LOCAL-00026" summary="fix: clean up module info in ui module">
+      <created>1655628923284</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1655628923284</updated>
+    </task>
+    <task id="LOCAL-00027" summary="feat: add project id to project cell component and connect docu scene on component click">
+      <created>1655739001004</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1655739001006</updated>
+    </task>
+    <task id="LOCAL-00028" summary="feat: add render markdown method">
+      <created>1655879483140</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1655879483140</updated>
+    </task>
+    <task id="LOCAL-00029" summary="feat: implement refresh button in WorkspaceScene">
+      <created>1655973616661</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1655973616661</updated>
+    </task>
+    <task id="LOCAL-00030" summary="feat: change owner mail to owner name in project cell">
+      <created>1655978743749</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1655978743749</updated>
+    </task>
+    <task id="LOCAL-00031" summary="feat: add user profile fetching&#10;&#10;throws an error for project owner bc of rls, has to be fixed">
+      <created>1655997633846</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1655997633846</updated>
+    </task>
+    <task id="LOCAL-00032" summary="feat: make project owner fetching compatible with supabase&#10;&#10;project owners are now saved to a separate table, one is now able to fetch further profile info like name, mail and avatar of the project owner">
+      <created>1656239003101</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1656239003101</updated>
+    </task>
+    <task id="LOCAL-00033" summary="feat: implement tooltip when hovering over project owner name in project cell">
+      <created>1656244668162</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1656244668162</updated>
+    </task>
+    <task id="LOCAL-00034" summary="feat: begin implementing user card displaying">
+      <created>1656245886636</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1656245886636</updated>
+    </task>
+    <task id="LOCAL-00035" summary="feat: finish user card implementation">
+      <created>1656247942152</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1656247942152</updated>
+    </task>
+    <task id="LOCAL-00036" summary="feat: rework login screen &#10;&#10;add missing images on buttons">
+      <created>1656248416286</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1656248416286</updated>
+    </task>
+    <task id="LOCAL-00037" summary="fix: fix &quot;not javafx application thread error&quot; in WorkspaceSceneController">
+      <created>1656248551759</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1656248551759</updated>
+    </task>
+    <task id="LOCAL-00038" summary="fix: make arcudoc presentation ready">
+      <created>1656273336692</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1656273336692</updated>
+    </task>
+    <task id="LOCAL-00039" summary="fix: clean up workspace repo">
+      <created>1656274246353</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1656274246353</updated>
+    </task>
+    <task id="LOCAL-00040" summary="fix: clean up warnings for presentation">
+      <created>1656318892410</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1656318892410</updated>
+    </task>
+    <task id="LOCAL-00041" summary="fix: prevent duplicate adding of invitation cells">
+      <created>1656329284823</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1656329284824</updated>
+    </task>
+    <option name="localTasksCounter" value="42" />
+    <servers />
+  </component>
+  <component name="Vcs.Log.History.Properties">
+    <option name="COLUMN_ID_ORDER">
+      <list>
+        <option value="Default.Root" />
+        <option value="Default.Author" />
+        <option value="Default.Date" />
+        <option value="Default.Subject" />
+        <option value="Space.CommitStatus" />
+      </list>
+    </option>
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="RECENT_FILTERS">
+      <map>
+        <entry key="Branch">
+          <value>
+            <list>
+              <RecentGroup>
+                <option name="FILTER_VALUES">
+                  <option value="HEAD" />
+                </option>
+              </RecentGroup>
+            </list>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="refactor: introduce IWorkspaceRepo interface for loser coupling" />
+    <MESSAGE value="test: add unit test for CreateProjectController" />
+    <MESSAGE value="test: add unit test for Editor class" />
+    <MESSAGE value="test: add unit test for Editor" />
+    <MESSAGE value="test: add unit test for LoginController" />
+    <MESSAGE value="docs: remove commented code" />
+    <MESSAGE value="fix: recover overwritten changes&#10;&#10;controller setting in fxml was missing and adding of member cells was failing bc of missing id in fxml" />
+    <MESSAGE value="fix: remove unwanted exports of packages&#10;&#10;Only service and guice package may be opened to other modules" />
+    <MESSAGE value="fix: remove duplicate dependencies in pom.xml files" />
+    <MESSAGE value="fix: clean up module info in ui module" />
+    <MESSAGE value="feat: add project id to project cell component and connect docu scene on component click" />
+    <MESSAGE value="feat: add render markdown method" />
+    <MESSAGE value="feat: implement refresh button in WorkspaceScene" />
+    <MESSAGE value="feat: change owner mail to owner name in project cell" />
+    <MESSAGE value="feat: add user profile fetching&#10;&#10;throws an error for project owner bc of rls, has to be fixed" />
+    <MESSAGE value="feat: make project owner fetching compatible with supabase&#10;&#10;project owners are now saved to a separate table, one is now able to fetch further profile info like name, mail and avatar of the project owner" />
+    <MESSAGE value="feat: implement tooltip when hovering over project owner name in project cell" />
+    <MESSAGE value="feat: begin implementing user card displaying" />
+    <MESSAGE value="feat: finish user card implementation" />
+    <MESSAGE value="feat: rework login screen &#10;&#10;add missing images on buttons" />
+    <MESSAGE value="fix: fix &quot;not javafx application thread error&quot; in WorkspaceSceneController" />
+    <MESSAGE value="fix: make arcudoc presentation ready" />
+    <MESSAGE value="fix: clean up workspace repo" />
+    <MESSAGE value="fix: clean up warnings for presentation" />
+    <MESSAGE value="fix: prevent duplicate adding of invitation cells" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix: prevent duplicate adding of invitation cells" />
+  </component>
+</project>
