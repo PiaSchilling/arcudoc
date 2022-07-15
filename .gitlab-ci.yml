@@ -15,7 +15,7 @@ workflow:
 
 default:
   before_script:
-    - cd project/arcudoc/de.hdm_stuttgart.api/
+    - cd project/arcudoc/
 
 stages:          # Liste der Stages für Aufträge und deren Reihenfolge der Ausführung
   - build        # Project wird kompiliert
@@ -25,9 +25,22 @@ stages:          # Liste der Stages für Aufträge und deren Reihenfolge der Aus
 build-api:      
   stage: build
   script:
+    - cd de.hdm_stuttgart.api/
     - echo "Compiling the code..."
     - "mvn compile"
     - echo "Compile complete."
+
+build-login:
+  stage: build
+  needs: 
+      - build-api
+  script:
+    - cd de.hdm_stuttgart.login/
+    - echo "Compiling the code..."
+    - "mvn compile"
+    - echo "Compile complete."
+
+
 
 
 test-api:   # This job runs in the test stage.
