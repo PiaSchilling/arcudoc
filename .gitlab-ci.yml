@@ -22,35 +22,23 @@ stages:          # Liste der Stages für Aufträge und deren Reihenfolge der Aus
   - test         # Unit-Test werden ausgeführt 
   - package      # Projekt wird eingesetzt und JAR Datei gebildet
 
-build-api:      
+build-job:      
   stage: build
   script:
-    - cd de.hdm_stuttgart.api/
-    - echo "Compiling the code..."
-    - "mvn compile"
-    - echo "Compile complete."
-
-build-login:
-  stage: build
-  needs: 
-      - build-api
-  script:
-    - cd de.hdm_stuttgart.login/
     - echo "Compiling the code..."
     - "mvn compile"
     - echo "Compile complete."
 
 
 
-
-test-api:   # This job runs in the test stage.
+test-job:   # This job runs in the test stage.
   stage: test    # It only starts when the job in the build stage completes successfully.
   script:
     - echo "Running unit tests"
     - "mvn test"
 
 
-package-api:      # This job runs in the deploy stage.
+package-job:      # This job runs in the deploy stage.
   stage: package  # It only runs when *both* jobs in the test stage complete successfully.
   script:
     - echo "Deploying application..."
