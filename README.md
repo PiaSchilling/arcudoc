@@ -2,84 +2,50 @@
 
 # ArcUdoc - the desktop application to rock your doc
 
-[TOC]
+![Workspace](https://user-images.githubusercontent.com/96486990/180218432-6894c242-e0a9-44ef-90ac-57b06d4d7d02.png)
+![View](https://user-images.githubusercontent.com/96486990/180218462-2fed0e7a-7cc5-4992-a328-6927083de183.png)
+![Edit](https://user-images.githubusercontent.com/96486990/180218474-512f6ab5-aebb-40d6-ad3b-486830db0261.png)
+![CreateProject](https://user-images.githubusercontent.com/96486990/180218498-1359ed1b-4b26-4343-b6bd-f52a41b5ae38.png)
+<img width="400" alt="Login" src="https://user-images.githubusercontent.com/96486990/180219191-362b61aa-c29a-42bb-95ae-dd0f994a9fab.png">
 
 
+## What is ArcUdoc?
 
-## Was ist ArcUdoc?
+ArcUDoc is intended to make it easier to create structured software architecture documentation based on the [arc42](https://arc42.org/) architecture documentation template. Especially new team members should find it easier to familiarize themselves with a new project. Also the cooperation between developers and architects should be simplified. Guidelines, concepts and generally applicable procedures in the team are recorded there and easily accessible for all team members. 
 
-ArcUDoc soll es erleichtern eine strukturierte Architektur-/Software-/Projektdokumentation zu erstellen. Vor allem neuen Team-Mitglieder:innen soll es dadurch leichter fallen, sich in ein neues Projekt einzuarbeiten. Auch die Zusammenarbeit zwischen Designern, Entwicklern und Architekten soll damit vereinfacht werden. Richtlinien, Konzepte und allgemein im Team geltende Vorgehensweisen werden dort festgehalten und leicht zugänglich für alle Teammitglieder. 
+## Features
 
-### Login
+- Create projects and invite team members 
+- See project invitations and accept them to be part of the project
+- View and edit the contents of the project documentation using an integrated Markdown editor
 
-Mithilfe von GitLab kann sich der User hier anmelden. Bei erfolgreicher Anmeldung wird er direkt zur Desktop Application von ArcUdoc weitergeleitet und alle Projekte erscheinen, wo er Mitglied ist. (weitere Informationen zum Login sind in der Dokumentation in Kapitel 8 "Querschnittliche Konzepte" unter [8.2 "User Experience"](https://gitlab.mi.hdm-stuttgart.de/ps149/se3/-/blob/main/arc/08_Querschnittliche-Konzepte/User-Experience.md) zu finden.)
+## Usage
 
-### Workspace 
-
-Hier werden alle Projekte angezeigt, mit zugehöriger Rolle und Job - Label des Users. Dazugehörig, wann das letzte mal dieses Projekt bearbeitet wurde. Ebenfalls wird der User hier informiert, wenn er eine neue Einladung erhalten hat. Diese kann er dann annehmen und hat dann Zugriff auf die Dokumentation des Projektes. Das anlegen von Projekten und einladen von Mitgliedern ist über "Projekt anlegen" möglich. Dargestellt werden diese dann nach dem Tap auf den "refresh"-Button.
-
-### Projekt Dokumentation
-
-Keine Ahnung wie eine Dokumentation strukturiert werden soll? Durch das von ArcUdoc vorkonfigurierte arc42 Template wird der User und sein Team an die Hand genommen step-by-step die Software Dokumentation in Angriff zu nehmen. Bei jedem Kapitel wird durch den default Text nochmals erläutert, welche Inhalte in diesem Kapitel beschrieben werden. Eingefügt wird dieser Content über Markdown im ArcUdoc-eigenen Editor. Gespeichert werden diese Inhalte bei verlassen des Editors.
+Currently only usable via IntelliJ or comparable development environment. The `Main` method can be found in the UI module in the root package. 
 
 
-## Installation und Verwendung
+## Documentation
 
-Aktuell gibt es aufgrund von Problemen mit den Java 9 Modulen kein .jar- file. Daher ist die Applikation nur über IntelliJ nutzbar. Die Main Methode ist im Modul `de.hdm_stuttgart.ui` im root Package zu finden. Zur Nutzung der Anwendung ist ein GitLab-Account obligatorisch. (**gitlab.com** nicht gitlab.mi.hdm-stuttgart.de). Der Login über Google ist derzeit noch nicht implementiert.
+Detailed project documentation can be found [here](https://github.com/PiaSchilling/arcudoc/tree/main/arc)
 
+## Technologies
 
-## Dokumentation
-Zu finden ist unsere Software- Dokumentation auf GitLab unter [arc](https://gitlab.mi.hdm-stuttgart.de/ps149/se3/-/tree/main/arc). Zur Dokumentation wurde das Softwarearchitekturdokumentations-Template [arc42](https://www.arc42.de/overview/) verwendet. Nicht relevante Kapitel des Templates wurden dabei entfernt. 
+More detailed explanations of the technologies used in this project can be found [here](https://github.com/PiaSchilling/arcudoc/tree/main/arc/04_L%C3%B6sungsstrategie). See ["Design Decisions"](https://github.com/PiaSchilling/arcudoc/tree/main/arc/09_Entwurfsentscheidungen) for a more detailed explanation of why we chose these technologies.
 
+## Known Issues 
 
-## Technologien
+- Login was only tested extensively in Firefox. Login via other browsers could cause problems (especially in Safari). (see [AuthFlow](https://github.com/PiaSchilling/arcudoc/blob/main/arc/08_Querschnittliche-Konzepte/User-Experience.md) for furhter details)
+- Login via Google not yet implemented 
+- Missing implementation of Searchbar and Join-Project-Button in Workspace-Screen, Team and Design Buttons in Project-Screen
 
-Nähere Erläuterungen zu den verwendeten Technologien in diesem Projekt sind [hier](https://gitlab.mi.hdm-stuttgart.de/ps149/se3/-/blob/main/arc/04_L%C3%B6sungsstrategie/L%C3%B6sungsstrategie.md) zu finden. Unter ["Entwurfsentscheidungen"](https://gitlab.mi.hdm-stuttgart.de/ps149/se3/-/blob/main/arc/09_Entwurfsentscheidungen/Entwurfsentscheidungen.md) wird näher erläutert, weshalb wir uns für diese Technologien entschieden haben.
+## Project status / future plans
 
-## Anmerkungen in Bezug auf den Bewertungsbogen
+The following features are planned to be implemented in the future:
 
-### Kategorien
-
-Gewählt haben wir als Kategorien **UI** und **Schnittstellen**. 
-
-Zudem haben wir durch die Verwendung von Supabase "Persistenz" und "Threading". Es wurde ein komplexes Datenbankmodell, sowie Datenbank-Functions, Trigger und Zugriffskontrolle über RLS implementiert. Dokumentation dafür ist in Kapitel 5 "Bausteinsicht" unter [5.1 "Backend"](https://gitlab.mi.hdm-stuttgart.de/ps149/se3/-/blob/main/arc/05_Bausteinsicht/Backend.md) zu finden. Gerne gewähren wir auch Zugriff auf Supabase damit dies mit in die Projekt-Bewertung einfließen kann. 
-Der Zugriff auf Supabase erfolgt über asynchrone REST Api calls (background thread) mittels Retrofit.
-
-### Anforderungsanalyse/Projektdokumentation
-
-Wie bereits im Abschnitt "Dokumentation" erwähnt, wurde zur Dokumentation des Projektes das arc42 template verwendet. Die Anfoderungsanalyse ist in [Kapitel 1 "Einführung und Ziele"](https://gitlab.mi.hdm-stuttgart.de/ps149/se3/-/tree/main/arc/01_Einf%C3%BChrung-und-Ziele) zu finden. 
-
-### Testing
-
-Die Module stehen unabhängig voneinander und werden nur im UI-Modul vereint. Deshalb wurden die Module getrennt voneinander durch Unit-Tests getestet. Auf Integrationstests wurde aus obigen Grund verzichtet. Konsistentes Testen gegen das Backend gestaltet sich aufgrund der strengen Zugriffskontrolle ebenfalls schwierig. Zudem handelt es sich um sehr user spezifische sowie dynamsiche Daten, weshalb wir im Rahmen des SE3-Projektes das Einbeziehen des Backends in die Tests als wenig sinnvoll erachtet haben. 
-
-### Schnittstellen
-
-Fast allle Schnittstellen laufen asynchron um langlaufende Prozesse in den Hintergrund zu verlegen. Die einzige Schnittstelle welche synchron läuft ist im `de.hdm_stuttgart.api`-Modul im `Profilerespository`zu finden. Da die ganze Anwendung auf der Verfügbarkeit des Nutzerdaten basiert, ist diese Schnittstelle synchron. Dies ist auch mittels Javadoc im Code dokumentiert. 
-
-### Softwarearchitektur
-
-Wir haben uns sehr intensiv mit der Architektur des Projektes auseinandergesetzt. Ziel war es ein sehr modulares System zu entwerfen, welches durch lose Kopplung zwischen den Bausteinen offen für Erweiterung ist. Weitere Informationen zur Architektur und Modulaufbau sind [hier](https://gitlab.mi.hdm-stuttgart.de/ps149/se3/-/blob/main/arc/05_Bausteinsicht/Bausteinsicht.md) zu finden.
-
-
-## Known Issues / Project Status
-
-Wie unter [01.1 Einführungen und Ziele](https://gitlab.mi.hdm-stuttgart.de/ps149/se3/-/blob/main/arc/01_Einf%C3%BChrung-und-Ziele/Aufgabenstellung.md) beschrieben ist das Projekt noch nicht vollständig in seiner Funktion implementiert. Trotzdem ist unser definierter MVP erreicht. 
-
-Bekannte Issues sind:
-
-- Login über GitLab funktioniert nur über den Browser "Firefox" (weitere Informationen dazu [hier](https://gitlab.mi.hdm-stuttgart.de/ps149/se3/-/blob/main/arc/08_Querschnittliche-Konzepte/User-Experience.md))
-- Login über Google nicht implementiert
-- Offline Nutzung nicht möglich
-- Löschen von Projekten sind aktuell nicht für den User über das UI möglich
-
-
-## Reflexion
-Im Folgenden sind stichpunktartig Anmerkungen zusammengefasst, was wir nächstes Mal anders angehen würden:
-- Zeitplan manifestieren
-- nur ein .css file für schnellere Änderungen
-- Phase zur Ansteckung des Scopes zeitlich kürzer halten (sich nicht in der Konzeption der kleinen Features verlieren)
-- Die Verwendung von Java 9 Modulen bringt einige Schwierigkeiten, vor allem in Verbindung mit Maven, mit sich. Zudem gibt es wenige zuverlässige und gute Quellen zu den Java 9 Modulen. Eine erneute Verwendung der Module sollte also genau überlegt werden auch wenn diese zu einer sehr sauberen Projektstruktur und Architektur verholfen haben.
+- version control or at least the possbibility to view past versions of the documentation 
+- offline usage 
+- implementation of the "design" and "team" part in the project screen. In the design part it will be possible to record design guidelines etc. for the project. In the team part it will be possible to see all members of the projects with theier project roles, job labels and further information. 
+- Access control based on the defined project roles (edit, view, ...)
 
 
 ## Authors
