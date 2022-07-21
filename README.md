@@ -49,7 +49,7 @@ The following features are planned to be implemented in the future:
 
 
 ## Authors
-Pia Schilling (ps149), Vivien Volpert (vv014), Paul Sendelbach (ps152), Sara Tietze (st093)
+Pia Schilling, Vivien Volpert, Paul Sendelbach, Sara Tietze
 
 
 
